@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
-		
+		<script src="js/librairies/jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
 		<div class="container-fluid"> <!--Bootstrap container, contain everything-->
@@ -14,8 +14,8 @@
 				<div class="col-md-2">
 					<p>Objectifs :</p>
 					<ul>
-						<li>Avoir une carte avec l'API Google Map</li>
-						<li>La carte se positione sur l'emplacement du l'utilisateur (API Javascript) avec un piti pointeur</li>
+						<li class="check">Avoir une carte avec l'API Google Map</li>
+						<li class="check">La carte se positione sur l'emplacement de l'utilisateur (API Javascript) avec un piti pointeur</li>
 						<li>Avoir une liste de restaurants correspondante (Json fournit, à étendre)</li>
 						<li>Pour la liste ci dessus, chaque restaurant doit avoir la moyenne des notes affiché (étoiles)</li>
 						<li>En cliquant sur un restaurant on a les commentaires et street view (API Google)</li>
@@ -26,19 +26,21 @@
 
 			<section class="row">
 				<div class="map offset-md-2 col-md-4">
-					<p>Ici la carte des restaurants</p>
+					<div id="map">
+						<script async defer
+							src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc&callback=initMap">
+						</script>
+					</div>
 				</div>
 				<div class="list col-md-4">
-					<p>Ici la liste des restaurants</p>
+					<p>Ici la liste des restaurants pouet</p>
 				</div>
 			</section>
 
 		</div> <!--End of page container-->
 
-
-		
-
-		<script src="js/restaurant.js"></script>
+		<script src="js/map/google-map.js"></script>
+		<script src="js/models/restaurant.js"></script>
 		<script src="js/manager.js"></script>
 		<script>
 			// start manager here
