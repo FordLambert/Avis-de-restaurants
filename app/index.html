@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
-		<script src="js/librairies/jquery-3.2.1.min.js"></script>
+		<script src="js/librairies/jquery_3.2.1.min.js"></script>
 	</head>
 	<body>
 		<div class="container-fluid"> <!--Bootstrap container, contain everything-->
@@ -28,7 +28,7 @@
 				<div class="map offset-md-2 col-md-4">
 					<div id="map">
 						<script async defer
-							src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc&callback=initMap">
+							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc&callback=initMap">
 						</script>
 					</div>
 				</div>
@@ -39,13 +39,19 @@
 
 		</div> <!--End of page container-->
 
-		<script src="js/map/google-map.js"></script>
+		<script src="js/map/google_map.js"></script>
+
 		<script src="js/models/restaurant.js"></script>
-		<script src="js/stores/restaurant-store.js"></script>
-		<script src="js/manager.js"></script>
+		<script src="js/models/restaurant_store.js"></script>
+
+		<script src="js/managers/JSON_manager.js"></script>
+		<script src="js/managers/visual_display_manager.js"></script>
+
+		<script src="js/conductor.js"></script>
+
 		<script>
-			const manager = Object.create(Manager).init();
-			manager.startManager();
+			const conductor = Object.create(Conductor).init();
+			conductor.start();
 		</script>
 	</body>
 </html>

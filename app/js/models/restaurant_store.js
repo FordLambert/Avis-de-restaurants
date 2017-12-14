@@ -7,7 +7,7 @@ const RestaurantStore = {
 	}
 }
 
-RestaurantStore.addRestaurant = function(restaurant) {
+RestaurantStore.add = function(restaurant) {
 	this.restaurantList.push(restaurant);
 };
 
