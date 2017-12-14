@@ -11,7 +11,7 @@
 		<div class="container-fluid"> <!--Bootstrap container, contain everything-->
 
 			<header class="row">
-				<div class="col-md-2">
+				<div class="col-md-12">
 					<p>Objectifs :</p>
 					<ul>
 						<li class="check">Avoir une carte avec l'API Google Map</li>
@@ -41,9 +41,11 @@
 
 		<script src="js/map/google-map.js"></script>
 		<script src="js/models/restaurant.js"></script>
+		<script src="js/stores/restaurant-store.js"></script>
 		<script src="js/manager.js"></script>
 		<script>
-			// start manager here
+			const manager = Object.create(Manager).init();
+			manager.startManager();
 		</script>
 	</body>
 </html>
