@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>P7 - step 1</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<script src="dist/react.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid"> <!--Bootstrap container, contain everything-->
+			<div id="app">
+				
+			</div>
+
+			<header class="row">
+				<div class="col-md-12">
+					<p>Objectifs :</p>
+					<ul>
+						<li class="check">Avoir une carte avec l'API Google Map</li>
+						<li class="check">La carte se positione sur l'emplacement de l'utilisateur (API Javascript) avec un piti pointeur</li>
+						<li class="check">Avoir une liste de restaurants correspondante (Json fournit, à étendre)</li>
+						<li class="check">Pour la liste ci dessus, chaque restaurant doit avoir la moyenne des notes affiché (étoiles)</li>
+						<li>En cliquant sur un restaurant on a les commentaires et street view (API Google)</li>
+						<li>On peut filtrer l'afffichage des restaurants par étoiles (carte se met à jour)</li>
+					</ul>
+				</div>
+			</header>
+
+			<section class="row">
+				<div class="map offset-md-2 col-md-4">
+					<div id="map">
+						<script async defer
+							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc&callback=initMap">
+						</script>
+					</div>
+				</div>
+				<div id="restaurant-list" class="col-md-4">
+					<!--javascript will write here-->
+				</div>
+			</section>
+
+		</div> <!--End of page container-->
+
+		<script src="dist/scripts.min.js"></script>
+		<script src="app/map/google_map.js"></script>
+
+	</body>
+</html>
