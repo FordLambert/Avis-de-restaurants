@@ -1,17 +1,16 @@
-/* This will be removed after completing first step */
+#main-zone {
+	height: 100vh;
+	background-color: grey;
 
-.check {
-	color: green;
-}
+	nav {
+		background-color: white;
+		width: 100%;
+	}
 
-/**/
-
-.map {
-	background-color: blue;
-}
-
-#restaurant-list {
-	background-color: green;
+	#map {
+		background-color: blue;
+		width: 100%;
+	}
 }
 
 

@@ -5865,16 +5865,21 @@ a.text-dark:focus, a.text-dark:hover {
 .invisible {
   visibility: hidden !important; }
 
-/* This will be removed after completing first step */
-.check {
-  color: green; }
+#parameter-zone {
+  background-color: #00C094;
+  color: #ebf3f4;
+  height: 100vh;
+  padding-top: 10vh; }
 
-/**/
-.map {
-  background-color: blue; }
-
-#restaurant-list {
-  background-color: green; }
+#main-zone {
+  height: 100vh;
+  background-color: grey; }
+  #main-zone nav {
+    background-color: white;
+    width: 100%; }
+  #main-zone #map {
+    background-color: blue;
+    width: 100%; }
 
 #map {
   width: 100%;

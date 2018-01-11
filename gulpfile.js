@@ -35,8 +35,8 @@ gulp.task('compile-js', function() {
 
 //Observers
 gulp.task('watch-sass', function() {
-  gulp.watch('app/scss/styles.scss', ['sass']);
-  gulp.watch('app/scss/*/*.scss', ['sass']);
+  gulp.watch('sass/styles.scss', ['sass']);
+  gulp.watch('sass/*/*.scss', ['sass']);
 });
 
 gulp.task('watch-js', function() {

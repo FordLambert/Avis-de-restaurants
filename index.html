@@ -8,42 +8,44 @@
 	</head>
 	<body>
 		<div class="container-fluid"> <!--Bootstrap container, contain everything-->
-			<div id="app">
-				
-			</div>
+			<div class="row">
 
-			<header class="row">
-				<div class="col-md-12">
-					<p>Objectifs :</p>
-					<ul>
-						<li class="check">Avoir une carte avec l'API Google Map</li>
-						<li class="check">La carte se positione sur l'emplacement de l'utilisateur (API Javascript) avec un piti pointeur</li>
-						<li class="check">Avoir une liste de restaurants correspondante (Json fournit, à étendre)</li>
-						<li class="check">Pour la liste ci dessus, chaque restaurant doit avoir la moyenne des notes affiché (étoiles)</li>
-						<li>En cliquant sur un restaurant on a les commentaires et street view (API Google)</li>
-						<li>On peut filtrer l'afffichage des restaurants par étoiles (carte se met à jour)</li>
-					</ul>
-				</div>
-			</header>
-			<div id="root">
-			</div>
-			<section class="row">
-				<div class="map offset-md-2 col-md-4">
-					<div id="map">
-						<script async defer
-							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc&callback=initMap">
-						</script>
+				<aside class="col-md-3 text-center" id="parameter-zone">
+					<img src="ressources/pictures/logo.png" alt="logo" class="nav-logo">
+					<h2>Chercher un restaurant</h2>
+					<img src="ressources/pictures/arrow.png" alt="logo" class="arrow-down">
+					<!-- insert map changes here (radius, stars...) -->
+				</aside>
+
+				<section class="col-md-9" id="main-zone">
+					<div class="row">
+
+						<nav>
+							<p>A nice navigation zone, oooooh</p>
+							<!-- not sure to need a nav, we'll see -->
+						</nav>
+
+						<div id="map">
+							<p>Soon here... a map !</p>
+							<script async defer
+								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc&callback=initMap">
+							</script>
+						</div>
+						
+						<div id="restaurant-list" class="col-md-4">
+							<!--javascript will write here-->
+						</div>
+
 					</div>
-				</div>
-				<div id="restaurant-list" class="col-md-4">
-					<!--javascript will write here-->
-				</div>
-			</section>
+				</section>
 
+			</div>
 		</div> <!--End of page container-->
 
+		<!--
 		<script src="dist/scripts.min.js"></script>
 		<script src="app/map/google_map.js"></script>
+		-->
 
 	</body>
 </html>
