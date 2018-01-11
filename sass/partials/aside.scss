@@ -3,4 +3,26 @@
 	color: $white;
 	height: 100vh;
 	padding-top: 10vh;
+
+	.input-group {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	input {
+		width: 80%;
+		margin-bottom: 5vh; 
+	}
+
+	.btn-secondary {
+		background-color: $light-green;
+		color: $white;
+		border-color: $white;
+	}
+	.btn-secondary:hover {
+		background-color: $white;
+		color: $light-green;
+		border-color: $light-green;
+	}
 }

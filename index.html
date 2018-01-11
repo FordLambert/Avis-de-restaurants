@@ -12,15 +12,38 @@
 
 				<aside class="col-md-3 text-center" id="parameter-zone">
 					<img src="ressources/pictures/logo.png" alt="logo" class="nav-logo">
-					<h2>Chercher un restaurant</h2>
+					<h2>Cherchez un restaurant</h2>
 					<img src="ressources/pictures/arrow.png" alt="logo" class="arrow-down">
+
+					<form>
+					    <div class="input-group">
+					      	<input class="form-control" placeholder="Entrez une ville">
+
+					      	<label>Distance maximum :</label>
+					      	<input type="range" min="50" max="1000" step="any">
+
+					      	<label>Note moyenne minimum :</label>
+					      	<input type="range" list="stars" min="1" max="5" step="1">
+					      	<datalist id="stars">
+								<option value="1" label="1">
+								<option value="2" label="2">
+								<option value="3" label="3">
+								<option value="4" label="4">
+								<option value="5" label="5">
+							</datalist>
+
+							<button type="button" class="btn btn-secondary">C'est partit !</button>
+
+					    </div>
+					</form>
+
 					<!-- insert map changes here (radius, stars...) -->
 				</aside>
 
 				<section class="col-md-9" id="main-zone">
 					<div class="row">
 
-						<nav>
+						<nav id="navbar">
 							<p>A nice navigation zone, oooooh</p>
 							<!-- not sure to need a nav, we'll see -->
 						</nav>
@@ -44,8 +67,9 @@
 
 		<!--
 		<script src="dist/scripts.min.js"></script>
-		<script src="app/map/google_map.js"></script>
 		-->
+		<script src="app/map/google_map.js"></script>
+		
 
 	</body>
 </html>
