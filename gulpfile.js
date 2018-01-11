@@ -24,20 +24,12 @@ gulp.task('sass', function(){
 });
 
 //Modules Es6 to regular minified Es5 file ->
-gulp.task('optimise', function() {
+gulp.task('compile-js', function() {
   return gulp.src('app/main.js')
-    .pipe(webpackStream(), webpack)
+    .pipe(webpackStream(require('./webpack.config.js')), webpack)
     .pipe(babel())
-    //.pipe(uglify())
-    .pipe(rename('scripts.min.js'))
-    .pipe(gulp.dest('dist'));
-});
-
-gulp.task('react', function() {
-  return gulp.src('app/librairies/react.js')
-    .pipe(webpackStream(), webpack)
     .pipe(uglify())
-    .pipe(rename('react.min.js'))
+    .pipe(rename('scripts.min.js'))
     .pipe(gulp.dest('dist'));
 });
 

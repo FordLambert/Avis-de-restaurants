@@ -1,4 +1,3 @@
-'use strict';
 export class Restaurant {
 	constructor(array) {
 		this.name = array[0];

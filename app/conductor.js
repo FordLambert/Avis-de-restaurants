@@ -1,10 +1,11 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import {RestaurantStore} from './models/restaurant_store';
 import {Restaurant} from './models/restaurant';
 
 import {VisualDisplayManager} from './managers/visual_display_manager';
 import {JsonManager} from './managers/JSON_manager';
-
 
 export class Conductor {
 	constructor() {
