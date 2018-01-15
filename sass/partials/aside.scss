@@ -19,16 +19,15 @@
 		margin-bottom: 2vh;
 	}
 
-	.input-group {
+	form {
 		margin-top: 3vh;
-		display: flex;
-		flex-direction: column;
 		align-items: center;
 	}
 
-	input {
-		width: 80%;
-		margin-bottom: 5vh; 
+	input, select {
+		margin: 0 auto;
+		width: 60%;
+		margin-bottom: 3vh; 
 	}
 
 	.btn-secondary {

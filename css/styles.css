@@ -5900,14 +5900,13 @@ body {
   #parameter-zone h2 {
     margin-top: 2vh;
     margin-bottom: 2vh; }
-  #parameter-zone .input-group {
+  #parameter-zone form {
     margin-top: 3vh;
-    display: flex;
-    flex-direction: column;
     align-items: center; }
-  #parameter-zone input {
-    width: 80%;
-    margin-bottom: 5vh; }
+  #parameter-zone input, #parameter-zone select {
+    margin: 0 auto;
+    width: 60%;
+    margin-bottom: 3vh; }
   #parameter-zone .btn-secondary {
     background-color: #00C094;
     color: #ebf3f4;
@@ -5928,7 +5927,7 @@ body {
     #main-zone .restaurant-list .restaurant {
       padding-top: 20px;
       padding-bottom: 20px;
-      border-top: 2px solid black; }
+      border-bottom: 1px solid black; }
       #main-zone .restaurant-list .restaurant li {
         list-style-type: none; }
       #main-zone .restaurant-list .restaurant .distance {
