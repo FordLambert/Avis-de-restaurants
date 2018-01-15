@@ -47,6 +47,6 @@ gulp.task('watch-js', function() {
 gulp.task('watch-all', function() {
   gulp.watch('app/*.js', ['optimise']);
   gulp.watch('app/*/*.js', ['optimise']);
-  gulp.watch('app/scss/styles.scss', ['sass']);
-  gulp.watch('app/scss/*/*.scss', ['sass']);
+  gulp.watch('sass/styles.scss', ['sass']);
+  gulp.watch('sass/*/*.scss', ['sass']);
 });

@@ -1,10 +1,26 @@
+//temp fix
+.nav-logo {
+	height: 170px;
+	width: 150px;
+}
+.arrow-down{
+	height: 50px;
+	width: 100px;
+}
+
 #parameter-zone {
 	background-color: $light-green;
 	color: $white;
 	height: 100vh;
 	padding-top: 10vh;
 
+	h2 {
+		margin-top: 2vh;
+		margin-bottom: 2vh;
+	}
+
 	.input-group {
+		margin-top: 3vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;

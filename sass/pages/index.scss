@@ -7,8 +7,15 @@
 	}
 
 	.restaurant-list {
-		background-color: grey;
-		height: 65vh
+		height: 65vh;
+		overflow: auto;
+
+		li {
+			list-style-type: none;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			border-top: 2px solid $black;
+		}
 	}
 
 	.review-list {
