@@ -5922,10 +5922,18 @@ body {
   #main-zone .restaurant-list {
     height: 65vh;
     overflow: auto; }
-    #main-zone .restaurant-list li {
-      list-style-type: none;
+    #main-zone .restaurant-list .restaurant {
       padding-top: 20px;
       padding-bottom: 20px;
       border-top: 2px solid black; }
+      #main-zone .restaurant-list .restaurant li {
+        list-style-type: none; }
+      #main-zone .restaurant-list .restaurant .distance {
+        display: flex; }
+        #main-zone .restaurant-list .restaurant .distance .localisation-icon {
+          height: 20px;
+          margin-right: 1vw; }
+      #main-zone .restaurant-list .restaurant .restaurant-picture {
+        height: 100%; }
   #main-zone .review-list {
     background-color: blue; }

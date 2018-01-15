@@ -10,11 +10,28 @@
 		height: 65vh;
 		overflow: auto;
 
-		li {
-			list-style-type: none;
+		.restaurant {
 			padding-top: 20px;
 			padding-bottom: 20px;
 			border-top: 2px solid $black;
+
+			li {
+				list-style-type: none;
+				
+			}
+
+			.distance {
+				display: flex;
+
+				.localisation-icon {
+					height: 20px;
+					margin-right: 1vw;
+				}
+			}
+
+			.restaurant-picture {
+				height: 100%;
+			}
 		}
 	}
 
