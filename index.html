@@ -11,6 +11,7 @@
 		<div class="container-fluid"> <!--Bootstrap container, contain everything-->
 			<div class="row">
 
+				<!-- insert map changes here (radius, stars...) -->
 				<aside class="col-md-3 text-center" id="parameter-zone">
 					<img src="ressources/pictures/logo.png" alt="logo" class="nav-logo">
 					<h2>Cherchez un restaurant</h2>
@@ -37,17 +38,10 @@
 
 					    </div>
 					</form>
-
-					<!-- insert map changes here (radius, stars...) -->
 				</aside>
 
 				<section class="col-md-9" id="main-zone">
 					<div class="row">
-
-						<nav id="navbar">
-							<a href="#">A nice navigation zone, oooooh</a>
-							<!-- not sure to need a nav, we'll see -->
-						</nav>
 
 						<div id="map">
 							<script async defer
@@ -57,68 +51,69 @@
 						
 						<div class="restaurant-list col-md-8">
 
-								<h1>Restaurants correspondants: </h1>
+								<h1 class="theme-colored">Restaurants correspondants: </h1>
 								<ul>
 
 									<li class="row restaurant">
 										<div class="col-md-8">
-											<h3>Le Panda d'or</h3>
+											<h2>Le Panda d'or</h2>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio sapien,
 												feugiat in neque non, commodo semper justo. Nam non elit ut lacus rutrum consectetur.
 												Vivamus et mauris fermentum, maximus risus nec, finibus sapien.</p>
 											<div class="distance">
 												<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
-												<p>300m</p>
+												<p class="theme-colored">300m</p>
 											</div>
 										</div>
 										<div class="col-md-4 text-center">
 											<a href="#">
-												<img src="ressources/pictures/restaurant.jpg" class="restaurant-picture rounded-circle" alt="restaurant-picture">
+												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded-circle" alt="restaurant-picture">
 											</a>
 										</div>
 									</li>
 
 									<li class="row restaurant">
 										<div class="col-md-8">
-											<h3>Chez Papa Tiflow</h3>
+											<h2>Chez Papa Tiflow</h2>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio sapien,
 												feugiat in neque non, commodo semper justo. Nam non elit ut lacus rutrum consectetur.
 												Vivamus et mauris fermentum, maximus risus nec, finibus sapien.</p>
 											<div class="distance">
 												<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
-												<p>450m</p>
+												<p class="theme-colored">450m</p>
 											</div>
 										</div>
 										<div class="col-md-4 text-center">
 											<a href="#">
-												<img src="ressources/pictures/restaurant.jpg" class="restaurant-picture rounded-circle" alt="restaurant-picture">
+												<img src="ressources/pictures/restaurant-2.jpg" class="restaurant-picture rounded-circle" alt="restaurant-picture">
 											</a>
 										</div>
 									</li>
 
 
 									<li class="row restaurant">
-										<h3>Example 3</h3>
-										<p>Bla bla blablabla bla bla blaaaaaa bla blah.</p>
+										<div class="col-md-8">
+											<h2>A la bonne Franquette</h2>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio sapien,
+												feugiat in neque non, commodo semper justo. Nam non elit ut lacus rutrum consectetur.
+												Vivamus et mauris fermentum, maximus risus nec, finibus sapien.</p>
+											<div class="distance">
+												<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
+												<p class="theme-colored">612m</p>
+											</div>
+										</div>
+										<div class="col-md-4 text-center">
+											<a href="#">
+												<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded-circle" alt="restaurant-picture">
+											</a>
+										</div>
 									</li>
-									<li class="row restaurant">
-										<h3>Example 4</h3>
-										<p>Bla bla blablabla bla bla blaaaaaa bla blah.</p>
-									</li>
-									<li class="row restaurant">
-										<h3>Example 5</h3>
-										<p>Bla bla blablabla bla bla blaaaaaa bla blah.</p>
-									</li>
-									<li>example 6</li>
-									<li>example 7</li>
-									<li>example 8</li>
-									<li>example 9</li>
 								</ul>
 
 						</div>
 
 						<div class="review-list col-md-4">
-							<p>Place pour les avis</p>
+							<h1 class="text-center theme-colored">L'avis du public</h1>
 						</div>
 
 					</div>
@@ -131,7 +126,5 @@
 		<script src="dist/scripts.min.js"></script>
 		-->
 		<script src="app/map/google_map.js"></script>
-		
-
 	</body>
 </html>

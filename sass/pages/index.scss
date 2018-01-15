@@ -2,7 +2,7 @@
 	height: 100vh;
 
 	#map {
-		height: 30vh;
+		height: 35vh;
 		width: 100%;
 	}
 
@@ -31,11 +31,12 @@
 
 			.restaurant-picture {
 				height: 100%;
+				width: 100%;
 			}
 		}
 	}
 
 	.review-list {
-		background-color: blue;
+		//background-color: blue;
 	}
 }
