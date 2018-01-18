@@ -5919,13 +5919,19 @@ body {
       font-size: 1.1em; }
     #main-zone .restaurant-list .restaurant {
       padding: 20px;
-      margin-top: 4vh;
-      margin-bottom: 4vh;
+      margin-top: 3vh;
+      margin-bottom: 3vh;
       background-color: #ebf3f4;
       border-radius: 5px; }
+      #main-zone .restaurant-list .restaurant button {
+        margin: 1vh; }
       #main-zone .restaurant-list .restaurant .distance {
         display: flex; }
         #main-zone .restaurant-list .restaurant .distance .localisation-icon {
           height: 20px; }
       #main-zone .restaurant-list .restaurant .restaurant-picture {
         width: 100%; }
+      #main-zone .restaurant-list .restaurant .global-grade {
+        position: absolute;
+        top: 40%;
+        right: 40%; }

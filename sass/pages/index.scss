@@ -25,10 +25,14 @@
 
 		.restaurant {
 			padding: 20px;
-			margin-top: 4vh;
-			margin-bottom: 4vh;
+			margin-top: 3vh;
+			margin-bottom: 3vh;
 			background-color: $white;
 			border-radius: 5px;
+
+			button {
+				margin: 1vh;
+			}
 
 			.distance {
 				display: flex;
@@ -40,6 +44,12 @@
 			
 			.restaurant-picture {
 				width: 100%;
+			}
+
+			.global-grade {
+				position: absolute;
+				top: 40%;
+				right: 40%;
 			}
 		}
 	}
