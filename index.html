@@ -15,7 +15,6 @@
 				<aside class="col-md-3 text-center" id="parameter-zone">
 					<img src="ressources/pictures/logo.png" alt="logo" class="nav-logo">
 					<h2>Cherchez un restaurant</h2>
-					<img src="ressources/pictures/arrow.png" alt="logo" class="arrow-down">
 
 					<form>
 						<div class="form-group">
@@ -60,67 +59,170 @@
 							</script>
 						</div>
 						
-						<div class="restaurant-list col-md-12 text-center">
-								<ul class="row">
+						<div class="restaurant-list col-md-12 test"><!--test class to delete or replace-->
+								<ul class="row justify-content-around">
 
-									<li class="restaurant col-md-6">
-										<h2>Le Panda d'or</h2>
-										<div>
-											<a href="#">
-												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded-circle" alt="restaurant-picture">
-											</a>
+									<!--This is what React sould do as a li model : -->
+									<li class="restaurant col-md-5  align-self-center">
+										<div class="row">
+											<div class="col-md-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												</a>
+											</div>
+											<div class="col-md-5 align-self-center">
+												<h2>Le Panda d'or</h2>
+												<div class="distance">
+													
+													<p>
+														Distance: 
+														<span>300m</span>
+														<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
+													</p>
+												</div>
+												<a href="#"><span>24</span> avis</a>
+											</div>
+											<div class="col-md-3 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/star.png" class="star img-fluid" alt="star-picture">
+												</a>
+											</div>
 										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio sapien,
-											feugiat in neque non, commodo semper justo.</p>
-										<div class="distance">
-											<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
-											<p class="theme-colored">300m</p>
+									</li>
+									<!-- end of React li model -->
+
+									<li class="restaurant col-md-5 align-self-center">
+										<div class="row">
+											<div class="col-md-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-2.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												</a>
+											</div>
+											<div class="col-md-5 align-self-center">
+												<h2>La cuisine de Papa</h2>
+												<div class="distance">
+													
+													<p>
+														Distance: 
+														<span>300m</span>
+														<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
+													</p>
+												</div>
+												<a href="#"><span>24</span> avis</a>
+											</div>
+											<div class="col-md-3 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/star.png" class="star img-fluid" alt="star-picture">
+												</a>
+											</div>
 										</div>
 									</li>
 
-									<li class="restaurant col-md-6">
-										<h2>La cuisine de Papa</h2>
-										<div>
-											<a href="#">
-												<img src="ressources/pictures/restaurant-2.jpg" class="restaurant-picture rounded-circle" alt="restaurant-picture">
-											</a>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio sapien,
-											feugiat in neque non, commodo semper justo.</p>
-										<div class="distance">
-											<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
-											<p class="theme-colored">300m</p>
-										</div>
-									</li>
-
-
-									<li class="restaurant col-md-6">
-										<h2>La bonne Franquette</h2>
-										<div>
-											<a href="#">
-												<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded-circle" alt="restaurant-picture">
-											</a>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio sapien,
-											feugiat in neque non, commodo semper justo.</p>
-										<div class="distance">
-											<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
-											<p class="theme-colored">300m</p>
+									<li class="restaurant col-md-5 align-self-center">
+										<div class="row">
+											<div class="col-md-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												</a>
+											</div>
+											<div class="col-md-5 align-self-center">
+												<h2>La cuisine de Papa</h2>
+												<div class="distance">
+													
+													<p>
+														Distance: 
+														<span>300m</span>
+														<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
+													</p>
+												</div>
+												<a href="#"><span>24</span> avis</a>
+											</div>
+											<div class="col-md-3 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/star.png" class="star img-fluid" alt="star-picture">
+												</a>
+											</div>
 										</div>
 									</li>
 
-									<li class="restaurant col-md-6">
-										<h2>La mauvaise Franquette</h2>
-										<div>
-											<a href="#">
-												<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded-circle" alt="restaurant-picture">
-											</a>
+									<li class="restaurant col-md-5 align-self-center">
+										<div class="row">
+											<div class="col-md-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												</a>
+											</div>
+											<div class="col-md-5 align-self-center">
+												<h2>La cuisine de Papa</h2>
+												<div class="distance">
+													
+													<p>
+														Distance: 
+														<span>300m</span>
+														<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
+													</p>
+												</div>
+												<a href="#"><span>24</span> avis</a>
+											</div>
+											<div class="col-md-3 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/star.png" class="star img-fluid" alt="star-picture">
+												</a>
+											</div>
 										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio sapien,
-											feugiat in neque non, commodo semper justo.</p>
-										<div class="distance">
-											<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
-											<p class="theme-colored">300m</p>
+									</li>
+
+									<li class="restaurant col-md-5 align-self-center">
+										<div class="row">
+											<div class="col-md-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												</a>
+											</div>
+											<div class="col-md-5 align-self-center">
+												<h2>La cuisine de Papa</h2>
+												<div class="distance">
+													
+													<p>
+														Distance: 
+														<span>300m</span>
+														<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
+													</p>
+												</div>
+												<a href="#"><span>24</span> avis</a>
+											</div>
+											<div class="col-md-3 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/star.png" class="star img-fluid" alt="star-picture">
+												</a>
+											</div>
+										</div>
+									</li>
+
+									<li class="restaurant col-md-5 align-self-center">
+										<div class="row">
+											<div class="col-md-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												</a>
+											</div>
+											<div class="col-md-5 align-self-center">
+												<h2>La cuisine de Papa</h2>
+												<div class="distance">
+													
+													<p>
+														Distance: 
+														<span>300m</span>
+														<img src="ressources/pictures/localisation.png" class="localisation-icon" alt="localisation-logo">
+													</p>
+												</div>
+												<a href="#"><span>24</span> avis</a>
+											</div>
+											<div class="col-md-3 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/star.png" class="star img-fluid" alt="star-picture">
+												</a>
+											</div>
 										</div>
 									</li>
 

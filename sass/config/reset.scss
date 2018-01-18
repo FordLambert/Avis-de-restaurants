@@ -1,8 +1,14 @@
 body {
-	font-family: 'Ubuntu', sans-serif;
+	font-family: $default-font, sans-serif;
 	font-size: $default-font-size;
 }
 
 .theme-colored {
 	color: $light-green;
+}
+
+
+//test zone, to delete
+.test {
+	background-color: $test-color;
 }
