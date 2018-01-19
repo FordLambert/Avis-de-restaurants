@@ -5953,7 +5953,15 @@ body {
 
 .restaurant-list .review {
   border: 1px solid #20cd74;
-  margin-bottom: 1vh; }
+  margin-bottom: 2vh;
+  padding: 10px; }
+
+.restaurant-list .rating-zone {
+  margin-bottom: 2vh; }
+  .restaurant-list .rating-zone .rating {
+    border-bottom: 1px solid black; }
+  .restaurant-list .rating-zone .rating-date {
+    font-size: 0.8em; }
 
 #main-zone {
   min-height: 100vh; }
