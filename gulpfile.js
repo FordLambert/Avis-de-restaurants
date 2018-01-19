@@ -45,8 +45,8 @@ gulp.task('watch-js', function() {
 });
 
 gulp.task('watch-all', function() {
-  gulp.watch('app/*.js', ['optimise']);
-  gulp.watch('app/*/*.js', ['optimise']);
+  gulp.watch('app/*.js', ['compile-js']);
+  gulp.watch('app/*/*.js', ['compile-js']);
   gulp.watch('sass/styles.scss', ['sass']);
   gulp.watch('sass/*/*.scss', ['sass']);
 });
