@@ -58,197 +58,246 @@
 								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc&callback=initMap">
 							</script>
 						</div>
+
 						
-						<div class="restaurant-list col-md-12 test"><!--test class to delete or replace-->
-								<ul class="row justify-content-around">
-
-									<!--This is what React sould do as a li model : -->
-									<li class="restaurant col-md-5  align-self-center">
-										<div class="row">
-											<div class="col-md-4 text-center align-self-center">
-												<a href="#">
-													<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
-												</a>
-											</div>
-											<div class="col-md-5 align-self-center">
-												<h2>Le Panda d'or</h2>
-												<div class="distance">
-													<p>
-														Distance: 
-														<span>300m</span>
-													</p>
-												</div>
-												<a href="#"><span>24</span> avis</a>
-											</div>
-											<div class="col-md-3 text-center">	
-												<img src="ressources/pictures/orange-star.png" class="img-fluid" alt="star-picture">
-												<p><span>3,9</span>/5</p>
-											</div>
-										</div>
-									
-										<div class="wrapper">
-									
-											 	<div class="row justify-content-end tab">
-													<button type="button" class="col-md-4 btn btn-info">Donner votre avis</button>
-
-													<input id="tab-one" type="checkbox" name="tabs">
-													<label class="col-md-4 btn btn-success" for="tab-one">Lire les avis</label>
-													<div class="tab-content">
-												  		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
-													</div>
-											  	</div>
-										</div>	
 						
+						<div class="restaurant-list col-md-12 test"><!--"test" class to delete or replace-->
 
-									</li>
-									<!-- end of React li model -->
+							<!--sliding nav for restaurant's reviews-->
+							<div class="wrapper row">
+								<input type="checkbox" id="navigation" />
+								<nav>
+									<label for="navigation" class="col-md-1 btn btn-info">X</label>
+								
+									<div class="row justify-content-center">
+										<div class="col-md-10 review">
+											<h1>Sophie44</h1>
+											<p>
+												J'ai trouvé ça suuuuper bon ! 
+												Lorem ipsum dolor sit amet, 
+												consectetur adipiscing elit. 
+												Sed leo odio, efficitur 
+												eget sagittis eu, suscipit 
+												ac magna. Morbi quis sodales neque. 
+												Fusce quis pretium erat, in gravida mi. 
+												Suspendisse ac rutrum purus.
+											</p>
+											<p>Le 17 janvier à 12h34</p>
+										</div>
+										<div class="col-md-10 review">
+											<h1>Bernardo</h1>
+											<p>
+												Un peu déçu,  
+												Lorem ipsum dolor sit amet, 
+												consectetur adipiscing elit. 
+												Sed leo odio, efficitur 
+												eget sagittis eu, suscipit 
+												ac magna. Morbi quis sodales neque. 
+												Fusce quis pretium erat, in gravida mi. 
+												Suspendisse ac rutrum purus.
+											</p>
+											<p>Le 13 janvier à 17h14</p>
+										</div>
 
-									<li class="restaurant col-md-5  align-self-center">
-										<div class="row">
-											<div class="col-md-4 text-center align-self-center">
-												<a href="#">
-													<img src="ressources/pictures/restaurant-2.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
-												</a>
-											</div>
-											<div class="col-md-5 align-self-center">
-												<h2>La cuisine de Papa</h2>
-												<div class="distance">
-													
-													<p>
-														Distance: 
-														<span>450m</span>
-													</p>
-												</div>
-												<a href="#"><span>32</span> avis</a>
-											</div>
-											<div class="col-md-3 text-center align-self-center">
-												<img src="ressources/pictures/green-star.png" class="img-fluid" alt="star-picture">
-												<p><span>4,2</span>/5</p>
-											</div>
+										<div class="col-md-10 review">
+											<h1>AndréBDA</h1>
+											<p>
+												Youpi !  
+												Lorem ipsum dolor sit amet, 
+												consectetur adipiscing elit. 
+												Sed leo odio, efficitur 
+												eget sagittis eu, suscipit 
+												ac magna. Morbi quis sodales neque. 
+												Fusce quis pretium erat, in gravida mi. 
+												Suspendisse ac rutrum purus.
+											</p>
+											<p>Le 12 janvier à 18h20</p>
 										</div>
-										<div class="row justify-content-end">
-											<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
-											<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
-										</div>
-									</li>
+									</div>
 
-									<li class="restaurant col-md-5  align-self-center">
-										<div class="row">
-											<div class="col-md-4 text-center align-self-center">
-												<a href="#">
-													<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
-												</a>
-											</div>
-											<div class="col-md-5 align-self-center">
-												<h2>La bonne Franquette</h2>
-												<div class="distance">
-													
-													<p>
-														Distance: 
-														<span>632m</span>
-													</p>
-												</div>
-												<a href="#"><span>14</span> avis</a>
-											</div>
-											<div class="col-md-3 text-center align-self-center">
-												<img src="ressources/pictures/green-star.png" class="img-fluid" alt="star-picture">
-												<p><span>4,1</span>/5</p>
-											</div>
-										</div>
-										<div class="row justify-content-end">
-											<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
-											<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
-										</div>
-									</li>
+								
+								</nav>	
+							</div>
 
-									<li class="restaurant col-md-5  align-self-center">
-										<div class="row">
-											<div class="col-md-4 text-center align-self-center">
-												<a href="#">
-													<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
-												</a>
-											</div>
-											<div class="col-md-5 align-self-center">
-												<h2>Le Lambda</h2>
-												<div class="distance">
-													
-													<p>
-														Distance: 
-														<span>724m</span>
-													</p>
-												</div>
-												<a href="#"><span>18</span> avis</a>
-											</div>
-											<div class="col-md-3 text-center align-self-center">
-												<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
-												<p><span>2,6</span>/5</p>
-											</div>
-										</div>
-										<div class="row justify-content-end">
-											<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
-											<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
-										</div>
-									</li>
+							<ul class="row justify-content-around">
 
-									<li class="restaurant col-md-5  align-self-center">
-										<div class="row">
-											<div class="col-md-4 text-center align-self-center">
-												<a href="#">
-													<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
-												</a>
-											</div>
-											<div class="col-md-5 align-self-center">
-												<h2>Le Lambda</h2>
-												<div class="distance">
-													
-													<p>
-														Distance: 
-														<span>724m</span>
-													</p>
-												</div>
-												<a href="#"><span>18</span> avis</a>
-											</div>
-											<div class="col-md-3 text-center align-self-center">
-												<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
-												<p><span>2,6</span>/5</p>
-											</div>
+								<!--This is what React sould do as a li model : -->
+								<li class="restaurant col-md-5  align-self-center">
+									<div class="row">
+										<div class="col-md-4 text-center align-self-center">
+											<a href="#">
+												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+											</a>
 										</div>
-										<div class="row justify-content-end">
-											<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
-											<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
+										<div class="col-md-5 align-self-center">
+											<h2>Le Panda d'or</h2>
+											<div class="distance">
+												<p>
+													Distance: 
+													<span>300m</span>
+												</p>
+											</div>
+											<a href="#"><span>24</span> avis</a>
 										</div>
-									</li>
+										<div class="col-md-3 text-center">	
+											<img src="ressources/pictures/orange-star.png" class="img-fluid" alt="star-picture">
+											<p><span>3,9</span>/5</p>
+										</div>
+									</div>
+									<div class="row justify-content-end">
+										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
+										<label for="navigation" class="col-md-3 btn btn-success">Lire les avis</label>
+									</div>
 
-									<li class="restaurant col-md-5  align-self-center">
-										<div class="row">
-											<div class="col-md-4 text-center align-self-center">
-												<a href="#">
-													<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
-												</a>
-											</div>
-											<div class="col-md-5 align-self-center">
-												<h2>Le Lambda</h2>
-												<div class="distance">
-													
-													<p>
-														Distance: 
-														<span>724m</span>
-													</p>
-												</div>
-												<a href="#"><span>18</span> avis</a>
-											</div>
-											<div class="col-md-3 text-center align-self-center">
-												<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
-												<p><span>2,6</span>/5</p>
-											</div>
-										</div>
-										<div class="row justify-content-end">
-											<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
-											<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
-										</div>
-									</li>
+								</li>
+								<!-- end of React li model -->
 
-								</ul>
+								<li class="restaurant col-md-5  align-self-center">
+									<div class="row">
+										<div class="col-md-4 text-center align-self-center">
+											<a href="#">
+												<img src="ressources/pictures/restaurant-2.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+											</a>
+										</div>
+										<div class="col-md-5 align-self-center">
+											<h2>La cuisine de Papa</h2>
+											<div class="distance">
+												
+												<p>
+													Distance: 
+													<span>450m</span>
+												</p>
+											</div>
+											<a href="#"><span>32</span> avis</a>
+										</div>
+										<div class="col-md-3 text-center align-self-center">
+											<img src="ressources/pictures/green-star.png" class="img-fluid" alt="star-picture">
+											<p><span>4,2</span>/5</p>
+										</div>
+									</div>
+									<div class="row justify-content-end">
+										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
+										<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
+									</div>
+								</li>
+
+								<li class="restaurant col-md-5  align-self-center">
+									<div class="row">
+										<div class="col-md-4 text-center align-self-center">
+											<a href="#">
+												<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+											</a>
+										</div>
+										<div class="col-md-5 align-self-center">
+											<h2>La bonne Franquette</h2>
+											<div class="distance">
+												
+												<p>
+													Distance: 
+													<span>632m</span>
+												</p>
+											</div>
+											<a href="#"><span>14</span> avis</a>
+										</div>
+										<div class="col-md-3 text-center align-self-center">
+											<img src="ressources/pictures/green-star.png" class="img-fluid" alt="star-picture">
+											<p><span>4,1</span>/5</p>
+										</div>
+									</div>
+									<div class="row justify-content-end">
+										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
+										<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
+									</div>
+								</li>
+
+								<li class="restaurant col-md-5  align-self-center">
+									<div class="row">
+										<div class="col-md-4 text-center align-self-center">
+											<a href="#">
+												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+											</a>
+										</div>
+										<div class="col-md-5 align-self-center">
+											<h2>Le Lambda</h2>
+											<div class="distance">
+												
+												<p>
+													Distance: 
+													<span>724m</span>
+												</p>
+											</div>
+											<a href="#"><span>18</span> avis</a>
+										</div>
+										<div class="col-md-3 text-center align-self-center">
+											<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
+											<p><span>2,6</span>/5</p>
+										</div>
+									</div>
+									<div class="row justify-content-end">
+										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
+										<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
+									</div>
+								</li>
+
+								<li class="restaurant col-md-5  align-self-center">
+									<div class="row">
+										<div class="col-md-4 text-center align-self-center">
+											<a href="#">
+												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+											</a>
+										</div>
+										<div class="col-md-5 align-self-center">
+											<h2>Le Lambda</h2>
+											<div class="distance">
+												
+												<p>
+													Distance: 
+													<span>724m</span>
+												</p>
+											</div>
+											<a href="#"><span>18</span> avis</a>
+										</div>
+										<div class="col-md-3 text-center align-self-center">
+											<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
+											<p><span>2,6</span>/5</p>
+										</div>
+									</div>
+									<div class="row justify-content-end">
+										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
+										<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
+									</div>
+								</li>
+
+								<li class="restaurant col-md-5  align-self-center">
+									<div class="row">
+										<div class="col-md-4 text-center align-self-center">
+											<a href="#">
+												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+											</a>
+										</div>
+										<div class="col-md-5 align-self-center">
+											<h2>Le Lambda</h2>
+											<div class="distance">
+												
+												<p>
+													Distance: 
+													<span>724m</span>
+												</p>
+											</div>
+											<a href="#"><span>18</span> avis</a>
+										</div>
+										<div class="col-md-3 text-center align-self-center">
+											<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
+											<p><span>2,6</span>/5</p>
+										</div>
+									</div>
+									<div class="row justify-content-end">
+										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
+										<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
+									</div>
+								</li>
+
+							</ul>
 						</div><!--end of restaurant-div-->
 
 					</div>

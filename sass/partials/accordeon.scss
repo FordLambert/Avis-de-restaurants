@@ -1,0 +1,61 @@
+.restaurant-list {
+
+    .wrapper {
+        overflow:hidden;
+    }
+    section {
+        padding:30px 30px 30px 80px;
+        -moz-transition:all 200ms ease-in;
+        -webkit-transition:all 200ms ease-in;
+        -o-transition:all 200ms ease-in;
+        transition:all 200ms ease-in;
+    }
+
+    nav {
+        overflow: auto;
+        z-index: 1;
+        position: absolute;
+        background-color: $white;
+        top:0;
+        right:0;
+        width:37.5vw;
+        height:100%;
+        margin:0 -37.5vw 0 0;
+        -moz-transition:all 200ms ease-in;
+        -webkit-transition:all 200ms ease-in;
+        -o-transition:all 200ms ease-in;
+        transition:all 200ms ease-in;
+    }
+
+    label {
+        -moz-transition:all 200ms ease-in;
+        -webkit-transition:all 200ms ease-in;
+        -o-transition:all 200ms ease-in;
+        transition:all 200ms ease-in;
+        z-index:500;
+    }
+
+    input[type="checkbox"]{
+        display:none;
+    }
+
+    input[type="checkbox"]:checked ~ nav{
+        margin:0;
+    }
+    
+    input[type="checkbox"]:checked ~ label{
+        left:260px;
+    }
+
+    input[type="checkbox"]:checked ~ section{
+        -webkit-transform:translate3d(260px, 0, 0);
+        -moz-transform:translate3d(260px, 0, 0);
+        -o-transform:translate3d(260px, 0, 0);
+        transform:translate3d(260px, 0, 0);
+    }
+
+    .review {
+        border: 1px solid $light-green;
+        margin-bottom: 1vh;
+    }
+}

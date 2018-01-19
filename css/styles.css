@@ -5877,7 +5877,8 @@ body {
 
 .nav-logo {
   height: 150px;
-  width: 150px; }
+  width: 150px;
+  border-radius: 50%; }
 
 #parameter-zone {
   background-color: #20cd74;
@@ -5903,6 +5904,57 @@ body {
     color: #20cd74;
     border-color: #20cd74; }
 
+.restaurant-list .wrapper {
+  overflow: hidden; }
+
+.restaurant-list section {
+  padding: 30px 30px 30px 80px;
+  -moz-transition: all 200ms ease-in;
+  -webkit-transition: all 200ms ease-in;
+  -o-transition: all 200ms ease-in;
+  transition: all 200ms ease-in; }
+
+.restaurant-list nav {
+  overflow: auto;
+  z-index: 1;
+  position: absolute;
+  background-color: #ebf3f4;
+  top: 0;
+  right: 0;
+  width: 37.5vw;
+  height: 100%;
+  margin: 0 -37.5vw 0 0;
+  -moz-transition: all 200ms ease-in;
+  -webkit-transition: all 200ms ease-in;
+  -o-transition: all 200ms ease-in;
+  transition: all 200ms ease-in; }
+
+.restaurant-list label {
+  -moz-transition: all 200ms ease-in;
+  -webkit-transition: all 200ms ease-in;
+  -o-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+  z-index: 500; }
+
+.restaurant-list input[type="checkbox"] {
+  display: none; }
+
+.restaurant-list input[type="checkbox"]:checked ~ nav {
+  margin: 0; }
+
+.restaurant-list input[type="checkbox"]:checked ~ label {
+  left: 260px; }
+
+.restaurant-list input[type="checkbox"]:checked ~ section {
+  -webkit-transform: translate3d(260px, 0, 0);
+  -moz-transform: translate3d(260px, 0, 0);
+  -o-transform: translate3d(260px, 0, 0);
+  transform: translate3d(260px, 0, 0); }
+
+.restaurant-list .review {
+  border: 1px solid #20cd74;
+  margin-bottom: 1vh; }
+
 #main-zone {
   min-height: 100vh; }
   #main-zone #map {
@@ -5919,11 +5971,12 @@ body {
       font-size: 1.1em; }
     #main-zone .restaurant-list .restaurant {
       padding: 20px;
+      padding-bottom: 10px;
       margin-top: 3vh;
       margin-bottom: 3vh;
       background-color: #ebf3f4;
       border-radius: 5px; }
-      #main-zone .restaurant-list .restaurant button {
+      #main-zone .restaurant-list .restaurant button, #main-zone .restaurant-list .restaurant label {
         margin: 1vh; }
       #main-zone .restaurant-list .restaurant .distance {
         display: flex; }
@@ -5931,18 +5984,3 @@ body {
           height: 20px; }
       #main-zone .restaurant-list .restaurant .restaurant-picture {
         width: 100%; }
-      #main-zone .restaurant-list .restaurant label {
-        height: 100%;
-        margin: 1vh; }
-      #main-zone .restaurant-list .restaurant input {
-        position: absolute;
-        opacity: 0;
-        z-index: -1; }
-      #main-zone .restaurant-list .restaurant .tab-content {
-        max-height: 0;
-        overflow: hidden;
-        -webkit-transition: max-height .35s;
-        -o-transition: max-height .35s;
-        transition: max-height .35s; }
-      #main-zone .restaurant-list .restaurant input:checked ~ .tab-content {
-        max-height: 10em; }

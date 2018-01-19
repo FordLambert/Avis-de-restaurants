@@ -25,12 +25,13 @@
 
 		.restaurant {
 			padding: 20px;
+			padding-bottom: 10px;
 			margin-top: 3vh;
 			margin-bottom: 3vh;
 			background-color: $white;
 			border-radius: 5px;
 
-			button {
+			button, label {
 				margin: 1vh;
 			}
 
@@ -44,32 +45,7 @@
 			
 			.restaurant-picture {
 				width: 100%;
-			}
-
-			//accordeon test
-			label {
-				height: 100%;
-				margin: 1vh;
-			}
-			input {
-				position: absolute;
-				opacity: 0;
-				z-index: -1;
-			}
-
-			.tab-content {
-				max-height: 0;
-				overflow: hidden;
-				-webkit-transition: max-height .35s;
-				-o-transition: max-height .35s;
-				transition: max-height .35s;
-			}
-
-			input:checked ~ .tab-content {
-				max-height: 10em;
-			}
-
-			
+			}	
 		}
 	}
 }
