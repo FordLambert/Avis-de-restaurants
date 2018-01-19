@@ -5931,7 +5931,3 @@ body {
           height: 20px; }
       #main-zone .restaurant-list .restaurant .restaurant-picture {
         width: 100%; }
-      #main-zone .restaurant-list .restaurant .global-grade {
-        position: absolute;
-        top: 40%;
-        right: 40%; }
