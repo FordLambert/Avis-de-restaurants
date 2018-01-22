@@ -5883,19 +5883,19 @@ body {
 #parameter-zone {
   background-color: #20cd74;
   color: #ebf3f4;
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 10vh; }
   #parameter-zone h2 {
     margin-top: 2vh;
     margin-bottom: 2vh; }
+  #parameter-zone .form-group {
+    margin-top: 3vh;
+    margin-bottom: 0px; }
   #parameter-zone form {
     margin-top: 3vh;
     align-items: center; }
-  #parameter-zone input, #parameter-zone select {
-    margin: 0 auto;
-    width: 60%;
-    margin-bottom: 3vh; }
   #parameter-zone .btn-secondary {
+    margin-top: 3vh;
     background-color: #20cd74;
     color: #ebf3f4;
     border-color: #ebf3f4; }
@@ -5914,32 +5914,36 @@ body {
   -o-transition: all 200ms ease-in;
   transition: all 200ms ease-in; }
 
-.restaurant-list nav {
+.restaurant-list aside {
+  width: 75vw;
   overflow: auto;
   z-index: 1;
   position: absolute;
   background-color: #ebf3f4;
   top: 0;
   right: 0;
-  width: 37.5vw;
   height: 100%;
-  margin: 0 -37.5vw 0 0;
+  margin: 0 -75vw 0 0;
   -moz-transition: all 200ms ease-in;
   -webkit-transition: all 200ms ease-in;
   -o-transition: all 200ms ease-in;
   transition: all 200ms ease-in; }
+  @media (min-width: 992px) {
+    .restaurant-list aside {
+      margin: 0 -37.5vw 0 0;
+      width: 37.5vw; } }
 
 .restaurant-list label {
   -moz-transition: all 200ms ease-in;
   -webkit-transition: all 200ms ease-in;
   -o-transition: all 200ms ease-in;
   transition: all 200ms ease-in;
-  z-index: 500; }
+  z-index: 0; }
 
 .restaurant-list input[type="checkbox"] {
   display: none; }
 
-.restaurant-list input[type="checkbox"]:checked ~ nav {
+.restaurant-list input[type="checkbox"]:checked ~ aside {
   margin: 0; }
 
 .restaurant-list input[type="checkbox"]:checked ~ label {
@@ -5963,6 +5967,12 @@ body {
   .restaurant-list .rating-zone .rating-date {
     font-size: 0.8em; }
 
+.restaurant-list .close-button {
+  z-index: 1;
+  position: sticky;
+  top: 2px;
+  left: 2px; }
+
 #main-zone {
   min-height: 100vh; }
   #main-zone #map {
@@ -5970,7 +5980,8 @@ body {
     width: 100%; }
   #main-zone .restaurant-list {
     height: 65vh;
-    overflow: auto; }
+    overflow-x: hidden;
+    overflow-y: auto; }
     #main-zone .restaurant-list li {
       list-style-type: none; }
     #main-zone .restaurant-list p {
@@ -5982,8 +5993,8 @@ body {
       padding-bottom: 10px;
       margin-top: 3vh;
       margin-bottom: 3vh;
-      background-color: #ebf3f4;
-      border-radius: 5px; }
+      border-radius: 5px;
+      box-shadow: 5px 5px 5px grey; }
       #main-zone .restaurant-list .restaurant button, #main-zone .restaurant-list .restaurant label {
         margin: 1vh; }
       #main-zone .restaurant-list .restaurant .distance {

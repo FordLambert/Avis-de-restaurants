@@ -12,43 +12,57 @@
 			<div class="row">
 
 				<!-- insert map changes here (radius, stars...) -->
-				<aside class="col-md-3 text-center" id="parameter-zone">
-					<img src="ressources/pictures/logo.png" alt="logo" class="nav-logo">
+				<nav class="col-md-3 text-center" id="parameter-zone">
+					<img src="ressources/pictures/logo.png" alt="logo" class="nav-logo img-fluid">
 					<h2>Cherchez un restaurant</h2>
 
-					<form>
-						<div class="form-group">
-							<input class="form-control" placeholder="Entrez une ville">
-						</div>
+					<div class="row justify-content-center">
+						<form class="col-md-10">
+							<div class="form-group">
+								<input class="form-control" placeholder="Entrez une ville">
+							</div>
 
-						<div class="form-group">
-							<label>Distance maximum :</label>
-							<input type="range" min="50" max="1000" step="any" class="form-control">
-						</div>
+							<div class="form-group">
+								<label>Distance maximum :</label>
+								<input type="range" min="1" max="4" step="1" class="form-control">
+							</div>
+							<div class="col-md-12">
+								<div class="row justify-content-between">
+									<span class="col-md-2">2km</span>
+									<span class="col-md-2">5km</span>
+									<span class="col-md-2">10km</span>
+									<span class="col-md-2">15km</span>
+								</div>
+							</div>
 
-						<div class="form-group">
-							<label>Note moyenne minimum :</label>
-							<input type="range" list="stars" min="1" max="5" step="1" class="form-control">
-							<datalist id="stars">
-								<option value="1" label="1">
-								<option value="2" label="2">
-								<option value="3" label="3">
-								<option value="4" label="4">
-								<option value="5" label="5">
-							</datalist>
-						</div>
+							<div class="form-group">
+								<label>Note moyenne minimum :</label>
+								<input type="range" min="1" max="5" step="1" class="form-control">
+								
+							</div>
+							<div class="col-md-12">
+								<div class="row justify-content-between">
+									<span class="col-md-2">1</span>
+									<span class="col-md-2">2</span>
+									<span class="col-md-2">3</span>
+									<span class="col-md-2">4</span>
+									<span class="col-md-2">5</span>
+								</div>
+							</div>
 
-						<div class="form-group">
-							<label for="exampleFormControlSelect1">Triez par:</label>
-							<select class="form-control" id="exampleFormControlSelect1">
-								<option>Du plus proche au plus loin</option>
-								<option>Du mieux au moins bien noté</option>
-							</select>
-						</div>
+							<div class="form-group">
+								<label for="exampleFormControlSelect1">Triez par:</label>
+								<select class="form-control" id="exampleFormControlSelect1">
+									<option>Du plus proche au plus loin</option>
+									<option>Du mieux au moins bien noté</option>
+								</select>
+							</div>
 
-						<button type="button" class="btn btn-secondary">C'est parti !</button>
-					</form>
-				</aside>
+							<button type="button" class="btn btn-secondary">C'est parti !</button>
+						</form>
+
+					</div>
+				</nav>
 
 				<section class="col-md-9" id="main-zone">
 					<div class="row">
@@ -61,25 +75,80 @@
 
 						
 						
-						<div class="restaurant-list col-md-12 test"><!--"test" class to delete or replace-->
+						<div class="restaurant-list col-md-12">
 
 							<!--sliding nav for restaurant's reviews-->
 							<div class="wrapper">
 								<input type="checkbox" id="navigation" />
-								<nav class="row">
-									<label for="navigation" class="col-md-1 btn btn-info">X</label>
+								<aside class="row">
+									<label for="navigation" class="col-md-1 btn btn-info close-button">X</label>
 								
 									<div class="row justify-content-center">
 
-
 										<div class="col-md-10 review">
 											<div class="row justify-content-around">
-
 												<div class="col-md-2">
 													<img src="ressources/pictures/loutre.jpg" class="user-thumbnail rounded-circle img-fluid" alt="user-picture">
 													<figcaption>Sophie44</figcaption>
 												</div>
+												<div class="col-md-9">
+													<div class="row justify-content-start">
+														<div class="col-md-11 rating-zone">
+															<div class="col-md-12 rating">
+																<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+															</div>
+															<p class="col-md-12 rating-date">Date du repas: 17 janvier 2018</p>
+														</div>
+														<p class="col-md-11">
+															J'ai trouvé ça suuuuper bon ! 
+															Lorem ipsum dolor sit amet, 
+															consectetur adipiscing elit. 
+															Sed leo odio, efficitur 
+															eget sagittis eu, suscipit 
+															ac magna. Morbi quis sodales neque. 
+															Fusce quis pretium erat, in gravida mi. 
+															Suspendisse ac rutrum purus.
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
 
+										<div class="col-md-10 review">
+											<div class="row justify-content-around">
+												<div class="col-md-2">
+													<img src="ressources/pictures/loutre.jpg" class="user-thumbnail rounded-circle img-fluid" alt="user-picture">
+													<figcaption>Sophie44</figcaption>
+												</div>
+												<div class="col-md-9">
+													<div class="row justify-content-start">
+														<div class="col-md-11 rating-zone">
+															<div class="col-md-12 rating">
+																<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+															</div>
+															<p class="col-md-12 rating-date">Date du repas: 17 janvier 2018</p>
+														</div>
+														<p class="col-md-11">
+															J'ai trouvé ça suuuuper bon ! 
+															Lorem ipsum dolor sit amet, 
+															consectetur adipiscing elit. 
+															Sed leo odio, efficitur 
+															eget sagittis eu, suscipit 
+															ac magna. Morbi quis sodales neque. 
+															Fusce quis pretium erat, in gravida mi. 
+															Suspendisse ac rutrum purus.
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<div class="col-md-10 review">
+											<div class="row justify-content-around">
+												<div class="col-md-2">
+													<img src="ressources/pictures/loutre.jpg" class="user-thumbnail rounded-circle img-fluid" alt="user-picture">
+													<figcaption>Sophie44</figcaption>
+												</div>
 												<div class="col-md-9">
 													<div class="row justify-content-start">
 														<div class="col-md-11 rating-zone">
@@ -103,47 +172,15 @@
 
 											</div>
 										</div>
-
-
-										<div class="col-md-10 review">
-											<h1>Bernardo</h1>
-											<p>
-												Un peu déçu,  
-												Lorem ipsum dolor sit amet, 
-												consectetur adipiscing elit. 
-												Sed leo odio, efficitur 
-												eget sagittis eu, suscipit 
-												ac magna. Morbi quis sodales neque. 
-												Fusce quis pretium erat, in gravida mi. 
-												Suspendisse ac rutrum purus.
-											</p>
-											<p>Le 13 janvier à 17h14</p>
-										</div>
-
-										<div class="col-md-10 review">
-											<h1>AndréBDA</h1>
-											<p>
-												Youpi !  
-												Lorem ipsum dolor sit amet, 
-												consectetur adipiscing elit. 
-												Sed leo odio, efficitur 
-												eget sagittis eu, suscipit 
-												ac magna. Morbi quis sodales neque. 
-												Fusce quis pretium erat, in gravida mi. 
-												Suspendisse ac rutrum purus.
-											</p>
-											<p>Le 12 janvier à 18h20</p>
-										</div>
 									</div>
-
-								
-								</nav>	
+								</aside>	
 							</div>
+							<!--end of sliding nav for restaurant's reviews-->
 
 							<ul class="row justify-content-around">
 
 								<!--This is what React sould do as a li model : -->
-								<li class="restaurant col-md-5  align-self-center">
+								<li class="restaurant col-md-10 col-lg-5  align-self-center">
 									<div class="row">
 										<div class="col-md-4 text-center align-self-center">
 											<a href="#">
@@ -173,7 +210,7 @@
 								</li>
 								<!-- end of React li model -->
 
-								<li class="restaurant col-md-5  align-self-center">
+								<li class="restaurant col-md-10 col-lg-5  align-self-center">
 									<div class="row">
 										<div class="col-md-4 text-center align-self-center">
 											<a href="#">

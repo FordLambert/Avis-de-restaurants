@@ -8,7 +8,7 @@
 #parameter-zone {
 	background-color: $light-green;
 	color: $white;
-	height: 100vh;
+	min-height: 100vh;
 	padding-top: 10vh;
 
 	h2 {
@@ -16,18 +16,18 @@
 		margin-bottom: 2vh;
 	}
 
+	.form-group {
+		margin-top: 3vh;
+		margin-bottom: 0px;
+	}
+
 	form {
 		margin-top: 3vh;
 		align-items: center;
 	}
 
-	input, select {
-		margin: 0 auto;
-		width: 60%;
-		margin-bottom: 3vh; 
-	}
-
 	.btn-secondary {
+		margin-top: 3vh;
 		background-color: $light-green;
 		color: $white;
 		border-color: $white;
