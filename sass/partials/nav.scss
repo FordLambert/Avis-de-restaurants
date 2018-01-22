@@ -1,24 +1,28 @@
-//temp fix
-.nav-logo {
-	height: 150px;
-	width: 150px;
-	border-radius: 50%;
-}
-
 #parameter-zone {
 	background-color: $light-green;
 	color: $white;
 	min-height: 100vh;
-	padding-top: 10vh;
+	padding-top: 6vh;
+	padding-bottom: 6vh;
+
+	@include media-breakpoint-up(md) {
+		font-size: $text-md-font-size;
+	}
 
 	h2 {
 		margin-top: 2vh;
 		margin-bottom: 2vh;
+		@include media-breakpoint-up(md) {
+            font-size: $title-md-font-size;
+        }
 	}
 
-	.form-group {
-		margin-top: 3vh;
-		margin-bottom: 0px;
+	label, p {
+		font-size: $text-sm-font-size;
+	}
+
+	span {
+		font-size: $unit-small-font-size;
 	}
 
 	form {
@@ -26,8 +30,24 @@
 		align-items: center;
 	}
 
-	.btn-secondary {
+	.nav-logo {
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
+
+		@include media-breakpoint-up(md) {
+		height: 150px;
+		width: 150px;
+		}
+	}
+
+	.form-group {
 		margin-top: 3vh;
+		margin-bottom: 0px;
+	}
+
+	.btn-secondary {
+		margin-top: 10vh;
 		background-color: $light-green;
 		color: $white;
 		border-color: $white;

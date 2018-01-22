@@ -12,12 +12,14 @@
 			<div class="row">
 
 				<!-- insert map changes here (radius, stars...) -->
-				<nav class="col-md-3 text-center" id="parameter-zone">
-					<img src="ressources/pictures/logo.png" alt="logo" class="nav-logo img-fluid">
-					<h2>Cherchez un restaurant</h2>
+				<nav class="col-12 col-md-3 text-center" id="parameter-zone">
+					
 
 					<div class="row justify-content-center">
-						<form class="col-md-10">
+						<img src="ressources/pictures/logo.png" alt="logo" class="nav-logo">
+						<h2 class="col-md-12">Cherchez un restaurant</h2>
+
+						<form class="col-12 col-md-10">
 							<div class="form-group">
 								<input class="form-control" placeholder="Entrez une ville">
 							</div>
@@ -26,12 +28,12 @@
 								<label>Distance maximum :</label>
 								<input type="range" min="1" max="4" step="1" class="form-control">
 							</div>
-							<div class="col-md-12">
+							<div class="col-12">
 								<div class="row justify-content-between">
-									<span class="col-md-2">2km</span>
-									<span class="col-md-2">5km</span>
-									<span class="col-md-2">10km</span>
-									<span class="col-md-2">15km</span>
+									<p class="col-2">2<span>km</span></p>
+									<p class="col-2">5<span>km</span></p>
+									<p class="col-2">10<span>km</span></p>
+									<p class="col-2">15<span>km</span></p>
 								</div>
 							</div>
 
@@ -40,13 +42,13 @@
 								<input type="range" min="1" max="5" step="1" class="form-control">
 								
 							</div>
-							<div class="col-md-12">
+							<div class="col-12">
 								<div class="row justify-content-between">
-									<span class="col-md-2">1</span>
-									<span class="col-md-2">2</span>
-									<span class="col-md-2">3</span>
-									<span class="col-md-2">4</span>
-									<span class="col-md-2">5</span>
+									<p class="col-2">1</p>
+									<p class="col-2">2</p>
+									<p class="col-2">3</p>
+									<p class="col-2">4</p>
+									<p class="col-2">5</p>
 								</div>
 							</div>
 
@@ -64,7 +66,7 @@
 					</div>
 				</nav>
 
-				<section class="col-md-9" id="main-zone">
+				<section class="col-12 col-md-9" id="main-zone">
 					<div class="row">
 
 						<div id="map">
@@ -73,9 +75,19 @@
 							</script>
 						</div>
 
+						<div class="section-breaker col-12 text-center">
+							<p><span class="result-number">17</span> résultats trouvés</p>
+						</div>
+
 						
 						
-						<div class="restaurant-list col-md-12">
+						<div class="restaurant-list col-12">
+
+						<!--
+							<div class="up-button">
+								<button class="btn btn-info">↑</button>
+							</div>
+						-->
 
 							<!--sliding nav for restaurant's reviews-->
 							<div class="wrapper">
@@ -177,17 +189,19 @@
 							</div>
 							<!--end of sliding nav for restaurant's reviews-->
 
-							<ul class="row justify-content-around">
+							<ul class="row justify-content-center justify-content-lg-around">
 
 								<!--This is what React sould do as a li model : -->
-								<li class="restaurant col-md-10 col-lg-5  align-self-center">
+								<li class="restaurant col-10 col-lg-5  align-self-center">
 									<div class="row">
-										<div class="col-md-4 text-center align-self-center">
+
+										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
 											<a href="#">
-												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
 											</a>
 										</div>
-										<div class="col-md-5 align-self-center">
+										
+										<div class="col-12 col-sm-4 col-md-5 align-self-center">
 											<h2>Le Panda d'or</h2>
 											<div class="distance">
 												<p>
@@ -197,45 +211,49 @@
 											</div>
 											<a href="#"><span>24</span> avis</a>
 										</div>
-										<div class="col-md-3 text-center">	
+
+										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
 											<img src="ressources/pictures/orange-star.png" class="img-fluid" alt="star-picture">
 											<p><span>3,9</span>/5</p>
 										</div>
-									</div>
-									<div class="row justify-content-end">
-										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
-										<label for="navigation" class="col-md-3 btn btn-success">Lire les avis</label>
-									</div>
 
+									</div>
+									<div class="row justify-content-center justify-content-md-end">
+										<button type="button" class="col-sm-5 col-md-3 btn btn-info">Votre avis</button>
+										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
+									</div>
 								</li>
 								<!-- end of React li model -->
 
-								<li class="restaurant col-md-10 col-lg-5  align-self-center">
+								<li class="restaurant col-10 col-lg-5  align-self-center">
 									<div class="row">
-										<div class="col-md-4 text-center align-self-center">
+
+										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
 											<a href="#">
-												<img src="ressources/pictures/restaurant-2.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												<img src="ressources/pictures/restaurant-2.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
 											</a>
 										</div>
-										<div class="col-md-5 align-self-center">
+										
+										<div class="col-12 col-sm-4 col-md-5 align-self-center">
 											<h2>La cuisine de Papa</h2>
 											<div class="distance">
-												
 												<p>
 													Distance: 
-													<span>450m</span>
+													<span>350m</span>
 												</p>
 											</div>
-											<a href="#"><span>32</span> avis</a>
+											<a href="#"><span>18</span> avis</a>
 										</div>
-										<div class="col-md-3 text-center align-self-center">
+
+										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
 											<img src="ressources/pictures/green-star.png" class="img-fluid" alt="star-picture">
-											<p><span>4,2</span>/5</p>
+											<p><span>4,3</span>/5</p>
 										</div>
+
 									</div>
-									<div class="row justify-content-end">
-										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
-										<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
+									<div class="row justify-content-center justify-content-md-end">
+										<button type="button" class="col-sm-5 col-md-3 btn btn-info">Votre avis</button>
+										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
 									</div>
 								</li>
 

@@ -5875,27 +5875,41 @@ body {
 .test {
   background-color: #e5e5e5; }
 
-.nav-logo {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%; }
-
 #parameter-zone {
   background-color: #20cd74;
   color: #ebf3f4;
   min-height: 100vh;
-  padding-top: 10vh; }
+  padding-top: 6vh;
+  padding-bottom: 6vh; }
+  @media (min-width: 768px) {
+    #parameter-zone {
+      font-size: 0.8em; } }
   #parameter-zone h2 {
     margin-top: 2vh;
     margin-bottom: 2vh; }
-  #parameter-zone .form-group {
-    margin-top: 3vh;
-    margin-bottom: 0px; }
+    @media (min-width: 768px) {
+      #parameter-zone h2 {
+        font-size: 1em; } }
+  #parameter-zone label, #parameter-zone p {
+    font-size: 0.8em; }
+  #parameter-zone span {
+    font-size: 0.6em; }
   #parameter-zone form {
     margin-top: 3vh;
     align-items: center; }
-  #parameter-zone .btn-secondary {
+  #parameter-zone .nav-logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%; }
+    @media (min-width: 768px) {
+      #parameter-zone .nav-logo {
+        height: 150px;
+        width: 150px; } }
+  #parameter-zone .form-group {
     margin-top: 3vh;
+    margin-bottom: 0px; }
+  #parameter-zone .btn-secondary {
+    margin-top: 10vh;
     background-color: #20cd74;
     color: #ebf3f4;
     border-color: #ebf3f4; }
@@ -5973,17 +5987,35 @@ body {
   top: 2px;
   left: 2px; }
 
+.up-button {
+  position: sticky;
+  z-index: 2;
+  top: 90%;
+  left: 5px; }
+
 #main-zone {
   min-height: 100vh; }
   #main-zone #map {
-    height: 35vh;
+    height: 80vh;
     width: 100%; }
+    @media (min-width: 768px) {
+      #main-zone #map {
+        height: 35vh;
+        width: 100%; } }
+  #main-zone .section-breaker {
+    box-shadow: 5px 5px 5px grey; }
+    #main-zone .section-breaker p {
+      margin: 0px; }
   #main-zone .restaurant-list {
-    height: 65vh;
-    overflow-x: hidden;
-    overflow-y: auto; }
+    overflow-x: hidden; }
+    @media (min-width: 768px) {
+      #main-zone .restaurant-list {
+        height: 60vh;
+        overflow-y: auto; } }
     #main-zone .restaurant-list li {
       list-style-type: none; }
+    #main-zone .restaurant-list ul {
+      padding: 0px; }
     #main-zone .restaurant-list p {
       margin: 0px; }
     #main-zone .restaurant-list h2 {

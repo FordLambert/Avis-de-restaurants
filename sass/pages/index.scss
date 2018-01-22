@@ -1,19 +1,44 @@
+.up-button {
+	position: sticky;
+	z-index: 2;
+	top: 90%;
+	left: 5px;
+}
+
 #main-zone {
 	min-height: 100vh;
 
 	#map {
-		height: 35vh;
+		height: 80vh;
 		width: 100%;
+		@include media-breakpoint-up(md) {
+			height: 35vh;
+			width: 100%;
+		}
+	}
+
+	.section-breaker {
+		box-shadow: 5px 5px 5px grey;
+		p {
+			margin: 0px;
+		}
 	}
 
 	.restaurant-list {
-		height: 65vh;
 		overflow-x: hidden;
-		overflow-y: auto;
+
+		@include media-breakpoint-up(md) {
+			height: 60vh;
+			overflow-y: auto;
+		}
+		
 
 		li {
 			list-style-type: none;
-			
+		}
+
+		ul {
+			padding: 0px;
 		}
 
 		p {
