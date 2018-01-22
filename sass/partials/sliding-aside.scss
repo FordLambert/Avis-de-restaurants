@@ -12,19 +12,25 @@
     }
 
     aside {
-        width:75vw;
+        width:100vw;
+        max-height: 100vh;
         overflow: auto;
         z-index: 1;
         position: absolute;
         background-color: $white;
         top:0;
         right:0;
-        height:100%;
-        margin:0 -75vw 0 0;
+        margin:0 -100vw 0 0;
         -moz-transition:all 200ms ease-in;
         -webkit-transition:all 200ms ease-in;
         -o-transition:all 200ms ease-in;
         transition:all 200ms ease-in;
+       
+        @include media-breakpoint-up(md) {
+            margin:0 -75vw 0 0;
+            width: 75vw;
+            max-height: 60vh;
+        }
         @include media-breakpoint-up(lg) {
             margin:0 -37.5vw 0 0;
             width:37.5vw;
@@ -61,7 +67,6 @@
     .review {
         border: 1px solid $light-green;
         margin-bottom: 2vh;
-
         padding: 10px;
     }
 

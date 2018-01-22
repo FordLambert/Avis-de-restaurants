@@ -7,6 +7,7 @@
 
 	@include media-breakpoint-up(md) {
 		font-size: $text-md-font-size;
+		padding-bottom: 4vh;
 	}
 
 	h2 {
@@ -14,11 +15,18 @@
 		margin-bottom: 2vh;
 		@include media-breakpoint-up(md) {
             font-size: $title-md-font-size;
+		}
+		@include media-breakpoint-up(lg) {
+            font-size: $title-lg-font-size;
         }
 	}
 
 	label, p {
-		font-size: $text-sm-font-size;
+		font-size: $text-md-font-size;
+
+		@include media-breakpoint-up(lg) {
+			font-size: $text-lg-font-size;
+		}
 	}
 
 	span {
@@ -36,8 +44,12 @@
 		border-radius: 50%;
 
 		@include media-breakpoint-up(md) {
-		height: 150px;
-		width: 150px;
+		height: 100px;
+		width: 100px;
+		}
+		@include media-breakpoint-up(lg) {
+			height: 150px;
+			width: 150px;
 		}
 	}
 
@@ -51,6 +63,9 @@
 		background-color: $light-green;
 		color: $white;
 		border-color: $white;
+		@include media-breakpoint-up(md) {
+			margin-top: 5vh;
+		}
 	}
 	.btn-secondary:hover {
 		background-color: $white;

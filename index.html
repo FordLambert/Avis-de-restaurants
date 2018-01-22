@@ -16,10 +16,12 @@
 					
 
 					<div class="row justify-content-center">
-						<img src="ressources/pictures/logo.png" alt="logo" class="nav-logo">
+						<a href="#">
+							<img src="ressources/pictures/logo.png" alt="logo" class="nav-logo">
+						</a>
 						<h2 class="col-md-12">Cherchez un restaurant</h2>
 
-						<form class="col-12 col-md-10">
+						<form class="col-12 col-lg-10">
 							<div class="form-group">
 								<input class="form-control" placeholder="Entrez une ville">
 							</div>
@@ -40,7 +42,6 @@
 							<div class="form-group">
 								<label>Note moyenne minimum :</label>
 								<input type="range" min="1" max="5" step="1" class="form-control">
-								
 							</div>
 							<div class="col-12">
 								<div class="row justify-content-between">
@@ -93,25 +94,26 @@
 							<div class="wrapper">
 								<input type="checkbox" id="navigation" />
 								<aside class="row">
-									<label for="navigation" class="col-md-1 btn btn-info close-button">X</label>
+									<label for="navigation" class="col-2 btn btn-info close-button">X</label>
 								
 									<div class="row justify-content-center">
 
-										<div class="col-md-10 review">
+										<!--Review example for React-->
+										<div class="col-10 review">
 											<div class="row justify-content-around">
-												<div class="col-md-2">
+												<div class="col-6 col-sm-3 text-center">
 													<img src="ressources/pictures/loutre.jpg" class="user-thumbnail rounded-circle img-fluid" alt="user-picture">
 													<figcaption>Sophie44</figcaption>
 												</div>
-												<div class="col-md-9">
+												<div class="col-12 col-sm-9">
 													<div class="row justify-content-start">
-														<div class="col-md-11 rating-zone">
-															<div class="col-md-12 rating">
+														<div class="col-sm-11 rating-zone">
+															<div class="col-sm-12 rating">
 																<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 															</div>
-															<p class="col-md-12 rating-date">Date du repas: 17 janvier 2018</p>
+															<p class="col-sm-12 rating-date">Date du repas: 17 janvier 2018</p>
 														</div>
-														<p class="col-md-11">
+														<p class="col-sm-11">
 															J'ai trouvé ça suuuuper bon ! 
 															Lorem ipsum dolor sit amet, 
 															consectetur adipiscing elit. 
@@ -125,22 +127,23 @@
 												</div>
 											</div>
 										</div>
+										<!--End of review example for React-->
 
-										<div class="col-md-10 review">
+										<div class="col-10 review">
 											<div class="row justify-content-around">
-												<div class="col-md-2">
+												<div class="col-6 col-sm-3 text-center">
 													<img src="ressources/pictures/loutre.jpg" class="user-thumbnail rounded-circle img-fluid" alt="user-picture">
 													<figcaption>Sophie44</figcaption>
 												</div>
-												<div class="col-md-9">
+												<div class="col-12 col-sm-9">
 													<div class="row justify-content-start">
-														<div class="col-md-11 rating-zone">
-															<div class="col-md-12 rating">
+														<div class="col-sm-11 rating-zone">
+															<div class="col-sm-12 rating">
 																<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 															</div>
-															<p class="col-md-12 rating-date">Date du repas: 17 janvier 2018</p>
+															<p class="col-sm-12 rating-date">Date du repas: 17 janvier 2018</p>
 														</div>
-														<p class="col-md-11">
+														<p class="col-sm-11">
 															J'ai trouvé ça suuuuper bon ! 
 															Lorem ipsum dolor sit amet, 
 															consectetur adipiscing elit. 
@@ -155,21 +158,21 @@
 											</div>
 										</div>
 										
-										<div class="col-md-10 review">
+										<div class="col-10 review">
 											<div class="row justify-content-around">
-												<div class="col-md-2">
+												<div class="col-6 col-sm-3 text-center">
 													<img src="ressources/pictures/loutre.jpg" class="user-thumbnail rounded-circle img-fluid" alt="user-picture">
 													<figcaption>Sophie44</figcaption>
 												</div>
-												<div class="col-md-9">
+												<div class="col-12 col-sm-9">
 													<div class="row justify-content-start">
-														<div class="col-md-11 rating-zone">
-															<div class="col-md-12 rating">
+														<div class="col-sm-11 rating-zone">
+															<div class="col-sm-12 rating">
 																<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 															</div>
-															<p class="col-md-12 rating-date">Date du repas: 17 janvier 2018</p>
+															<p class="col-sm-12 rating-date">Date du repas: 17 janvier 2018</p>
 														</div>
-														<p class="col-md-11">
+														<p class="col-sm-11">
 															J'ai trouvé ça suuuuper bon ! 
 															Lorem ipsum dolor sit amet, 
 															consectetur adipiscing elit. 
@@ -181,9 +184,10 @@
 														</p>
 													</div>
 												</div>
-
 											</div>
 										</div>
+
+										
 									</div>
 								</aside>	
 							</div>
@@ -191,7 +195,7 @@
 
 							<ul class="row justify-content-center justify-content-lg-around">
 
-								<!--This is what React sould do as a li model : -->
+								<!--This is what React sould do as a restaurant's li model : -->
 								<li class="restaurant col-10 col-lg-5  align-self-center">
 									<div class="row">
 
@@ -257,17 +261,18 @@
 									</div>
 								</li>
 
-								<li class="restaurant col-md-5  align-self-center">
+								<li class="restaurant col-10 col-lg-5  align-self-center">
 									<div class="row">
-										<div class="col-md-4 text-center align-self-center">
+
+										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
 											<a href="#">
-												<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
 											</a>
 										</div>
-										<div class="col-md-5 align-self-center">
-											<h2>La bonne Franquette</h2>
+										
+										<div class="col-12 col-sm-4 col-md-5 align-self-center">
+												<h2>La bonne Franquette</h2>
 											<div class="distance">
-												
 												<p>
 													Distance: 
 													<span>632m</span>
@@ -275,28 +280,31 @@
 											</div>
 											<a href="#"><span>14</span> avis</a>
 										</div>
-										<div class="col-md-3 text-center align-self-center">
+
+										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
 											<img src="ressources/pictures/green-star.png" class="img-fluid" alt="star-picture">
 											<p><span>4,1</span>/5</p>
 										</div>
+
 									</div>
-									<div class="row justify-content-end">
-										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
-										<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
+									<div class="row justify-content-center justify-content-md-end">
+										<button type="button" class="col-sm-5 col-md-3 btn btn-info">Votre avis</button>
+										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
 									</div>
 								</li>
 
-								<li class="restaurant col-md-5  align-self-center">
+								<li class="restaurant col-10 col-lg-5  align-self-center">
 									<div class="row">
-										<div class="col-md-4 text-center align-self-center">
+
+										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
 											<a href="#">
-												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
 											</a>
 										</div>
-										<div class="col-md-5 align-self-center">
-											<h2>Le Lambda</h2>
+										
+										<div class="col-12 col-sm-4 col-md-5 align-self-center">
+												<h2>La mauvaise Franquette</h2>
 											<div class="distance">
-												
 												<p>
 													Distance: 
 													<span>724m</span>
@@ -304,28 +312,31 @@
 											</div>
 											<a href="#"><span>18</span> avis</a>
 										</div>
-										<div class="col-md-3 text-center align-self-center">
+
+										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
 											<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
 											<p><span>2,6</span>/5</p>
 										</div>
+
 									</div>
-									<div class="row justify-content-end">
-										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
-										<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
+									<div class="row justify-content-center justify-content-md-end">
+										<button type="button" class="col-sm-5 col-md-3 btn btn-info">Votre avis</button>
+										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
 									</div>
 								</li>
 
-								<li class="restaurant col-md-5  align-self-center">
+								<li class="restaurant col-10 col-lg-5  align-self-center">
 									<div class="row">
-										<div class="col-md-4 text-center align-self-center">
+
+										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
 											<a href="#">
-												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
 											</a>
 										</div>
-										<div class="col-md-5 align-self-center">
-											<h2>Le Lambda</h2>
+										
+										<div class="col-12 col-sm-4 col-md-5 align-self-center">
+												<h2>La mauvaise Franquette</h2>
 											<div class="distance">
-												
 												<p>
 													Distance: 
 													<span>724m</span>
@@ -333,28 +344,31 @@
 											</div>
 											<a href="#"><span>18</span> avis</a>
 										</div>
-										<div class="col-md-3 text-center align-self-center">
+
+										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
 											<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
 											<p><span>2,6</span>/5</p>
 										</div>
+
 									</div>
-									<div class="row justify-content-end">
-										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
-										<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
+									<div class="row justify-content-center justify-content-md-end">
+										<button type="button" class="col-sm-5 col-md-3 btn btn-info">Votre avis</button>
+										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
 									</div>
 								</li>
 
-								<li class="restaurant col-md-5  align-self-center">
+								<li class="restaurant col-10 col-lg-5  align-self-center">
 									<div class="row">
-										<div class="col-md-4 text-center align-self-center">
+
+										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
 											<a href="#">
-												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded" alt="restaurant-picture">
+												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
 											</a>
 										</div>
-										<div class="col-md-5 align-self-center">
-											<h2>Le Lambda</h2>
+										
+										<div class="col-12 col-sm-4 col-md-5 align-self-center">
+												<h2>La mauvaise Franquette</h2>
 											<div class="distance">
-												
 												<p>
 													Distance: 
 													<span>724m</span>
@@ -362,14 +376,16 @@
 											</div>
 											<a href="#"><span>18</span> avis</a>
 										</div>
-										<div class="col-md-3 text-center align-self-center">
+
+										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
 											<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
 											<p><span>2,6</span>/5</p>
 										</div>
+
 									</div>
-									<div class="row justify-content-end">
-										<button type="button" class="col-md-3 btn btn-info">Votre avis</button>
-										<button type="button" class="col-md-3 btn btn-success">Lire les avis</button>
+									<div class="row justify-content-center justify-content-md-end">
+										<button type="button" class="col-sm-5 col-md-3 btn btn-info">Votre avis</button>
+										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
 									</div>
 								</li>
 

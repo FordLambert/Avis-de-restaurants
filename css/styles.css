@@ -5883,15 +5883,22 @@ body {
   padding-bottom: 6vh; }
   @media (min-width: 768px) {
     #parameter-zone {
-      font-size: 0.8em; } }
+      font-size: 0.8em;
+      padding-bottom: 4vh; } }
   #parameter-zone h2 {
     margin-top: 2vh;
     margin-bottom: 2vh; }
     @media (min-width: 768px) {
       #parameter-zone h2 {
-        font-size: 1em; } }
+        font-size: 1.1em; } }
+    @media (min-width: 992px) {
+      #parameter-zone h2 {
+        font-size: 1.5em; } }
   #parameter-zone label, #parameter-zone p {
     font-size: 0.8em; }
+    @media (min-width: 992px) {
+      #parameter-zone label, #parameter-zone p {
+        font-size: 1.2em; } }
   #parameter-zone span {
     font-size: 0.6em; }
   #parameter-zone form {
@@ -5903,6 +5910,10 @@ body {
     border-radius: 50%; }
     @media (min-width: 768px) {
       #parameter-zone .nav-logo {
+        height: 100px;
+        width: 100px; } }
+    @media (min-width: 992px) {
+      #parameter-zone .nav-logo {
         height: 150px;
         width: 150px; } }
   #parameter-zone .form-group {
@@ -5913,6 +5924,9 @@ body {
     background-color: #20cd74;
     color: #ebf3f4;
     border-color: #ebf3f4; }
+    @media (min-width: 768px) {
+      #parameter-zone .btn-secondary {
+        margin-top: 5vh; } }
   #parameter-zone .btn-secondary:hover {
     background-color: #ebf3f4;
     color: #20cd74;
@@ -5929,19 +5943,24 @@ body {
   transition: all 200ms ease-in; }
 
 .restaurant-list aside {
-  width: 75vw;
+  width: 100vw;
+  max-height: 100vh;
   overflow: auto;
   z-index: 1;
   position: absolute;
   background-color: #ebf3f4;
   top: 0;
   right: 0;
-  height: 100%;
-  margin: 0 -75vw 0 0;
+  margin: 0 -100vw 0 0;
   -moz-transition: all 200ms ease-in;
   -webkit-transition: all 200ms ease-in;
   -o-transition: all 200ms ease-in;
   transition: all 200ms ease-in; }
+  @media (min-width: 768px) {
+    .restaurant-list aside {
+      margin: 0 -75vw 0 0;
+      width: 75vw;
+      max-height: 60vh; } }
   @media (min-width: 992px) {
     .restaurant-list aside {
       margin: 0 -37.5vw 0 0;
