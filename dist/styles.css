@@ -5879,14 +5879,14 @@ nav {
     nav {
       font-size: 0.8em;
       padding-bottom: 4vh; } }
-  nav h2 {
+  nav h1 {
     margin-top: 2vh;
     margin-bottom: 2vh; }
     @media (min-width: 768px) {
-      nav h2 {
+      nav h1 {
         font-size: 1.1em; } }
     @media (min-width: 992px) {
-      nav h2 {
+      nav h1 {
         font-size: 1.5em; } }
   nav .nav-logo {
     height: 50px;
@@ -6031,51 +6031,36 @@ nav {
         top: 25px;
         transition: top 0.50s ease; } }
 
-.up-button {
-  position: sticky;
-  z-index: 2;
-  top: 90%;
-  left: 5px; }
-
-#main-zone {
+.main-section {
   min-height: 100vh; }
-  #main-zone #map {
+  .main-section #map {
     height: 80vh;
     width: 100%; }
     @media (min-width: 768px) {
-      #main-zone #map {
+      .main-section #map {
         height: 35vh;
         width: 100%; } }
-  #main-zone .section-breaker {
+  .main-section .section-breaker {
     box-shadow: 5px 5px 5px grey; }
-    #main-zone .section-breaker p {
-      margin: 0px; }
-  #main-zone .restaurant-section {
+    .main-section .section-breaker p {
+      margin: 4px; }
+  .main-section .restaurant-section {
     overflow-x: hidden; }
     @media (min-width: 768px) {
-      #main-zone .restaurant-section {
+      .main-section .restaurant-section {
         height: 60vh;
         overflow-y: auto; } }
-    #main-zone .restaurant-section li {
-      list-style-type: none; }
-    #main-zone .restaurant-section ul {
+    .main-section .restaurant-section ul {
       padding: 0px; }
-    #main-zone .restaurant-section p {
-      margin: 0px; }
-    #main-zone .restaurant-section h2 {
-      font-size: 1.1em; }
-    #main-zone .restaurant-section .restaurant {
-      padding: 20px;
-      padding-bottom: 10px;
-      margin-top: 3vh;
-      margin-bottom: 3vh;
-      border-radius: 5px;
-      box-shadow: 5px 5px 5px grey; }
-      #main-zone .restaurant-section .restaurant a, #main-zone .restaurant-section .restaurant label {
-        margin: 1vh; }
-      #main-zone .restaurant-section .restaurant .distance {
-        display: flex; }
-        #main-zone .restaurant-section .restaurant .distance .localisation-icon {
-          height: 20px; }
-      #main-zone .restaurant-section .restaurant .restaurant-picture {
-        width: 100%; }
+      .main-section .restaurant-section ul .restaurant {
+        list-style-type: none;
+        padding: 20px;
+        padding-bottom: 10px;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px grey; }
+        .main-section .restaurant-section ul .restaurant a, .main-section .restaurant-section ul .restaurant label {
+          margin: 1vh; }
+        .main-section .restaurant-section ul .restaurant h2 {
+          font-size: 1.1em; }
