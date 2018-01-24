@@ -5932,79 +5932,55 @@ body {
     color: #20cd74;
     border-color: #20cd74; }
 
-.restaurant-list .wrapper {
+.sliding-wrapper {
   overflow: hidden; }
+  .sliding-wrapper input[type="checkbox"] {
+    display: none; }
+  .sliding-wrapper input[type="checkbox"]:checked ~ aside {
+    margin: 0; }
+  .sliding-wrapper input[type="checkbox"]:checked ~ .trigger-button {
+    left: 260px; }
+  .sliding-wrapper input[type="checkbox"]:checked ~ section {
+    transform: translate3d(260px, 0, 0); }
+  .sliding-wrapper aside {
+    width: 100vw;
+    max-height: 100vh;
+    overflow: auto;
+    z-index: 1;
+    position: absolute;
+    background-color: white;
+    top: 0;
+    right: 0;
+    margin: 0 -100vw 0 0;
+    transition: all 200ms ease-in; }
+    @media (min-width: 768px) {
+      .sliding-wrapper aside {
+        margin: 0 -75vw 0 0;
+        width: 75vw;
+        max-height: 60vh; } }
+    @media (min-width: 992px) {
+      .sliding-wrapper aside {
+        margin: 0 -37.5vw 0 0;
+        width: 37.5vw; } }
+    .sliding-wrapper aside .review {
+      border: 1px solid #20cd74;
+      margin-bottom: 2vh;
+      padding: 10px; }
+      .sliding-wrapper aside .review .rating-zone {
+        margin-bottom: 2vh; }
+        .sliding-wrapper aside .review .rating-zone .rating {
+          border-bottom: 1px solid black; }
+        .sliding-wrapper aside .review .rating-zone .rating-date {
+          font-size: 0.8em; }
+    .sliding-wrapper aside .close-button {
+      z-index: 1;
+      position: sticky;
+      top: 2px;
+      left: 2px; }
 
-.restaurant-list section {
-  padding: 30px 30px 30px 80px;
-  -moz-transition: all 200ms ease-in;
-  -webkit-transition: all 200ms ease-in;
-  -o-transition: all 200ms ease-in;
-  transition: all 200ms ease-in; }
-
-.restaurant-list aside {
-  width: 100vw;
-  max-height: 100vh;
-  overflow: auto;
-  z-index: 1;
-  position: absolute;
-  background-color: white;
-  top: 0;
-  right: 0;
-  margin: 0 -100vw 0 0;
-  -moz-transition: all 200ms ease-in;
-  -webkit-transition: all 200ms ease-in;
-  -o-transition: all 200ms ease-in;
-  transition: all 200ms ease-in; }
-  @media (min-width: 768px) {
-    .restaurant-list aside {
-      margin: 0 -75vw 0 0;
-      width: 75vw;
-      max-height: 60vh; } }
-  @media (min-width: 992px) {
-    .restaurant-list aside {
-      margin: 0 -37.5vw 0 0;
-      width: 37.5vw; } }
-
-.restaurant-list label {
-  -moz-transition: all 200ms ease-in;
-  -webkit-transition: all 200ms ease-in;
-  -o-transition: all 200ms ease-in;
+.trigger-button {
   transition: all 200ms ease-in;
   z-index: 0; }
-
-.restaurant-list input[type="checkbox"] {
-  display: none; }
-
-.restaurant-list input[type="checkbox"]:checked ~ aside {
-  margin: 0; }
-
-.restaurant-list input[type="checkbox"]:checked ~ label {
-  left: 260px; }
-
-.restaurant-list input[type="checkbox"]:checked ~ section {
-  -webkit-transform: translate3d(260px, 0, 0);
-  -moz-transform: translate3d(260px, 0, 0);
-  -o-transform: translate3d(260px, 0, 0);
-  transform: translate3d(260px, 0, 0); }
-
-.restaurant-list .review {
-  border: 1px solid #20cd74;
-  margin-bottom: 2vh;
-  padding: 10px; }
-
-.restaurant-list .rating-zone {
-  margin-bottom: 2vh; }
-  .restaurant-list .rating-zone .rating {
-    border-bottom: 1px solid black; }
-  .restaurant-list .rating-zone .rating-date {
-    font-size: 0.8em; }
-
-.restaurant-list .close-button {
-  z-index: 1;
-  position: sticky;
-  top: 2px;
-  left: 2px; }
 
 #openPopUp {
   transition: background-color 0.20s linear; }

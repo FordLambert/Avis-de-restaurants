@@ -80,10 +80,7 @@
 							<p><span class="result-number">17</span> résultats trouvés</p>
 						</div>
 
-						
-						
 						<div class="restaurant-list col-12">
-
 						<!-- Pop up component -->
 						<div id="popUp" class="popup">
 
@@ -144,10 +141,10 @@
 						-->
 
 							<!--sliding nav for restaurant's reviews-->
-							<div class="wrapper">
-								<input type="checkbox" id="navigation" />
+							<div class="sliding-wrapper">
+								<input type="checkbox" id="review-list" />
 								<aside class="row">
-									<label for="navigation" class="col-2 btn btn-info close-button">X</label>
+									<label for="review-list" class="col-2 btn btn-info close-button">X</label>
 								
 									<div class="row justify-content-center">
 
@@ -248,7 +245,7 @@
 
 							<ul class="row justify-content-center justify-content-lg-around">
 
-								<!--This is what React sould do as a restaurant's li model : -->
+								<!-- Restaurant (li) component -->
 								<li class="restaurant col-10 col-lg-5  align-self-center">
 									<div class="row">
 
@@ -277,10 +274,10 @@
 									</div>
 									<div class="row justify-content-center justify-content-md-end">
 										<a href="#popUp" id="openPopUp" class="col-sm-5 col-md-3 btn btn-info">Votre avis</a>
-										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
+										<label for="review-list" class="col-sm-5 col-md-3 btn btn-success trigger-button">Lire les avis</label>
 									</div>
 								</li>
-								<!-- end of React li model -->
+								<!-- end of restaurant (li) component -->
 
 								<li class="restaurant col-10 col-lg-5  align-self-center">
 									<div class="row">

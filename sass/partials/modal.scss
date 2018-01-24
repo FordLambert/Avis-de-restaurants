@@ -1,8 +1,8 @@
-#openPopUp{
+#openPopUp {
   transition:background-color 0.20s linear;
 }
 
-.popup{
+.popup {
     position: fixed;
     top: -100vh;
     left: 0;
@@ -13,7 +13,7 @@
     opacity: 0;
     transition: opacity 0.50s ease;
 
-    .popUpContainer{
+    .popUpContainer {
         width: 100%;
         max-width: 500px;
         position: fixed; /* To avoid scroll to target */
@@ -36,14 +36,14 @@
             font-size: 2em;
         }
 
-        .closePopUp{
+        .closePopUp {
             position: absolute;
             top: 2%;
             right: 5%;
         }
     }
 
-    .closePopUpOutSide{
+    .closePopUpOutSide {
         position: absolute;
         left:0;
         width: 100%;
@@ -53,11 +53,11 @@
 }
 
 // When popup is targeted, by clicking on link with #popup in HTML
-.popup:target{
+.popup:target {
     opacity: 1;
     top: 0;
 
-    .popUpContainer{
+    .popUpContainer {
         top: 300px;
         transition: top 0.50s ease;
 

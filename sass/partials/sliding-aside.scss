@@ -1,14 +1,20 @@
-.restaurant-list {
+.sliding-wrapper {
+    overflow: hidden;
 
-    .wrapper {
-        overflow: hidden;
+    input[type="checkbox"]{
+        display:none;
     }
-    section {
-        padding:30px 30px 30px 80px;
-        -moz-transition:all 200ms ease-in;
-        -webkit-transition:all 200ms ease-in;
-        -o-transition:all 200ms ease-in;
-        transition:all 200ms ease-in;
+
+    input[type="checkbox"]:checked ~ aside{
+        margin:0;
+    }
+    
+    input[type="checkbox"]:checked ~ .trigger-button {
+        left:260px;
+    }
+
+    input[type="checkbox"]:checked ~ section{
+        transform:translate3d(260px, 0, 0);
     }
 
     aside {
@@ -21,9 +27,6 @@
         top:0;
         right:0;
         margin:0 -100vw 0 0;
-        -moz-transition:all 200ms ease-in;
-        -webkit-transition:all 200ms ease-in;
-        -o-transition:all 200ms ease-in;
         transition:all 200ms ease-in;
        
         @include media-breakpoint-up(md) {
@@ -35,57 +38,35 @@
             margin:0 -37.5vw 0 0;
             width:37.5vw;
         }
-    }
 
-    label {
-        -moz-transition:all 200ms ease-in;
-        -webkit-transition:all 200ms ease-in;
-        -o-transition:all 200ms ease-in;
-        transition:all 200ms ease-in;
-        z-index:0;
-    }
-
-    input[type="checkbox"]{
-        display:none;
-    }
-
-    input[type="checkbox"]:checked ~ aside{
-        margin:0;
-    }
+        .review {
+            border: 1px solid $light-green;
+            margin-bottom: 2vh;
+            padding: 10px;
     
-    input[type="checkbox"]:checked ~ label{
-        left:260px;
-    }
-
-    input[type="checkbox"]:checked ~ section{
-        -webkit-transform:translate3d(260px, 0, 0);
-        -moz-transform:translate3d(260px, 0, 0);
-        -o-transform:translate3d(260px, 0, 0);
-        transform:translate3d(260px, 0, 0);
-    }
-
-    .review {
-        border: 1px solid $light-green;
-        margin-bottom: 2vh;
-        padding: 10px;
-    }
-
-    .rating-zone {
-        margin-bottom: 2vh;
-
-        .rating {
-            border-bottom: 1px solid $black;
+            .rating-zone {
+                margin-bottom: 2vh;
+        
+                .rating {
+                    border-bottom: 1px solid $black;
+                }
+            
+                .rating-date {
+                    font-size: 0.8em;
+                }
+            }
         }
-    
-        .rating-date {
-            font-size: 0.8em;
+        
+        .close-button {
+            z-index: 1;
+            position: sticky;
+            top: 2px;
+            left: 2px;
         }
     }
-    
-    .close-button {
-        z-index: 1;
-        position: sticky;
-        top: 2px;
-        left: 2px;
-    }
+}
+
+.trigger-button {
+    transition:all 200ms ease-in;
+    z-index:0;
 }
