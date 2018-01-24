@@ -84,7 +84,7 @@
 						
 						<div class="restaurant-list col-12">
 
-						<!-- POP UP -->
+						<!-- Pop up component -->
 						<div id="popUp" class="popup">
 
 							<div class="modal-dialog">
@@ -93,10 +93,41 @@
 									<div class="popUpContainer">
 									<div class="modal-header">
 										<a href="#!" class="close closePopUp">x</a>
-										<h2 class="modal-title">Donnez votre avis</h2>
+										<h2 class="modal-title">Restaurant exemple</h2>
 									</div>
 									<div class="modal-body">
-										<p>Bla bla blaaaa !</p>
+
+										<div class="row justify-content-center">
+
+											<form class="col-md-10">
+
+												<div class="form-group text-center">
+													<div class="form-rating">
+														<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label for="date-input" class="col-form-label">Date du repas</label>
+													<div>
+														<input class="form-control" type="date" value="2018-01-24" id="date-input">
+													</div>
+												</div>
+
+												<div class="form-group">
+													<input type="text" class="form-control" placeholder="Votre nom">
+												</div>
+
+												<div class="form-group">
+													<textarea class="form-control" rows="5" placeholder="Donnez votre avis"></textarea>
+												</div>
+
+												<div class="text-center">
+													<button type="submit" class="btn btn-info">Envoyer</button>
+												</div>
+											</form>
+											
+										</div>
 									</div>
 
 								</div>
@@ -104,6 +135,7 @@
 						</div>        
 						<a href="#!" class="closePopUpOutSide"></a>    
 						</div>
+						<!-- End of Pop up -->
 
 						<!--
 							<div class="up-button">
