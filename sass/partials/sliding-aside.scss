@@ -8,19 +8,12 @@
     input[type="checkbox"]:checked ~ aside {
         margin:0;
     }
-    
-    input[type="checkbox"]:checked ~ .trigger-button {
-        left:260px;
-    }
-
-    input[type="checkbox"]:checked ~ section {
-        transform:translate3d(260px, 0, 0);
-    }
 
     aside {
         width:100vw;
         max-height: 100vh;
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
         z-index: 1;
         position: absolute;
         background-color: $white;
@@ -61,7 +54,7 @@
             z-index: 1;
             position: sticky;
             top: 2px;
-            left: 2px;
+            right: 0px;
         }
     }
 }
