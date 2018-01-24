@@ -6056,32 +6056,32 @@ body {
     box-shadow: 5px 5px 5px grey; }
     #main-zone .section-breaker p {
       margin: 0px; }
-  #main-zone .restaurant-list {
+  #main-zone .restaurant-section {
     overflow-x: hidden; }
     @media (min-width: 768px) {
-      #main-zone .restaurant-list {
+      #main-zone .restaurant-section {
         height: 60vh;
         overflow-y: auto; } }
-    #main-zone .restaurant-list li {
+    #main-zone .restaurant-section li {
       list-style-type: none; }
-    #main-zone .restaurant-list ul {
+    #main-zone .restaurant-section ul {
       padding: 0px; }
-    #main-zone .restaurant-list p {
+    #main-zone .restaurant-section p {
       margin: 0px; }
-    #main-zone .restaurant-list h2 {
+    #main-zone .restaurant-section h2 {
       font-size: 1.1em; }
-    #main-zone .restaurant-list .restaurant {
+    #main-zone .restaurant-section .restaurant {
       padding: 20px;
       padding-bottom: 10px;
       margin-top: 3vh;
       margin-bottom: 3vh;
       border-radius: 5px;
       box-shadow: 5px 5px 5px grey; }
-      #main-zone .restaurant-list .restaurant a, #main-zone .restaurant-list .restaurant label {
+      #main-zone .restaurant-section .restaurant a, #main-zone .restaurant-section .restaurant label {
         margin: 1vh; }
-      #main-zone .restaurant-list .restaurant .distance {
+      #main-zone .restaurant-section .restaurant .distance {
         display: flex; }
-        #main-zone .restaurant-list .restaurant .distance .localisation-icon {
+        #main-zone .restaurant-section .restaurant .distance .localisation-icon {
           height: 20px; }
-      #main-zone .restaurant-list .restaurant .restaurant-picture {
+      #main-zone .restaurant-section .restaurant .restaurant-picture {
         width: 100%; }

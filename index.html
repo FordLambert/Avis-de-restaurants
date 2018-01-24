@@ -4,17 +4,15 @@
 		<title>P7 - step 1</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="dist/styles.css">
 	</head>
+
 	<body>
 		<div class="container-fluid"> <!--Bootstrap container, contain everything-->
 			<div class="row">
 
-				<!-- insert map changes here (radius, stars...) -->
 				<nav class="col-12 col-md-3 text-center" id="parameter-zone">
-					
-
 					<div class="row justify-content-center">
 						<a href="#">
 							<img src="ressources/pictures/logo.png" alt="logo" class="nav-logo">
@@ -80,67 +78,61 @@
 							<p><span class="result-number">17</span> résultats trouvés</p>
 						</div>
 
-						<div class="restaurant-list col-12">
-						<!-- Pop up component -->
-						<div id="popUp" class="popup">
+						<!-- Restaurant section component (First - Parent)-->
+						<div class="restaurant-section col-12">
 
-							<div class="modal-dialog">
-								<div class="modal-content">
+							<!-- Pop up component (Second) -->
+							<div id="popUp" class="popup">
+								<div class="modal-dialog">
+									<div class="modal-content">
 
-									<div class="popUpContainer">
-									<div class="modal-header">
-										<a href="#!" class="close closePopUp">x</a>
-										<h2 class="modal-title">Restaurant exemple</h2>
-									</div>
-									<div class="modal-body">
+										<div class="popUpContainer">
+											<div class="modal-header">
+												<a href="#!" class="close closePopUp">x</a>
+												<h2 class="modal-title">Restaurant exemple</h2>
+											</div>
 
-										<div class="row justify-content-center">
+											<div class="modal-body">
+												<div class="row justify-content-center">
+													<form class="col-md-10">
 
-											<form class="col-md-10">
+														<div class="form-group text-center">
+															<div class="form-rating">
+																<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+															</div>
+														</div>
 
-												<div class="form-group text-center">
-													<div class="form-rating">
-														<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-													</div>
+														<div class="form-group">
+															<label for="date-input" class="col-form-label">Date du repas</label>
+															<div>
+																<input class="form-control" type="date" value="2018-01-24" id="date-input">
+															</div>
+														</div>
+
+														<div class="form-group">
+															<input type="text" class="form-control" placeholder="Votre nom">
+														</div>
+
+														<div class="form-group">
+															<textarea class="form-control" rows="5" placeholder="Donnez votre avis"></textarea>
+														</div>
+
+														<div class="text-center">
+															<button type="submit" class="btn btn-info">Envoyer</button>
+														</div>
+
+													</form>
 												</div>
-
-												<div class="form-group">
-													<label for="date-input" class="col-form-label">Date du repas</label>
-													<div>
-														<input class="form-control" type="date" value="2018-01-24" id="date-input">
-													</div>
-												</div>
-
-												<div class="form-group">
-													<input type="text" class="form-control" placeholder="Votre nom">
-												</div>
-
-												<div class="form-group">
-													<textarea class="form-control" rows="5" placeholder="Donnez votre avis"></textarea>
-												</div>
-
-												<div class="text-center">
-													<button type="submit" class="btn btn-info">Envoyer</button>
-												</div>
-											</form>
+											</div>
 
 										</div>
 									</div>
-
-								</div>
+								</div>        
+								<a href="#!" class="closePopUpOutSide"></a>    
 							</div>
-						</div>        
-						<a href="#!" class="closePopUpOutSide"></a>    
-						</div>
-						<!-- End of Pop up -->
+							<!-- End of Pop up component-->
 
-						<!--
-							<div class="up-button">
-								<button class="btn btn-info">↑</button>
-							</div>
-						-->
-
-							<!--sliding nav for restaurant's reviews-->
+							<!-- Sliding aside component (Second - Parent)-->
 							<div class="sliding-wrapper">
 								<input type="checkbox" id="review-list" />
 								<aside class="row">
@@ -148,7 +140,7 @@
 								
 									<div class="row justify-content-center">
 
-										<!--Review example for React-->
+										<!-- Review component (Child)-->
 										<div class="col-10 review">
 											<div class="row justify-content-around">
 												<div class="col-6 col-sm-3 text-center">
@@ -177,7 +169,7 @@
 												</div>
 											</div>
 										</div>
-										<!--End of review example for React-->
+										<!-- End of review component -->
 
 										<div class="col-10 review">
 											<div class="row justify-content-around">
@@ -241,206 +233,212 @@
 									</div>
 								</aside>	
 							</div>
-							<!--end of sliding nav for restaurant's reviews-->
+							<!-- End of Sliding aside component -->
 
-							<ul class="row justify-content-center justify-content-lg-around">
+							<!-- Restaurants list component (Second - Parent) -->
+							<div class="restaurant-list">
+								<ul class="row justify-content-center justify-content-lg-around">
 
-								<!-- Restaurant (li) component -->
-								<li class="restaurant col-10 col-lg-5  align-self-center">
-									<div class="row">
+									<!-- Restaurant (li) component (child)-->
+									<li class="restaurant col-10 col-lg-5  align-self-center">
+										<div class="row">
 
-										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
-											<a href="#">
-												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
-											</a>
-										</div>
-										
-										<div class="col-12 col-sm-4 col-md-5 align-self-center">
-											<h2>Le Panda d'or</h2>
-											<div class="distance">
-												<p>
-													Distance: 
-													<span>300m</span>
-												</p>
+											<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
+												</a>
 											</div>
-											<a href="#"><span>24</span> avis</a>
-										</div>
-
-										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
-											<img src="ressources/pictures/orange-star.png" class="img-fluid" alt="star-picture">
-											<p><span>3,9</span>/5</p>
-										</div>
-
-									</div>
-									<div class="row justify-content-center justify-content-md-end">
-										<a href="#popUp" id="openPopUp" class="col-sm-5 col-md-3 btn btn-info">Votre avis</a>
-										<label for="review-list" class="col-sm-5 col-md-3 btn btn-success trigger-button">Lire les avis</label>
-									</div>
-								</li>
-								<!-- end of restaurant (li) component -->
-
-								<li class="restaurant col-10 col-lg-5  align-self-center">
-									<div class="row">
-
-										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
-											<a href="#">
-												<img src="ressources/pictures/restaurant-2.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
-											</a>
-										</div>
-										
-										<div class="col-12 col-sm-4 col-md-5 align-self-center">
-											<h2>La cuisine de Papa</h2>
-											<div class="distance">
-												<p>
-													Distance: 
-													<span>350m</span>
-												</p>
+											
+											<div class="col-12 col-sm-4 col-md-5 align-self-center">
+												<h2>Le Panda d'or</h2>
+												<div class="distance">
+													<p>
+														Distance: 
+														<span>300m</span>
+													</p>
+												</div>
+												<a href="#"><span>24</span> avis</a>
 											</div>
-											<a href="#"><span>18</span> avis</a>
-										</div>
 
-										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
-											<img src="ressources/pictures/green-star.png" class="img-fluid" alt="star-picture">
-											<p><span>4,3</span>/5</p>
-										</div>
-
-									</div>
-									<div class="row justify-content-center justify-content-md-end">
-										<button type="button" class="col-sm-5 col-md-3 btn btn-info">Votre avis</button>
-										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
-									</div>
-								</li>
-
-								<li class="restaurant col-10 col-lg-5  align-self-center">
-									<div class="row">
-
-										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
-											<a href="#">
-												<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
-											</a>
-										</div>
-										
-										<div class="col-12 col-sm-4 col-md-5 align-self-center">
-												<h2>La bonne Franquette</h2>
-											<div class="distance">
-												<p>
-													Distance: 
-													<span>632m</span>
-												</p>
+											<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
+												<img src="ressources/pictures/orange-star.png" class="img-fluid" alt="star-picture">
+												<p><span>3,9</span>/5</p>
 											</div>
-											<a href="#"><span>14</span> avis</a>
+
 										</div>
-
-										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
-											<img src="ressources/pictures/green-star.png" class="img-fluid" alt="star-picture">
-											<p><span>4,1</span>/5</p>
+										<div class="row justify-content-center justify-content-md-end">
+											<a href="#popUp" id="openPopUp" class="col-sm-5 col-md-3 btn btn-info">Votre avis</a>
+											<label for="review-list" class="col-sm-5 col-md-3 btn btn-success trigger-button">Lire les avis</label>
 										</div>
+									</li>
+									<!-- end of restaurant component -->
 
-									</div>
-									<div class="row justify-content-center justify-content-md-end">
-										<button type="button" class="col-sm-5 col-md-3 btn btn-info">Votre avis</button>
-										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
-									</div>
-								</li>
+									<li class="restaurant col-10 col-lg-5  align-self-center">
+										<div class="row">
 
-								<li class="restaurant col-10 col-lg-5  align-self-center">
-									<div class="row">
-
-										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
-											<a href="#">
-												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
-											</a>
-										</div>
-										
-										<div class="col-12 col-sm-4 col-md-5 align-self-center">
-												<h2>La mauvaise Franquette</h2>
-											<div class="distance">
-												<p>
-													Distance: 
-													<span>724m</span>
-												</p>
+											<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-2.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
+												</a>
 											</div>
-											<a href="#"><span>18</span> avis</a>
-										</div>
-
-										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
-											<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
-											<p><span>2,6</span>/5</p>
-										</div>
-
-									</div>
-									<div class="row justify-content-center justify-content-md-end">
-										<button type="button" class="col-sm-5 col-md-3 btn btn-info">Votre avis</button>
-										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
-									</div>
-								</li>
-
-								<li class="restaurant col-10 col-lg-5  align-self-center">
-									<div class="row">
-
-										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
-											<a href="#">
-												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
-											</a>
-										</div>
-										
-										<div class="col-12 col-sm-4 col-md-5 align-self-center">
-												<h2>La mauvaise Franquette</h2>
-											<div class="distance">
-												<p>
-													Distance: 
-													<span>724m</span>
-												</p>
+											
+											<div class="col-12 col-sm-4 col-md-5 align-self-center">
+												<h2>La cuisine de Papa</h2>
+												<div class="distance">
+													<p>
+														Distance: 
+														<span>350m</span>
+													</p>
+												</div>
+												<a href="#"><span>18</span> avis</a>
 											</div>
-											<a href="#"><span>18</span> avis</a>
-										</div>
 
-										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
-											<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
-											<p><span>2,6</span>/5</p>
-										</div>
-
-									</div>
-									<div class="row justify-content-center justify-content-md-end">
-										<button type="button" class="col-sm-5 col-md-3 btn btn-info">Votre avis</button>
-										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
-									</div>
-								</li>
-
-								<li class="restaurant col-10 col-lg-5  align-self-center">
-									<div class="row">
-
-										<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
-											<a href="#">
-												<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
-											</a>
-										</div>
-										
-										<div class="col-12 col-sm-4 col-md-5 align-self-center">
-												<h2>La mauvaise Franquette</h2>
-											<div class="distance">
-												<p>
-													Distance: 
-													<span>724m</span>
-												</p>
+											<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
+												<img src="ressources/pictures/green-star.png" class="img-fluid" alt="star-picture">
+												<p><span>4,3</span>/5</p>
 											</div>
-											<a href="#"><span>18</span> avis</a>
+
 										</div>
-
-										<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
-											<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
-											<p><span>2,6</span>/5</p>
+										<div class="row justify-content-center justify-content-md-end">
+											<a href="#popUp" id="openPopUp" class="col-sm-5 col-md-3 btn btn-info">Votre avis</a>
+											<label for="review-list" class="col-sm-5 col-md-3 btn btn-success trigger-button">Lire les avis</label>
 										</div>
+									</li>
 
-									</div>
-									<div class="row justify-content-center justify-content-md-end">
-										<button type="button" class="col-sm-5 col-md-3 btn btn-info">Votre avis</button>
-										<label for="navigation" class="col-sm-5 col-md-3 btn btn-success">Lire les avis</label>
-									</div>
-								</li>
+									<li class="restaurant col-10 col-lg-5  align-self-center">
+										<div class="row">
 
-							</ul>
-						</div><!--end of restaurant-div-->
+											<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-3.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
+												</a>
+											</div>
+											
+											<div class="col-12 col-sm-4 col-md-5 align-self-center">
+													<h2>La bonne Franquette</h2>
+												<div class="distance">
+													<p>
+														Distance: 
+														<span>632m</span>
+													</p>
+												</div>
+												<a href="#"><span>14</span> avis</a>
+											</div>
+
+											<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
+												<img src="ressources/pictures/green-star.png" class="img-fluid" alt="star-picture">
+												<p><span>4,1</span>/5</p>
+											</div>
+
+										</div>
+										<div class="row justify-content-center justify-content-md-end">
+											<a href="#popUp" id="openPopUp" class="col-sm-5 col-md-3 btn btn-info">Votre avis</a>
+											<label for="review-list" class="col-sm-5 col-md-3 btn btn-success trigger-button">Lire les avis</label>
+										</div>
+									</li>
+
+									<li class="restaurant col-10 col-lg-5  align-self-center">
+										<div class="row">
+
+											<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
+												</a>
+											</div>
+											
+											<div class="col-12 col-sm-4 col-md-5 align-self-center">
+													<h2>La mauvaise Franquette</h2>
+												<div class="distance">
+													<p>
+														Distance: 
+														<span>724m</span>
+													</p>
+												</div>
+												<a href="#"><span>18</span> avis</a>
+											</div>
+
+											<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
+												<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
+												<p><span>2,6</span>/5</p>
+											</div>
+
+										</div>
+										<div class="row justify-content-center justify-content-md-end">
+											<a href="#popUp" id="openPopUp" class="col-sm-5 col-md-3 btn btn-info">Votre avis</a>
+											<label for="review-list" class="col-sm-5 col-md-3 btn btn-success trigger-button">Lire les avis</label>
+										</div>
+									</li>
+
+									<li class="restaurant col-10 col-lg-5  align-self-center">
+										<div class="row">
+
+											<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
+												</a>
+											</div>
+											
+											<div class="col-12 col-sm-4 col-md-5 align-self-center">
+													<h2>La mauvaise Franquette</h2>
+												<div class="distance">
+													<p>
+														Distance: 
+														<span>724m</span>
+													</p>
+												</div>
+												<a href="#"><span>18</span> avis</a>
+											</div>
+
+											<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
+												<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
+												<p><span>2,6</span>/5</p>
+											</div>
+
+										</div>
+										<div class="row justify-content-center justify-content-md-end">
+											<a href="#popUp" id="openPopUp" class="col-sm-5 col-md-3 btn btn-info">Votre avis</a>
+											<label for="review-list" class="col-sm-5 col-md-3 btn btn-success trigger-button">Lire les avis</label>
+										</div>
+									</li>
+
+									<li class="restaurant col-10 col-lg-5  align-self-center">
+										<div class="row">
+
+											<div class="d-none d-sm-block col-sm-4 text-center align-self-center">
+												<a href="#">
+													<img src="ressources/pictures/restaurant-1.jpg" class="restaurant-picture rounded img-fluid" alt="restaurant-picture">
+												</a>
+											</div>
+											
+											<div class="col-12 col-sm-4 col-md-5 align-self-center">
+													<h2>La mauvaise Franquette</h2>
+												<div class="distance">
+													<p>
+														Distance: 
+														<span>724m</span>
+													</p>
+												</div>
+												<a href="#"><span>18</span> avis</a>
+											</div>
+
+											<div class="offset-4 col-4 offset-sm-0 col-md-3 order-3 text-center">	
+												<img src="ressources/pictures/red-star.png" class="img-fluid" alt="star-picture">
+												<p><span>2,6</span>/5</p>
+											</div>
+
+										</div>
+										<div class="row justify-content-center justify-content-md-end">
+											<a href="#popUp" id="openPopUp" class="col-sm-5 col-md-3 btn btn-info">Votre avis</a>
+											<label for="review-list" class="col-sm-5 col-md-3 btn btn-success trigger-button">Lire les avis</label>
+										</div>
+									</li>
+
+								</ul>
+							</div>
+							<!-- End of restaurants list component -->
+
+						</div>
+						<!-- End of restaurants section component -->
 
 					</div>
 				</section>
@@ -448,9 +446,7 @@
 			</div>
 		</div> <!--End of page container-->
 
-		
 		<script src="dist/scripts.min.js"></script>
-		
-		<script src="app/map/google_map.js"></script>
+		<script src="app/map/google_map.js"></script><!-- TO BE MERGED IN SCRIPTS -->
 	</body>
 </html>
