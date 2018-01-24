@@ -5869,68 +5869,62 @@ body {
   font-family: "Ubuntu", sans-serif;
   font-size: 1.3em; }
 
-.theme-colored {
-  color: #20cd74; }
-
-.test {
-  background-color: #e5e5e5; }
-
-#parameter-zone {
+nav {
   background-color: #20cd74;
   color: white;
   min-height: 100vh;
   padding-top: 6vh;
   padding-bottom: 6vh; }
   @media (min-width: 768px) {
-    #parameter-zone {
+    nav {
       font-size: 0.8em;
       padding-bottom: 4vh; } }
-  #parameter-zone h2 {
+  nav h2 {
     margin-top: 2vh;
     margin-bottom: 2vh; }
     @media (min-width: 768px) {
-      #parameter-zone h2 {
+      nav h2 {
         font-size: 1.1em; } }
     @media (min-width: 992px) {
-      #parameter-zone h2 {
+      nav h2 {
         font-size: 1.5em; } }
-  #parameter-zone label, #parameter-zone p {
-    font-size: 0.8em; }
-    @media (min-width: 992px) {
-      #parameter-zone label, #parameter-zone p {
-        font-size: 1.2em; } }
-  #parameter-zone span {
-    font-size: 0.6em; }
-  #parameter-zone form {
-    margin-top: 3vh;
-    align-items: center; }
-  #parameter-zone .nav-logo {
+  nav .nav-logo {
     height: 50px;
     width: 50px;
     border-radius: 50%; }
     @media (min-width: 768px) {
-      #parameter-zone .nav-logo {
+      nav .nav-logo {
         height: 100px;
         width: 100px; } }
     @media (min-width: 992px) {
-      #parameter-zone .nav-logo {
+      nav .nav-logo {
         height: 150px;
         width: 150px; } }
-  #parameter-zone .form-group {
+  nav form {
     margin-top: 3vh;
-    margin-bottom: 0px; }
-  #parameter-zone .btn-secondary {
-    margin-top: 10vh;
-    background-color: #20cd74;
-    color: white;
-    border-color: white; }
-    @media (min-width: 768px) {
-      #parameter-zone .btn-secondary {
-        margin-top: 5vh; } }
-  #parameter-zone .btn-secondary:hover {
-    background-color: white;
-    color: #20cd74;
-    border-color: #20cd74; }
+    align-items: center; }
+    nav form label, nav form p {
+      font-size: 0.8em; }
+      @media (min-width: 992px) {
+        nav form label, nav form p {
+          font-size: 1.2em; } }
+    nav form span {
+      font-size: 0.6em; }
+    nav form .form-group {
+      margin-top: 3vh;
+      margin-bottom: 0px; }
+    nav form .btn-secondary {
+      margin-top: 10vh;
+      background-color: #20cd74;
+      color: white;
+      border-color: white; }
+      @media (min-width: 768px) {
+        nav form .btn-secondary {
+          margin-top: 5vh; } }
+    nav form .btn-secondary:hover {
+      background-color: white;
+      color: #20cd74;
+      border-color: #20cd74; }
 
 .sliding-wrapper {
   overflow: hidden; }

@@ -1,4 +1,4 @@
-#parameter-zone {
+nav {
 	background-color: $light-green;
 	color: $white;
 	min-height: 100vh;
@@ -13,29 +13,14 @@
 	h2 {
 		margin-top: 2vh;
 		margin-bottom: 2vh;
+
 		@include media-breakpoint-up(md) {
             font-size: $title-md-font-size;
 		}
+
 		@include media-breakpoint-up(lg) {
             font-size: $title-lg-font-size;
         }
-	}
-
-	label, p {
-		font-size: $text-md-font-size;
-
-		@include media-breakpoint-up(lg) {
-			font-size: $text-lg-font-size;
-		}
-	}
-
-	span {
-		font-size: $unit-small-font-size;
-	}
-
-	form {
-		margin-top: 3vh;
-		align-items: center;
 	}
 
 	.nav-logo {
@@ -47,29 +32,49 @@
 		height: 100px;
 		width: 100px;
 		}
+
 		@include media-breakpoint-up(lg) {
 			height: 150px;
 			width: 150px;
 		}
 	}
 
-	.form-group {
+	form {
 		margin-top: 3vh;
-		margin-bottom: 0px;
-	}
+		align-items: center;
 
-	.btn-secondary {
-		margin-top: 10vh;
-		background-color: $light-green;
-		color: $white;
-		border-color: $white;
-		@include media-breakpoint-up(md) {
-			margin-top: 5vh;
+		label, p {
+			font-size: $text-md-font-size;
+	
+			@include media-breakpoint-up(lg) {
+				font-size: $text-lg-font-size;
+			}
 		}
-	}
-	.btn-secondary:hover {
-		background-color: $white;
-		color: $light-green;
-		border-color: $light-green;
+	
+		span {
+			font-size: $unit-small-font-size;
+		}
+	
+		.form-group {
+			margin-top: 3vh;
+			margin-bottom: 0px;
+		}
+	
+		.btn-secondary {
+			margin-top: 10vh;
+			background-color: $light-green;
+			color: $white;
+			border-color: $white;
+
+			@include media-breakpoint-up(md) {
+				margin-top: 5vh;
+			}
+		}
+		
+		.btn-secondary:hover {
+			background-color: $white;
+			color: $light-green;
+			border-color: $light-green;
+		}
 	}
 }

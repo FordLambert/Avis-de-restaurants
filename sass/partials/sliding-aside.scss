@@ -1,11 +1,11 @@
 .sliding-wrapper {
     overflow: hidden;
 
-    input[type="checkbox"]{
+    input[type="checkbox"] {
         display:none;
     }
 
-    input[type="checkbox"]:checked ~ aside{
+    input[type="checkbox"]:checked ~ aside {
         margin:0;
     }
     
@@ -13,7 +13,7 @@
         left:260px;
     }
 
-    input[type="checkbox"]:checked ~ section{
+    input[type="checkbox"]:checked ~ section {
         transform:translate3d(260px, 0, 0);
     }
 
@@ -24,7 +24,7 @@
         z-index: 1;
         position: absolute;
         background-color: $white;
-        top:0;
+        top:0; //--> This should be handled by React with the scroll position (what is 'top' for the user now ?)
         right:0;
         margin:0 -100vw 0 0;
         transition:all 200ms ease-in;
