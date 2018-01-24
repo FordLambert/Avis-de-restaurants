@@ -5885,7 +5885,7 @@ nav {
     @media (min-width: 768px) {
       nav h1 {
         font-size: 1.1em; } }
-    @media (min-width: 992px) {
+    @media (min-width: 1200px) {
       nav h1 {
         font-size: 1.5em; } }
   nav .nav-logo {
@@ -5896,7 +5896,7 @@ nav {
       nav .nav-logo {
         height: 100px;
         width: 100px; } }
-    @media (min-width: 992px) {
+    @media (min-width: 1200px) {
       nav .nav-logo {
         height: 150px;
         width: 150px; } }
@@ -5905,7 +5905,7 @@ nav {
     align-items: center; }
     nav form label, nav form p {
       font-size: 0.8em; }
-      @media (min-width: 992px) {
+      @media (min-width: 1200px) {
         nav form label, nav form p {
           font-size: 1.2em; } }
     nav form span {
@@ -6024,9 +6024,9 @@ nav {
   opacity: 1;
   top: 0; }
   .popup:target .popUpContainer {
-    top: 300px;
+    top: 200px;
     transition: top 0.50s ease; }
-    @media (max-width: 991px) {
+    @media (max-width: 1199px) {
       .popup:target .popUpContainer {
         top: 25px;
         transition: top 0.50s ease; } }

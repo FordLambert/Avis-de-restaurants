@@ -18,7 +18,7 @@ nav {
             font-size: $title-md-font-size;
 		}
 
-		@include media-breakpoint-up(lg) {
+		@include media-breakpoint-up(xl) {
             font-size: $title-lg-font-size;
         }
 	}
@@ -33,7 +33,7 @@ nav {
 		width: 100px;
 		}
 
-		@include media-breakpoint-up(lg) {
+		@include media-breakpoint-up(xl) {
 			height: 150px;
 			width: 150px;
 		}
@@ -46,7 +46,7 @@ nav {
 		label, p {
 			font-size: $text-md-font-size;
 	
-			@include media-breakpoint-up(lg) {
+			@include media-breakpoint-up(xl) {
 				font-size: $text-lg-font-size;
 			}
 		}
