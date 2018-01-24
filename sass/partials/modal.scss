@@ -1,23 +1,17 @@
 #openPopUp{
-  transition:background-color 0.15s linear;
-  -webkit-transition:background-color 0.15s linear;
-  -moz-transition:background-color 0.25s linear;
-  -o-transition:background-color 0.25s linear;
+  transition:background-color 0.20s linear;
 }
 
 .popup{
     position: fixed;
     top: -100vh;
     left: 0;
-    z-index: 9999999;
-    background: rgba(0,0,0, 0.75);
+    z-index: 10;
+    background: $black-transparent;
     width: 100vw;
     height: 100vh;
     opacity: 0;
-    -webkit-transition: opacity  0.35s ease;
-    -moz-transition: opacity 0.35s ease;
-    -o-transition: opacity 0.35s ease;
-    transition: opacity 0.35s ease;
+    transition: opacity 0.50s ease;
 
     .popUpContainer{
         width: 100%;
@@ -26,16 +20,10 @@
         left: 50%;
         top: -100vh;
         margin-left: -250px;
-        background-color: #ffffff;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        background-color: $white;
         border-radius: 2px;
-        z-index: 9999999;
-        -webkit-transition: top  0.35s ease;
-        -moz-transition: top 0.35s ease;
-        -o-transition: top 0.35s ease;
-        transition: top 0.35s ease;
+        z-index: 10;
+        transition: top 0.50s ease;
 
         @include media-breakpoint-down(md) {
             width: 90%;
@@ -43,12 +31,16 @@
             left: 5%;
             margin-left: 0;
         }
-    }
 
-    .closePopUp{
-        position: absolute;
-        top: 5%;
-        right: 5%;
+        .form-rating {
+            font-size: 2em;
+        }
+
+        .closePopUp{
+            position: absolute;
+            top: 2%;
+            right: 5%;
+        }
     }
 
     .closePopUpOutSide{
@@ -67,17 +59,11 @@
 
     .popUpContainer{
         top: 300px;
-        -webkit-transition: top  0.35s ease;
-        -moz-transition: top 0.35s ease;
-        -o-transition: top 0.35s ease;
-        transition: top 0.35s ease;
+        transition: top 0.50s ease;
 
         @include media-breakpoint-down(md) {
             top: 25px;
-            -webkit-transition: top  0.35s ease;
-            -moz-transition: top 0.35s ease;
-            -o-transition: top 0.35s ease;
-            transition: top 0.35s ease;
+            transition: top 0.50s ease;
         }
     }
 }

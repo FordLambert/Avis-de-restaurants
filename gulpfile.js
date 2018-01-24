@@ -20,7 +20,7 @@ const webpackStream = require('webpack-stream');
 gulp.task('sass', function(){
 	return gulp.src('sass/styles.scss')
     	.pipe(sass()) // Converts Sass to CSS with gulp-sass
-    	.pipe(gulp.dest('css'));
+    	.pipe(gulp.dest('dist'));
 });
 
 //Modules Es6 to regular minified Es5 file ->

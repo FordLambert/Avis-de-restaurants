@@ -5877,7 +5877,7 @@ body {
 
 #parameter-zone {
   background-color: #20cd74;
-  color: #ebf3f4;
+  color: white;
   min-height: 100vh;
   padding-top: 6vh;
   padding-bottom: 6vh; }
@@ -5922,13 +5922,13 @@ body {
   #parameter-zone .btn-secondary {
     margin-top: 10vh;
     background-color: #20cd74;
-    color: #ebf3f4;
-    border-color: #ebf3f4; }
+    color: white;
+    border-color: white; }
     @media (min-width: 768px) {
       #parameter-zone .btn-secondary {
         margin-top: 5vh; } }
   #parameter-zone .btn-secondary:hover {
-    background-color: #ebf3f4;
+    background-color: white;
     color: #20cd74;
     border-color: #20cd74; }
 
@@ -5948,7 +5948,7 @@ body {
   overflow: auto;
   z-index: 1;
   position: absolute;
-  background-color: #ebf3f4;
+  background-color: white;
   top: 0;
   right: 0;
   margin: 0 -100vw 0 0;
@@ -6007,24 +6007,18 @@ body {
   left: 2px; }
 
 #openPopUp {
-  transition: background-color 0.15s linear;
-  -webkit-transition: background-color 0.15s linear;
-  -moz-transition: background-color 0.25s linear;
-  -o-transition: background-color 0.25s linear; }
+  transition: background-color 0.20s linear; }
 
 .popup {
   position: fixed;
   top: -100vh;
   left: 0;
-  z-index: 9999999;
+  z-index: 10;
   background: rgba(0, 0, 0, 0.75);
   width: 100vw;
   height: 100vh;
   opacity: 0;
-  -webkit-transition: opacity  0.35s ease;
-  -moz-transition: opacity 0.35s ease;
-  -o-transition: opacity 0.35s ease;
-  transition: opacity 0.35s ease; }
+  transition: opacity 0.50s ease; }
   .popup .popUpContainer {
     width: 100%;
     max-width: 500px;
@@ -6033,26 +6027,22 @@ body {
     left: 50%;
     top: -100vh;
     margin-left: -250px;
-    background-color: #ffffff;
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    background-color: white;
     border-radius: 2px;
-    z-index: 9999999;
-    -webkit-transition: top  0.35s ease;
-    -moz-transition: top 0.35s ease;
-    -o-transition: top 0.35s ease;
-    transition: top 0.35s ease; }
+    z-index: 10;
+    transition: top 0.50s ease; }
     @media (max-width: 991px) {
       .popup .popUpContainer {
         width: 90%;
         max-width: none;
         left: 5%;
         margin-left: 0; } }
-  .popup .closePopUp {
-    position: absolute;
-    top: 5%;
-    right: 5%; }
+    .popup .popUpContainer .form-rating {
+      font-size: 2em; }
+    .popup .popUpContainer .closePopUp {
+      position: absolute;
+      top: 2%;
+      right: 5%; }
   .popup .closePopUpOutSide {
     position: absolute;
     left: 0;
@@ -6065,17 +6055,11 @@ body {
   top: 0; }
   .popup:target .popUpContainer {
     top: 300px;
-    -webkit-transition: top  0.35s ease;
-    -moz-transition: top 0.35s ease;
-    -o-transition: top 0.35s ease;
-    transition: top 0.35s ease; }
+    transition: top 0.50s ease; }
     @media (max-width: 991px) {
       .popup:target .popUpContainer {
         top: 25px;
-        -webkit-transition: top  0.35s ease;
-        -moz-transition: top 0.35s ease;
-        -o-transition: top 0.35s ease;
-        transition: top 0.35s ease; } }
+        transition: top 0.50s ease; } }
 
 .up-button {
   position: sticky;
