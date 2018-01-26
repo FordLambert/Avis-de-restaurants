@@ -28,7 +28,7 @@ gulp.task('compile-js', function() {
   return gulp.src('app/main.js')
     .pipe(webpackStream(require('./webpack.config.js')), webpack)
     .pipe(babel())
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(rename('scripts.min.js'))
     .pipe(gulp.dest('dist'));
 });
@@ -47,6 +47,7 @@ gulp.task('watch-js', function() {
 gulp.task('watch-all', function() {
   gulp.watch('app/*.js', ['compile-js']);
   gulp.watch('app/*/*.js', ['compile-js']);
+  gulp.watch('app/*/*/*.js', ['compile-js']);
   gulp.watch('sass/styles.scss', ['sass']);
   gulp.watch('sass/*/*.scss', ['sass']);
 });
