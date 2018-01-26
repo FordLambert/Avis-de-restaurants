@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {ModalButton} from './modal-button';
-import {SlidingAsideButton} from './sliding-aside-button';
+import {ModalButton} from './../independant/modal-button';
+import {SlidingAsideButton} from './../independant/sliding-aside-button';
 
 export class RestaurantButtons extends React.Component {
 

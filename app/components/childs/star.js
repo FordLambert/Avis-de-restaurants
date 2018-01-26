@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Picture} from './picture';
+import {Picture} from './../independant/picture';
 
 export class GlobalStar extends React.Component {
 

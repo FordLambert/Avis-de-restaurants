@@ -1,5 +1,6 @@
 import React from 'react';
-import {Picture} from './picture';
+
+import {Picture} from './../independant/picture';
 
 export class Thumbnail extends React.Component {
 
