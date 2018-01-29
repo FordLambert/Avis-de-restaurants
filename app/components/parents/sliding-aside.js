@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import {Review} from './../childs/review';
-
 
 export class SlidingAside extends React.Component {
     constructor(props) {
@@ -21,7 +19,7 @@ export class SlidingAside extends React.Component {
         this.addReview();
 
         return (
-            <div>
+            <div className={this.props.className}>
                 <input type="checkbox" id="review-list" />
                 <aside>
                     <div className="row justify-content-center">
@@ -33,8 +31,3 @@ export class SlidingAside extends React.Component {
         );
     }
 }
-
-ReactDOM.render(
-    <SlidingAside />,
-    document.getElementById('sliding-wrapper')
-);

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import {Restaurant} from './../childs/restaurant';
 
@@ -21,15 +20,11 @@ export class RestaurantList extends React.Component {
         this.addRestaurant();
 
         return (
-            <ul className={'row justify-content-center justify-content-lg-around'}>
-                {this.state.restaurantArray}
-            </ul>
+            <div className={this.props.className}>
+                <ul className={'row justify-content-center justify-content-lg-around'}>
+                    {this.state.restaurantArray}
+                </ul>
+            </div>
         );
     }
 }
-
-
-ReactDOM.render(
-    <RestaurantList />,
-    document.getElementById('restaurant-list')
-);

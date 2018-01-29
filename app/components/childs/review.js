@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {ProfilPicture} from './profil-picture';
-import {Rating} from './rating';
+import {StaticRating} from './static-rating';
 import {Paragraphe} from './../independant/paragraphe';
 
 export class Review extends React.Component {
@@ -26,9 +26,9 @@ export class Review extends React.Component {
 
                         <div className={'col-sm-11 rating-zone'}>
                             
-                            <Rating 
+                            <StaticRating 
                                 wrapperClass={'col-sm-12 rating'}
-                                starNumber={'4'}
+                                starNumber={4}
                             />
 
                             <Paragraphe

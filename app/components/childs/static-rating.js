@@ -2,7 +2,7 @@ import React from 'react';
 
 import StarRatingComponent from 'react-star-rating-component';
 
-export class Rating extends React.Component {
+export class StaticRating extends React.Component {
 
   render() {
     return (
