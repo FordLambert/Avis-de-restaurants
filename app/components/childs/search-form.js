@@ -1,6 +1,8 @@
 import React from 'react';
 
 import {Input} from './../independant/input';
+import {OrderSelect} from './../childs/order-select';
+import {Label} from './../independant/label';
 //import {RangeInput} from './../independant/range-input'
 
 export class SearchForm extends React.Component {
@@ -18,7 +20,9 @@ export class SearchForm extends React.Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Distance maximum :</label>
+                    <Label 
+                        labelContent={'Distance maximum:'}
+                    />
                     <input type="range" min="1" max="4" step="1" className="form-control" />
                 </div>
                 <div className="col-12">
@@ -31,7 +35,9 @@ export class SearchForm extends React.Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Note moyenne minimum :</label>
+                    <Label 
+                        labelContent={'Note moyenne minimum:'}
+                    />
                     <Input 
                         inputClass={'form-control'}
                         inputType={'range'}
@@ -51,11 +57,13 @@ export class SearchForm extends React.Component {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Triez par:</label>
-                    <select className="form-control" id="exampleFormControlSelect1">
-                        <option>Du plus proche au plus loin</option>
-                        <option>Du mieux au moins bien noté</option>
-                    </select>
+                    <Label 
+                        labelContent={'Trier par:'}
+                    />
+
+                    <OrderSelect 
+                        selectClass={'form-control'}
+                    />
                 </div>
 
                 <button type="button" className="btn btn-secondary">C'est parti !</button>
