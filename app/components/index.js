@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Navigation} from './parents/navigation';
-import {SectionBreaker} from './parents/section-breaker';
-import {ModalWindow} from './parents/modal-window';
-import {SlidingAside} from './parents/sliding-aside';
-import {RestaurantList} from './parents/restaurant-list';
+import {Navigation} from './navigation/navigation';
+//import {Map} from ....
+import {SectionBreaker} from './section-breaker/section-breaker';
+import {ModalWindow} from './modal-window/modal-window';
+import {SlidingAside} from './sliding-aside/sliding-aside';
+import {RestaurantList} from './restaurant-list/restaurant-list';
 
 class Index extends React.Component {
 
@@ -13,12 +14,8 @@ class Index extends React.Component {
         return (
             <div className="row">
 
-                <Navigation 
-                    navClass={'col-12 col-md-3 text-center'}
-                    wrapperClass={'row justify-content-center'}
-                />
+                <Navigation />
 				
-
 				<section className="col-12 col-md-9 main-section" id="main-section">
 					<div className="row">
 
@@ -28,24 +25,15 @@ class Index extends React.Component {
 							</script>
 						</div>
 
-                        <SectionBreaker 
-                            className={'section-breaker col-12 text-center'}
-                        />
+                        <SectionBreaker />
 
 						<div className="restaurant-section col-12">
 
-                            <ModalWindow 
-                                id={'popUp'}
-                                className={'popup'}
-                            />
+                            <ModalWindow />
 
-                            <SlidingAside 
-                                className={'sliding-wrapper'}
-                            />
+                            <SlidingAside />
 
-                            <RestaurantList 
-                                className={'restaurant-list'}
-                            />
+                            <RestaurantList />
 							
 						</div>
 

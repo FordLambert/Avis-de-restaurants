@@ -3,6 +3,9 @@
 const gulp = require('gulp');
 const rename = require('gulp-rename');
 
+//Check the code's syntax
+const eslint = require('gulp-eslint');
+
 //Minified the code
 const uglify = require('gulp-uglify');
 
@@ -33,6 +36,7 @@ gulp.task('compile-js', function() {
     .pipe(gulp.dest('dist'));
 });
 
+
 //Observers
 gulp.task('watch-sass', function() {
   gulp.watch('sass/styles.scss', ['sass']);
@@ -50,4 +54,17 @@ gulp.task('watch-all', function() {
   gulp.watch('app/*/*/*.js', ['compile-js']);
   gulp.watch('sass/styles.scss', ['sass']);
   gulp.watch('sass/*/*.scss', ['sass']);
+});
+
+gulp.task('eslint', function() {
+  return gulp.src('app/component/**/*.js')
+    .pipe(eslint({
+      baseConfig: {
+        "ecmaFeatures": {
+           "jsx": true
+         }
+      }
+    }))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });

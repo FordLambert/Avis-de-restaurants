@@ -19,7 +19,7 @@
 
 	.restaurant-section {
 		overflow-x: hidden;
-
+	
 		@include media-breakpoint-up(md) {
 			height: 60vh;
 			overflow-y: auto;
@@ -46,5 +46,4 @@
 			}
 		}
 	}
-	
 }
