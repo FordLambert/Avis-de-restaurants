@@ -21,7 +21,7 @@ export class ReviewRating extends React.Component {
         return (                
             <div className={'form-rating'}>
                 <StarRatingComponent 
-                    name="rate1" 
+                    name="review-rating"
                     starCount={5}
                     value={rating}
                     onStarClick={this.onStarClick.bind(this)}

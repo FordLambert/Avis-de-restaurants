@@ -32,7 +32,7 @@ export class Review extends React.Component {
                             <div className={'col-sm-11 rating-zone'}>
                                 
                                 <ReviewRating 
-                                    starNumber={this.state.reviewGrade}
+                                    grade={this.state.reviewGrade}
                                 />
 
                                 <Paragraphe
@@ -42,7 +42,7 @@ export class Review extends React.Component {
                             </div>
 
                             <Paragraphe 
-                                paragrapheClass={'col-sm-11'}
+                                className={'col-sm-11'}
                                 content ={this.state.reviewText}
                             />
 

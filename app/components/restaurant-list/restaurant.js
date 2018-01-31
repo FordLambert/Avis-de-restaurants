@@ -34,7 +34,7 @@ export class Restaurant extends React.Component {
   
     render() {
         return (
-            <li className={'restaurant col-10 col-lg-5  align-self-center'}>
+            <li className={'restaurant col-10 col-lg-5 align-self-center'}>
                 <div className="row">
                     <RestaurantThumbnail 
                         href={'#'}
@@ -52,7 +52,7 @@ export class Restaurant extends React.Component {
                         pictureName={this.state.starColor} 
                     />
                 </div>
-
+                
                 <RestaurantButtons />
             </li>
         );

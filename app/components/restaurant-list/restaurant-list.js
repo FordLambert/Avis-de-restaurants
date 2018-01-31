@@ -21,7 +21,7 @@ export class RestaurantList extends React.Component {
 
         return (
             <div className={'restaurant-list'}>
-                <ul className={'row justify-content-center justify-content-lg-around'}>
+                <ul className={'row justify-content-center justify-content-lg-start'}>
                     {this.state.restaurantArray}
                 </ul>
             </div>

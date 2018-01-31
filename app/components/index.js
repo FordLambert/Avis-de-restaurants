@@ -28,13 +28,9 @@ class Index extends React.Component {
                         <SectionBreaker />
 
 						<div className="restaurant-section col-12">
-
                             <ModalWindow />
-
                             <SlidingAside />
-
                             <RestaurantList />
-							
 						</div>
 
 					</div>

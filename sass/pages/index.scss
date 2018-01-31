@@ -11,7 +11,7 @@
 	}
 
 	.section-breaker {
-		box-shadow: 5px 5px 5px $grey;
+		border-bottom: 1px solid $light-grey;
 		p {
 			margin: 4px;
 		}
@@ -25,6 +25,25 @@
 			overflow-y: auto;
 		}
 
+		/*The following is here to hide the x scrollbar*/
+		.restaurant-section{
+			@include media-breakpoint-up(lg) {
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+		}
+		
+		.restaurant-list{
+			@include media-breakpoint-up(lg) {
+				width: 106%;
+				height: 100%;
+				overflow-y: scroll;
+				padding-right: 17px;
+			}
+		}
+		/*End of rules to hide the x scrollbar*/
+
 		ul {
 			padding: 0px;
 
@@ -32,9 +51,13 @@
 				list-style-type: none;
 				padding: 20px;
 				padding-bottom: 10px;
-				margin-top: 3vh;
-				margin-bottom: 3vh;
+				margin-top: 8.3vw;
 				border: 1px solid $light-grey;
+
+				@include media-breakpoint-up(lg) {
+					margin-left: 3.45vw;
+					margin-top: 3.45vw;
+				}
 	
 				a, label {
 					margin: 1vh;
@@ -47,3 +70,4 @@
 		}
 	}
 }
+

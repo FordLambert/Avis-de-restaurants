@@ -8,10 +8,10 @@ export class ReviewRating extends React.Component {
     return (
         <div className={'col-sm-12 rating'}>
             <StarRatingComponent
-                name="app4"
+                name="review-grade"
                 editing={false}
                 starCount={5}
-                value={this.props.starNumber}
+                value={this.props.grade}
             />
         </div>
     );

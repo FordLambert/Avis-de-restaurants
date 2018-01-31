@@ -11,14 +11,12 @@ export class ReviewForm extends React.Component {
     render() {
         return (
             <form className={'col-md-10'}>
-
                 <div className="form-group text-center">
                     <ReviewRating />
                 </div>
 
                 <div className="form-group">
                     <ReviewLabel />
-
                     <div>
                         <ReviewInput 
                             type={'date'}
@@ -38,11 +36,10 @@ export class ReviewForm extends React.Component {
                 <div className="form-group">
                     <ReviewTextArea />
                 </div>
-
+                
                 <div className="text-center">
                     <SubmitButton />
                 </div>
-
             </form>
         );
     }

@@ -6038,24 +6038,40 @@ nav {
         height: 35vh;
         width: 100%; } }
   .main-section .section-breaker {
-    box-shadow: 5px 5px 5px grey; }
+    border-bottom: 1px solid #dee4ed; }
     .main-section .section-breaker p {
       margin: 4px; }
   .main-section .restaurant-section {
-    overflow-x: hidden; }
+    overflow-x: hidden;
+    /*The following is here to hide the x scrollbar*/
+    /*End of rules to hide the x scrollbar*/ }
     @media (min-width: 768px) {
       .main-section .restaurant-section {
         height: 60vh;
         overflow-y: auto; } }
+    @media (min-width: 992px) {
+      .main-section .restaurant-section .restaurant-section {
+        height: 100%;
+        width: 100%;
+        overflow: hidden; } }
+    @media (min-width: 992px) {
+      .main-section .restaurant-section .restaurant-list {
+        width: 106%;
+        height: 100%;
+        overflow-y: scroll;
+        padding-right: 17px; } }
     .main-section .restaurant-section ul {
       padding: 0px; }
       .main-section .restaurant-section ul .restaurant {
         list-style-type: none;
         padding: 20px;
         padding-bottom: 10px;
-        margin-top: 3vh;
-        margin-bottom: 3vh;
+        margin-top: 8.3vw;
         border: 1px solid #dee4ed; }
+        @media (min-width: 992px) {
+          .main-section .restaurant-section ul .restaurant {
+            margin-left: 3.45vw;
+            margin-top: 3.45vw; } }
         .main-section .restaurant-section ul .restaurant a, .main-section .restaurant-section ul .restaurant label {
           margin: 1vh; }
         .main-section .restaurant-section ul .restaurant h2 {

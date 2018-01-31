@@ -4,7 +4,7 @@ export class Paragraphe extends React.Component {
 
     render() {
         return (
-            <p className={this.props.paragrapheClass}>{this.props.content}</p>
+            <p className={this.props.className}>{this.props.content}</p>
         );
     }
 }
