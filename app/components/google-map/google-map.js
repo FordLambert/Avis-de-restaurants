@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Pulser} from './loading-pulser';
+
 export class GoogleMap extends React.Component {
 
     componentDidMount() {
@@ -15,7 +17,7 @@ export class GoogleMap extends React.Component {
     render() {
         return (
             <div id={'map'}>
-                <p className={'text-center loading'}>Loading...</p>
+                <Pulser />
             </div>
         );
     }
