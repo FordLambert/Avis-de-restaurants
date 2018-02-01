@@ -1,41 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import {RestaurantStore} from './models/restaurant_store';
 import {Restaurant} from './models/restaurant';
-
-import {VisualDisplayManager} from './managers/visual_display_manager';
 import {JsonManager} from './managers/JSON_manager';
+import {MapManager} from './managers/map-manager';
 
 export class Conductor {
 	constructor() {
-		this.restaurantStore = new(RestaurantStore);
+		this.restaurantPrototype = Restaurant;
+		this.restaurantList = [];
 
-		this.visualDisplayManager = new(VisualDisplayManager);
-		this.jsonManager = new(JsonManager);
+		this.jsonManager = new JsonManager();
+		this.mapManager = new MapManager();
 	}
 
-	initialiseData() {
-
-		this.handleJsonUploads();
-		this.jsonManager.importJson('restaurant_list');
-		setTimeout(function () {
-			this.followingInstructions();
-		}.bind(this), 1000);
-	}
-
-	handleJsonUploads() {
-
-		let prototypeToUse = Restaurant;
-		let storeToUse = this.restaurantStore;
-		
-		document.addEventListener('upload-complete', function(event, newFile) {
-			this.jsonManager.convertAndStoreJson(newFile, prototypeToUse, storeToUse);
+	startApp() {
+		this.uploadJsonData();
+		document.addEventListener('list-updated', function(newFile) {
+			this.createMapWith(this.restaurantList);
 		}.bind(this));
-		
 	}
 
-	followingInstructions() {
-		this.visualDisplayManager.displayListInPage(this.restaurantStore.restaurantList);
+	uploadJsonData() {
+		this.jsonManager.importJson('restaurant_list');
+		document.addEventListener('upload-complete', function(newFile) {
+			this.jsonManager.convertAndStoreJson(newFile, this.restaurantPrototype, this.restaurantList);
+			this.createMapWith(this.restaurantList);
+		}.bind(this));
+	}
+
+	createMapWith(dataList) {
+		this.mapManager.initMap();
+		this.mapManager.addPlacesOnMap(dataList);
 	}
 };

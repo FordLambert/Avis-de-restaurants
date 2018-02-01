@@ -2,8 +2,8 @@ export class Restaurant {
 	constructor(array) {
 		this.name = array[0];
 		this.adress = array[1];
-		this.latitude = array[2];
-		this.longitude = array[3];
+		this.lat = array[2];
+		this.long = array[3];
 		this.ratings = array[4];
 	}
 
@@ -11,4 +11,3 @@ export class Restaurant {
 		this.ratings.push(rating);
 	}
 };
-
