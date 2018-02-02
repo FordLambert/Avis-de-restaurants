@@ -14,7 +14,7 @@ export class GlobalReview extends React.Component {
                     alt={'star-picture'} 
                 />
                 
-                <Paragraphe content={this.props.globalGrade + '/5'} />
+                <Paragraphe content={this.props.averageGrade + '/5'} />
 		    </div>
         );
     }

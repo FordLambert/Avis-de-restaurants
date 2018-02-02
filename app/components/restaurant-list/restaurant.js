@@ -38,17 +38,17 @@ export class Restaurant extends React.Component {
                 <div className="row">
                     <RestaurantThumbnail 
                         href={'#'}
-                        pictureName={this.state.pictureName}
+                        pictureName={this.props.pictureName}
                     />
 
                     <RestaurantDetails 
-                        restaurantName={this.state.restaurantName}
-                        distance={this.state.distance}
-                        reviewNumber={this.state.reviewNumber}
+                        restaurantName={this.props.restaurantName}
+                        distance={this.props.distance}
+                        reviewNumber={this.props.reviewNumber}
                     />
 
                     <GlobalReview 
-                        globalGrade={this.state.globalGrade}
+                        averageGrade={this.props.averageGrade}
                         pictureName={this.state.starColor} 
                     />
                 </div>

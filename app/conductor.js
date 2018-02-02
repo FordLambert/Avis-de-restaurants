@@ -12,10 +12,12 @@ export class Conductor {
 	}
 
 	startApp() {
-		this.uploadJsonData();
-		document.addEventListener('list-updated', function(newFile) {
-			this.createMapWith(this.restaurantList);
-		}.bind(this));
+		window.onload = function() {
+			this.uploadJsonData();
+			document.addEventListener('list-updated', function(newFile) {
+				this.createMapWith(this.restaurantList);
+			}.bind(this));
+		}.bind(this)
 	}
 
 	uploadJsonData() {
@@ -23,6 +25,10 @@ export class Conductor {
 		document.addEventListener('upload-complete', function(newFile) {
 			this.jsonManager.convertAndStoreJson(newFile, this.restaurantPrototype, this.restaurantList);
 			this.createMapWith(this.restaurantList);
+
+			const restaurantList = new CustomEvent('restaurantList-updated', {"detail": this.restaurantList});
+			document.dispatchEvent(restaurantList);
+
 		}.bind(this));
 	}
 
