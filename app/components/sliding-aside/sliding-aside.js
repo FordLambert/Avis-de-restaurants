@@ -3,6 +3,7 @@ import React from 'react';
 import {Review} from './review';
 import {SlidingLabel} from './sliding-label';
 import {SlidingInput} from './sliding-input';
+import {ReviewTitle} from './review-title';
 
 export class SlidingAside extends React.Component {
     constructor(props) {
@@ -43,10 +44,11 @@ export class SlidingAside extends React.Component {
 
                 <aside>
                     <div className="row justify-content-center">
-
+                    
+                        <ReviewTitle content={this.state.restaurantReviewed.name} />
                         <SlidingLabel />
                         {this.chooseRenderComponent()}
-                        
+            
                     </div>
                 </aside>
             </div>
