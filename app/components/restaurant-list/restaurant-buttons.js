@@ -9,7 +9,7 @@ export class RestaurantButtons extends React.Component {
         return (
             <div className={'row justify-content-center justify-content-md-end'}>
                 <ModalButton />
-                <SlidingAsideButton />
+                <SlidingAsideButton handleClick={this.props.handleClick} />
             </div>
         );
     }

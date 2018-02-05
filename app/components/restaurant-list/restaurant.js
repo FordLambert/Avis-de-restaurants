@@ -6,30 +6,22 @@ import {GlobalReview} from './global-review';
 import {RestaurantButtons} from './restaurant-buttons'
 
 export class Restaurant extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            'globalGrade': 4.2,
-            'starColor': '',
-            'pictureName': 'restaurant-1.png',
-            'restaurantName': 'Le Panda d\'Or',
-            'distance': '300m',
-            'reviewNumber': '14'
-        };
-    }
 
-    componentWillMount() {
-        let grade = this.state.globalGrade;
-
+    defineStarColor(grade) {
         if (grade >= 1 && grade <= 2) {
-            this.setState({starColor: 'red-star'});
+            return 'red-star';
         } else if (grade > 2 && grade < 4) {
-            this.setState({starColor: 'orange-star'});
+            return 'orange-star';
         } else if (grade >= 4 && grade <= 5) {
-            this.setState({starColor: 'green-star'});
+            return 'green-star';
         } else {
             console.log('Error: rating must be  between 1 and 5')
         }
+    }
+
+    handleClick(restaurant) {
+        const restaurantClicked = new CustomEvent('restaurant-clicked', {"detail": restaurant});
+		document.dispatchEvent(restaurantClicked);
     }
   
     render() {
@@ -49,11 +41,11 @@ export class Restaurant extends React.Component {
 
                     <GlobalReview 
                         averageGrade={this.props.averageGrade}
-                        pictureName={this.state.starColor} 
+                        pictureName={this.defineStarColor(this.props.averageGrade)} 
                     />
                 </div>
                 
-                <RestaurantButtons />
+                <RestaurantButtons handleClick={() => this.handleClick(this.props.restaurant)}/>
             </li>
         );
     }

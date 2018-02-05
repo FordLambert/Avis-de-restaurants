@@ -7,18 +7,35 @@ import {SlidingInput} from './sliding-input';
 export class SlidingAside extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {'reviewsArray': []};
+        this.state = {'restaurantReviewed': {}};
+        this.hadBeenMounted = false;
     }
 
-    addReview() {
-        for (let i = 0; i < 4; i++) {
-            let newReview = <Review />
-            this.state.reviewsArray.push(newReview);
+    addReviewOnClick() {
+        document.addEventListener('restaurant-clicked', function(restaurant) {
+            this.setState({restaurantReviewed: restaurant.detail})
+        }.bind(this));
+    }
+
+    chooseRenderComponent() {
+        if (this.hadBeenMounted) {
+            return this.state.restaurantReviewed.ratings.map(function(review, index){
+                return <Review key={index}
+                        reviewGrade={review.stars}
+                        reviewText={review.comment}
+                    />;
+                }.bind(this))
+        } else {
+            return <p>Rien du tout</p>
         }
+    }
+
+    componentDidMount() {
+        this.hadBeenMounted = true;
     }
   
     render() {
-        this.addReview();
+        this.addReviewOnClick();
 
         return (
             <div className={'sliding-wrapper'}>
@@ -28,7 +45,7 @@ export class SlidingAside extends React.Component {
                     <div className="row justify-content-center">
 
                         <SlidingLabel />
-                        {this.state.reviewsArray}
+                        {this.chooseRenderComponent()}
                         
                     </div>
                 </aside>

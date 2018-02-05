@@ -23,11 +23,10 @@ export class RestaurantList extends React.Component {
         let reviewNumber = restaurant.ratings.length;
         let total = 0;
 
-        //this.state.restaurantArray.map(function(restaurant){
-            restaurant.ratings.map(function(restaurantReview){
-                total += restaurantReview.stars;
-            });
-        //});
+        restaurant.ratings.map(function(restaurantReview){
+            total += restaurantReview.stars;
+        });
+
         return Math.round((total/reviewNumber) * 100) / 100;
     }
 
@@ -39,7 +38,8 @@ export class RestaurantList extends React.Component {
                         restaurantName={restaurant.name}
                         distance={'300m'}
                         reviewNumber={'14'}
-                        averageGrade={this.getAverageGrade(restaurant)} 
+                        averageGrade={this.getAverageGrade(restaurant)}
+                        restaurant={restaurant}
                     />;
                 }.bind(this))
         } else {

@@ -10,6 +10,10 @@ import {RestaurantList} from './restaurant-list/restaurant-list';
 
 class Index extends React.Component {
 
+    returnRestaurantClicked(restaurant) {
+
+    }
+
     render() {
         return (
             <div className="row">

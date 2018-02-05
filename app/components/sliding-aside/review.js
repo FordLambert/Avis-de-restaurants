@@ -10,9 +10,7 @@ export class Review extends React.Component {
         super(props);
         this.state = { 
             'pictureName': 'loutre.png',
-            'userName': 'Sophie44',
-            'reviewGrade': 4,
-            'reviewText': 'J\'ai trouvé ça suuuuper bon ! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed leo odio, efficitur eget sagittis eu, suscipit ac magna. Morbi quis sodales neque.'
+            'userName': 'Sophie44'
         };
     }
 
@@ -32,7 +30,7 @@ export class Review extends React.Component {
                             <div className={'col-sm-11 rating-zone'}>
                                 
                                 <ReviewRating 
-                                    grade={this.state.reviewGrade}
+                                    grade={this.props.reviewGrade}
                                 />
 
                                 <Paragraphe
@@ -43,7 +41,7 @@ export class Review extends React.Component {
 
                             <Paragraphe 
                                 className={'col-sm-11'}
-                                content ={this.state.reviewText}
+                                content ={this.props.reviewText}
                             />
 
                         </div>
