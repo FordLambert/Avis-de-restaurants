@@ -12,23 +12,9 @@ export class SearchForm extends React.Component {
 
                 <div className="form-group">
                     <SearchInput 
+                        id={'location-input'}
                         placeholder={'Entrez une ville'}
                     />
-                </div>
-
-                <div className="form-group">
-                    <SearchLabel 
-                        labelContent={'Distance maximum:'}
-                    />
-                    <input type="range" min="1" max="4" step="1" className="form-control" />
-                </div>
-                <div className="col-12">
-                    <div className="row justify-content-between">
-                        <p className="col-2">2<span>km</span></p>
-                        <p className="col-2">5<span>km</span></p>
-                        <p className="col-2">10<span>km</span></p>
-                        <p className="col-2">15<span>km</span></p>
-                    </div>
                 </div>
 
                 <div className="form-group">
@@ -36,10 +22,12 @@ export class SearchForm extends React.Component {
                         labelContent={'Note moyenne minimum:'}
                     />
                     <SearchInput 
-                        inputType={'range'}
+                        id={'grade-input'}
+                        type={'range'}
                         min={'1'}
                         max={'5'}
                         step={'1'}
+                        value={'1'}
                     />
                 </div>
                 <div className="col-12">
@@ -60,7 +48,7 @@ export class SearchForm extends React.Component {
                     <OrderSelect />
                 </div>
 
-                <button type="button" className="btn btn-secondary">C'est parti !</button>
+                <input type="submit" className="btn btn-secondary" value="C'est parti !"></input>
             </form>
         );
     }

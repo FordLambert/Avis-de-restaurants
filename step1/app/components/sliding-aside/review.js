@@ -9,8 +9,8 @@ export class Review extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            'pictureName': 'loutre.png',
-            'userName': 'Sophie44'
+            'pictureName': 'user.png',
+            'userName': 'utilisateur'
         };
     }
 

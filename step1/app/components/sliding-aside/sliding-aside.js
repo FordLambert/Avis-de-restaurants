@@ -24,8 +24,8 @@ export class SlidingAside extends React.Component {
                 return <Review key={index}
                         reviewGrade={review.stars}
                         reviewText={review.comment}
-                    />;
-                }.bind(this))
+                        />;
+            }.bind(this))
         } else {
             return <p>Rien du tout</p>
         }
