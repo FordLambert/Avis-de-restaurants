@@ -1,10 +1,7 @@
 import React from 'react';
 
-export class MainTitle extends React.Component {
+const MainTitle = () => (
+    <h1 className={'col-md-12'}>Cherchez un restaurant</h1>
+);
 
-  render() {
-    return (
-        <h1 className={'col-md-12'}>Cherchez un restaurant</h1>
-    );
-  }
-}
+export default MainTitle;

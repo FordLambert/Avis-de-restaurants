@@ -1,43 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Navigation} from './navigation/navigation';
+import Navigation from './navigation/navigation';
 import {GoogleMap} from './google-map/google-map';
 import {SectionBreaker} from './section-breaker/section-breaker';
 import {ReviewList} from './review-list/review-list';
 import {RestaurantList} from './restaurant-list/restaurant-list';
 
-class Index extends React.Component {
+const Index = () => (
+    <div className="row">
 
-    returnRestaurantClicked(restaurant) {
+        <Navigation />
 
-    }
-
-    render() {
-        return (
+        <section className="col-12 col-md-9 main-section" id="main-section">
             <div className="row">
 
-                <Navigation />
-				
-				<section className="col-12 col-md-9 main-section" id="main-section">
-					<div className="row">
+                <GoogleMap />
 
-                        <GoogleMap />
+                <SectionBreaker />
 
-                        <SectionBreaker />
+                <div className="restaurant-section col-12">
+                    <ReviewList />
+                    <RestaurantList />
+                </div>
 
-						<div className="restaurant-section col-12">
-                            <ReviewList />
-                            <RestaurantList />
-						</div>
+            </div>
+        </section>
 
-					</div>
-				</section>
-
-			</div>
-        );
-    }
-}
+    </div>
+);
 
 ReactDOM.render(
     <Index />,

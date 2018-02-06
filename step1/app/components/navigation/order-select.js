@@ -1,13 +1,10 @@
 import React from 'react';
 
-export class OrderSelect extends React.Component {
+const OrderSelect = () => (
+    <select className={'form-control'} id='order-option'>
+        <option value='distance'>Du plus proche au plus loin</option>
+        <option value='grade'>Du mieux au moins bien noté</option>
+    </select>
+);
 
-    render() {
-        return (
-            <select className={'form-control'} id='order-option'>
-                <option value='distance'>Du plus proche au plus loin</option>
-                <option value='grade'>Du mieux au moins bien noté</option>
-            </select>
-        );
-    }
-}
+export default OrderSelect;

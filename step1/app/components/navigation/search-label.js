@@ -1,12 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export class SearchLabel extends React.Component {
+const SearchLabel = ({htmlFor, className, content}) => (
+    <label htmlFor={htmlFor} className={className}>
+        {content}
+    </label>
+);
 
-    render() {
-        return (
-            <label htmlFor={this.props.htmlFor} className={this.props.labelClass}>
-                {this.props.labelContent}
-            </label>
-        );
-    }
-}
+SearchLabel.propTypes = {
+    htmlFor: PropTypes.string,
+    className: PropTypes.string,
+    content: PropTypes.string
+};
+
+export default SearchLabel;

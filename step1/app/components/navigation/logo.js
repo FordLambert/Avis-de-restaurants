@@ -1,12 +1,9 @@
 import React from 'react';
 
-export class Logo extends React.Component {
+const Logo = () => (
+    <a href={'#'}>
+        <img src={'ressources/pictures/logo.png'} className={'nav-logo'} alt={'logo-picture'}/>
+    </a>
+);
 
-    render() {
-        return (
-            <a href={'#'}>
-                <img src={'ressources/pictures/logo.png'} className={'nav-logo'} alt={'logo-picture'} />  
-            </a>
-        );
-    }
-}
+export default Logo;
