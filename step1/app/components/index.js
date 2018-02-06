@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import {Navigation} from './navigation/navigation';
 import {GoogleMap} from './google-map/google-map';
 import {SectionBreaker} from './section-breaker/section-breaker';
-import {SlidingAside} from './sliding-aside/sliding-aside';
+import {ReviewList} from './review-list/review-list';
 import {RestaurantList} from './restaurant-list/restaurant-list';
 
 class Index extends React.Component {
@@ -27,7 +27,7 @@ class Index extends React.Component {
                         <SectionBreaker />
 
 						<div className="restaurant-section col-12">
-                            <SlidingAside />
+                            <ReviewList />
                             <RestaurantList />
 						</div>
 

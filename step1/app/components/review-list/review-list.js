@@ -5,7 +5,7 @@ import {SlidingLabel} from './sliding-label';
 import {SlidingInput} from './sliding-input';
 import {ReviewTitle} from './review-title';
 
-export class SlidingAside extends React.Component {
+export class ReviewList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {'restaurantReviewed': {}};
