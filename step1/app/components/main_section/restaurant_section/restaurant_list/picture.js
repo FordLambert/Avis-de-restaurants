@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Picture = ({pictureName, className, alt}) => (
     <img
-        src={'ressources/pictures/' + pictureName}
+        src={'resources/pictures/' + pictureName}
         className={className}
         alt={alt}
     />

@@ -1,14 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export class ReviewTitle extends React.Component {
+const ReviewTitle = ({content}) => (
+    <div className={'text-center offset-2 col-5'}>
+        <h2>
+            {content}
+        </h2>
+    </div>
+);
 
-    render() {
-        return (
-            <div className={'text-center offset-2 col-5'}>	
-                <h2>
-                    {this.props.content}
-                </h2>
-            </div>
-        );
-    }
+ReviewTitle.propTypes = {
+    content: PropTypes.string
 }
+
+export default ReviewTitle;

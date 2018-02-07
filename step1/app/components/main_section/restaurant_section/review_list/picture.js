@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export class Picture extends React.Component {
+const Picture = ({pictureName, className, alt}) => (
+    <img src={'resources/pictures/' + pictureName} className={className} alt={alt} />
+);
 
-    render() {
-        let pictureName = 'ressources/pictures/' + this.props.pictureName;
-
-        return (	
-            <img src={pictureName} className={this.props.className} alt={this.props.alt} />
-        );
-    }
+Picture.propTypes = {
+    pictureName: PropTypes.string,
+    className: PropTypes.string,
+    alt: PropTypes.string
 }
+
+export default Picture;

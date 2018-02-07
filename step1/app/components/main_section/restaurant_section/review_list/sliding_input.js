@@ -1,13 +1,10 @@
 import React from 'react';
 
-export class SlidingInput extends React.Component {
+const SlidingInput = () => (
+    <input
+        id={'review-list'}
+        type={'checkbox'}
+    />
+);
 
-    render() {
-        return (
-            <input 
-                id={'review-list'}
-                type={'checkbox'} 
-            />
-        );
-    }
-}
+export default SlidingInput;

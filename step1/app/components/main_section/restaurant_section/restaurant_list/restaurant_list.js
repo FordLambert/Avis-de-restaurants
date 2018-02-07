@@ -9,7 +9,7 @@ export default class RestaurantList extends Component {
     }
 
     chooseRenderComponent(restaurantList) {
-        if (restaurantList.length > 0) {
+        if (restaurantList != undefined) {
             return restaurantList.map(function(restaurant, index){
                 return <Restaurant
                     key={index}

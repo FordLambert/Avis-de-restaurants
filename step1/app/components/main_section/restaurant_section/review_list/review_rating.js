@@ -1,19 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import StarRatingComponent from 'react-star-rating-component';
 
-export class ReviewRating extends React.Component {
+const ReviewRating = ({grade}) => (
+    <div className={'col-sm-12 rating'}>
+        <StarRatingComponent
+            name="review-grade"
+            editing={false}
+            starCount={5}
+            value={grade}
+        />
+    </div>
+);
 
-  render() {
-    return (
-        <div className={'col-sm-12 rating'}>
-            <StarRatingComponent
-                name="review-grade"
-                editing={false}
-                starCount={5}
-                value={this.props.grade}
-            />
-        </div>
-    );
-  }
+ReviewRating.propTypes = {
+    grade: PropTypes.number
 }
+
+export default ReviewRating;

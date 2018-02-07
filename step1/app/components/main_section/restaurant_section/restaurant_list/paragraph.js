@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Paragraphe = ({content}) => (
+const Paragraph = ({content}) => (
     <p>{content}</p>
 );
 
-Paragraphe.propTypes = {
+Paragraph.propTypes = {
     content: PropTypes.string
 }
 
-export default Paragraphe;
+export default Paragraph;

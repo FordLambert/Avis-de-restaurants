@@ -1,17 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
-import {ProfilPicture} from './profil-picture';
-import {ReviewRating} from './review-rating';
-import {Paragraphe} from './paragraphe';
+import ProfilePicture from './profile_picture';
+import ReviewRating from './review_rating';
+import Paragraph from './paragraph';
 
-export class Review extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { 
-            'pictureName': 'user.png',
-            'userName': 'utilisateur'
-        };
+export default class Review extends Component {
+
+    static propTypes = {
+        review: PropTypes.object
     }
 
     render() {
@@ -19,9 +17,9 @@ export class Review extends React.Component {
             <div className={'col-10 review'}>
                 <div className={'row justify-content-around'}>
 
-                    <ProfilPicture 
-                        pictureName={this.state.pictureName}
-                        userName={this.state.userName}
+                    <ProfilePicture
+                        pictureName={'user.png'}
+                        userName={'utilisateur'}
                     />
 
                     <div className={'col-12 col-sm-9'}>
@@ -30,18 +28,18 @@ export class Review extends React.Component {
                             <div className={'col-sm-11 rating-zone'}>
                                 
                                 <ReviewRating 
-                                    grade={this.props.reviewGrade}
+                                    grade={this.props.review.stars}
                                 />
 
-                                <Paragraphe
+                                <Paragraph
                                     className={'col-sm-12 rating-date'}
                                     content={'Date du repas: 17 janvier 2018'}
                                 />
                             </div>
 
-                            <Paragraphe 
+                            <Paragraph
                                 className={'col-sm-11'}
-                                content ={this.props.reviewText}
+                                content ={this.props.review.comment}
                             />
 
                         </div>

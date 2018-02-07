@@ -21,7 +21,7 @@ export default class MainSection extends Component {
             <section className="col-12 col-md-9 main-section" id="main-section">
                 <div className="row">
 
-                    <GoogleMap /> /*-- Will probably evolve in google map section --*/
+                    <GoogleMap />
 
                     <SectionBreaker
                         restaurantList={this.state.restaurantList.length}
