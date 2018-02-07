@@ -1,8 +1,8 @@
 import React from 'react';
 
-import SearchInput from './search-input';
-import OrderSelect from './order-select';
-import SearchLabel from './search-label';
+import SearchInput from './search_input';
+import OrderSelect from './order_select';
+import SearchLabel from './search_label';
 
 const SearchForm = () => (
     <form className="col-12 col-lg-10">
