@@ -31,10 +31,6 @@ export default class Review extends Component {
                                     grade={this.props.review.stars}
                                 />
 
-                                <Paragraph
-                                    className={'col-sm-12 rating-date'}
-                                    content={'Date du repas: 17 janvier 2018'}
-                                />
                             </div>
 
                             <Paragraph

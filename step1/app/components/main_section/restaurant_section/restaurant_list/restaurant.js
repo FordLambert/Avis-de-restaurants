@@ -35,6 +35,11 @@ export default class Restaurant extends Component {
         return Math.round((total/reviewNumber) * 100) / 100;
     }
 
+    getSplitAddress() {
+        let splitAddress = this.props.restaurant.address.split(',');
+        return splitAddress;
+    }
+
     handleClick = () => {
         this.props.handleOpenReview(this.props.restaurant);
     }
@@ -51,7 +56,7 @@ export default class Restaurant extends Component {
 
                     <RestaurantDetails 
                         restaurantName={this.props.restaurant.name}
-                        adresse={this.props.restaurant.adress}
+                        address={this.getSplitAddress()}
                         reviewNumber={this.props.restaurant.ratings.length}
                     />
 
