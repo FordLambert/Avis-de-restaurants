@@ -34,7 +34,11 @@ export default class Restaurant extends Component {
 
         return Math.round((total/reviewNumber) * 100) / 100;
     }
-  
+
+    handleClick = () => {
+        this.props.handleOpenReview(this.props.restaurant);
+    }
+
     render() {
         return (
             <li className={'restaurant col-10 col-lg-5 align-self-center'}>
@@ -61,7 +65,7 @@ export default class Restaurant extends Component {
                 <div className={'row justify-content-center justify-content-md-end'}>
 
                     <ReviewListButton
-                        openReview={this.props.openReview}
+                        handleOpenReview={this.handleClick}
                     />
 
                 </div>

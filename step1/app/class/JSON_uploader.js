@@ -1,4 +1,4 @@
-export class JsonConverter {
+export default class JsonUploader {
 	
 	importJson(fileName) {
 		let path = 'app/data/' + fileName + '.json';

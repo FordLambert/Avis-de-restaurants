@@ -1,4 +1,4 @@
-export class JsonConverter {
+export default class JsonConverter {
 
     convertAndStoreJson(object, prototype, objectList) {
         let jsonData = JSON.parse(object.detail);

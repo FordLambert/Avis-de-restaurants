@@ -1,4 +1,4 @@
-import {DataShaper} from './class/data_shaper';
+import DataShaper from './class/data_shaper';
 import './components/index';
 
 export const dataShaper = new(DataShaper);

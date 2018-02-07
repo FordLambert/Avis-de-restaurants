@@ -10,7 +10,7 @@ const SearchForm = () => (
         <div className="form-group">
             <SearchInput
                 id={'location-input'}
-                placeholder={'Entrez une ville'}
+                placeholder={'Entrer une ville'}
             />
         </div>
 

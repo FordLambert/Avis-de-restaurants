@@ -1,9 +1,9 @@
-import {RestaurantListCreator} from './restaurant_list_creator';
-import {JsonUploader} from './JSON_uploader';
-import {JsonConverter} from './JSON_converter';
+import RestaurantListCreator from './restaurant_list_creator';
+import JsonUploader from './JSON_uploader';
+import JsonConverter from './JSON_converter';
 //import {MapManager} from './map-manager';
 
-export class DataShaper {
+export default class DataShaper {
 	constructor() {
 		this.restaurantListCreator = new RestaurantListCreator();
 		this.jsonUploader = new JsonUploader();
@@ -14,20 +14,21 @@ export class DataShaper {
 	startApp() {
 		window.onload = function() {
 			this.uploadJsonData();
-			document.addEventListener('list-updated', function(newFile) {
-				//this.createMapWith(this.restaurantList);
-			}.bind(this));
 		}.bind(this)
-		this.watchForUpdates();
+		//this.watchForUpdates();
 	}
 
 	uploadJsonData() {
-		this.jsonManager.importJson('restaurant_list');
+		this.jsonUploader.importJson('restaurant_list');
 
 		document.addEventListener('upload-complete', function(newFile) {
-			this.jsonManager.convertAndStoreJson(newFile, this.restaurantPrototype, this.restaurantList);
-			this.createMapWith(this.restaurantList);
-			this.dispatchListUpdate(this.restaurantList);
+			this.jsonConverter.convertAndStoreJson(
+				newFile,
+				this.restaurantListCreator.restaurantPrototype,
+				this.restaurantListCreator.completeRestaurantList
+			);
+			//this.createMapWith(this.restaurantList);
+			this.restaurantListCreator.dispatchListUpdate(this.restaurantListCreator.completeRestaurantList);
 		}.bind(this));
 	}
 

@@ -13,7 +13,7 @@ export default class RestaurantList extends Component {
             return restaurantList.map(function(restaurant, index){
                 return <Restaurant
                     key={index}
-                    openReview={this.openReview(restaurant)}
+                    handleOpenReview={this.handleOpenReview}
                     restaurant={restaurant}
                 />;
             }.bind(this))
@@ -22,7 +22,7 @@ export default class RestaurantList extends Component {
         }
     }
 
-    openReview(restaurant) {
+    handleOpenReview = (restaurant) => {
         this.props.handleOpenReview(restaurant);
     }
 

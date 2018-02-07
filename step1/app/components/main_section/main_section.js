@@ -11,7 +11,7 @@ export default class MainSection extends Component {
     }
 
     componentWillMount() {
-        document.addEventListener('restaurantList-updated', function(restaurantList) {
+        document.addEventListener('new-list-created', function(restaurantList) {
             this.setState({restaurantList: restaurantList.detail});
         }.bind(this));
     }

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const RestaurantTitle = (restaurantName) => (
-    <h2>{restaurantName}</h2>
+const RestaurantTitle = ({content}) => (
+    <h2>{content}</h2>
 );
 
 RestaurantTitle.propTypes = {

@@ -14,8 +14,8 @@ export default class RestaurantSection extends Component {
         restaurantList: PropTypes.array
     }
 
-    handleOpenReview(restaurant) {
-        this.setState({currentRestaurantRatings: restaurant});
+    handleOpenReview = (restaurant) => {
+        this.setState({currentRestaurant: restaurant});
     }
 
     render() {

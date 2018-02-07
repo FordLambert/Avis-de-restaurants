@@ -12,13 +12,10 @@ export default class ReviewList extends Component {
         currentRestaurant: PropTypes.object
     }
 
-    chooseRenderComponent(restaurantRatings) {
-        if (restaurantRatings != undefined) {
-            return restaurantRatings.map(function(review, index){
-                return <Review key={index}
-                        reviewGrade={review.stars}
-                        reviewText={review.comment}
-                        />;
+    chooseRenderComponent(restaurant) {
+        if (restaurant.ratings != undefined) {
+            return restaurant.ratings.map(function(review, index){
+                return <Review key={index} review={review} />
             }.bind(this))
         } else {
             return <p>Rien du tout</p>
@@ -33,11 +30,10 @@ export default class ReviewList extends Component {
 
                 <aside>
                     <div className="row justify-content-center">
-                    
+
                         <ReviewTitle content={this.props.currentRestaurant.name} />
                         <SlidingLabel />
-                        {this.chooseRenderComponent(this.props.currentRestaurant.ratings)}
-            
+                        {this.chooseRenderComponent(this.props.currentRestaurant)}
                     </div>
                 </aside>
             </div>

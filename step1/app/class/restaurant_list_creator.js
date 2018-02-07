@@ -1,7 +1,7 @@
-import {Restaurant} from './restaurant';
+import Restaurant from './restaurant';
 
-export class RestaurantListCreator {
-	constructor(array) {
+export default class RestaurantListCreator {
+	constructor() {
 		this.completeRestaurantList = [];
 		this.customRestaurantList = [];
 		this.restaurantPrototype = Restaurant;
@@ -16,7 +16,7 @@ export class RestaurantListCreator {
     }
 
     createCustomList(requiredCity, requiredGrade, requiredOrder) {
-        this.restaurantList.map(function(restaurant){
+        this.completeRestaurantList.map(function(restaurant){
             let overallGrade = this.overallGradeCalculator(restaurant);
             
             if (overallGrade >= requiredGrade) {
