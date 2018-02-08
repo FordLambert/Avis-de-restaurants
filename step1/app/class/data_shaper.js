@@ -1,14 +1,12 @@
 import RestaurantListCreator from './restaurant_list_creator';
 import JsonUploader from './JSON_uploader';
 import JsonConverter from './JSON_converter';
-//import {MapManager} from './map-manager';
 
 export default class DataShaper {
 	constructor() {
 		this.restaurantListCreator = new RestaurantListCreator();
 		this.jsonUploader = new JsonUploader();
 		this.jsonConverter = new JsonConverter();
-		//this.mapManager = new MapManager();
 	}
 
 	startApp() {
@@ -41,11 +39,4 @@ export default class DataShaper {
 			this.applyFormOptions(requiredGrade);
 		}.bind(this));
 	}
-
-	/*
-	createMapWith(dataList) {
-		this.mapManager.initMap();
-		this.mapManager.addPlacesOnMap(dataList);
-	}
-	*/
 };

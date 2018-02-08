@@ -15,7 +15,7 @@ const RestaurantDetails = ({restaurantName, address, reviewNumber}) => (
 
 RestaurantDetails.propTypes = {
     restaurantName: PropTypes.string,
-    address: PropTypes.string,
+    address: PropTypes.array,
     reviewNumber: PropTypes.number
 }
 

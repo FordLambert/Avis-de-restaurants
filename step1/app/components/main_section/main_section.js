@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
-import {GoogleMap} from './google_map/google-map';
+import GoogleMap from './google_map/google_map';
+//import TestMap from './google_map/test-map';
+
 import SectionBreaker from './section_breaker/section_breaker';
 import RestaurantSection from './restaurant_section/restaurant_section';
 
@@ -24,7 +26,7 @@ export default class MainSection extends Component {
                     <GoogleMap />
 
                     <SectionBreaker
-                        restaurantList={this.state.restaurantList.length}
+                        restaurantNumber={this.state.restaurantList.length}
                     />
 
                     <RestaurantSection
