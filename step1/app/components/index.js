@@ -1,15 +1,39 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import Navigation from './navigation/navigation';
 import MainSection from './main_section/main_section';
 
-const Index = () => (
-    <div className="row">
-        <Navigation />
-        <MainSection />
-    </div>
-);
+class Index extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            city: '',
+            grade: 0,
+            order: ''
+        };
+    }
+
+    handleSubmit = (city, grade, order) => {
+        console.log('index will update now');
+        this.setState({ city: city, grade: grade, order: order })
+    }
+
+    render() {
+        return (
+            <div className="row">
+                <Navigation
+                    handleSubmit={this.handleSubmit}
+                />
+                <MainSection
+                    city={this.state.city}
+                    grade={this.state.grade}
+                    order={this.state.order}
+                />
+            </div>
+        );
+    }
+}
 
 ReactDOM.render(
     <Index />,

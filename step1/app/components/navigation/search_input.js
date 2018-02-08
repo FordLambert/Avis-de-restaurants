@@ -1,30 +1,33 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-const SearchInput = ({id, placeholder, type, min, max, step, value}) => (
-    <input
-        id={id}
-        className={'form-control'}
-        placeholder={placeholder}
-        type={type}
-        min={min}
-        max={max}
-        step={step}
-        defaultValue={value}
-    />
-);
+export default class SearchInput extends Component {
+    static propTypes = {
+        id: PropTypes.string,
+        placeholder: PropTypes.string,
+        type: PropTypes.string,
+        min: PropTypes.number,
+        max: PropTypes.number,
+        step: PropTypes.number,
+        defaultValue: PropTypes.number,
+        ref: PropTypes.string
+    }
 
-SearchInput.propTypes = {
-    id: PropTypes.string,
-    placeholder: PropTypes.string,
-    type: PropTypes.string,
-    min: PropTypes.number,
-    max: PropTypes.number,
-    step: PropTypes.number,
-    defaultValue: PropTypes.number
-};
-
-export default SearchInput;
-
+    render() {
+        return (
+            <input
+                id={this.props.id}
+                className={'form-control'}
+                placeholder={this.props.placeholder}
+                type={this.props.type}
+                min={this.props.min}
+                max={this.props.max}
+                step={this.props.step}
+                defaultValue={this.props.value}
+                ref='aaaaaaaaaaa'
+            />
+        );
+    }
+}
 
 

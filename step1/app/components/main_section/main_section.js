@@ -9,13 +9,53 @@ import RestaurantSection from './restaurant_section/restaurant_section';
 export default class MainSection extends Component {
     constructor(props) {
         super(props);
-        this.state = {'restaurantList': []};
+        this.state = {
+            'listComplete': [],
+            'listCustom': []
+        };
     }
 
     componentWillMount() {
         document.addEventListener('new-list-created', function(restaurantList) {
-            this.setState({restaurantList: restaurantList.detail});
+            this.setState({listComplete: restaurantList.detail});
+            this.setState({listCustom: restaurantList.detail});
         }.bind(this));
+    }
+
+
+    shouldComponentUpdate(nextProps) {
+        if (this.props.grade != nextProps.props.grade) {
+            console.log('Update !');
+            let newList = []
+
+            this.state.listComplete.map(function (restaurant) {
+                let overallGrade = this.overallGradeCalculator(restaurant);
+
+                if (overallGrade >= this.props.grade) {
+                    newList.push(restaurant);
+                }
+            }.bind(this));
+
+            this.setState({listCustom: newList});
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    updateList() {
+
+    }
+
+    overallGradeCalculator(restaurant) {
+        let numberOfReviews = restaurant.ratings.length;
+        let totalGrade = 0;
+
+        restaurant.ratings.map(function(restaurantReview){
+            totalGrade += restaurantReview.stars;
+        });
+
+        return Math.round((totalGrade/numberOfReviews) * 100) / 100;
     }
 
     render() {
@@ -26,11 +66,11 @@ export default class MainSection extends Component {
                     <GoogleMap />
 
                     <SectionBreaker
-                        restaurantNumber={this.state.restaurantList.length}
+                        restaurantNumber={this.state.listCustom.length}
                     />
 
                     <RestaurantSection
-                        restaurantList={this.state.restaurantList}
+                        restaurantList={this.state.listCustom}
                     />
 
                 </div>
