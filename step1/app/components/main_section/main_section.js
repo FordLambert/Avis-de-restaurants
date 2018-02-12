@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 
 import GoogleMap from './google_map/google_map';
-//import TestMap from './google_map/test-map';
-
 import SectionBreaker from './section_breaker/section_breaker';
 import RestaurantSection from './restaurant_section/restaurant_section';
 
@@ -23,15 +21,14 @@ export default class MainSection extends Component {
     }
 
 
-    shouldComponentUpdate(nextProps) {
-        if (this.props.grade != nextProps.props.grade) {
-            console.log('Update !');
+    componentWillReceiveProps(nextProps) {
+        if (this.props.grade != undefined) {
             let newList = []
 
             this.state.listComplete.map(function (restaurant) {
                 let overallGrade = this.overallGradeCalculator(restaurant);
 
-                if (overallGrade >= this.props.grade) {
+                if (overallGrade >= nextProps.grade) {
                     newList.push(restaurant);
                 }
             }.bind(this));
@@ -41,10 +38,6 @@ export default class MainSection extends Component {
         } else {
             return false;
         }
-    }
-
-    updateList() {
-
     }
 
     overallGradeCalculator(restaurant) {

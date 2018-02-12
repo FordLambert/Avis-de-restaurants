@@ -15,7 +15,6 @@ class Index extends Component {
     }
 
     handleSubmit = (city, grade, order) => {
-        console.log('index will update now');
         this.setState({ city: city, grade: grade, order: order })
     }
 
