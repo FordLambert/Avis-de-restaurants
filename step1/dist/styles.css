@@ -5999,8 +5999,13 @@ nav {
     nav form span {
       font-size: 0.6em; }
     nav form .form-group {
-      margin-top: 3vh;
+      margin-top: 5vh;
       margin-bottom: 0px; }
+    nav form .gradeLabel {
+      margin-bottom: 8vh; }
+      @media (min-width: 768px) {
+        nav form .gradeLabel {
+          margin-bottom: 3vh; } }
     nav form .btn-secondary {
       margin-top: 10vh;
       background-color: #20cd74;
@@ -6156,6 +6161,13 @@ nav {
 .input-range .input-range__track,
 .input-range .input-range__slider-container {
   transition: none; }
+
+.input-range .input-range__track--active {
+  background-color: #44e592; }
+
+.input-range .input-range__slider {
+  background-color: #44e592;
+  border-color: #44e592; }
 
 .main-section {
   min-height: 100vh; }

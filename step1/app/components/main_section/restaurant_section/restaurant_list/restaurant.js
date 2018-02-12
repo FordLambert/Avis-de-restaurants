@@ -49,21 +49,23 @@ export default class Restaurant extends Component {
             <li className={'restaurant col-10 col-lg-5 align-self-center'}>
                 <div className="row">
 
-                    <RestaurantThumbnail 
-                        href={'#'}
-                        pictureName={'restaurant-1.png'} /*--dynamic picture to be implemented--*/
-                    />
-
                     <RestaurantDetails 
                         restaurantName={this.props.restaurant.name}
                         address={this.getSplitAddress()}
                         reviewNumber={this.props.restaurant.ratings.length}
                     />
 
-                    <GlobalReview 
-                        averageGrade={this.getAverageGrade(this.props.restaurant)}
-                        pictureName={this.defineStarColor(this.getAverageGrade(this.props.restaurant))}
-                    />
+                    <div className={'row justify-content-sm-around'} >
+                        <RestaurantThumbnail
+                            href={'#'}
+                            pictureName={'restaurant-1.png'} /*--dynamic picture to be implemented--*/
+                        />
+
+                        <GlobalReview
+                            averageGrade={this.getAverageGrade(this.props.restaurant)}
+                            pictureName={this.defineStarColor(this.getAverageGrade(this.props.restaurant))}
+                        />
+                    </div>
 
                 </div>
 

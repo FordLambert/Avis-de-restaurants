@@ -17,4 +17,12 @@
     .input-range__slider-container {
         transition: none;
     }
+
+    .input-range__track--active {
+        background-color: #44e592;
+    }
+    .input-range__slider {
+        background-color: #44e592;
+        border-color: #44e592;
+    }
 }

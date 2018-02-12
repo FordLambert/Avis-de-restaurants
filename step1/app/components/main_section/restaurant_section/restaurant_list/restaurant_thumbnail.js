@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Picture from './picture';
 
 const RestaurantThumbnail = ({href, pictureName}) => (
-    <div className={'d-none d-sm-block col-sm-4 col-lg-6 col-xl-4 text-center order-lg-2 order-xl-1 align-self-center'}>
+    <div className={'d-none d-sm-block col-sm-4 text-center align-self-center'}>
         <a href={href}>
             <Picture
                 pictureName={pictureName}

@@ -9,7 +9,7 @@ class Index extends Component {
         super(props);
         this.state = {
             city: '',
-            grade: 0,
+            grade: {},
             order: ''
         };
     }

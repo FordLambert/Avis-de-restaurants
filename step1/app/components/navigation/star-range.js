@@ -11,17 +11,20 @@ export default class StarRange extends Component {
         };
     }
 
+    handleSubmit = () => {
+        this.props.handleSubmit(this.state.value);
+    }
+
     render() {
         return (
             <InputRange
-                id={'banane'}
                 maxValue={5}
                 minValue={0}
                 formatLabel={value => `${value}`}
                 value={this.state.value}
                 step={1}
                 onChange={value => this.setState({ value: value })}
-                onChangeComplete={value => console.log(value)}
+                onSubmit={this.handleSubmit.bind(this)}
             />
         );
     }

@@ -20,7 +20,6 @@ export default class MainSection extends Component {
         }.bind(this));
     }
 
-
     componentWillReceiveProps(nextProps) {
         if (this.props.grade != undefined) {
             let newList = []
@@ -28,7 +27,7 @@ export default class MainSection extends Component {
             this.state.listComplete.map(function (restaurant) {
                 let overallGrade = this.overallGradeCalculator(restaurant);
 
-                if (overallGrade >= nextProps.grade) {
+                if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
                     newList.push(restaurant);
                 }
             }.bind(this));
