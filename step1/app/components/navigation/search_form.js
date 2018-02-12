@@ -1,26 +1,36 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import StarRange from './star-range';
+import InputRange from 'react-input-range';
 //import OrderSelect from './order_select';
 import SearchLabel from './search_label';
 import ReviewListButton from "../main_section/restaurant_section/restaurant_list/review_list_button";
 
 export default class SearchForm extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            city: '',
+            grade: { min: 0, max: 5 },
+            order: ''
+        };
+    }
+
     static propTypes = {
         handleSubmit: PropTypes.func
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = () => {
         let city = this.refs.city.value;
-        let grade = this.refs.grade.value;
+        let grade = this.state.grade;
         let order = this.refs.order.value;
         this.props.handleSubmit(city, grade, order);
     }
 
     render() {
         return (
-            <form className="col-12 col-lg-10" onSubmit={this.handleSubmit.bind(this)}>
+            <form className="col-11 col-lg-10" onSubmit={this.handleSubmit.bind(this)} >
 
                 <div className="form-group">
                     <input
@@ -34,20 +44,18 @@ export default class SearchForm extends Component {
                 <div className="form-group">
 
                     <SearchLabel
-                        labelContent={'Note moyenne minimum:'}
+                        content={'Note moyenne minimum:'}
+                        className={'gradeLabel'}
                     />
-                    <input ref={'grade'} type={'range'} min={'1'} max={'5'} step={'1'}/>
-                    <StarRange />
+                    <InputRange
+                        maxValue={5}
+                        minValue={0}
+                        formatLabel={value => `${value}`}
+                        value={this.state.grade}
+                        step={1}
+                        onChange={value => this.setState({ grade: value })}
+                    />
 
-                </div>
-                <div className="col-12">
-                    <div className="row justify-content-between">
-                        <p className="col-2">1</p>
-                        <p className="col-2">2</p>
-                        <p className="col-2">3</p>
-                        <p className="col-2">4</p>
-                        <p className="col-2">5</p>
-                    </div>
                 </div>
 
                 <div className="form-group">
