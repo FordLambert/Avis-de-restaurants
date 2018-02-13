@@ -6183,13 +6183,15 @@ nav {
     .main-section .section-breaker p {
       margin: 4px; }
   .main-section .restaurant-section {
-    overflow-x: hidden; }
+    overflow-x: hidden;
+    /*The following is here to hide the x scrollbar*/
+    /*End of rules to hide the x scrollbar*/ }
     @media (min-width: 768px) {
       .main-section .restaurant-section {
         height: 60vh;
         overflow-y: auto; } }
     @media (min-width: 992px) {
-      .main-section .restaurant-section {
+      .main-section .restaurant-section .restaurant-section {
         height: 100%;
         width: 100%;
         overflow: hidden; } }
