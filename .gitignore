@@ -48,3 +48,6 @@ Temporary Items
 
 # NPM packages folder.
 node_modules/
+
+#WebStorm project config
+.idea/
