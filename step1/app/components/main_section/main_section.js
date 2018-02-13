@@ -13,11 +13,14 @@ export default class MainSection extends Component {
         };
     }
 
-    componentWillMount() {
-        document.addEventListener('new-list-created', function(restaurantList) {
-            this.setState({listComplete: restaurantList.detail});
-            this.setState({listCustom: restaurantList.detail});
-        }.bind(this));
+    handleMapLoad = () => {
+        fetch('./app/data/restaurant_list.json')
+            .then(result => {
+                return result.json();
+            }).then(data => {
+            this.setState({listComplete: data});
+            this.setState({listCustom: data});
+        });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -56,6 +59,7 @@ export default class MainSection extends Component {
 
                     <GoogleMap
                         restaurantList={this.state.listCustom}
+                        handleMapLoad={this.handleMapLoad}
                     />
 
                     <SectionBreaker

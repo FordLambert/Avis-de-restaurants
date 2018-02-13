@@ -28,7 +28,7 @@ gulp.task('compile-js', function() {
   return gulp.src('app/main.js')
     .pipe(webpackStream(require('./webpack.config.js')), webpack)
     .pipe(babel())
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(rename('scripts.min.js'))
     .pipe(gulp.dest('dist'));
 });

@@ -9,7 +9,8 @@ export default class Map extends Component {
     }
 
     static propTypes = {
-        list: PropTypes.array
+        list: PropTypes.array,
+        handleMapLoad: PropTypes.func
     }
 
     markers = [];
@@ -36,6 +37,7 @@ export default class Map extends Component {
 			this.addMarker(pos);
 			this.map.setCenter(pos);
 		}.bind(this));
+		this.props.handleMapLoad();
 	}
 
 	addMarker(position) {

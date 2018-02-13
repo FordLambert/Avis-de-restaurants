@@ -32,7 +32,7 @@ export default class ReviewList extends Component {
                 <aside>
                     <div className="row justify-content-center">
 
-                        <ReviewTitle content={this.props.currentRestaurant.name} />
+                        <ReviewTitle content={this.props.currentRestaurant.restaurantName} />
                         <CloseButton />
                         {this.chooseRenderComponent(this.props.currentRestaurant)}
                     </div>

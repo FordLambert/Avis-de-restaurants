@@ -64,7 +64,7 @@ export default class Restaurant extends Component {
                     />
 
                     <RestaurantDetails
-                        restaurantName={this.props.restaurant.name}
+                        restaurantName={this.props.restaurant.restaurantName}
                         address={this.getSplitAddress(',')}
                         reviewNumber={this.props.restaurant.ratings.length}
                     />

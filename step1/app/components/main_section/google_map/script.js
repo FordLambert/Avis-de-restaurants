@@ -10,7 +10,7 @@ export default class Script extends Component {
         wrapperId: PropTypes.string
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const script = document.createElement("script");
 
         script.src = this.props.src;
@@ -18,12 +18,12 @@ export default class Script extends Component {
         script.defer = this.props.defer;
         script.onload = this.props.callback;
 
-        document.getElementById('script-wrapper').appendChild(script);
+        document.body.appendChild(script);
     }
 
     render() {
         return (
-            <div id={'script-wrapper'}></div>
+            null
         );
     }
 }
