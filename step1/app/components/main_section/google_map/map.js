@@ -37,7 +37,11 @@ export default class Map extends Component {
 				lat: position.coords.latitude,
 				lng: position.coords.longitude
 			};
-			this.addMarker(pos);
+            const marker = new google.maps.Marker({
+                position: pos,
+                label: 'P',
+                map: this.map
+            });
 			this.map.setCenter(pos);
 		}.bind(this));
 		this.props.handleMapLoad();
@@ -57,7 +61,7 @@ export default class Map extends Component {
     }
 
     setMapOnAll(map) {
-        for (let i = 1; i < this.markers.length; i++) {
+        for (let i = 0; i < this.markers.length; i++) {
             this.markers[i].setMap(map);
         }
     }
