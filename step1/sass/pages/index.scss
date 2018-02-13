@@ -25,15 +25,12 @@
 			overflow-y: auto;
 		}
 
-		/*The following is here to hide the x scrollbar*/
-		.restaurant-section{
-			@include media-breakpoint-up(lg) {
-				height: 100%;
-				width: 100%;
-				overflow: hidden;
-			}
+		@include media-breakpoint-up(lg) {
+			height: 100%;
+			width: 100%;
+			overflow: hidden;
 		}
-		
+
 		.restaurant-list{
 			@include media-breakpoint-up(lg) {
 				width: 106%;
@@ -42,7 +39,6 @@
 				padding-right: 17px;
 			}
 		}
-		/*End of rules to hide the x scrollbar*/
 
 		ul {
 			padding: 0px;
@@ -65,6 +61,7 @@
 
 				h2 {
 					font-size: $title-md-font-size;
+					color: $light-green;
 				}
 			}
 		}

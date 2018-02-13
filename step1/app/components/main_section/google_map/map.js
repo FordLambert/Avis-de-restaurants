@@ -4,9 +4,15 @@ import PropTypes from "prop-types";
 import Script from './script';
 
 export default class Map extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     static propTypes = {
         list: PropTypes.array
     }
+
+    markers = [];
 
     mapOptions = {
     	src: 'https://maps.googleapis.com/maps/api/js',
@@ -22,7 +28,6 @@ export default class Map extends Component {
         	center: this.mapOptions.startPosition,
        		zoom: this.mapOptions.zoom
 		});
-
 		navigator.geolocation.getCurrentPosition(function(position) {
 			const pos = {
 				lat: position.coords.latitude,
@@ -38,15 +43,31 @@ export default class Map extends Component {
             position: position,
             map: this.map
         });
+        this.markers.push(marker);
 	}
+
+    deleteMarkers() {
+        this.setMapOnAll(null);
+        this.markers.splice(1);
+    }
+
+    setMapOnAll(map) {
+        for (let i = 1; i < this.markers.length; i++) {
+            this.markers[i].setMap(map);
+        }
+    }
 
 	componentWillUpdate() {
-		this.props.list.map(function (restaurant) {
-			let position = {lat: restaurant.lat, lng: restaurant.long};
-			this.addMarker(position);
-		}.bind(this));
+        this.deleteMarkers();
 	}
 
+	componentDidUpdate() {
+        this.props.list.map(function (restaurant) {
+            let position = {lat: restaurant.lat, lng: restaurant.long};
+            this.addMarker(position);
+        }.bind(this));
+    }
+    
     render() {
         return (
 			<Script

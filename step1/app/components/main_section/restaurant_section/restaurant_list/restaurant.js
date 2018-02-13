@@ -36,8 +36,7 @@ export default class Restaurant extends Component {
     }
 
     getSplitAddress() {
-        let splitAddress = this.props.restaurant.address.split(',');
-        return splitAddress;
+        return this.props.restaurant.address.split(',');
     }
 
     handleClick = () => {
@@ -56,6 +55,7 @@ export default class Restaurant extends Component {
                     />
 
                     <div className={'row justify-content-sm-around'} >
+
                         <RestaurantThumbnail
                             href={'#'}
                             pictureName={'restaurant-1.png'} /*--dynamic picture to be implemented--*/
@@ -65,10 +65,10 @@ export default class Restaurant extends Component {
                             averageGrade={this.getAverageGrade(this.props.restaurant)}
                             pictureName={this.defineStarColor(this.getAverageGrade(this.props.restaurant))}
                         />
+
                     </div>
 
                 </div>
-
                 <div className={'row justify-content-center justify-content-md-end'}>
 
                     <ReviewListButton

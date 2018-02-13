@@ -5989,7 +5989,7 @@ nav {
         height: 150px;
         width: 150px; } }
   nav form {
-    margin-top: 3vh;
+    margin-top: 5vh;
     align-items: center; }
     nav form label, nav form p {
       font-size: 0.8em; }
@@ -6183,15 +6183,13 @@ nav {
     .main-section .section-breaker p {
       margin: 4px; }
   .main-section .restaurant-section {
-    overflow-x: hidden;
-    /*The following is here to hide the x scrollbar*/
-    /*End of rules to hide the x scrollbar*/ }
+    overflow-x: hidden; }
     @media (min-width: 768px) {
       .main-section .restaurant-section {
         height: 60vh;
         overflow-y: auto; } }
     @media (min-width: 992px) {
-      .main-section .restaurant-section .restaurant-section {
+      .main-section .restaurant-section {
         height: 100%;
         width: 100%;
         overflow: hidden; } }
@@ -6216,4 +6214,5 @@ nav {
         .main-section .restaurant-section ul .restaurant a, .main-section .restaurant-section ul .restaurant label {
           margin: 1vh; }
         .main-section .restaurant-section ul .restaurant h2 {
-          font-size: 1.1em; }
+          font-size: 1.1em;
+          color: #20cd74; }

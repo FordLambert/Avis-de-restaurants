@@ -22,24 +22,14 @@ export default class SearchForm extends Component {
     }
 
     handleSubmit = () => {
-        let city = this.refs.city.value;
         let grade = this.state.grade;
         let order = this.refs.order.value;
-        this.props.handleSubmit(city, grade, order);
+        this.props.handleSubmit(grade, order);
     }
 
     render() {
         return (
             <form className="col-11 col-lg-10" onSubmit={this.handleSubmit.bind(this)} >
-
-                <div className="form-group">
-                    <input
-                        id={'location-input'}
-                        placeholder={'Entrer une ville'}
-                        className={'form-control'}
-                        ref={'city'}
-                    />
-                </div>
 
                 <div className="form-group">
 
