@@ -7,7 +7,7 @@ import SearchForm from './search_form';
 
 export default class Navigation extends Component {
     static propTypes = {
-        //handleSubmit: PropTypes.func
+        handleSubmit: PropTypes.func
     }
 
     handleSubmit = (city, grade, order) => {

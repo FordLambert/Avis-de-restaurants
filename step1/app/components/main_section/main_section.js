@@ -26,7 +26,6 @@ export default class MainSection extends Component {
 
             this.state.listComplete.map(function (restaurant) {
                 let overallGrade = this.overallGradeCalculator(restaurant);
-
                 if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
                     newList.push(restaurant);
                 }
@@ -55,7 +54,9 @@ export default class MainSection extends Component {
             <section className="col-12 col-md-9 main-section" id="main-section">
                 <div className="row">
 
-                    <GoogleMap />
+                    <GoogleMap
+                        restaurantList={this.state.listCustom}
+                    />
 
                     <SectionBreaker
                         restaurantNumber={this.state.listCustom.length}

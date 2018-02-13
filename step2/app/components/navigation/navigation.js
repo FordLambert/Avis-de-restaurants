@@ -1,18 +1,28 @@
-import React from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
-import {Logo} from './logo';
-import {MainTitle} from './main-title';
-import {SearchForm} from './search-form';
+import Logo from './logo';
+import MainTitle from './main_title';
+import SearchForm from './search_form';
 
-export class Navigation extends React.Component {
+export default class Navigation extends Component {
+    static propTypes = {
+        handleSubmit: PropTypes.func
+    }
+
+    handleSubmit = (city, grade, order) => {
+        this.props.handleSubmit(city, grade, order);
+    }
 
     render() {
         return (
-            <nav className={'col-12 col-md-3 text-center'}>  
+            <nav className={'col-12 col-md-3 text-center'}>
                 <div className={'row justify-content-center'}>
                     <Logo />
                     <MainTitle />
-                    <SearchForm />
+                    <SearchForm
+                        handleSubmit={this.handleSubmit}
+                    />
                 </div>
             </nav>
         );

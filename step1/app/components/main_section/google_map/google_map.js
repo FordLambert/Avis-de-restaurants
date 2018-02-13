@@ -1,16 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import Map from './map';
 import Pulser from './loading_pulser';
 
-export default class GoogleMap extends Component {
+const GoogleMap = ({restaurantList}) => (
+    <div id={'map'}>
+        <Pulser />
+        <Map
+            list={restaurantList}
+        />
+    </div>
+);
 
-    render() {
-        return (
-            <div id={'map'}>
-                <Pulser />
-                <Map />
-            </div>
-        );
-    }
+GoogleMap.propTypes = {
+    restaurantList: PropTypes.array
 }
+
+export default GoogleMap;

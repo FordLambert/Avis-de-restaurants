@@ -1,42 +1,35 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import {Navigation} from './navigation/navigation';
-import {GoogleMap} from './google-map/google-map';
-import {SectionBreaker} from './section-breaker/section-breaker';
-import {ModalWindow} from './modal-window/modal-window';
-import {SlidingAside} from './sliding-aside/sliding-aside';
-import {RestaurantList} from './restaurant-list/restaurant-list';
+import Navigation from './navigation/navigation';
+import MainSection from './main_section/main_section';
 
-class Index extends React.Component {
+class Index extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            city: '',
+            grade: {},
+            order: ''
+        };
+    }
 
-    returnRestaurantClicked(restaurant) {
-
+    handleSubmit = (city, grade, order) => {
+        this.setState({ city: city, grade: grade, order: order })
     }
 
     render() {
         return (
             <div className="row">
-
-                <Navigation />
-				
-				<section className="col-12 col-md-9 main-section" id="main-section">
-					<div className="row">
-
-                        <GoogleMap />
-
-                        <SectionBreaker />
-
-						<div className="restaurant-section col-12">
-                            <ModalWindow />
-                            <SlidingAside />
-                            <RestaurantList />
-						</div>
-
-					</div>
-				</section>
-
-			</div>
+                <Navigation
+                    handleSubmit={this.handleSubmit}
+                />
+                <MainSection
+                    city={this.state.city}
+                    grade={this.state.grade}
+                    order={this.state.order}
+                />
+            </div>
         );
     }
 }

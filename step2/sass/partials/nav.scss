@@ -56,8 +56,16 @@ nav {
 		}
 	
 		.form-group {
-			margin-top: 3vh;
+			margin-top: 5vh;
 			margin-bottom: 0px;
+		}
+
+		.gradeLabel {
+			margin-bottom: 8vh;
+
+			@include media-breakpoint-up(md) {
+				margin-bottom: 3vh;
+			}
 		}
 	
 		.btn-secondary {

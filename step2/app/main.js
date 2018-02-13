@@ -1,5 +1,5 @@
-import {Conductor} from './conductor';
+import DataShaper from './class/data_shaper';
 import './components/index';
 
-export const conductor = new(Conductor);
-conductor.startApp();
+export const dataShaper = new(DataShaper);
+dataShaper.startApp(); //it does not really start the application, it start the data transformation

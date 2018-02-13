@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
+import PropTypes from "prop-types";
 
 import Script from './script';
 
 export default class Map extends Component {
+    static propTypes = {
+        list: PropTypes.array
+    }
 
     mapOptions = {
     	src: 'https://maps.googleapis.com/maps/api/js',
@@ -24,12 +28,22 @@ export default class Map extends Component {
 				lat: position.coords.latitude,
 				lng: position.coords.longitude
 			};
-
-			const marker = new google.maps.Marker({
-				position: pos,
-				map: this.map
-			});
+			this.addMarker(pos);
 			this.map.setCenter(pos);
+		}.bind(this));
+	}
+
+	addMarker(position) {
+        const marker = new google.maps.Marker({
+            position: position,
+            map: this.map
+        });
+	}
+
+	componentWillUpdate() {
+		this.props.list.map(function (restaurant) {
+			let position = {lat: restaurant.lat, lng: restaurant.long};
+			this.addMarker(position);
 		}.bind(this));
 	}
 
