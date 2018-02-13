@@ -10,6 +10,7 @@ export default class Script extends Component {
         wrapperId: PropTypes.string
     }
 
+    //script is created here to avoid a new script creation on each render
     componentWillMount() {
         const script = document.createElement("script");
 

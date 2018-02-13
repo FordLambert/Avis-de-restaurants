@@ -12,7 +12,6 @@ const ProfilePicture = ({pictureName, userName}) => (
                     className={'user-thumbnail rounded-circle img-fluid'}
                     alt={'user-picture'}
                 />
-
                 <figcaption>{userName}</figcaption>
             </div>
         </div>
@@ -25,4 +24,3 @@ ProfilePicture.propTypes = {
 }
 
 export default ProfilePicture;
-

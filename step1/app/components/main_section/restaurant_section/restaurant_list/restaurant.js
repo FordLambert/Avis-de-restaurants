@@ -44,7 +44,7 @@ export default class Restaurant extends Component {
         return Math.round((total/reviewNumber) * 100) / 100;
     }
 
-    getSplitAddress(spliter) {
+    getSplitedAddress(spliter) {
         return this.props.restaurant.address.split(spliter);
     }
 
@@ -56,19 +56,16 @@ export default class Restaurant extends Component {
         return (
             <li className={'restaurant col-10 col-xl-5 align-self-center'}>
                 <div className="row justify-content-around">
-
                     <StreetPicture
                         lat={this.state.latitude}
                         long={this.state.longitude}
                         address={this.props.restaurant.address}
                     />
-
                     <RestaurantDetails
                         restaurantName={this.props.restaurant.restaurantName}
-                        address={this.getSplitAddress(',')}
+                        address={this.getSplitedAddress(',')}
                         reviewNumber={this.props.restaurant.ratings.length}
                     />
-
                     <div className={'col-12 col-sm-3 col-xl-2'}>
                         <div className={'row justify-content-center'}>
                             <GlobalReview
@@ -77,15 +74,11 @@ export default class Restaurant extends Component {
                             />
                         </div>
                     </div>
-
-
                 </div>
                 <div className={'row justify-content-center justify-content-md-end'}>
-
                     <ReviewListButton
                         handleOpenReview={this.handleClick}
                     />
-
                 </div>
             </li>
         );

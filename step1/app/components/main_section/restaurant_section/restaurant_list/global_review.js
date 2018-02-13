@@ -11,7 +11,6 @@ const GlobalReview = ({pictureName, averageGrade}) => (
             className={'img-fluid'}
             alt={'star-picture'}
         />
-
         <Paragraph
             dynamicContent={averageGrade}
             staticContent={'/5'}

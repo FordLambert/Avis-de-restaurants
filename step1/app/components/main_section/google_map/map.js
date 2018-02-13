@@ -13,6 +13,8 @@ export default class Map extends Component {
         handleMapLoad: PropTypes.func
     }
 
+
+    //-------Should the followings be in constructor ?
     markers = [];
 
     mapOptions = {
@@ -23,6 +25,7 @@ export default class Map extends Component {
 		startPosition: {lat: 45.5088400, lng: -73.5878100},
 		zoom: 12
 	}
+	//---------
 
     initMap = () => {
       	this.map = new google.maps.Map(document.getElementById('map'), {
@@ -48,7 +51,7 @@ export default class Map extends Component {
         this.markers.push(marker);
 	}
 
-    deleteMarkers() {
+    deleteOldMarkers() {
         this.setMapOnAll(null);
         this.markers.splice(1);
     }
@@ -60,7 +63,7 @@ export default class Map extends Component {
     }
 
 	componentWillUpdate() {
-        this.deleteMarkers();
+        this.deleteOldMarkers();
 	}
 
 	componentDidUpdate() {

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from "prop-types";
 
 import GoogleMap from './google_map/google_map';
 import SectionBreaker from './section_breaker/section_breaker';
@@ -13,6 +14,11 @@ export default class MainSection extends Component {
         };
     }
 
+    static propTypes = {
+        grade: PropTypes.object,
+        order: PropTypes.string
+    }
+
     handleMapLoad = () => {
         fetch('./app/data/restaurant_list.json')
             .then(result => {
@@ -24,21 +30,16 @@ export default class MainSection extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.grade != undefined) {
-            let newList = []
+        let newList = []
 
-            this.state.listComplete.map(function (restaurant) {
-                let overallGrade = this.overallGradeCalculator(restaurant);
-                if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
-                    newList.push(restaurant);
-                }
-            }.bind(this));
+        this.state.listComplete.map(function (restaurant) {
+            let overallGrade = this.overallGradeCalculator(restaurant);
+            if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
+                newList.push(restaurant);
+            }
+        }.bind(this));
 
-            this.setState({listCustom: newList});
-            return true;
-        } else {
-            return false;
-        }
+        this.setState({listCustom: newList});
     }
 
     overallGradeCalculator(restaurant) {
@@ -56,20 +57,16 @@ export default class MainSection extends Component {
         return (
             <section className="col-12 col-md-9 col-xl-10 main-section" id="main-section">
                 <div className="row">
-
                     <GoogleMap
                         restaurantList={this.state.listCustom}
                         handleMapLoad={this.handleMapLoad}
                     />
-
                     <SectionBreaker
                         restaurantNumber={this.state.listCustom.length}
                     />
-
                     <RestaurantSection
                         restaurantList={this.state.listCustom}
                     />
-
                 </div>
             </section>
         );

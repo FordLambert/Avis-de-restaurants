@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import InputRange from 'react-input-range';
-//import OrderSelect from './order_select';
 import SearchLabel from './search_label';
-import ReviewListButton from "../main_section/restaurant_section/restaurant_list/review_list_button";
 
 export default class SearchForm extends Component {
     constructor(props) {
@@ -21,7 +19,8 @@ export default class SearchForm extends Component {
         handleSubmit: PropTypes.func
     }
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         let grade = this.state.grade;
         let order = this.refs.order.value;
         this.props.handleSubmit(grade, order);
@@ -30,11 +29,9 @@ export default class SearchForm extends Component {
     render() {
         return (
             <form className="col-11 col-lg-10" onSubmit={this.handleSubmit.bind(this)} >
-
                 <div className="form-group">
-
                     <SearchLabel
-                        content={'Note moyenne minimum:'}
+                        content={'Note moyenne entre:'}
                         className={'gradeLabel'}
                     />
                     <InputRange
@@ -45,21 +42,17 @@ export default class SearchForm extends Component {
                         step={1}
                         onChange={value => this.setState({ grade: value })}
                     />
-
                 </div>
-
                 <div className="form-group">
                     <SearchLabel
                         content={'Trier par:'}
                     />
-
                     <select className={'form-control'} id='order-option' ref={'order'}>
                         <option value='distance'>Distance</option>
                         <option value='grade'>Note</option>
                     </select>
                 </div>
-
-                <input type="submit" className="btn btn-secondary" value="C'est parti !"></input>
+                <input type="submit" className="btn btn-secondary" value="C'est parti !" />
             </form>
         );
     }

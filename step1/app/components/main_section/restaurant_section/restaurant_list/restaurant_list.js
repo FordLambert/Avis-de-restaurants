@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import Restaurant from './restaurant';
+import Placeholder from './placeholder';
 
 export default class RestaurantList extends Component {
     static propTypes = {
@@ -19,7 +20,7 @@ export default class RestaurantList extends Component {
                 />;
             }.bind(this))
         } else {
-            return <p>Rien du tout</p>
+            return <Placeholder />
         }
     }
 

@@ -21,16 +21,13 @@ export default class RestaurantSection extends Component {
     render() {
         return (
             <div className="restaurant-section col-12">
-
                 <ReviewList
                     currentRestaurant={this.state.currentRestaurant}
                 />
-
                 <RestaurantList
                     restaurantList={this.props.restaurantList}
                     handleOpenReview={this.handleOpenReview}
                 />
-
             </div>
         );
     }
