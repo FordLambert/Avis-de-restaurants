@@ -51,7 +51,7 @@ export default class MainSection extends Component {
 
     render() {
         return (
-            <section className="col-12 col-md-9 main-section" id="main-section">
+            <section className="col-12 col-md-9 col-xl-10 main-section" id="main-section">
                 <div className="row">
 
                     <GoogleMap

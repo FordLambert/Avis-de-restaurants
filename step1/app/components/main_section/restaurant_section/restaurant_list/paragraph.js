@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Paragraph = ({content}) => (
-    <p>{content}</p>
+const Paragraph = ({spanClass, dynamicContent, staticContent}) => (
+    <p><span className={spanClass}>{dynamicContent}</span>{staticContent}</p>
 );
 
 Paragraph.propTypes = {
-    content: PropTypes.string
+    spanClass: PropTypes.string,
+    dynamicContent: PropTypes.number,
+    staticContent: PropTypes.string
 }
 
 export default Paragraph;

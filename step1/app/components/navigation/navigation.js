@@ -16,7 +16,7 @@ export default class Navigation extends Component {
 
     render() {
         return (
-            <nav className={'col-12 col-md-3 text-center'}>
+            <nav className={'col-12 col-md-3 col-xl-2 text-center'}>
                 <div className={'row justify-content-center'}>
                     <Logo />
                     <MainTitle />

@@ -6180,6 +6180,8 @@ nav {
 
 .main-section {
   min-height: 100vh; }
+  .main-section .themed-colored {
+    color: #20cd74; }
   .main-section #map {
     height: 80vh;
     width: 100%; }
@@ -6222,8 +6224,15 @@ nav {
           .main-section .restaurant-section ul .restaurant {
             margin-left: 3.45vw;
             margin-top: 3.45vw; } }
+        .main-section .restaurant-section ul .restaurant p {
+          font-size: 0.8em; }
         .main-section .restaurant-section ul .restaurant a, .main-section .restaurant-section ul .restaurant label {
           margin: 1vh; }
         .main-section .restaurant-section ul .restaurant h2 {
           font-size: 1.1em;
           color: #20cd74; }
+        .main-section .restaurant-section ul .restaurant .trigger-button {
+          margin-top: 3vh; }
+          @media (min-width: 768px) {
+            .main-section .restaurant-section ul .restaurant .trigger-button {
+              margin-top: 0vh; } }

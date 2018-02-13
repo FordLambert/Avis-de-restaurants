@@ -54,29 +54,30 @@ export default class Restaurant extends Component {
 
     render() {
         return (
-            <li className={'restaurant col-10 col-lg-5 align-self-center'}>
-                <div className="row">
+            <li className={'restaurant col-10 col-xl-5 align-self-center'}>
+                <div className="row justify-content-around">
 
-                    <RestaurantDetails 
+                    <StreetPicture
+                        lat={this.state.latitude}
+                        long={this.state.longitude}
+                        address={this.props.restaurant.address}
+                    />
+
+                    <RestaurantDetails
                         restaurantName={this.props.restaurant.name}
                         address={this.getSplitAddress(',')}
                         reviewNumber={this.props.restaurant.ratings.length}
                     />
 
-                    <div className={'row justify-content-sm-around'} >
-
-                        <StreetPicture
-                            lat={this.state.latitude}
-                            long={this.state.longitude}
-                            address={this.props.restaurant.address}
-                        />
-
-                        <GlobalReview
-                            averageGrade={this.getAverageGrade(this.props.restaurant)}
-                            pictureName={this.defineStarColor(this.getAverageGrade(this.props.restaurant))}
-                        />
-
+                    <div className={'col-12 col-sm-3 col-xl-2'}>
+                        <div className={'row justify-content-center'}>
+                            <GlobalReview
+                                averageGrade={this.getAverageGrade(this.props.restaurant)}
+                                pictureName={this.defineStarColor(this.getAverageGrade(this.props.restaurant))}
+                            />
+                        </div>
                     </div>
+
 
                 </div>
                 <div className={'row justify-content-center justify-content-md-end'}>
