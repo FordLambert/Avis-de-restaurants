@@ -67,15 +67,17 @@ export default class Map extends Component {
             this.addMarker(position);
         }.bind(this));
     }
-    
+
     render() {
         return (
-			<Script
-				src={this.mapOptions.src + this.mapOptions.apiKey}
-				async={this.mapOptions.async}
-				defer={this.mapOptions.defer}
-				callback={this.initMap}
-			/>
+        	<div>
+				<Script
+					src={this.mapOptions.src + this.mapOptions.apiKey}
+					async={this.mapOptions.async}
+					defer={this.mapOptions.defer}
+					callback={this.initMap}
+				/>
+			</div>
         );
     }
 }

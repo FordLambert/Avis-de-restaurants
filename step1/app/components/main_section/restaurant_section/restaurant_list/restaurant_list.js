@@ -13,6 +13,7 @@ export default class RestaurantList extends Component {
             return restaurantList.map(function(restaurant, index){
                 return <Restaurant
                     key={index}
+                    id={index}
                     handleOpenReview={this.handleOpenReview}
                     restaurant={restaurant}
                 />;

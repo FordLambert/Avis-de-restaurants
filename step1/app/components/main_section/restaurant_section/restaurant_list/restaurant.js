@@ -1,15 +1,24 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import RestaurantThumbnail from './restaurant_thumbnail';
+import StreetPicture from './street_picture';
 import RestaurantDetails from './restaurant_details';
 import GlobalReview from './global_review';
 import ReviewListButton from './review_list_button';
 
 export default class Restaurant extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            latitude: this.props.restaurant.lat.toString(),
+            longitude: this.props.restaurant.long.toString()
+        };
+    }
+
     static propTypes = {
         restaurant: PropTypes.object,
-        openReview: PropTypes.func
+        openReview: PropTypes.func,
+        id: PropTypes.number
     }
 
     defineStarColor(grade) {
@@ -20,7 +29,7 @@ export default class Restaurant extends Component {
         } else if (grade >= 4 && grade <= 5) {
             return 'green-star';
         } else {
-            console.log('Error: rating must be  between 1 and 5')
+            console.log('Error: rating must be  between 1 and 5');
         }
     }
 
@@ -35,8 +44,8 @@ export default class Restaurant extends Component {
         return Math.round((total/reviewNumber) * 100) / 100;
     }
 
-    getSplitAddress() {
-        return this.props.restaurant.address.split(',');
+    getSplitAddress(spliter) {
+        return this.props.restaurant.address.split(spliter);
     }
 
     handleClick = () => {
@@ -50,15 +59,16 @@ export default class Restaurant extends Component {
 
                     <RestaurantDetails 
                         restaurantName={this.props.restaurant.name}
-                        address={this.getSplitAddress()}
+                        address={this.getSplitAddress(',')}
                         reviewNumber={this.props.restaurant.ratings.length}
                     />
 
                     <div className={'row justify-content-sm-around'} >
 
-                        <RestaurantThumbnail
-                            href={'#'}
-                            pictureName={'restaurant-1.png'} /*--dynamic picture to be implemented--*/
+                        <StreetPicture
+                            lat={this.state.latitude}
+                            long={this.state.longitude}
+                            address={this.props.restaurant.address}
                         />
 
                         <GlobalReview
