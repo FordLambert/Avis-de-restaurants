@@ -54,8 +54,8 @@ export default class SearchForm extends Component {
                     />
 
                     <select className={'form-control'} id='order-option' ref={'order'}>
-                        <option value='distance'>Du plus proche au plus loin</option>
-                        <option value='grade'>Du mieux au moins bien noté</option>
+                        <option value='distance'>Distance</option>
+                        <option value='grade'>Note</option>
                     </select>
                 </div>
 

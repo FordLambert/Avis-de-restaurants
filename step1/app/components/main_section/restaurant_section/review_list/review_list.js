@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import Review from './review';
-import SlidingLabel from './sliding_label';
-import SlidingInput from './sliding_input';
+import CloseButton from './close-button';
+import ClosingInput from './closing_input';
 import ReviewTitle from './review_title';
+import Placeholder from './placeholder';
 
 export default class ReviewList extends Component {
 
@@ -18,7 +19,7 @@ export default class ReviewList extends Component {
                 return <Review key={index} review={review} />
             }.bind(this))
         } else {
-            return <p>Rien du tout</p>
+            return <Placeholder />
         }
     }
   
@@ -26,13 +27,13 @@ export default class ReviewList extends Component {
         return (
             <div className={'sliding-wrapper'}>
 
-                <SlidingInput />
+                <ClosingInput />
 
                 <aside>
                     <div className="row justify-content-center">
 
                         <ReviewTitle content={this.props.currentRestaurant.name} />
-                        <SlidingLabel />
+                        <CloseButton />
                         {this.chooseRenderComponent(this.props.currentRestaurant)}
                     </div>
                 </aside>
