@@ -1,0 +1,28 @@
+.input-range {
+    span {
+        color: $white;
+        font-size: 0.9em;
+    }
+
+    .input-range__label--min,
+    .input-range__label--max {
+        top: 120%;
+    }
+
+    .input-range__label--value {
+        top: -2.5em;
+    }
+
+    .input-range__track,
+    .input-range__slider-container {
+        transition: none;
+    }
+
+    .input-range__track--active {
+        background-color: #44e592;
+    }
+    .input-range__slider {
+        background-color: #44e592;
+        border-color: #44e592;
+    }
+}
