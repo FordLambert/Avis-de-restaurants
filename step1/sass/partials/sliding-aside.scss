@@ -17,7 +17,7 @@
         z-index: 1;
         position: absolute;
         background-color: $white;
-        top:0; //--> This should be handled by React with the scroll position (what is 'top' for the user now ?)
+        top:0;
         right:0;
         margin:0 -100vw 0 0;
         transition:all 200ms ease-in;
@@ -36,16 +36,30 @@
             border: 1px solid $light-green;
             margin-bottom: 2vh;
             padding: 10px;
+
+            figcaption {
+              font-size: $figcaption-small-font-size;
+
+              @include media-breakpoint-up(md) {
+                font-size: $text-md-font-size;
+              }
+            }
     
             .rating-zone {
-                margin-bottom: 2vh;
-        
-                .rating {
-                    border-bottom: 1px solid $black;
+                margin-top: 1vh;
+
+                @include media-breakpoint-up(md) {
+                    margin-top: -3vh;
                 }
-            
-                .rating-date {
-                    font-size: 0.8em;
+            }
+
+            p {
+                border-top: 1px solid $black;
+                padding-top: 2vh;
+                font-size: $text-md-font-size;
+
+                @include media-breakpoint-up(md) {
+                    font-size: $normal-font-size;
                 }
             }
         }

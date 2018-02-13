@@ -15,15 +15,15 @@ export default class Review extends Component {
     render() {
         return (
             <div className={'col-10 review'}>
-                <div className={'row justify-content-around'}>
+                <div className={'row'}>
 
                     <ProfilePicture
                         pictureName={'user.png'}
                         userName={'utilisateur'}
                     />
 
-                    <div className={'col-12 col-sm-9'}>
-                        <div className={'row justify-content-start'}>
+                    <div className={'col-12'}>
+                        <div className={'row justify-content-around'}>
 
                             <div className={'col-sm-11 rating-zone'}>
                                 
@@ -34,7 +34,7 @@ export default class Review extends Component {
                             </div>
 
                             <Paragraph
-                                className={'col-sm-11'}
+                                className={'col-11'}
                                 content ={this.props.review.comment}
                             />
 

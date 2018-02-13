@@ -5996,8 +5996,6 @@ nav {
       @media (min-width: 1200px) {
         nav form label, nav form p {
           font-size: 1.2em; } }
-    nav form span {
-      font-size: 0.6em; }
     nav form .form-group {
       margin-top: 5vh;
       margin-bottom: 0px; }
@@ -6050,12 +6048,23 @@ nav {
       border: 1px solid #20cd74;
       margin-bottom: 2vh;
       padding: 10px; }
+      .sliding-wrapper aside .review figcaption {
+        font-size: 0.6em; }
+        @media (min-width: 768px) {
+          .sliding-wrapper aside .review figcaption {
+            font-size: 0.8em; } }
       .sliding-wrapper aside .review .rating-zone {
-        margin-bottom: 2vh; }
-        .sliding-wrapper aside .review .rating-zone .rating {
-          border-bottom: 1px solid black; }
-        .sliding-wrapper aside .review .rating-zone .rating-date {
-          font-size: 0.8em; }
+        margin-top: 1vh; }
+        @media (min-width: 768px) {
+          .sliding-wrapper aside .review .rating-zone {
+            margin-top: -3vh; } }
+      .sliding-wrapper aside .review p {
+        border-top: 1px solid black;
+        padding-top: 2vh;
+        font-size: 0.8em; }
+        @media (min-width: 768px) {
+          .sliding-wrapper aside .review p {
+            font-size: 1em; } }
     .sliding-wrapper aside .close-button {
       z-index: 1;
       position: sticky;
