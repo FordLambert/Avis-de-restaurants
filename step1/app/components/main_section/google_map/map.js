@@ -6,26 +6,22 @@ import Script from './script';
 export default class Map extends Component {
     constructor(props) {
         super(props);
+
+        this.markers = [];
+        this.mapOptions = {
+            src: 'https://maps.googleapis.com/maps/api/js',
+            apiKey: '?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
+            async: true,
+            defer: true,
+            startPosition: {lat: 45.5088400, lng: -73.5878100},
+            zoom: 12
+        }
     }
 
     static propTypes = {
         list: PropTypes.array,
         handleMapLoad: PropTypes.func
     }
-
-
-    //-------Should the followings be in constructor ?
-    markers = [];
-
-    mapOptions = {
-    	src: 'https://maps.googleapis.com/maps/api/js',
-		apiKey: '?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
-		async: true,
-		defer: true,
-		startPosition: {lat: 45.5088400, lng: -73.5878100},
-		zoom: 12
-	}
-	//---------
 
     initMap = () => {
       	this.map = new google.maps.Map(document.getElementById('map'), {

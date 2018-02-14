@@ -6167,7 +6167,8 @@ nav {
 
 .input-range .input-range__label--min,
 .input-range .input-range__label--max {
-  top: 120%; }
+  /*top: 120%;*/
+  display: none; }
 
 .input-range .input-range__label--value {
   top: -2.5em; }
@@ -6176,12 +6177,15 @@ nav {
 .input-range .input-range__slider-container {
   transition: none; }
 
-.input-range .input-range__track--active {
+.input-range .input-range__track {
   background-color: #44e592; }
 
+.input-range .input-range__track--active {
+  background-color: white; }
+
 .input-range .input-range__slider {
-  background-color: #44e592;
-  border-color: #44e592; }
+  background-color: white;
+  border-color: white; }
 
 .main-section {
   min-height: 100vh; }
