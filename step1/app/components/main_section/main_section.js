@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
 import GoogleMap from './google_map/google_map';
-import SectionBreaker from './section_breaker/section_breaker';
+import SearchResultFound from './search_results_found/search_resutl_found';
 import RestaurantSection from './restaurant_section/restaurant_section';
 
 export default class MainSection extends Component {
@@ -61,7 +61,7 @@ export default class MainSection extends Component {
                         restaurantList={this.state.listCustom}
                         handleMapLoad={this.handleMapLoad}
                     />
-                    <SectionBreaker
+                    <SearchResultFound
                         restaurantNumber={this.state.listCustom.length}
                     />
                     <RestaurantSection
