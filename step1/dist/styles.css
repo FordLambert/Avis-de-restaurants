@@ -6021,8 +6021,6 @@ nav {
   overflow: hidden; }
   .sliding-wrapper input[type="checkbox"] {
     display: none; }
-  .sliding-wrapper input[type="checkbox"]:checked ~ aside {
-    margin: 0; }
   .sliding-wrapper aside {
     width: 100vw;
     max-height: 100vh;
@@ -6076,7 +6074,10 @@ nav {
       top: 2px;
       right: 0px; }
 
-.trigger-button {
+#review-list:target aside {
+  margin: 0; }
+
+.open-review {
   transition: all 200ms ease-in;
   z-index: 0; }
 

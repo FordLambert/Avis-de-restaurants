@@ -8,6 +8,10 @@ export default class Map extends Component {
         super(props);
 
         this.markers = [];
+        this.infoWindows = [];
+        this.defaultMarkerIcon = './resources/pictures/marker-red.png';
+        this.geolocalisationMarkerIcon = './resources/pictures/marker-blue.png';
+        this.clickedMarkerIcon = './resources/pictures/marker-blue.png';
         this.mapOptions = {
             src: 'https://maps.googleapis.com/maps/api/js',
             apiKey: '?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
@@ -35,20 +39,50 @@ export default class Map extends Component {
 			};
             const marker = new google.maps.Marker({
                 position: pos,
-                label: 'P',
+                icon: this.geolocalisationMarkerIcon,
                 map: this.map
             });
+
 			this.map.setCenter(pos);
 		}.bind(this));
 		this.props.handleMapLoad();
 	}
 
-	addMarker(position) {
+	closeInfoWindows() {
+        this.infoWindows.map(function (infoWindow) {
+            infoWindow.close();
+        }.bind(this));
+    }
+
+	handleMarkerClick = (marker, linkedObject, infoWindow) => {
+        this.markers.map(function (marker) {
+            marker.setIcon(this.defaultMarkerIcon);
+            this.closeInfoWindows();
+        }.bind(this));
+        infoWindow.open(this.map, marker);
+
+        console.log('clic sur:');
+        console.log(linkedObject);
+
+        marker.setIcon(this.clickedMarkerIcon);
+    }
+
+	addMarker(position, restaurant) {
         const marker = new google.maps.Marker({
             position: position,
+            icon: this.defaultMarkerIcon,
             map: this.map
         });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: restaurant.restaurantName
+        });
+
+        marker.addListener('click', function() {
+            this.handleMarkerClick(marker, restaurant, infoWindow)
+        }.bind(this));
         this.markers.push(marker);
+        this.infoWindows.push(infoWindow);
 	}
 
     deleteOldMarkers() {
@@ -69,7 +103,7 @@ export default class Map extends Component {
 	componentDidUpdate() {
         this.props.list.map(function (restaurant) {
             let position = {lat: restaurant.lat, lng: restaurant.long};
-            this.addMarker(position);
+            this.addMarker(position, restaurant);
         }.bind(this));
     }
 

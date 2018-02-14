@@ -76,9 +76,13 @@ export default class Restaurant extends Component {
                     </div>
                 </div>
                 <div className={'row justify-content-center justify-content-md-end'}>
-                    <ReviewListButton
-                        handleOpenReview={this.handleClick}
-                    />
+                    <a
+                        href={'#review-list'}
+                        id={'openReviewList'}
+                        className={'col-sm-5 col-xl-3 btn btn-success open-review'}
+                        onClick={this.handleClick}>
+                        Try !
+                    </a>
                 </div>
             </li>
         );

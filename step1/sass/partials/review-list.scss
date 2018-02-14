@@ -5,10 +5,6 @@
         display:none;
     }
 
-    input[type="checkbox"]:checked ~ aside {
-        margin:0;
-    }
-
     aside {
         width:100vw;
         max-height: 100vh;
@@ -79,7 +75,14 @@
     }
 }
 
-.trigger-button {
+#review-list:target {
+
+    aside {
+        margin: 0;
+    }
+}
+
+.open-review {
     transition:all 200ms ease-in;
     z-index:0;
 }

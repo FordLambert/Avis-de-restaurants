@@ -25,12 +25,14 @@ export default class ReviewList extends Component {
   
     render() {
         return (
-            <div className={'sliding-wrapper'}>
+            <div className={'sliding-wrapper'} id={'review-list'}>
                 <ClosingInput />
                 <aside>
                     <div className="row justify-content-center">
                         <ReviewTitle content={this.props.currentRestaurant.restaurantName} />
-                        <CloseButton />
+                        <a href={'#!'} className={'offset-sm-1 col-3 col-sm-2 btn btn-info close-button'}>
+                            Fermer
+                        </a>
                         {this.chooseRenderComponent(this.props.currentRestaurant)}
                     </div>
                 </aside>
