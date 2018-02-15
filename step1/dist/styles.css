@@ -6017,11 +6017,11 @@ nav {
       color: #20cd74;
       border-color: #20cd74; }
 
-.sliding-wrapper {
+#review-list {
   overflow: hidden; }
-  .sliding-wrapper input[type="checkbox"] {
+  #review-list input[type="checkbox"] {
     display: none; }
-  .sliding-wrapper aside {
+  #review-list aside {
     width: 100vw;
     max-height: 100vh;
     overflow-y: auto;
@@ -6035,44 +6035,46 @@ nav {
     transition: all 200ms ease-in;
     min-height: 100%; }
     @media (min-width: 768px) {
-      .sliding-wrapper aside {
+      #review-list aside {
         margin: 0 -75vw 0 0;
         width: 75vw;
         max-height: 60vh; } }
     @media (min-width: 992px) {
-      .sliding-wrapper aside {
+      #review-list aside {
         margin: 0 -37.5vw 0 0;
         width: 37.5vw; } }
     @media (min-width: 1200px) {
-      .sliding-wrapper aside {
+      #review-list aside {
         margin: 0 -41.6vw 0 0;
         width: 41.6vw; } }
-    .sliding-wrapper aside .review {
+    #review-list aside .review {
       border: 1px solid #20cd74;
       margin-bottom: 2vh;
       padding: 10px; }
-      .sliding-wrapper aside .review figcaption {
+      #review-list aside .review figcaption {
         font-size: 0.6em; }
         @media (min-width: 768px) {
-          .sliding-wrapper aside .review figcaption {
+          #review-list aside .review figcaption {
             font-size: 0.8em; } }
-      .sliding-wrapper aside .review .rating-zone {
+      #review-list aside .review .rating-zone {
         margin-top: 1vh; }
         @media (min-width: 768px) {
-          .sliding-wrapper aside .review .rating-zone {
+          #review-list aside .review .rating-zone {
             margin-top: -3vh; } }
-      .sliding-wrapper aside .review p {
+      #review-list aside .review p {
         border-top: 1px solid black;
         padding-top: 2vh;
         font-size: 0.8em; }
         @media (min-width: 768px) {
-          .sliding-wrapper aside .review p {
+          #review-list aside .review p {
             font-size: 1em; } }
-    .sliding-wrapper aside .close-button {
+    #review-list aside .closing-button {
       z-index: 1;
       position: sticky;
       top: 2px;
-      right: 0px; }
+      right: 0px;
+      text-decoration: none;
+      align-self: center; }
 
 #review-list:target aside {
   margin: 0; }

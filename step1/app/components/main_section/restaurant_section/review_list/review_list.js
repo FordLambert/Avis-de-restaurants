@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import Review from './review';
-import CloseButton from './close-button';
+import ClosingButton from './closing_button';
 import ClosingInput from './closing_input';
 import ReviewTitle from './review_title';
 import Placeholder from './placeholder';
@@ -25,14 +25,12 @@ export default class ReviewList extends Component {
   
     render() {
         return (
-            <div className={'sliding-wrapper'} id={'review-list'}>
+            <div id={'review-list'}>
                 <ClosingInput />
                 <aside>
                     <div className="row justify-content-center">
                         <ReviewTitle content={this.props.currentRestaurant.restaurantName} />
-                        <a href={'#!'} className={'offset-sm-1 col-3 col-sm-2 btn btn-info close-button'}>
-                            Fermer
-                        </a>
+                        <ClosingButton />
                         {this.chooseRenderComponent(this.props.currentRestaurant)}
                     </div>
                 </aside>

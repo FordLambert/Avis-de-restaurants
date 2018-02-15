@@ -48,7 +48,7 @@ export default class Restaurant extends Component {
         return this.props.restaurant.address.split(spliter);
     }
 
-    handleClick = () => {
+    handleOpenReview = () => {
         this.props.handleOpenReview(this.props.restaurant);
     }
 
@@ -76,13 +76,9 @@ export default class Restaurant extends Component {
                     </div>
                 </div>
                 <div className={'row justify-content-center justify-content-md-end'}>
-                    <a
-                        href={'#review-list'}
-                        id={'openReviewList'}
-                        className={'col-sm-5 col-xl-3 btn btn-success open-review'}
-                        onClick={this.handleClick}>
-                        Try !
-                    </a>
+                    <ReviewListButton
+                        handleOpenReview={this.handleOpenReview}
+                    />
                 </div>
             </li>
         );
