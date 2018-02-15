@@ -13,7 +13,7 @@ export default class Review extends Component {
 
     render() {
         return (
-            <div className={'col-5 review'}>
+            <div className={'col-10 col-lg-5 review'}>
                 <div className={'row'}>
                     <ProfilePicture
                         pictureName={'user.png'}

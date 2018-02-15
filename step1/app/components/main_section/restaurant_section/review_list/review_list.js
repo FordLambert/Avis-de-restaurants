@@ -33,7 +33,7 @@ export default class ReviewList extends Component {
         return (
             <div id={'review-list'}>
                 <aside className={'col-12'}>
-                    <div className="row justify-content-center justify-content-lg-start">
+                    <div className="row">
                         {this.chooseRenderTitle((this.props.currentRestaurant))}
                         {this.chooseRenderComponent(this.props.currentRestaurant)}
                     </div>

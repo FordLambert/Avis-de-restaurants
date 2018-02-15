@@ -6019,8 +6019,6 @@ nav {
 
 #review-list {
   overflow: hidden; }
-  #review-list input[type="checkbox"] {
-    display: none; }
   #review-list aside {
     width: 100vw;
     max-height: 100vh;
@@ -6040,8 +6038,6 @@ nav {
             width:37.5vw;
         }
         */ }
-    #review-list aside p {
-      font-size: 0.8em; }
     @media (min-width: 768px) {
       #review-list aside {
         margin: 0 -75vw 0 0;
@@ -6051,30 +6047,49 @@ nav {
       #review-list aside {
         margin: 0 -83.2vw 0 0;
         width: 83.2vw; } }
+    #review-list aside h2 {
+      font-size: 1.1em; }
+    #review-list aside p {
+      font-size: 0.8em; }
     #review-list aside .review-title {
+      border: 1px solid #dee4ed;
       padding: 20px;
       padding-bottom: 10px;
-      margin-top: 4.7vw;
-      border: 1px solid #dee4ed; }
+      margin-top: 7.55vw;
+      margin-bottom: 3.75vw;
+      margin-left: 7.55vw; }
+      @media (min-width: 768px) {
+        #review-list aside .review-title {
+          margin-left: 5.7vw;
+          margin-top: 3.8vw;
+          margin-bottom: 1.9vw; } }
+      @media (min-width: 1200px) {
+        #review-list aside .review-title {
+          margin-left: 0vw; } }
       #review-list aside .review-title h2 {
-        font-size: 1.1em;
         color: #20cd74; }
     #review-list aside .placeholder {
       padding: 20px;
       padding-bottom: 10px;
       margin-top: 4.7vw;
       border: 1px solid #dee4ed; }
-      #review-list aside .placeholder h2 {
-        font-size: 1.1em; }
     #review-list aside .review {
       border: 1px solid #dee4ed;
       padding: 20px;
       padding-bottom: 10px;
-      margin-top: 8.3vw; }
+      margin-top: 3.75vw;
+      margin-bottom: 3.75vw;
+      margin-left: 7.55vw; }
+      @media (min-width: 768px) {
+        #review-list aside .review {
+          margin-left: 5.66vw;
+          margin-top: 2.83vw;
+          margin-bottom: 2.83vw; } }
       @media (min-width: 992px) {
         #review-list aside .review {
-          margin-left: 4.7vw;
-          margin-top: 4.7vw; } }
+          margin-left: 3.8vw;
+          margin-top: 1.9vw;
+          margin-bottom: 1.9vw; } }
       #review-list aside .review figcaption {
         font-size: 0.6em; }
         @media (min-width: 768px) {
@@ -6089,15 +6104,10 @@ nav {
         border-top: 1px solid #20cd74;
         padding-top: 2vh; }
       #review-list aside .review h2 {
-        font-size: 1.1em;
         color: #20cd74; }
     #review-list aside .closing-button {
-      z-index: 1;
-      position: sticky;
-      top: 2px;
-      right: 0px;
-      text-decoration: none;
-      align-self: center; }
+      margin-right: 1vh;
+      margin-bottom: 1vh; }
 
 #review-list:target aside {
   margin: 0; }
@@ -6105,61 +6115,6 @@ nav {
 .open-review {
   transition: all 200ms ease-in;
   z-index: 0; }
-
-#openPopUp {
-  transition: background-color 0.20s linear; }
-
-.popup {
-  position: fixed;
-  top: -100vh;
-  left: 0;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.75);
-  width: 100vw;
-  height: 100vh;
-  opacity: 0;
-  transition: opacity 0.50s ease; }
-  .popup .popUpContainer {
-    width: 100%;
-    max-width: 500px;
-    position: fixed;
-    /* To avoid scroll to target */
-    left: 50%;
-    top: -100vh;
-    margin-left: -250px;
-    background-color: white;
-    border-radius: 2px;
-    z-index: 10;
-    transition: top 0.50s ease; }
-    @media (max-width: 991px) {
-      .popup .popUpContainer {
-        width: 90%;
-        max-width: none;
-        left: 5%;
-        margin-left: 0; } }
-    .popup .popUpContainer .form-rating {
-      font-size: 2em; }
-    .popup .popUpContainer .closePopUp {
-      position: absolute;
-      top: 2%;
-      right: 5%; }
-  .popup .closePopUpOutSide {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9; }
-
-.popup:target {
-  opacity: 1;
-  top: 0; }
-  .popup:target .popUpContainer {
-    top: 200px;
-    transition: top 0.50s ease; }
-    @media (max-width: 1199px) {
-      .popup:target .popUpContainer {
-        top: 25px;
-        transition: top 0.50s ease; } }
 
 .pulser-wrapper {
   width: 60px;
@@ -6236,17 +6191,15 @@ nav {
       .main-section .restaurant-section {
         height: 60vh;
         overflow-y: auto; } }
-    @media (min-width: 992px) {
-      .main-section .restaurant-section .restaurant-section {
-        height: 100%;
-        width: 100%;
-        overflow: hidden; } }
-    @media (min-width: 992px) {
-      .main-section .restaurant-section .restaurant-list {
-        width: 106%;
-        height: 100%;
-        overflow-y: scroll;
-        padding-right: 17px; } }
+    .main-section .restaurant-section .restaurant-section {
+      height: 100%;
+      width: 100%;
+      overflow: hidden; }
+    .main-section .restaurant-section .restaurant-list {
+      width: 106%;
+      height: 100%;
+      overflow-y: scroll;
+      padding-right: 17px; }
     .main-section .restaurant-section ul {
       padding: 0px; }
       .main-section .restaurant-section ul .restaurant {

@@ -41,29 +41,33 @@ export default class ReviewTitle extends Component {
 
     render() {
         return (
-            <div className={'offset-3 col-6 review-title'}>
-                <div className="row justify-content-around">
-                    <StreetPicture
-                        address={this.props.restaurant.address}
-                    />
-                    <div className={'col-4'}>
-                        <h2>{this.props.restaurant.restaurantName}</h2>
-                        <Address
-                            street={this.getSplitedAddress(',')[0]}
-                            city={this.getSplitedAddress(',')[1]}
-                        />
-                    </div>
-                    <div className={'col-2'}>
-                        <div className={'row justify-content-center'}>
-                            <GlobalReview
-                                averageGrade={this.getAverageGrade(this.props.restaurant)}
-                                pictureName={this.defineStarColor(this.getAverageGrade(this.props.restaurant))}
+            <div className={'col-12'}>
+                <div className={'row justify-content-xl-center'}>
+                    <div className={'col-10 col-xl-6 review-title'}>
+                        <div className="row justify-content-around">
+                            <StreetPicture
+                                address={this.props.restaurant.address}
                             />
+                            <div className={'col-12 col-sm-4'}>
+                                <h2>{this.props.restaurant.restaurantName}</h2>
+                                <Address
+                                    street={this.getSplitedAddress(',')[0]}
+                                    city={this.getSplitedAddress(',')[1]}
+                                />
+                            </div>
+                            <div className={'col-12 col-sm-2'}>
+                                <div className={'row justify-content-center'}>
+                                    <GlobalReview
+                                        averageGrade={this.getAverageGrade(this.props.restaurant)}
+                                        pictureName={this.defineStarColor(this.getAverageGrade(this.props.restaurant))}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className={'row justify-content-center justify-content-md-end'}>
+                            <ClosingButton />
                         </div>
                     </div>
-                </div>
-                <div className={'row justify-content-center justify-content-md-end'}>
-                    <ClosingButton />
                 </div>
             </div>
         );
