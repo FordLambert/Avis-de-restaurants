@@ -11,7 +11,7 @@ export default class Map extends Component {
         this.infoWindows = [];
         this.defaultMarkerIcon = './resources/pictures/marker-red.png';
         this.geolocalisationMarkerIcon = './resources/pictures/marker-blue.png';
-        this.clickedMarkerIcon = './resources/pictures/marker-blue.png';
+        this.clickedMarkerIcon = './resources/pictures/marker-green.png';
         this.mapOptions = {
             src: 'https://maps.googleapis.com/maps/api/js',
             apiKey: '?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
@@ -54,17 +54,16 @@ export default class Map extends Component {
         }.bind(this));
     }
 
-	handleMarkerClick = (marker, linkedObject, infoWindow) => {
+
+	handleMarkerClick = (marker, restaurant, infoWindow) => {
+        this.props.handleOpenReview(restaurant);
         this.markers.map(function (marker) {
             marker.setIcon(this.defaultMarkerIcon);
             this.closeInfoWindows();
         }.bind(this));
+        marker.setIcon(this.clickedMarkerIcon);
         infoWindow.open(this.map, marker);
 
-        console.log('clic sur:');
-        console.log(linkedObject);
-
-        marker.setIcon(this.clickedMarkerIcon);
     }
 
 	addMarker(position, restaurant) {
@@ -79,7 +78,7 @@ export default class Map extends Component {
         });
 
         marker.addListener('click', function() {
-            this.handleMarkerClick(marker, restaurant, infoWindow)
+            this.handleMarkerClick(marker, restaurant, infoWindow);
         }.bind(this));
         this.markers.push(marker);
         this.infoWindows.push(infoWindow);
@@ -96,16 +95,15 @@ export default class Map extends Component {
         }
     }
 
-	componentWillUpdate() {
-        this.deleteOldMarkers();
+	componentWillUpdate(nextProps) {
+        if (nextProps.list != this.props.list) {
+            this.deleteOldMarkers();
+            nextProps.list.map(function (restaurant) {
+                let position = {lat: restaurant.lat, lng: restaurant.long};
+                this.addMarker(position, restaurant);
+            }.bind(this));
+        }
 	}
-
-	componentDidUpdate() {
-        this.props.list.map(function (restaurant) {
-            let position = {lat: restaurant.lat, lng: restaurant.long};
-            this.addMarker(position, restaurant);
-        }.bind(this));
-    }
 
     render() {
         return (

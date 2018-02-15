@@ -7,11 +7,18 @@ import Pulser from './loading_pulser';
 export default class GoogleMap extends Component {
     static propTypes = {
         restaurantList: PropTypes.array,
-        handleMapLoad: PropTypes.func
+        handleMapLoad: PropTypes.func,
+        handleOpenReview: PropTypes.func
     }
 
     handleMapLoad = () => {
         this.props.handleMapLoad();
+    }
+
+    handleOpenReview = (restaurant) => {
+        window.location = '#review-list';
+
+        this.props.handleOpenReview(restaurant);
     }
 
     render() {
@@ -21,6 +28,7 @@ export default class GoogleMap extends Component {
                 <Map
                     list={this.props.restaurantList}
                     handleMapLoad={this.handleMapLoad}
+                    handleOpenReview={this.handleOpenReview}
                 />
             </div>
         );

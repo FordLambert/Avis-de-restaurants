@@ -11,11 +11,18 @@ export default class RestaurantSection extends Component {
     }
 
     static propTypes = {
-        restaurantList: PropTypes.array
+        restaurantList: PropTypes.array,
+        restaurantRequested: PropTypes.object
     }
 
     handleOpenReview = (restaurant) => {
         this.setState({currentRestaurant: restaurant});
+    }
+
+    componentWillUpdate(nextProps) {
+        if (this.props.restaurantRequested != nextProps.restaurantRequested) {
+            this.setState({currentRestaurant: nextProps.restaurantRequested});
+        }
     }
 
     render() {

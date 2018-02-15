@@ -10,7 +10,8 @@ export default class MainSection extends Component {
         super(props);
         this.state = {
             'listComplete': [],
-            'listCustom': []
+            'listCustom': [],
+            'restaurantRequested': {}
         };
     }
 
@@ -29,8 +30,12 @@ export default class MainSection extends Component {
         });
     }
 
+    handleOpenReview = (restaurant) => {
+        this.setState({restaurantRequested: restaurant});
+    }
+
     componentWillReceiveProps(nextProps) {
-        let newList = []
+        let newList = [];
 
         this.state.listComplete.map(function (restaurant) {
             let overallGrade = this.overallGradeCalculator(restaurant);
@@ -60,12 +65,14 @@ export default class MainSection extends Component {
                     <GoogleMap
                         restaurantList={this.state.listCustom}
                         handleMapLoad={this.handleMapLoad}
+                        handleOpenReview={this.handleOpenReview}
                     />
                     <SearchResultFound
                         restaurantNumber={this.state.listCustom.length}
                     />
                     <RestaurantSection
                         restaurantList={this.state.listCustom}
+                        restaurantRequested={this.state.restaurantRequested}
                     />
                 </div>
             </section>
