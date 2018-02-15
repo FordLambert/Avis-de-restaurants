@@ -6033,24 +6033,48 @@ nav {
     right: 0;
     margin: 0 -100vw 0 0;
     transition: all 200ms ease-in;
-    min-height: 100%; }
+    min-height: 100%;
+    /*
+        @include media-breakpoint-up(lg) {
+            margin:0 -37.5vw 0 0;
+            width:37.5vw;
+        }
+        */ }
+    #review-list aside p {
+      font-size: 0.8em; }
     @media (min-width: 768px) {
       #review-list aside {
         margin: 0 -75vw 0 0;
         width: 75vw;
         max-height: 60vh; } }
-    @media (min-width: 992px) {
-      #review-list aside {
-        margin: 0 -37.5vw 0 0;
-        width: 37.5vw; } }
     @media (min-width: 1200px) {
       #review-list aside {
-        margin: 0 -41.6vw 0 0;
-        width: 41.6vw; } }
+        margin: 0 -83.2vw 0 0;
+        width: 83.2vw; } }
+    #review-list aside .review-title {
+      padding: 20px;
+      padding-bottom: 10px;
+      margin-top: 4.7vw;
+      border: 1px solid #dee4ed; }
+      #review-list aside .review-title h2 {
+        font-size: 1.1em;
+        color: #20cd74; }
+    #review-list aside .placeholder {
+      padding: 20px;
+      padding-bottom: 10px;
+      margin-top: 4.7vw;
+      border: 1px solid #dee4ed; }
+      #review-list aside .placeholder h2 {
+        font-size: 1.1em; }
     #review-list aside .review {
-      border: 1px solid #20cd74;
-      margin-bottom: 2vh;
-      padding: 10px; }
+      border: 1px solid #dee4ed;
+      padding: 20px;
+      padding-bottom: 10px;
+      margin-top: 8.3vw; }
+      @media (min-width: 992px) {
+        #review-list aside .review {
+          margin-left: 4.7vw;
+          margin-top: 4.7vw; } }
       #review-list aside .review figcaption {
         font-size: 0.6em; }
         @media (min-width: 768px) {
@@ -6062,12 +6086,11 @@ nav {
           #review-list aside .review .rating-zone {
             margin-top: -3vh; } }
       #review-list aside .review p {
-        border-top: 1px solid black;
-        padding-top: 2vh;
-        font-size: 0.8em; }
-        @media (min-width: 768px) {
-          #review-list aside .review p {
-            font-size: 1em; } }
+        border-top: 1px solid #20cd74;
+        padding-top: 2vh; }
+      #review-list aside .review h2 {
+        font-size: 1.1em;
+        color: #20cd74; }
     #review-list aside .closing-button {
       z-index: 1;
       position: sticky;

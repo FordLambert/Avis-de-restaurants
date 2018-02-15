@@ -12,6 +12,14 @@
             {
                 "stars":5,
                 "comment":"Tout simplement mon restaurant préféré !"
+            },
+            {
+                "stars":4,
+                "comment":"Un choix de viande extra, je recommande pour tout les amateurs !"
+            },
+            {
+                "stars":3,
+                "comment":"Rien à redire sur les plats, les vins sont quand à eux un peu cher pour ce que c'est"
             }
         ]
     },
@@ -28,6 +36,14 @@
             {
                 "stars":2,
                 "comment":"J'ai trouvé ça correct, sans plus"
+            },
+            {
+                "stars":3,
+                "comment":"J'ai connu mieux mais il faut reconnaitre qu'il y a un grand choix de plats disponibles."
+            },
+            {
+                "stars":1,
+                "comment":"Franchement à éviter, l'attente est incroyable et les plats laissent tout de même à désirer."
             }
         ]
     },
@@ -37,13 +53,21 @@
         "lat":48.874035,
         "long":2.344851,
         "ratings":[
-                {
-                "stars":3,
-                "comment":"Un nom étrange mais un service impecable !"
+            {
+            "stars":3,
+            "comment":"Un nom étrange mais un service impecable !"
             },
             {
                 "stars":3,
                 "comment":"Le crabe est particulierement savoureux."
+            },
+            {
+                "stars":4,
+                "comment":"Mention spéciale au service impec !"
+            },
+            {
+                "stars":3,
+                "comment":"Le crabe s'est défendu mais ça valait le coup."
             }
         ]
     },
@@ -60,6 +84,14 @@
             {
                 "stars":5,
                 "comment":"De bons burgers maison, des frites fraîches et des pâtisseries de qualité : une bonne adresse."
+            },
+            {
+                "stars":5,
+                "comment":"Un sans faute, ambiance et burgers au top ! Pensez à reserver le samedi soir."
+            },
+            {
+                "stars":5,
+                "comment":"Mon nouveau coin à burger, ce n'est pas grand mais la déco, le service et la nourriture méritent un 5."
             }
         ]
     },
@@ -76,6 +108,14 @@
             {
                 "stars":3,
                 "comment":"Mention spéciale au filet de rouget au citron vert." 
+            },
+            {
+                "stars":3,
+                "comment":"Le service est agréable mais la qualité de la nourriture pas top..."
+            },
+            {
+                "stars":2,
+                "comment":"Le sourire du serveur ne me fera pas oublier l'absence de gout de mon repas."
             }
         ]
     },
@@ -92,6 +132,14 @@
             {
                 "stars":3,
                 "comment":"Un petit plus pour le gros macaron au caramel beurre salé et sa glace."
+            },
+            {
+                "stars":1,
+                "comment":"Je suis venu, j'ai vu, je n'y retournerai plus."
+            },
+            {
+                "stars":2,
+                "comment":"Un gros problème de rapport qualité/prix."
             }
         ]
     }

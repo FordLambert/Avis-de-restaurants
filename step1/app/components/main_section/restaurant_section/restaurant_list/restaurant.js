@@ -57,8 +57,6 @@ export default class Restaurant extends Component {
             <li className={'restaurant col-10 col-xl-5 align-self-center'}>
                 <div className="row justify-content-around">
                     <StreetPicture
-                        lat={this.state.latitude}
-                        long={this.state.longitude}
                         address={this.props.restaurant.address}
                     />
                     <RestaurantDetails

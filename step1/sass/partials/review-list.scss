@@ -18,26 +18,60 @@
         margin:0 -100vw 0 0;
         transition:all 200ms ease-in;
         min-height: 100%;
+
+        p {
+            font-size: $text-md-font-size;
+        }
        
         @include media-breakpoint-up(md) {
             margin:0 -75vw 0 0;
             width: 75vw;
             max-height: 60vh;
         }
+        /*
         @include media-breakpoint-up(lg) {
             margin:0 -37.5vw 0 0;
             width:37.5vw;
         }
+        */
 
         @include media-breakpoint-up(xl) {
-            margin:0 -41.6vw 0 0;
-            width:41.6vw;
+            margin:0 -83.2vw 0 0;
+            width:83.2vw;
+        }
+
+        .review-title {
+            padding: 20px;
+            padding-bottom: 10px;
+            margin-top: 4.7vw;
+            border: 1px solid $light-grey;
+
+            h2 {
+                font-size: $title-md-font-size;
+                color: $light-green;
+            }
+        }
+
+        .placeholder {
+            padding: 20px;
+            padding-bottom: 10px;
+            margin-top: 4.7vw;
+            border: 1px solid $light-grey;
+            h2 {
+                font-size: $title-md-font-size;
+            }
         }
 
         .review {
-            border: 1px solid $light-green;
-            margin-bottom: 2vh;
-            padding: 10px;
+            border: 1px solid $light-grey;
+            padding: 20px;
+            padding-bottom: 10px;
+            margin-top: 8.3vw;
+
+            @include media-breakpoint-up(lg) {
+                margin-left: 4.7vw;
+                margin-top: 4.7vw;
+            }
 
             figcaption {
               font-size: $small-font-size;
@@ -56,13 +90,13 @@
             }
 
             p {
-                border-top: 1px solid $black;
+                border-top: 1px solid $light-green;
                 padding-top: 2vh;
-                font-size: $text-md-font-size;
+            }
 
-                @include media-breakpoint-up(md) {
-                    font-size: $normal-font-size;
-                }
+            h2 {
+                font-size: $title-md-font-size;
+                color: $light-green;
             }
         }
         
