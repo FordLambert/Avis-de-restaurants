@@ -44,8 +44,8 @@ export default class Map extends Component {
             });
 
 			this.map.setCenter(pos);
+            this.props.handleMapLoad(pos);
 		}.bind(this));
-		this.props.handleMapLoad();
 	}
 
 	closeInfoWindows() {

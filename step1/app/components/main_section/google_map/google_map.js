@@ -11,13 +11,12 @@ export default class GoogleMap extends Component {
         handleOpenReview: PropTypes.func
     }
 
-    handleMapLoad = () => {
-        this.props.handleMapLoad();
+    handleMapLoad = (geolocCoordinates) => {
+        this.props.handleMapLoad(geolocCoordinates);
     }
 
     handleOpenReview = (restaurant) => {
         window.location = '#review-list';
-
         this.props.handleOpenReview(restaurant);
     }
 

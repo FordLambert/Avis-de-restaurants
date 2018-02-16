@@ -15,7 +15,7 @@ class Index extends Component {
 
     //handle the form's submit for custom restaurant options
     handleSubmit = (grade, order) => {
-        this.setState({grade: grade, order: order })
+        this.setState({grade: grade, order: order });
     }
 
     render() {

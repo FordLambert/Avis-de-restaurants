@@ -9,10 +9,9 @@ export default class SearchForm extends Component {
         super(props);
 
         this.state = {
-            city: '',
-            grade: { min: 0, max: 5 },
-            order: ''
-        };
+            grade: {min: 0, max: 5},
+            order: 'distance'
+        }
     }
 
     static propTypes = {
@@ -22,7 +21,7 @@ export default class SearchForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         let grade = this.state.grade;
-        let order = this.refs.order.value;
+        let order = this.state.order;
         this.props.handleSubmit(grade, order);
     }
 
@@ -47,7 +46,7 @@ export default class SearchForm extends Component {
                     <SearchLabel
                         content={'Trier par:'}
                     />
-                    <select className={'form-control'} id='order-option' ref={'order'}>
+                    <select className={'form-control'} id='order-option' ref={'order'} onChange={event => this.setState({ order: event.target.value })}>
                         <option value='distance'>Distance</option>
                         <option value='grade'>Note</option>
                     </select>

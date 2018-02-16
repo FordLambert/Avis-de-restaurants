@@ -13,6 +13,8 @@ export default class MainSection extends Component {
             'listCustom': [],
             'restaurantRequested': {}
         };
+
+        this.geolocCoordinates = {};
     }
 
     static propTypes = {
@@ -20,11 +22,74 @@ export default class MainSection extends Component {
         order: PropTypes.string
     }
 
-    handleMapLoad = () => {
+    getDistance(lat1, lon1, lat2, lon2) {
+        const radlat1 = Math.PI * lat1/180;
+        const radlat2 = Math.PI * lat2/180;
+        const theta = lon1-lon2;
+        const radtheta = Math.PI * theta/180;
+        let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        dist = Math.acos(dist);
+        dist = dist * 180/Math.PI;
+        dist = dist * 60 * 1.1515;
+        dist = dist * 1.609344;
+        return dist;
+
+        //startPosition: {lat: 45.5088400, lng: -73.5878100},
+    }
+
+    getAverageGrade(restaurant) {
+        let reviewNumber = restaurant.ratings.length;
+        let total = 0;
+
+        restaurant.ratings.map(function(restaurantReview){
+            total += restaurantReview.stars;
+        });
+
+        return Math.round((total/reviewNumber) * 100) / 100;
+    }
+
+    componentWillReceiveProps(nextProps) {
+        //create a new custom list based on user choices (grade)
+        let newList = [];
+        this.state.listComplete.map(function (restaurant) {
+            let overallGrade = this.getAverageGrade(restaurant);
+            if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
+                newList.push(restaurant);
+            }
+        }.bind(this));
+
+        //sort the newly created custom array
+        //sort array by distance
+        if (nextProps.order == 'distance') {
+
+            //only available if the user have geolocation
+            if (this.geolocCoordinates != undefined) {
+                newList.sort(function (a, b) {
+                    let distA = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, a.lat, a.long);
+                    let distB = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, b.lat, b.long);
+                    return distA - distB;
+                }.bind(this));
+            } else {
+                console.log('Error: Géolocation must be active to use this sorting option');
+            }
+        //sort array by averageGrade
+        } else if (nextProps.order == 'grade') {
+            newList.sort(function (a, b) {
+                return this.getAverageGrade(b) - this.getAverageGrade(a);
+            }.bind(this));
+        //handle wrong parameter
+        } else {
+            console.log('Error: list order must be "distance" or "grade"')
+        }
+        this.setState({listCustom: newList});
+    }
+
+    handleMapLoad = (geolocCoordinates) => {
         fetch('./app/data/restaurant_list.json')
             .then(result => {
                 return result.json();
             }).then(data => {
+            this.geolocCoordinates = geolocCoordinates;
             this.setState({listComplete: data});
             this.setState({listCustom: data});
         });
@@ -32,30 +97,6 @@ export default class MainSection extends Component {
 
     handleOpenReview = (restaurant) => {
         this.setState({restaurantRequested: restaurant});
-    }
-
-    componentWillReceiveProps(nextProps) {
-        let newList = [];
-
-        this.state.listComplete.map(function (restaurant) {
-            let overallGrade = this.overallGradeCalculator(restaurant);
-            if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
-                newList.push(restaurant);
-            }
-        }.bind(this));
-
-        this.setState({listCustom: newList});
-    }
-
-    overallGradeCalculator(restaurant) {
-        let numberOfReviews = restaurant.ratings.length;
-        let totalGrade = 0;
-
-        restaurant.ratings.map(function(restaurantReview){
-            totalGrade += restaurantReview.stars;
-        });
-
-        return Math.round((totalGrade/numberOfReviews) * 100) / 100;
     }
 
     render() {
