@@ -33,8 +33,6 @@ export default class MainSection extends Component {
         dist = dist * 60 * 1.1515;
         dist = dist * 1.609344;
         return dist;
-
-        //startPosition: {lat: 45.5088400, lng: -73.5878100},
     }
 
     getAverageGrade(restaurant) {

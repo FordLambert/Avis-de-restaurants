@@ -7,30 +7,23 @@ export default class Map extends Component {
     constructor(props) {
         super(props);
 
-        this.markers = [];
-        this.infoWindows = [];
+        this.markers = []; //markers displayed on map
+        this.infoWindows = []; //infoWindows displayed on map
         this.defaultMarkerIcon = './resources/pictures/marker-red.png';
         this.geolocalisationMarkerIcon = './resources/pictures/marker-blue.png';
         this.clickedMarkerIcon = './resources/pictures/marker-green.png';
-        this.mapOptions = {
-            src: 'https://maps.googleapis.com/maps/api/js',
-            apiKey: '?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
-            async: true,
-            defer: true,
-            startPosition: {lat: 45.5088400, lng: -73.5878100},
-            zoom: 12
-        }
     }
 
     static propTypes = {
+        mapOptions: PropTypes.object,
         list: PropTypes.array,
         handleMapLoad: PropTypes.func
     }
 
     initMap = () => {
       	this.map = new google.maps.Map(document.getElementById('map'), {
-        	center: this.mapOptions.startPosition,
-       		zoom: this.mapOptions.zoom
+        	center: this.props.mapOptions.startPosition,
+       		zoom: this.props.mapOptions.zoom
 		});
 		navigator.geolocation.getCurrentPosition(function(position) {
 			const pos = {
@@ -109,9 +102,9 @@ export default class Map extends Component {
         return (
         	<div>
 				<Script
-					src={this.mapOptions.src + this.mapOptions.apiKey}
-					async={this.mapOptions.async}
-					defer={this.mapOptions.defer}
+					src={this.props.mapOptions.src + this.props.mapOptions.apiKey}
+					async={this.props.mapOptions.async}
+					defer={this.props.mapOptions.defer}
 					callback={this.initMap}
 				/>
 			</div>
