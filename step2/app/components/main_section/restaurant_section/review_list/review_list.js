@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import Review from './review';
-import SlidingLabel from './sliding_label';
-import SlidingInput from './sliding_input';
 import ReviewTitle from './review_title';
+import Placeholder from './placeholder';
 
 export default class ReviewList extends Component {
 
@@ -17,22 +16,25 @@ export default class ReviewList extends Component {
             return restaurant.ratings.map(function(review, index){
                 return <Review key={index} review={review} />
             }.bind(this))
+        }
+    }
+
+    chooseRenderTitle(restaurant) {
+        if (restaurant.ratings != undefined) {
+        return  <ReviewTitle
+                    restaurant={this.props.currentRestaurant}
+                />
         } else {
-            return <p>Rien du tout</p>
+            return <Placeholder />
         }
     }
   
     render() {
         return (
-            <div className={'sliding-wrapper'}>
-
-                <SlidingInput />
-
-                <aside>
-                    <div className="row justify-content-center">
-
-                        <ReviewTitle content={this.props.currentRestaurant.name} />
-                        <SlidingLabel />
+            <div id={'review-list'}>
+                <aside className={'col-12'}>
+                    <div className="row">
+                        {this.chooseRenderTitle((this.props.currentRestaurant))}
                         {this.chooseRenderComponent(this.props.currentRestaurant)}
                     </div>
                 </aside>

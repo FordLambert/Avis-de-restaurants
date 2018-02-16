@@ -40,7 +40,7 @@ nav {
 	}
 
 	form {
-		margin-top: 3vh;
+		margin-top: 5vh;
 		align-items: center;
 
 		label, p {
@@ -49,10 +49,6 @@ nav {
 			@include media-breakpoint-up(xl) {
 				font-size: $text-lg-font-size;
 			}
-		}
-	
-		span {
-			font-size: $unit-small-font-size;
 		}
 	
 		.form-group {

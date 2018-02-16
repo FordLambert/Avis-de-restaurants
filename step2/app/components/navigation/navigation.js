@@ -10,13 +10,13 @@ export default class Navigation extends Component {
         handleSubmit: PropTypes.func
     }
 
-    handleSubmit = (city, grade, order) => {
-        this.props.handleSubmit(city, grade, order);
+    handleSubmit = (grade, order) => {
+        this.props.handleSubmit(grade, order);
     }
 
     render() {
         return (
-            <nav className={'col-12 col-md-3 text-center'}>
+            <nav className={'col-12 col-md-3 col-xl-2 text-center'}>
                 <div className={'row justify-content-center'}>
                     <Logo />
                     <MainTitle />

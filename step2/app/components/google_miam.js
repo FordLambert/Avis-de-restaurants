@@ -8,14 +8,14 @@ class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            city: '',
             grade: {},
             order: ''
         };
     }
 
-    handleSubmit = (city, grade, order) => {
-        this.setState({ city: city, grade: grade, order: order })
+    //handle the form's submit for custom restaurant options
+    handleSubmit = (grade, order) => {
+        this.setState({grade: grade, order: order });
     }
 
     render() {
@@ -25,7 +25,6 @@ class Index extends Component {
                     handleSubmit={this.handleSubmit}
                 />
                 <MainSection
-                    city={this.state.city}
                     grade={this.state.grade}
                     order={this.state.order}
                 />

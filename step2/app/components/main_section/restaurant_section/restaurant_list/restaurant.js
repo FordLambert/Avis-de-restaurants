@@ -1,15 +1,24 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import RestaurantThumbnail from './restaurant_thumbnail';
+import StreetPicture from './street_picture';
 import RestaurantDetails from './restaurant_details';
 import GlobalReview from './global_review';
 import ReviewListButton from './review_list_button';
 
 export default class Restaurant extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            latitude: this.props.restaurant.lat.toString(),
+            longitude: this.props.restaurant.long.toString()
+        };
+    }
+
     static propTypes = {
         restaurant: PropTypes.object,
-        openReview: PropTypes.func
+        openReview: PropTypes.func,
+        id: PropTypes.number
     }
 
     defineStarColor(grade) {
@@ -20,7 +29,7 @@ export default class Restaurant extends Component {
         } else if (grade >= 4 && grade <= 5) {
             return 'green-star';
         } else {
-            console.log('Error: rating must be  between 1 and 5')
+            console.log('Error: rating must be  between 1 and 5');
         }
     }
 
@@ -35,46 +44,39 @@ export default class Restaurant extends Component {
         return Math.round((total/reviewNumber) * 100) / 100;
     }
 
-    getSplitAddress() {
-        let splitAddress = this.props.restaurant.address.split(',');
-        return splitAddress;
+    getSplitedAddress(spliter) {
+        return this.props.restaurant.address.split(spliter);
     }
 
-    handleClick = () => {
+    handleOpenReview = () => {
         this.props.handleOpenReview(this.props.restaurant);
     }
 
     render() {
         return (
-            <li className={'restaurant col-10 col-lg-5 align-self-center'}>
-                <div className="row">
-
-                    <RestaurantDetails 
-                        restaurantName={this.props.restaurant.name}
-                        address={this.getSplitAddress()}
+            <li className={'restaurant col-10 col-xl-5 align-self-center'}>
+                <div className="row justify-content-around">
+                    <StreetPicture
+                        address={this.props.restaurant.address}
+                    />
+                    <RestaurantDetails
+                        restaurantName={this.props.restaurant.restaurantName}
+                        address={this.getSplitedAddress(',')}
                         reviewNumber={this.props.restaurant.ratings.length}
                     />
-
-                    <div className={'row justify-content-sm-around'} >
-                        <RestaurantThumbnail
-                            href={'#'}
-                            pictureName={'restaurant-1.png'} /*--dynamic picture to be implemented--*/
-                        />
-
-                        <GlobalReview
-                            averageGrade={this.getAverageGrade(this.props.restaurant)}
-                            pictureName={this.defineStarColor(this.getAverageGrade(this.props.restaurant))}
-                        />
+                    <div className={'col-12 col-sm-3 col-xl-2'}>
+                        <div className={'row justify-content-center'}>
+                            <GlobalReview
+                                averageGrade={this.getAverageGrade(this.props.restaurant)}
+                                pictureName={this.defineStarColor(this.getAverageGrade(this.props.restaurant))}
+                            />
+                        </div>
                     </div>
-
                 </div>
-
                 <div className={'row justify-content-center justify-content-md-end'}>
-
                     <ReviewListButton
-                        handleOpenReview={this.handleClick}
+                        handleOpenReview={this.handleOpenReview}
                     />
-
                 </div>
             </li>
         );

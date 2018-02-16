@@ -1,13 +1,5 @@
-.sliding-wrapper {
+#review-list {
     overflow: hidden;
-
-    input[type="checkbox"] {
-        display:none;
-    }
-
-    input[type="checkbox"]:checked ~ aside {
-        margin:0;
-    }
 
     aside {
         width:100vw;
@@ -17,49 +9,127 @@
         z-index: 1;
         position: absolute;
         background-color: $white;
-        top:0; //--> This should be handled by React with the scroll position (what is 'top' for the user now ?)
+        top:0;
         right:0;
         margin:0 -100vw 0 0;
         transition:all 200ms ease-in;
+        min-height: 100%;
        
         @include media-breakpoint-up(md) {
             margin:0 -75vw 0 0;
             width: 75vw;
             max-height: 60vh;
         }
+        /*
         @include media-breakpoint-up(lg) {
             margin:0 -37.5vw 0 0;
             width:37.5vw;
         }
+        */
 
-        .review {
-            border: 1px solid $light-green;
-            margin-bottom: 2vh;
-            padding: 10px;
-    
-            .rating-zone {
-                margin-bottom: 2vh;
-        
-                .rating {
-                    border-bottom: 1px solid $black;
-                }
-            
-                .rating-date {
-                    font-size: 0.8em;
-                }
+        @include media-breakpoint-up(xl) {
+            margin:0 -83.2vw 0 0;
+            width:83.2vw;
+        }
+
+        h2 {
+            font-size: $title-md-font-size;
+        }
+
+        p {
+            font-size: $text-md-font-size;
+        }
+
+        .review-title {
+            border: 1px solid $light-grey;
+            padding: 20px;
+            padding-bottom: 10px;
+            margin-top: 7.55vw;
+            margin-bottom: 3.75vw;
+            margin-left: 7.55vw;
+
+            @include media-breakpoint-up(md) {
+                margin-left: 5.7vw;
+                margin-top: 3.8vw;
+                margin-bottom: 1.9vw;
+            }
+
+            @include media-breakpoint-up(xl) {
+                margin-left: 0vw;
+            }
+
+            h2 {
+                color: $light-green;
             }
         }
-        
-        .close-button {
-            z-index: 1;
-            position: sticky;
-            top: 2px;
-            right: 0px;
+
+        .placeholder {
+            padding: 20px;
+            padding-bottom: 10px;
+            margin-top: 4.7vw;
+            border: 1px solid $light-grey;
+        }
+
+        .review {
+            border: 1px solid $light-grey;
+            padding: 20px;
+            padding-bottom: 10px;
+            margin-top: 3.75vw;
+            margin-bottom: 3.75vw;
+            margin-left: 7.55vw;
+
+            @include media-breakpoint-up(md) {
+                margin-left: 5.66vw;
+                margin-top: 2.83vw;
+                margin-bottom: 2.83vw;
+            }
+
+            @include media-breakpoint-up(lg) {
+                margin-left: 3.8vw;
+                margin-top: 1.9vw;
+                margin-bottom: 1.9vw;
+            }
+
+            figcaption {
+              font-size: $small-font-size;
+
+              @include media-breakpoint-up(md) {
+                font-size: $text-md-font-size;
+              }
+            }
+    
+            .rating-zone {
+                margin-top: 1vh;
+
+                @include media-breakpoint-up(md) {
+                    margin-top: -3vh;
+                }
+            }
+
+            p {
+                border-top: 1px solid $light-green;
+                padding-top: 2vh;
+            }
+
+            h2 {
+                color: $light-green;
+            }
+        }
+
+        .closing-button {
+            margin-right: 1vh;
+            margin-bottom: 1vh;
         }
     }
 }
 
-.trigger-button {
+#review-list:target {
+    aside {
+        margin: 0;
+    }
+}
+
+.open-review {
     transition:all 200ms ease-in;
     z-index:0;
 }

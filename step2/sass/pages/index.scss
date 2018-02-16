@@ -1,6 +1,10 @@
 .main-section {
 	min-height: 100vh;
 
+	.themed-colored {
+		color: $light-green;
+	}
+
 	#map {
 		height: 80vh;
 		width: 100%;
@@ -27,20 +31,20 @@
 
 		/*The following is here to hide the x scrollbar*/
 		.restaurant-section{
-			@include media-breakpoint-up(lg) {
+			//@include media-breakpoint-up(lg) {
 				height: 100%;
 				width: 100%;
 				overflow: hidden;
-			}
+			//}
 		}
 		
 		.restaurant-list{
-			@include media-breakpoint-up(lg) {
+			//@include media-breakpoint-up(lg) {
 				width: 106%;
 				height: 100%;
 				overflow-y: scroll;
 				padding-right: 17px;
-			}
+			//}
 		}
 		/*End of rules to hide the x scrollbar*/
 
@@ -58,6 +62,10 @@
 					margin-left: 3.45vw;
 					margin-top: 3.45vw;
 				}
+
+				p {
+					font-size: $text-md-font-size;
+				}
 	
 				a, label {
 					margin: 1vh;
@@ -65,6 +73,15 @@
 
 				h2 {
 					font-size: $title-md-font-size;
+					color: $light-green;
+				}
+
+				.trigger-button {
+					margin-top: 3vh;
+
+					@include media-breakpoint-up(md) {
+						margin-top: 0vh;
+					}
 				}
 			}
 		}
