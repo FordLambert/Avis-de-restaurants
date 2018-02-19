@@ -1,0 +1,51 @@
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+
+import ModalHeader from './modal_header';
+import ModalBody from './modal_body';
+import CloseLink from './modal_close_link';
+
+export default class ModalWindow extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {'restaurantReviewed': {}};
+    }
+
+    static propTypes = {
+        handleReviewSubmit: PropTypes.func,
+        restaurantReviewed: PropTypes.object
+    }
+
+    handleReviewSubmit = (grade, review) => {
+        this.props.handleReviewSubmit(grade, review);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({restaurantReviewed: nextProps.restaurantReviewed});
+    }
+
+    render() {
+        return (
+            <div id={'popUp'} className={'popup'}>
+                <div className="modal-dialog">
+                    <div className="modal-content">
+
+                        <div className="popUpContainer">
+                            <ModalHeader
+                                restaurantReviewed={this.state.restaurantReviewed}
+                            />
+                            <ModalBody
+                                handleReviewSubmit={this.handleReviewSubmit}
+                            />
+                        </div>
+
+                    </div>
+                </div>
+
+                <CloseLink
+                    className={'closePopUpOutSide'}
+                />
+            </div>
+        );
+    }
+}

@@ -52,6 +52,10 @@ export default class Restaurant extends Component {
         this.props.handleOpenReview(this.props.restaurant);
     }
 
+    handleAddReview = () => {
+        this.props.handleAddReview(this.props.restaurant);
+    }
+
     render() {
         return (
             <li className={'restaurant col-10 col-xl-5 align-self-center'}>
@@ -74,6 +78,9 @@ export default class Restaurant extends Component {
                     </div>
                 </div>
                 <div className={'row justify-content-center justify-content-md-end'}>
+                    <a href={'#popUp'} id={'openPopUp'} className={'col-sm-5 col-md-3 col-lg-5 col-xl-3 btn btn-info'} onClick={this.handleAddReview.bind(this)}>
+                        Votre avis
+                    </a>
                     <ReviewListButton
                         handleOpenReview={this.handleOpenReview}
                     />

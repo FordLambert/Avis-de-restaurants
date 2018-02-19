@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import ModalWindow from './new_review_modal/modal_window';
 import ReviewList from './review_list/review_list';
 import RestaurantList from './restaurant_list/restaurant_list';
 
@@ -15,7 +16,22 @@ export default class RestaurantSection extends Component {
         restaurantRequested: PropTypes.object
     }
 
+    handleReviewSubmit(grade, review) {
+        let tempRestaurant = this.state.currentRestaurant;
+        let newRating = {
+            "stars":grade,
+            "comment":review
+        }
+        tempRestaurant.ratings.push(newRating);
+
+        this.setState({currentRestaurant: tempRestaurant});
+    }
+
     handleOpenReview = (restaurant) => {
+        this.setState({currentRestaurant: restaurant});
+    }
+
+    handleAddReview = (restaurant) => {
         this.setState({currentRestaurant: restaurant});
     }
 
@@ -28,12 +44,17 @@ export default class RestaurantSection extends Component {
     render() {
         return (
             <div className="restaurant-section col-12">
+                <ModalWindow
+                    handleReviewSubmit={this.handleReviewSubmit.bind(this)}
+                    restaurantReviewed={this.state.currentRestaurant}
+                />
                 <ReviewList
                     currentRestaurant={this.state.currentRestaurant}
                 />
                 <RestaurantList
                     restaurantList={this.props.restaurantList}
                     handleOpenReview={this.handleOpenReview}
+                    handleAddReview={this.handleAddReview}
                 />
             </div>
         );

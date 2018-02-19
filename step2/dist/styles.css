@@ -6116,6 +6116,61 @@ nav {
   transition: all 200ms ease-in;
   z-index: 0; }
 
+#openPopUp {
+  transition: background-color 0.20s linear; }
+
+.popup {
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 0.50s ease; }
+  .popup .popUpContainer {
+    width: 100%;
+    max-width: 500px;
+    position: fixed;
+    /* To avoid scroll to target */
+    left: 50%;
+    top: -100vh;
+    margin-left: -250px;
+    background-color: white;
+    border-radius: 2px;
+    z-index: 10;
+    transition: top 0.50s ease; }
+    @media (max-width: 991px) {
+      .popup .popUpContainer {
+        width: 90%;
+        max-width: none;
+        left: 5%;
+        margin-left: 0; } }
+    .popup .popUpContainer .form-rating {
+      font-size: 2em; }
+    .popup .popUpContainer .closePopUp {
+      position: absolute;
+      top: 2%;
+      right: 5%; }
+  .popup .closePopUpOutSide {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9; }
+
+.popup:target {
+  opacity: 1;
+  top: 0; }
+  .popup:target .popUpContainer {
+    top: 200px;
+    transition: top 0.50s ease; }
+    @media (max-width: 1199px) {
+      .popup:target .popUpContainer {
+        top: 25px;
+        transition: top 0.50s ease; } }
+
 .pulser-wrapper {
   width: 60px;
   height: 60px;

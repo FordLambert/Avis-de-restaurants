@@ -16,6 +16,7 @@ export default class RestaurantList extends Component {
                     key={index}
                     id={index}
                     handleOpenReview={this.handleOpenReview}
+                    handleAddReview={this.handleAddReview}
                     restaurant={restaurant}
                 />;
             }.bind(this))
@@ -26,6 +27,10 @@ export default class RestaurantList extends Component {
 
     handleOpenReview = (restaurant) => {
         this.props.handleOpenReview(restaurant);
+    }
+
+    handleAddReview = (restaurant) => {
+        this.props.handleAddReview(restaurant);
     }
 
     render() {
