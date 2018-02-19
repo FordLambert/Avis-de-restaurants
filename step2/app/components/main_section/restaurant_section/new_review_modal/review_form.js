@@ -27,19 +27,22 @@ export default class ReviewForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log('SUBMIIIIIT !');
+        window.location = '#!';
         this.props.handleReviewSubmit(
           this.state.grade,
           this.state.review
         );
+        this.setState({grade: 0});
+        this.reviewForm.reset();
     }
 
     render() {
         return (
-            <form className={'col-md-10'} onSubmit={this.handleSubmit.bind(this)}>
+            <form ref={(el) => this.reviewForm = el} className={'col-md-10'} onSubmit={this.handleSubmit.bind(this)}>
                 <div className="form-group text-center">
                     <ReviewRating
                         handleChange={this.handleGradeChange}
+                        rating={this.state.grade}
                     />
                 </div>
                 <div className="form-group">

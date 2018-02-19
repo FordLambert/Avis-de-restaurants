@@ -7,8 +7,7 @@ const TextArea = ({handleChange}) => (
         rows={'5'}
         placeholder={'Donnez votre avis'}
         onChange={handleChange}
-    >
-    </textarea>
+    />
 );
 
 TextArea.proptypes = {

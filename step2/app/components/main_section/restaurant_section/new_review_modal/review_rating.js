@@ -8,7 +8,7 @@ export default class ReviewRating extends Component {
         super(props);
 
         this.state = {
-            rating: 1
+            rating: this.props.rating
         };
     }
 
@@ -16,9 +16,12 @@ export default class ReviewRating extends Component {
         handleChange: PropTypes.func
     }
 
-    onStarClick(nextValue, prevValue, name) {
-        this.setState({rating: nextValue});
-        this.props.handleChange(nextValue);
+    onStarClick(nextGrade) {
+        this.props.handleChange(nextGrade);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({rating: nextProps.rating});
     }
 
     render() {
