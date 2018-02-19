@@ -55,11 +55,26 @@ export default class Map extends Component {
 
     addRestaurant = (position) => {
         let lat = position.lat();
-        let long = position.lng()
+        let long = position.lng();
+        let address = '';
+
+        let geocoder = new google.maps.Geocoder;
+        geocoder.geocode({'location': position}, function(results, status) {
+            if (status === 'OK') {
+                if (results[1]) {
+                    address = results[1].formatted_address;
+                } else {
+                    console.log('No results found');
+                }
+            } else {
+                console.log('Geocoder failed due to: ' + status);
+            }
+        });
+
         if (this.props.canAddRestaurant) {
             const newRestaurant = {};
             newRestaurant.restaurantName = prompt('Entrez le nom du restaurant');
-            newRestaurant.address = prompt('Entrez l\'adresse du restaurant');
+            newRestaurant.address = address;
             newRestaurant.lat = lat;
             newRestaurant.long = long;
             newRestaurant.ratings = [];
