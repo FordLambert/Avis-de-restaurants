@@ -1,14 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-const SearchResultFound = ({restaurantNumber}) => (
-    <div className={'section-breaker col-12 text-center'}>
-        <p>{restaurantNumber}  résultats trouvés</p>
-    </div>
-);
+import AddRestaurantButton from './add_restaurant_button';
 
-SearchResultFound.propTypes = {
-    restaurantNumber: PropTypes.number
+export default class SearchResultFound extends Component {
+
+    static propTypes = {
+        restaurantNumber: PropTypes.number,
+        toggleAddRestaurant: PropTypes.func
+    }
+
+    toggleAddRestaurant = (status) => {
+        this.props.toggleAddRestaurant(status);
+    }
+
+    render() {
+        return (
+            <div className={'section-breaker col-12 text-center'}>
+                <p>{this.props.restaurantNumber}  résultats trouvés</p>
+                <AddRestaurantButton
+                    toggleAddRestaurant={this.toggleAddRestaurant}
+                />
+            </div>
+        );
+    }
 }
-
-export default SearchResultFound;

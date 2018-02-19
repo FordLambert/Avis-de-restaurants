@@ -20,19 +20,23 @@ export default class ReviewTitle extends Component {
         } else if (grade >= 4 && grade <= 5) {
             return 'green-star';
         } else {
-            console.log('Error: rating must be  between 1 and 5');
+            return 'unknow-star';
         }
     }
 
     getAverageGrade(restaurant) {
         let reviewNumber = restaurant.ratings.length;
-        let total = 0;
+        if (reviewNumber > 0) {
+            let total = 0;
 
-        restaurant.ratings.map(function(restaurantReview){
-            total += restaurantReview.stars;
-        });
+            restaurant.ratings.map(function (restaurantReview) {
+                total += restaurantReview.stars;
+            });
 
-        return Math.round((total/reviewNumber) * 100) / 100;
+            return Math.round((total / reviewNumber) * 100) / 100;
+        } else {
+            return 0;
+        }
     }
 
     getSplitedAddress(spliter) {
@@ -46,7 +50,8 @@ export default class ReviewTitle extends Component {
                     <div className={'col-10 col-xl-6 review-title'}>
                         <div className="row justify-content-around">
                             <StreetPicture
-                                address={this.props.restaurant.address}
+                                lat={this.props.restaurant.lat.toString()}
+                                long={this.props.restaurant.long.toString()}
                             />
                             <div className={'col-12 col-sm-4'}>
                                 <h2>{this.props.restaurant.restaurantName}</h2>

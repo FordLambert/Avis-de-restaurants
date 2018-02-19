@@ -11,7 +11,8 @@ export default class MainSection extends Component {
         this.state = {
             'listComplete': [],
             'listCustom': [],
-            'restaurantRequested': {}
+            'restaurantRequested': {},
+            'canAddRestaurant': false
         };
 
         this.geolocCoordinates = {};
@@ -97,6 +98,16 @@ export default class MainSection extends Component {
         this.setState({restaurantRequested: restaurant});
     }
 
+    addRestaurant = (restaurant) => {
+        let tempRestaurantList = this.state.listCustom;
+        tempRestaurantList.push(restaurant);
+        this.setState({listCustom: tempRestaurantList});
+    }
+
+    toggleAddRestaurant = (status) => {
+        this.setState({canAddRestaurant: status});
+    }
+
     render() {
         return (
             <section className="col-12 col-md-9 col-xl-10 main-section" id="main-section">
@@ -105,9 +116,12 @@ export default class MainSection extends Component {
                         restaurantList={this.state.listCustom}
                         handleMapLoad={this.handleMapLoad}
                         handleOpenReview={this.handleOpenReview}
+                        canAddRestaurant={this.state.canAddRestaurant}
+                        handleRestaurantAdded={this.addRestaurant}
                     />
                     <SearchResultFound
                         restaurantNumber={this.state.listCustom.length}
+                        toggleAddRestaurant={this.toggleAddRestaurant}
                     />
                     <RestaurantSection
                         restaurantList={this.state.listCustom}

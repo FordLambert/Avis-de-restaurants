@@ -17,7 +17,9 @@ export default class Map extends Component {
     static propTypes = {
         mapOptions: PropTypes.object,
         list: PropTypes.array,
-        handleMapLoad: PropTypes.func
+        handleMapLoad: PropTypes.func,
+        canAddRestaurant: PropTypes.bool,
+        handleRestaurantAdded: PropTypes.func
     }
 
     initMap = () => {
@@ -36,6 +38,10 @@ export default class Map extends Component {
                 map: this.map
             });
 
+            this.map.addListener('click', function(e) {
+                this.addRestaurant(e.latLng);
+            }.bind(this));
+
 			this.map.setCenter(pos);
             this.props.handleMapLoad(pos);
 		}.bind(this));
@@ -47,6 +53,20 @@ export default class Map extends Component {
         }.bind(this));
     }
 
+    addRestaurant = (position) => {
+        let lat = position.lat();
+        let long = position.lng()
+        if (this.props.canAddRestaurant) {
+            const newRestaurant = {};
+            newRestaurant.restaurantName = prompt('Entrez le nom du restaurant');
+            newRestaurant.address = prompt('Entrez l\'adresse du restaurant');
+            newRestaurant.lat = lat;
+            newRestaurant.long = long;
+            newRestaurant.ratings = [];
+           this.addMarker(position, newRestaurant);
+           this.props.handleRestaurantAdded(newRestaurant);
+        }
+    }
 
 	handleMarkerClick = (marker, restaurant, infoWindow) => {
         this.props.handleOpenReview(restaurant);
