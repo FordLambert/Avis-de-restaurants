@@ -2,10 +2,15 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
 import Script from './script';
+import AddRestaurantPopUp from './add_restaurant_popup';
 
 export default class Map extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            'clickedPosition': {}
+        };
 
         this.markers = []; //markers displayed on map
         this.infoWindows = []; //infoWindows displayed on map
@@ -38,8 +43,15 @@ export default class Map extends Component {
                 map: this.map
             });
 
+            this.map.addListener('mouseover', function(event) {
+                //document.getElementById('main-section').style.cursor = 'url(resources/pictures/marker-red.png), auto';
+            }.bind(this));
+
             this.map.addListener('click', function(e) {
-                this.addRestaurant(e.latLng);
+                if (this.props.canAddRestaurant) {
+                    this.setState({clickedPosition: e.latLng});
+                    window.location = '#add-restaurant-popup';
+                }
             }.bind(this));
 
 			this.map.setCenter(pos);
@@ -53,13 +65,13 @@ export default class Map extends Component {
         }.bind(this));
     }
 
-    addRestaurant = (position) => {
-        let lat = position.lat();
-        let long = position.lng();
+    handleSubmit = (restaurantName) => {
+        let lat = this.state.clickedPosition.lat();
+        let long = this.state.clickedPosition.lng();
         let address = '';
 
         let geocoder = new google.maps.Geocoder;
-        geocoder.geocode({'location': position}, function(results, status) {
+        geocoder.geocode({'location': this.state.clickedPosition}, function(results, status) {
             if (status === 'OK') {
                 if (results[1]) {
                     address = results[1].formatted_address;
@@ -71,16 +83,14 @@ export default class Map extends Component {
             }
         });
 
-        if (this.props.canAddRestaurant) {
-            const newRestaurant = {};
-            newRestaurant.restaurantName = prompt('Entrez le nom du restaurant');
-            newRestaurant.address = address;
-            newRestaurant.lat = lat;
-            newRestaurant.long = long;
-            newRestaurant.ratings = [];
-           this.addMarker(position, newRestaurant);
-           this.props.handleRestaurantAdded(newRestaurant);
-        }
+        const newRestaurant = {};
+        newRestaurant.restaurantName = restaurantName;
+        newRestaurant.address = address;
+        newRestaurant.lat = lat;
+        newRestaurant.long = long;
+        newRestaurant.ratings = [];
+       this.addMarker(this.state.clickedPosition, newRestaurant);
+       this.props.handleRestaurantAdded(newRestaurant);
     }
 
 	handleMarkerClick = (marker, restaurant, infoWindow) => {
@@ -136,6 +146,9 @@ export default class Map extends Component {
     render() {
         return (
         	<div>
+                <AddRestaurantPopUp
+                    handleSubmit={this.handleSubmit}
+                />
 				<Script
 					src={this.props.mapOptions.src + this.props.mapOptions.apiKey}
 					async={this.props.mapOptions.async}

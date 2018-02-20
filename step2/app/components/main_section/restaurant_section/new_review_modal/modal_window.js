@@ -26,7 +26,7 @@ export default class ModalWindow extends Component {
 
     render() {
         return (
-            <div id={'popUp'} className={'popup'}>
+            <div id={'add-review-popup'} className={'popup'}>
                 <div className="modal-dialog">
                     <div className="modal-content">
 

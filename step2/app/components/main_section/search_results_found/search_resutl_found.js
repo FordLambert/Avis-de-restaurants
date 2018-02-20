@@ -16,7 +16,7 @@ export default class SearchResultFound extends Component {
 
     render() {
         return (
-            <div className={'section-breaker col-12 text-center'}>
+            <div className={'search-result-founds col-12 text-center'}>
                 <p>{this.props.restaurantNumber}  résultats trouvés</p>
                 <AddRestaurantButton
                     toggleAddRestaurant={this.toggleAddRestaurant}

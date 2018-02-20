@@ -6031,13 +6031,7 @@ nav {
     right: 0;
     margin: 0 -100vw 0 0;
     transition: all 200ms ease-in;
-    min-height: 100%;
-    /*
-        @include media-breakpoint-up(lg) {
-            margin:0 -37.5vw 0 0;
-            width:37.5vw;
-        }
-        */ }
+    min-height: 100%; }
     @media (min-width: 768px) {
       #review-list aside {
         margin: 0 -75vw 0 0;
@@ -6116,7 +6110,7 @@ nav {
   transition: all 200ms ease-in;
   z-index: 0; }
 
-#openPopUp {
+#open-review-popup, #open-restaurant-popup {
   transition: background-color 0.20s linear; }
 
 .popup {
@@ -6149,6 +6143,10 @@ nav {
         margin-left: 0; } }
     .popup .popUpContainer .form-rating {
       font-size: 2em; }
+    .popup .popUpContainer .cancel {
+      border-top: 1px solid #dee4ed; }
+      .popup .popUpContainer .cancel .cancel-button {
+        margin-left: 15px; }
     .popup .popUpContainer .closePopUp {
       position: absolute;
       top: 2%;
@@ -6170,6 +6168,11 @@ nav {
       .popup:target .popUpContainer {
         top: 25px;
         transition: top 0.50s ease; } }
+
+#open-restaurant-popup {
+  position: absolute;
+  top: 50vh;
+  z-index: 50; }
 
 .pulser-wrapper {
   width: 60px;
@@ -6227,17 +6230,25 @@ nav {
   min-height: 100vh; }
   .main-section .themed-colored {
     color: #20cd74; }
-  .main-section #map {
+  .main-section #map-container {
     height: 80vh;
-    width: 100%; }
+    width: 100%;
+    position: relative; }
     @media (min-width: 768px) {
-      .main-section #map {
+      .main-section #map-container {
         height: 35vh;
         width: 100%; } }
-  .main-section .section-breaker {
+    .main-section #map-container #map {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0px; }
+  .main-section .search-result-founds {
     border-bottom: 1px solid #dee4ed; }
-    .main-section .section-breaker p {
+    .main-section .search-result-founds p {
       margin: 4px; }
+    .main-section .search-result-founds button {
+      margin-bottom: 2vh; }
   .main-section .restaurant-section {
     overflow-x: hidden;
     /*The following is here to hide the x scrollbar*/

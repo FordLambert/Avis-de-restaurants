@@ -20,12 +20,6 @@
             width: 75vw;
             max-height: 60vh;
         }
-        /*
-        @include media-breakpoint-up(lg) {
-            margin:0 -37.5vw 0 0;
-            width:37.5vw;
-        }
-        */
 
         @include media-breakpoint-up(xl) {
             margin:0 -83.2vw 0 0;

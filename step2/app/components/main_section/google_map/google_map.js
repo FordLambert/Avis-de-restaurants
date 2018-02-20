@@ -40,7 +40,7 @@ export default class GoogleMap extends Component {
 
     render() {
         return (
-            <div id={'map'}>
+            <div id={'map-container'}>
                 <Pulser />
                 <Map
                     mapOptions={this.mapOptions}
@@ -49,6 +49,9 @@ export default class GoogleMap extends Component {
                     handleOpenReview={this.handleOpenReview}
                     canAddRestaurant={this.props.canAddRestaurant}
                     handleRestaurantAdded={this.handleRestaurantAdded}
+                />
+                <div
+                    id={'map'}
                 />
             </div>
         );

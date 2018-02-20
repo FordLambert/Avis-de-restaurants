@@ -83,7 +83,7 @@ export default class Restaurant extends Component {
                     </div>
                 </div>
                 <div className={'row justify-content-center justify-content-md-end'}>
-                    <a href={'#popUp'} id={'openPopUp'} className={'col-sm-5 col-md-3 col-lg-5 col-xl-3 btn btn-info'} onClick={this.handleAddReview.bind(this)}>
+                    <a href={'#add-review-popup'} id={'open-review-popup'} className={'col-sm-5 col-md-3 col-lg-5 col-xl-3 btn btn-info'} onClick={this.handleAddReview.bind(this)}>
                         Votre avis
                     </a>
                     <ReviewListButton

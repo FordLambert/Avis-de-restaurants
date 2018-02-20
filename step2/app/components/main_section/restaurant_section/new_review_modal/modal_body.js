@@ -10,7 +10,7 @@ export default class ModalBody extends Component {
     }
 
     handleReviewSubmit = (grade, review) => {
-        this.props.handleReviewSubmit(grade, review);
+        this.props.handleReviewSubmit(grade, username, review);
     }
   
     render() {

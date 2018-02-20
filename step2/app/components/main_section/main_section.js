@@ -101,6 +101,7 @@ export default class MainSection extends Component {
     addRestaurant = (restaurant) => {
         let tempRestaurantList = this.state.listCustom;
         tempRestaurantList.push(restaurant);
+        alert('Restaurant ajouté');
         this.setState({listCustom: tempRestaurantList});
     }
 

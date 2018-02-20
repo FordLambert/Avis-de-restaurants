@@ -1,5 +1,5 @@
-#openPopUp {
-  transition:background-color 0.20s linear;
+#open-review-popup, #open-restaurant-popup {
+    transition:background-color 0.20s linear;
 }
 
 .popup {
@@ -36,6 +36,14 @@
             font-size: 2em;
         }
 
+        .cancel {
+            border-top: 1px solid $light-grey;
+
+            .cancel-button {
+                margin-left: 15px;
+            }
+        }
+
         .closePopUp {
             position: absolute;
             top: 2%;
@@ -66,4 +74,10 @@
             transition: top 0.50s ease;
         }
     }
+}
+
+#open-restaurant-popup {
+    position: absolute;
+    top:50vh;
+    z-index: 50;
 }

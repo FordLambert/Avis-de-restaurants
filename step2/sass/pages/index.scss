@@ -5,19 +5,32 @@
 		color: $light-green;
 	}
 
-	#map {
+	#map-container {
 		height: 80vh;
 		width: 100%;
+		position: relative;
+
 		@include media-breakpoint-up(md) {
 			height: 35vh;
 			width: 100%;
 		}
+
+		#map {
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0px;
+		}
 	}
 
-	.section-breaker {
+	.search-result-founds {
 		border-bottom: 1px solid $light-grey;
 		p {
 			margin: 4px;
+		}
+
+		button {
+			margin-bottom: 2vh;
 		}
 	}
 
