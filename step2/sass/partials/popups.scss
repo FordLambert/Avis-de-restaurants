@@ -1,4 +1,4 @@
-#open-review-popup, #open-restaurant-popup {
+#open-review-popup, #open-restaurant-popup #confirm-transition-popup {
     transition:background-color 0.20s linear;
 }
 
@@ -80,4 +80,13 @@
     position: absolute;
     top:50vh;
     z-index: 50;
+}
+
+#confirm-transition-popup {
+    height: 20vh;
+    width: 20vw;
+
+    .modal-body {
+        border: none;
+    }
 }

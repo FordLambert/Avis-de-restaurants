@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import GoogleMap from './google_map/google_map';
 import SearchResultFound from './search_results_found/search_resutl_found';
 import RestaurantSection from './restaurant_section/restaurant_section';
+import ConfirmAdditionPopUp from './confirm-addition-popup/confirm_addition_popup';
 
 export default class MainSection extends Component {
     constructor(props) {
@@ -100,13 +101,20 @@ export default class MainSection extends Component {
     }
 
     addRestaurant = (restaurant) => {
-        let tempRestaurantList = this.state.listCustom;
+        const tempRestaurantList = this.state.listCustom;
         tempRestaurantList.push(restaurant);
-        alert('Restaurant ajouté');
+        this.confirmRestaurantAdded();
         this.setState({
             listCustom: tempRestaurantList,
             canAddRestaurant: false
         });
+    }
+
+    confirmRestaurantAdded() {
+        window.location = '#confirm-addition-popup';
+        setTimeout(function () {
+            window.location = '#!';
+        }, 1500);
     }
 
     toggleAddRestaurant = (status) => {
@@ -124,6 +132,7 @@ export default class MainSection extends Component {
                         canAddRestaurant={this.state.canAddRestaurant}
                         handleRestaurantAdded={this.addRestaurant}
                     />
+                    <ConfirmAdditionPopUp />
                     <SearchResultFound
                         restaurantNumber={this.state.listCustom.length}
                         toggleAddRestaurant={this.toggleAddRestaurant}
