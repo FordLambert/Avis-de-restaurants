@@ -27,7 +27,7 @@ export default class SearchForm extends Component {
 
     render() {
         return (
-            <form className="col-11 col-lg-10" onSubmit={this.handleSubmit.bind(this)} >
+            <form className="col-11 col-lg-10" onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <SearchLabel
                         content={'Note moyenne entre:'}

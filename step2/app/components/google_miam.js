@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Navigation from './navigation/navigation';
 import MainSection from './main_section/main_section';
 
-class Index extends Component {
+class GoogleMiam extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,6 +34,6 @@ class Index extends Component {
 }
 
 ReactDOM.render(
-    <Index />,
+    <GoogleMiam />,
     document.getElementById('page-wrapper')
 );

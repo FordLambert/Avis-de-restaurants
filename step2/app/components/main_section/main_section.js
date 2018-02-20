@@ -87,7 +87,8 @@ export default class MainSection extends Component {
         fetch('./app/data/restaurant_list.json')
             .then(result => {
                 return result.json();
-            }).then(data => {
+            })
+            .then(data => {
             this.geolocCoordinates = geolocCoordinates;
             this.setState({listComplete: data});
             this.setState({listCustom: data});
