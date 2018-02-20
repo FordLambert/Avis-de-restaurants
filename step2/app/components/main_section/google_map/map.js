@@ -44,7 +44,11 @@ export default class Map extends Component {
             });
 
             this.map.addListener('mouseover', function(event) {
-                //document.getElementById('main-section').style.cursor = 'url(resources/pictures/marker-red.png), auto';
+                if (this.props.canAddRestaurant) {
+                    this.map.setOptions({draggableCursor: 'url(resources/pictures/marker-red.png), auto'});
+                } else {
+                    this.map.setOptions({draggableCursor: 'pointer'});
+                }
             }.bind(this));
 
             this.map.addListener('click', function(e) {
