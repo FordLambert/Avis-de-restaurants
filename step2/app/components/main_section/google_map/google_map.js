@@ -10,7 +10,7 @@ export default class GoogleMap extends Component {
 
         this.mapOptions = {
             src: 'https://maps.googleapis.com/maps/api/js',
-            apiKey: '?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
+            apiKey: '?key=' + 'AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
             async: true,
             defer: true,
             startPosition: {lat: 45.5088400, lng: -73.5878100},
@@ -22,6 +22,7 @@ export default class GoogleMap extends Component {
         restaurantList: PropTypes.array,
         handleMapLoad: PropTypes.func,
         handleOpenReview: PropTypes.func,
+        handleRestaurantAdded: PropTypes.func,
         canAddRestaurant: PropTypes.bool
     }
 

@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import Input from './input';
+import InfoParagraph from './info_paragraph';
+
 export default class ModalBody extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            //updated by user input
             restaurantName: ''
         };
     }
@@ -19,7 +23,9 @@ export default class ModalBody extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        //exit modal window
         window.location = '#!';
+        //give the name to parent component
         this.props.handleSubmit(this.state.restaurantName);
     }
   
@@ -29,7 +35,7 @@ export default class ModalBody extends Component {
                 <div className="row justify-content-center">
                     <form onSubmit={this.handleSubmit.bind(this)}>
                         <div className="form-group text-center">
-                            <input
+                            <Input
                                 className={'form-control'}
                                 type={'text'}
                                 placeholder={'Nom du restaurant'}
@@ -37,7 +43,7 @@ export default class ModalBody extends Component {
                             />
                         </div>
                         <div className="form-group text-center">
-                            <input
+                            <Input
                                 type={'submit'}
                                 value={'Ajouter'}
                                 className={'btn btn-info'}
@@ -45,9 +51,7 @@ export default class ModalBody extends Component {
                         </div>
                     </form>
                     <div className={'col-10 cancel'}>
-                        <p>Si vous avez cliqué par erreur, vous pouvez simplement
-                            <a href={'#!'} className={'btn btn-danger cancel-button'}>Annuler</a>
-                        </p>
+                        <InfoParagraph />
                     </div>
                 </div>
             </div>

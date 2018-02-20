@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
 import GoogleMap from './google_map/google_map';
-import SearchResultFound from './search_results_found/search_resutl_found';
+import SearchResultFound from './search_results_found/search_result_found';
 import RestaurantSection from './restaurant_section/restaurant_section';
 import ConfirmAdditionPopUp from './confirm-addition-popup/confirm_addition_popup';
 
@@ -38,7 +38,7 @@ export default class MainSection extends Component {
     }
 
     getAverageGrade(restaurant) {
-        let reviewNumber = restaurant.ratings.length;
+        const reviewNumber = restaurant.ratings.length;
         let total = 0;
 
         restaurant.ratings.map(function(restaurantReview){
@@ -50,9 +50,9 @@ export default class MainSection extends Component {
 
     componentWillReceiveProps(nextProps) {
         //create a new custom list based on user choices (grade)
-        let newList = [];
+        const newList = [];
         this.state.listComplete.map(function (restaurant) {
-            let overallGrade = this.getAverageGrade(restaurant);
+            const overallGrade = this.getAverageGrade(restaurant);
             if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
                 newList.push(restaurant);
             }
@@ -65,22 +65,26 @@ export default class MainSection extends Component {
             //only available if the user have geolocation
             if (this.geolocCoordinates != undefined) {
                 newList.sort(function (a, b) {
-                    let distA = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, a.lat, a.long);
-                    let distB = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, b.lat, b.long);
+                    const distA = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, a.lat, a.long);
+                    const distB = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, b.lat, b.long);
                     return distA - distB;
                 }.bind(this));
+
             } else {
                 console.log('Error: Géolocation must be active to use this sorting option');
             }
+
         //sort array by averageGrade
         } else if (nextProps.order == 'grade') {
             newList.sort(function (a, b) {
                 return this.getAverageGrade(b) - this.getAverageGrade(a);
             }.bind(this));
+
         //handle wrong parameter
         } else {
             console.log('Error: list order must be "distance" or "grade"')
         }
+
         this.setState({listCustom: newList});
     }
 
@@ -90,10 +94,12 @@ export default class MainSection extends Component {
                 return result.json();
             })
             .then(data => {
-            this.geolocCoordinates = geolocCoordinates;
-            this.setState({listComplete: data});
-            this.setState({listCustom: data});
-        });
+                this.geolocCoordinates = geolocCoordinates;
+                this.setState({
+                    listComplete: data,
+                    listCustom: data
+                });
+            });
     }
 
     handleOpenReview = (restaurant) => {
@@ -111,6 +117,7 @@ export default class MainSection extends Component {
     }
 
     confirmRestaurantAdded() {
+        //open the confirmation modal for a short time
         window.location = '#confirm-addition-popup';
         setTimeout(function () {
             window.location = '#!';

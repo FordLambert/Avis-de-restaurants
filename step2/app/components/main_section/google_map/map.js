@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
 import Script from './script';
-import AddRestaurantPopUp from './add_restaurant_popup';
+import AddRestaurantPopUp from './add_restaurant_popup/add_restaurant_popup';
 
 export default class Map extends Component {
     constructor(props) {
@@ -24,7 +24,8 @@ export default class Map extends Component {
         list: PropTypes.array,
         handleMapLoad: PropTypes.func,
         canAddRestaurant: PropTypes.bool,
-        handleRestaurantAdded: PropTypes.func
+        handleRestaurantAdded: PropTypes.func,
+        handleOpenReview: PropTypes.func
     }
 
     initMap = () => {
@@ -32,6 +33,7 @@ export default class Map extends Component {
         	center: this.props.mapOptions.startPosition,
        		zoom: this.props.mapOptions.zoom
 		});
+
 		navigator.geolocation.getCurrentPosition(function(position) {
 			const pos = {
 				lat: position.coords.latitude,
@@ -43,45 +45,45 @@ export default class Map extends Component {
                 map: this.map
             });
 
-            this.map.addListener('mouseover', function(event) {
-                if (this.props.canAddRestaurant) {
-                    this.map.setOptions({draggableCursor: 'url(resources/pictures/marker-red.png), auto'});
-                } else {
-                    this.map.setOptions({draggableCursor: 'pointer'});
-                }
-            }.bind(this));
-
-            this.map.addListener('click', function(e) {
-                if (this.props.canAddRestaurant) {
-                    this.setState({clickedPosition: e.latLng});
-                    window.location = '#add-restaurant-popup';
-                }
-            }.bind(this));
-
 			this.map.setCenter(pos);
             this.props.handleMapLoad(pos);
 		}.bind(this));
+
+		//style of cursor in "add restaurant" mode
+        this.map.addListener('mouseover', function() {
+            if (this.props.canAddRestaurant) {
+                this.map.setOptions({draggableCursor: 'url(resources/pictures/marker-red.png), auto'});
+
+            } else {
+                this.map.setOptions({draggableCursor: 'pointer'});
+            }
+        }.bind(this));
+
+        //if in "add restaurant" mode, start adding process on click
+        this.map.addListener('click', function(event) {
+            if (this.props.canAddRestaurant) {
+                this.setState({clickedPosition: event.latLng});
+                window.location = '#add-restaurant-popup';
+            }
+        }.bind(this));
 	}
 
-	closeInfoWindows() {
-        this.infoWindows.map(function (infoWindow) {
-            infoWindow.close();
-        }.bind(this));
-    }
-
     handleSubmit = (restaurantName) => {
-        let lat = this.state.clickedPosition.lat();
-        let long = this.state.clickedPosition.lng();
+        const lat = this.state.clickedPosition.lat();
+        const long = this.state.clickedPosition.lng();
         let address = '';
 
         let geocoder = new google.maps.Geocoder;
         geocoder.geocode({'location': this.state.clickedPosition}, function(results, status) {
             if (status === 'OK') {
+
                 if (results[1]) {
                     address = results[1].formatted_address;
+
                 } else {
                     console.log('No results found');
                 }
+
             } else {
                 console.log('Geocoder failed due to: ' + status);
             }
@@ -93,19 +95,21 @@ export default class Map extends Component {
         newRestaurant.lat = lat;
         newRestaurant.long = long;
         newRestaurant.ratings = [];
+
        this.addMarker(this.state.clickedPosition, newRestaurant);
        this.props.handleRestaurantAdded(newRestaurant);
     }
 
 	handleMarkerClick = (marker, restaurant, infoWindow) => {
         this.props.handleOpenReview(restaurant);
+
         this.markers.map(function (marker) {
             marker.setIcon(this.defaultMarkerIcon);
             this.closeInfoWindows();
         }.bind(this));
+
         marker.setIcon(this.clickedMarkerIcon);
         infoWindow.open(this.map, marker);
-
     }
 
 	addMarker(position, restaurant) {
@@ -131,17 +135,25 @@ export default class Map extends Component {
         this.markers.splice(1);
     }
 
+    //set the map to display the markers (hide them if null)
     setMapOnAll(map) {
         for (let i = 0; i < this.markers.length; i++) {
             this.markers[i].setMap(map);
         }
     }
 
+    closeInfoWindows() {
+        this.infoWindows.map(function (infoWindow) {
+            infoWindow.close();
+        }.bind(this));
+    }
+
 	componentWillUpdate(nextProps) {
         if (nextProps.list != this.props.list) {
             this.deleteOldMarkers();
+
             nextProps.list.map(function (restaurant) {
-                let position = {lat: restaurant.lat, lng: restaurant.long};
+                const position = {lat: restaurant.lat, lng: restaurant.long};
                 this.addMarker(position, restaurant);
             }.bind(this));
         }

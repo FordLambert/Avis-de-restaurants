@@ -20,17 +20,14 @@ export default class AddRestaurantPopUp extends Component {
             <div id={'add-restaurant-popup'} className={'popup'}>
                 <div className="modal-dialog">
                     <div className="modal-content">
-
                         <div className="popUpContainer">
                             <ModalHeader />
                             <ModalBody
                                 handleSubmit={this.handleSubmit}
                             />
                         </div>
-
                     </div>
                 </div>
-
                 <CloseLink
                     className={'closePopUpOutSide'}
                 />
