@@ -103,7 +103,10 @@ export default class MainSection extends Component {
         let tempRestaurantList = this.state.listCustom;
         tempRestaurantList.push(restaurant);
         alert('Restaurant ajouté');
-        this.setState({listCustom: tempRestaurantList});
+        this.setState({
+            listCustom: tempRestaurantList,
+            canAddRestaurant: false
+        });
     }
 
     toggleAddRestaurant = (status) => {
@@ -124,6 +127,7 @@ export default class MainSection extends Component {
                     <SearchResultFound
                         restaurantNumber={this.state.listCustom.length}
                         toggleAddRestaurant={this.toggleAddRestaurant}
+                        canAddRestaurant={this.state.canAddRestaurant}
                     />
                     <RestaurantSection
                         restaurantList={this.state.listCustom}

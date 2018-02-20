@@ -7,7 +7,8 @@ export default class SearchResultFound extends Component {
 
     static propTypes = {
         restaurantNumber: PropTypes.number,
-        toggleAddRestaurant: PropTypes.func
+        toggleAddRestaurant: PropTypes.func,
+        canAddRestaurant: PropTypes.bool
     }
 
     toggleAddRestaurant = (status) => {
@@ -20,6 +21,7 @@ export default class SearchResultFound extends Component {
                 <p>{this.props.restaurantNumber}  résultats trouvés</p>
                 <AddRestaurantButton
                     toggleAddRestaurant={this.toggleAddRestaurant}
+                    canAddRestaurant={this.props.canAddRestaurant}
                 />
             </div>
         );
