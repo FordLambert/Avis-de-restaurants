@@ -6,7 +6,8 @@ export default class AddRestaurantButton extends Component {
         super(props);
         this.state = {
             'addRestaurantMode': false,
-            'content': 'Ajouter un restaurant'
+            'content': 'Ajouter un restaurant',
+            'bannerClassName': ' d-none'
         };
     }
 
@@ -16,21 +17,32 @@ export default class AddRestaurantButton extends Component {
 
     handleClick = () => {
         if (!this.state.addRestaurantMode) {
-            this.setState({addRestaurantMode: true});
-            this.setState({content: 'Sortir de l\'ajout de restaurant'});
+            this.setState({
+                addRestaurantMode: true,
+                content: 'Sortir de l\'ajout de restaurant',
+                bannerClassName:  ' d-block'
+            });
             this.props.toggleAddRestaurant(true);
         } else {
-            this.setState({addRestaurantMode: false});
-            this.setState({content: 'Ajouter un restaurant'});
+            this.setState({
+                addRestaurantMode: false,
+                content: 'Ajouter un restaurant',
+                bannerClassName: ' d-none'
+            });
             this.props.toggleAddRestaurant(false);
         }
     }
 
     render() {
         return (
-            <button className={'btn btn-info'} onClick={this.handleClick}>
-                {this.state.content}
-            </button>
+            <div>
+                <button className={'btn btn-info'} onClick={this.handleClick}>
+                    {this.state.content}
+                </button>
+                <div className={'alert alert-info' + this.state.bannerClassName} role="alert">
+                    Cliquez sur un point de la carte pour ajouter un restaurant à cet endroit
+                </div>
+            </div>
         );
     }
 }
