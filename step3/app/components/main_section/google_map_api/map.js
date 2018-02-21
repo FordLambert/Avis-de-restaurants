@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
-import Map from './map';
+import GoogleMapApi from './google_map_api';
 import Pulser from './loading_pulser';
 
-export default class GoogleMap extends Component {
+export default class Map extends Component {
     constructor(props) {
         super(props);
 
         this.mapOptions = {
             src: 'https://maps.googleapis.com/maps/api/js',
             apiKey: '?key=' + 'AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
+            request: '&' + 'libraries=places',
             async: true,
             defer: true,
             startPosition: {lat: 45.5088400, lng: -73.5878100},
@@ -26,8 +27,8 @@ export default class GoogleMap extends Component {
         canAddRestaurant: PropTypes.bool
     }
 
-    handleMapLoad = (geolocCoordinates) => {
-        this.props.handleMapLoad(geolocCoordinates);
+    handleMapLoad = (geolocCoordinates, restaurantList) => {
+        this.props.handleMapLoad(geolocCoordinates, restaurantList);
     }
 
     handleOpenReview = (restaurant) => {
@@ -43,7 +44,7 @@ export default class GoogleMap extends Component {
         return (
             <div id={'map-container'}>
                 <Pulser />
-                <Map
+                <GoogleMapApi
                     mapOptions={this.mapOptions}
                     list={this.props.restaurantList}
                     handleMapLoad={this.handleMapLoad}

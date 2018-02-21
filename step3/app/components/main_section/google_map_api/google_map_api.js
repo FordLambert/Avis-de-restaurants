@@ -4,12 +4,14 @@ import PropTypes from "prop-types";
 import Script from './script';
 import AddRestaurantPopUp from './add_restaurant_popup/add_restaurant_popup';
 
-export default class Map extends Component {
+export default class GoogleMapApi extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            'clickedPosition': {}
+            'clickedPosition': {},
+            'researchedLat': 48.856995,
+            'researchedLong': 2.341517
         };
 
         this.markers = []; //markers displayed on map
@@ -46,8 +48,34 @@ export default class Map extends Component {
             });
 
 			this.map.setCenter(pos);
-            this.props.handleMapLoad(pos);
+
+            const searchedPosition = new google.maps.LatLng(
+                this.state.researchedLat,
+                this.state.researchedLong
+            );
+
+            const request = {
+                location: searchedPosition,
+                radius: '500',
+                types: ['restaurant']
+            };
+
+            const service = new google.maps.places.PlacesService(this.map);
+
+            service.nearbySearch(request, function(results, status) {
+
+                //to delete (down)
+                console.log('----1 Status-----');;
+                console.log(status);
+                console.log('-----------------');
+                //to delete (up)
+
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    this.props.handleMapLoad(pos, results);
+                }
+            }.bind(this));
 		}.bind(this));
+
 
 		//style of cursor in "add restaurant" mode
         this.map.addListener('mouseover', function() {
@@ -153,20 +181,23 @@ export default class Map extends Component {
             this.deleteOldMarkers();
 
             nextProps.list.map(function (restaurant) {
-                const position = {lat: restaurant.lat, lng: restaurant.long};
+                const position = restaurant.geometry.location;
+                console.log(location);
                 this.addMarker(position, restaurant);
             }.bind(this));
         }
 	}
 
     render() {
+        const src = this.props.mapOptions.src + this.props.mapOptions.apiKey + this.props.mapOptions.request;
+
         return (
         	<div>
                 <AddRestaurantPopUp
                     handleSubmit={this.handleSubmit}
                 />
 				<Script
-					src={this.props.mapOptions.src + this.props.mapOptions.apiKey}
+					src={src}
 					async={this.props.mapOptions.async}
 					defer={this.props.mapOptions.defer}
 					callback={this.initMap}

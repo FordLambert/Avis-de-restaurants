@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
-import GoogleMap from './google_map/google_map';
+import Map from './google_map_api/map';
 import RestaurantInfoMenu from './restaurant_info_menu/restaurant_info_menu';
 import RestaurantSection from './restaurant_section/restaurant_section';
 import ConfirmAdditionPopUp from './confirm-addition-popup/confirm_addition_popup';
@@ -64,8 +64,7 @@ export default class MainSection extends Component {
         //create a new custom list based on user choices (grade)
         const newList = [];
         this.state.listComplete.map(function (restaurant) {
-            const overallGrade = this.getAverageGrade(restaurant);
-            if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
+            if ((restaurant.rating >= nextProps.grade.min) && (restaurant.rating <= nextProps.grade.max)) {
                 newList.push(restaurant);
             }
         }.bind(this));
@@ -89,7 +88,7 @@ export default class MainSection extends Component {
         //sort array by averageGrade
         } else if (nextProps.order == 'grade') {
             newList.sort(function (a, b) {
-                return this.getAverageGrade(b) - this.getAverageGrade(a);
+                return b.rating - a.rating;
             }.bind(this));
 
         //handle wrong parameter
@@ -100,18 +99,23 @@ export default class MainSection extends Component {
         this.setState({listCustom: newList});
     }
 
-    handleMapLoad = (geolocCoordinates) => {
+    handleMapLoad = (geolocCoordinates, restaurantList) => {
+        /*
         fetch('./app/data/restaurant_list.json')
-            .then(result => {
-                return result.json();
-            })
+            //.then(result => {
+                return result.json()
+            //})
             .then(data => {
+            */
+            console.log(restaurantList[0].geometry.location.lat.value);
+
+                console.log(restaurantList);
                 this.geolocCoordinates = geolocCoordinates;
                 this.setState({
-                    listComplete: data,
-                    listCustom: data
+                    listComplete: restaurantList,
+                    listCustom: restaurantList
                 });
-            });
+           // });
     }
 
     handleOpenReview = (restaurant) => {
@@ -144,7 +148,7 @@ export default class MainSection extends Component {
         return (
             <section className='col-12 col-md-9 col-xl-10 main-section' id='main-section'>
                 <div className='row'>
-                    <GoogleMap
+                    <Map
                         restaurantList={this.state.listCustom}
                         handleMapLoad={this.handleMapLoad}
                         handleOpenReview={this.handleOpenReview}

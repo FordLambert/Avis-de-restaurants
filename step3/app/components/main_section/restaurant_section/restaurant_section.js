@@ -48,9 +48,6 @@ export default class RestaurantSection extends Component {
                     handleReviewSubmit={this.handleReviewSubmit}
                     restaurantReviewed={this.state.currentRestaurant}
                 />
-                <ReviewList
-                    currentRestaurant={this.state.currentRestaurant}
-                />
                 <RestaurantList
                     restaurantList={this.props.restaurantList}
                     handleOpenReview={this.handleOpenReview}
