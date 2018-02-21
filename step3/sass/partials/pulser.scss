@@ -1,0 +1,33 @@
+.pulser-wrapper {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    margin: 40vh auto;
+
+    @include media-breakpoint-up(md) {
+        margin: 17.5vh auto;
+    }
+
+    .pulse-1, .pulse-2 {
+        width: 100%;
+        height: 100%;
+        background-color: $light-green;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: pulse 6.0s infinite ease-in-out;
+      }
+      
+      .pulse-2 {
+        animation-delay: -3.0s;
+      }
+
+      @keyframes pulse {
+        0%, 100% { 
+          transform: scale(0.0);
+        } 50% { 
+          transform: scale(1.0);
+        }
+      }
+}
