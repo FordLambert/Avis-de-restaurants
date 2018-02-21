@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
 import GoogleMap from './google_map/google_map';
-import SearchResultFound from './search_results_found/search_result_found';
+import RestaurantInfoMenu from './restaurant_info_menu/restaurant_info_menu';
 import RestaurantSection from './restaurant_section/restaurant_section';
 import ConfirmAdditionPopUp from './confirm-addition-popup/confirm_addition_popup';
 
@@ -142,7 +142,7 @@ export default class MainSection extends Component {
                         handleRestaurantAdded={this.addRestaurant}
                     />
                     <ConfirmAdditionPopUp />
-                    <SearchResultFound
+                    <RestaurantInfoMenu
                         restaurantNumber={this.state.listCustom.length}
                         toggleAddRestaurant={this.toggleAddRestaurant}
                         canAddRestaurant={this.state.canAddRestaurant}

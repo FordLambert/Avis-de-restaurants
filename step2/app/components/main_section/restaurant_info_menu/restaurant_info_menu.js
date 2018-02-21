@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import AddRestaurantButton from './add_restaurant_button';
-import Paragraph from './paragraph';
+import SearchResultFound from './search_result_found';
 
-export default class SearchResultFound extends Component {
+export default class RestaurantInfoMenu extends Component {
 
     static propTypes = {
         restaurantNumber: PropTypes.number,
@@ -19,7 +19,7 @@ export default class SearchResultFound extends Component {
     render() {
         return (
             <div className={'search-result-founds col-12 text-center'}>
-                <Paragraph
+                <SearchResultFound
                     restaurantNumber={this.props.restaurantNumber}
                 />
                 <AddRestaurantButton
