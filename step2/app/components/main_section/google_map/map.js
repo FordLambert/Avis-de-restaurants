@@ -73,12 +73,12 @@ export default class Map extends Component {
         const long = this.state.clickedPosition.lng();
         let address = '';
 
-        let geocoder = new google.maps.Geocoder;
+        const geocoder = new google.maps.Geocoder;
         geocoder.geocode({'location': this.state.clickedPosition}, function(results, status) {
             if (status === 'OK') {
 
                 if (results[1]) {
-                    address = results[1].formatted_address;
+                    address = results[0].formatted_address;
 
                 } else {
                     console.log('No results found');
@@ -87,17 +87,17 @@ export default class Map extends Component {
             } else {
                 console.log('Geocoder failed due to: ' + status);
             }
-        });
 
-        const newRestaurant = {};
-        newRestaurant.restaurantName = restaurantName;
-        newRestaurant.address = address;
-        newRestaurant.lat = lat;
-        newRestaurant.long = long;
-        newRestaurant.ratings = [];
+            const newRestaurant = {};
+            newRestaurant.restaurantName = restaurantName;
+            newRestaurant.address = address;
+            newRestaurant.lat = lat;
+            newRestaurant.long = long;
+            newRestaurant.ratings = [];
 
-       this.addMarker(this.state.clickedPosition, newRestaurant);
-       this.props.handleRestaurantAdded(newRestaurant);
+            this.addMarker(this.state.clickedPosition, newRestaurant);
+            this.props.handleRestaurantAdded(newRestaurant);
+        }.bind(this));
     }
 
 	handleMarkerClick = (marker, restaurant, infoWindow) => {

@@ -54,7 +54,10 @@ export default class Restaurant extends Component {
     }
 
     getSplitedAddress(spliter) {
-        return this.props.restaurant.address.split(spliter);
+
+        const test = this.props.restaurant.address.split(spliter);
+        //console.log(test);
+        return test;
     }
 
     handleOpenReview = () => {
