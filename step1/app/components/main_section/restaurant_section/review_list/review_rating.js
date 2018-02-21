@@ -7,7 +7,7 @@ const ReviewRating = ({grade}) => (
     <div className={'col-12 rating'}>
         <div className={'row justify-content-center justify-content-md-end'}>
             <StarRatingComponent
-                name="review-grade"
+                name='review-grade'
                 editing={false}
                 starCount={5}
                 value={grade}

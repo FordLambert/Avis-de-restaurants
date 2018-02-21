@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import Script from './script';
 
@@ -25,11 +25,13 @@ export default class Map extends Component {
         	center: this.props.mapOptions.startPosition,
        		zoom: this.props.mapOptions.zoom
 		});
+
 		navigator.geolocation.getCurrentPosition(function(position) {
 			const pos = {
 				lat: position.coords.latitude,
 				lng: position.coords.longitude
 			};
+
             const marker = new google.maps.Marker({
                 position: pos,
                 icon: this.geolocalisationMarkerIcon,
@@ -50,13 +52,14 @@ export default class Map extends Component {
 
 	handleMarkerClick = (marker, restaurant, infoWindow) => {
         this.props.handleOpenReview(restaurant);
+
         this.markers.map(function (marker) {
             marker.setIcon(this.defaultMarkerIcon);
             this.closeInfoWindows();
         }.bind(this));
+
         marker.setIcon(this.clickedMarkerIcon);
         infoWindow.open(this.map, marker);
-
     }
 
 	addMarker(position, restaurant) {
@@ -73,6 +76,7 @@ export default class Map extends Component {
         marker.addListener('click', function() {
             this.handleMarkerClick(marker, restaurant, infoWindow);
         }.bind(this));
+
         this.markers.push(marker);
         this.infoWindows.push(infoWindow);
 	}
@@ -92,7 +96,7 @@ export default class Map extends Component {
         if (nextProps.list != this.props.list) {
             this.deleteOldMarkers();
             nextProps.list.map(function (restaurant) {
-                let position = {lat: restaurant.lat, lng: restaurant.long};
+                const position = {lat: restaurant.lat, lng: restaurant.long};
                 this.addMarker(position, restaurant);
             }.bind(this));
         }

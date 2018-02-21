@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import GoogleMap from './google_map/google_map';
 import SearchResultFound from './search_results_found/search_resutl_found';
@@ -48,7 +48,7 @@ export default class MainSection extends Component {
     }
 
     getAverageGrade(restaurant) {
-        let reviewNumber = restaurant.ratings.length;
+        const reviewNumber = restaurant.ratings.length;
         let total = 0;
 
         restaurant.ratings.map(function(restaurantReview){
@@ -61,11 +61,13 @@ export default class MainSection extends Component {
     componentWillReceiveProps(nextProps) {
         //create a new custom list based on user choices (grade)
         let newList = [];
+
         this.state.listComplete.map(function (restaurant) {
-            let overallGrade = this.getAverageGrade(restaurant);
+            const overallGrade = this.getAverageGrade(restaurant);
             if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
                 newList.push(restaurant);
             }
+
         }.bind(this));
 
         //sort the newly created custom array
@@ -75,18 +77,21 @@ export default class MainSection extends Component {
             //only available if the user have geolocation
             if (this.geolocCoordinates != undefined) {
                 newList.sort(function (a, b) {
-                    let distA = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, a.lat, a.long);
-                    let distB = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, b.lat, b.long);
+                    const distA = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, a.lat, a.long);
+                    const distB = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, b.lat, b.long);
                     return distA - distB;
                 }.bind(this));
+
             } else {
                 console.log('Error: Géolocation must be active to use this sorting option');
             }
+
         //sort array by averageGrade
         } else if (nextProps.order == 'grade') {
             newList.sort(function (a, b) {
                 return this.getAverageGrade(b) - this.getAverageGrade(a);
             }.bind(this));
+
         //handle wrong parameter
         } else {
             console.log('Error: list order must be "distance" or "grade"')
@@ -98,10 +103,13 @@ export default class MainSection extends Component {
         fetch('./app/data/restaurant_list.json')
             .then(result => {
                 return result.json();
-            }).then(data => {
+            })
+            .then(data => {
             this.geolocCoordinates = geolocCoordinates;
-            this.setState({listComplete: data});
-            this.setState({listCustom: data});
+            this.setState({
+                listComplete: data,
+                listCustom: data
+            });
         });
     }
 
@@ -111,8 +119,8 @@ export default class MainSection extends Component {
 
     render() {
         return (
-            <section className="col-12 col-md-9 col-xl-10 main-section" id="main-section">
-                <div className="row">
+            <section className='col-12 col-md-9 col-xl-10 main-section' id='main-section'>
+                <div className='row'>
                     <GoogleMap
                         restaurantList={this.state.listCustom}
                         handleMapLoad={this.handleMapLoad}

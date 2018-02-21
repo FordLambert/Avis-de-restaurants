@@ -13,9 +13,14 @@ export default class ReviewList extends Component {
 
     chooseRenderComponent(restaurant) {
         if (restaurant.ratings != undefined) {
+
             return restaurant.ratings.map(function(review, index){
-                return <Review key={index} review={review} />
+                return <Review
+                    key={index}
+                    review={review}
+                />
             }.bind(this))
+
         }
     }
 
@@ -33,7 +38,7 @@ export default class ReviewList extends Component {
         return (
             <div id={'review-list'}>
                 <aside className={'col-12'}>
-                    <div className="row">
+                    <div className='row'>
                         {this.chooseRenderTitle((this.props.currentRestaurant))}
                         {this.chooseRenderComponent(this.props.currentRestaurant)}
                     </div>

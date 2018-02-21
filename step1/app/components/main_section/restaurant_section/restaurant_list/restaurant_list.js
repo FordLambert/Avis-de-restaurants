@@ -6,11 +6,13 @@ import Placeholder from './placeholder';
 
 export default class RestaurantList extends Component {
     static propTypes = {
-        restaurantList: PropTypes.array
+        restaurantList: PropTypes.array,
+        handleOpenReview: PropTypes.func
     }
 
     chooseRenderComponent(restaurantList) {
         if (restaurantList != undefined) {
+
             return restaurantList.map(function(restaurant, index){
                 return <Restaurant
                     key={index}
@@ -19,6 +21,7 @@ export default class RestaurantList extends Component {
                     restaurant={restaurant}
                 />;
             }.bind(this))
+
         } else {
             return <Placeholder />
         }

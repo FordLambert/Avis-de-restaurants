@@ -18,17 +18,17 @@ export default class SearchForm extends Component {
         handleSubmit: PropTypes.func
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        let grade = this.state.grade;
-        let order = this.state.order;
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const grade = this.state.grade;
+        const order = this.state.order;
         this.props.handleSubmit(grade, order);
     }
 
     render() {
         return (
-            <form className="col-11 col-lg-10" onSubmit={this.handleSubmit.bind(this)} >
-                <div className="form-group">
+            <form className='col-11 col-lg-10' onSubmit={this.handleSubmit} >
+                <div className='form-group'>
                     <SearchLabel
                         content={'Note moyenne entre:'}
                         className={'gradeLabel'}
@@ -42,16 +42,29 @@ export default class SearchForm extends Component {
                         onChange={value => this.setState({ grade: value })}
                     />
                 </div>
-                <div className="form-group">
+                <div className='form-group'>
                     <SearchLabel
                         content={'Trier par:'}
                     />
-                    <select className={'form-control'} id='order-option' ref={'order'} onChange={event => this.setState({ order: event.target.value })}>
-                        <option value='distance'>Distance</option>
-                        <option value='grade'>Note</option>
+                    <select
+                        className={'form-control'}
+                        id='order-option'
+                        ref={'order'}
+                        onChange={event => this.setState({ order: event.target.value })}
+                    >
+                        <option value='distance'>
+                            Distance
+                        </option>
+                        <option value='grade'>
+                            Note
+                        </option>
                     </select>
                 </div>
-                <input type="submit" className="btn btn-secondary" value="C'est parti !" />
+                <input
+                    type='submit'
+                    className='btn btn-secondary'
+                    value="C'est parti !"
+            />
             </form>
         );
     }

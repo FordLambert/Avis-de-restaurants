@@ -18,23 +18,27 @@ export default class Restaurant extends Component {
     static propTypes = {
         restaurant: PropTypes.object,
         openReview: PropTypes.func,
-        id: PropTypes.number
+        id: PropTypes.number,
+        handleOpenReview: PropTypes.func
     }
 
     defineStarColor(grade) {
         if (grade >= 1 && grade <= 2) {
             return 'red-star';
+
         } else if (grade > 2 && grade < 4) {
             return 'orange-star';
+
         } else if (grade >= 4 && grade <= 5) {
             return 'green-star';
+
         } else {
             console.log('Error: rating must be  between 1 and 5');
         }
     }
 
     getAverageGrade(restaurant) {
-        let reviewNumber = restaurant.ratings.length;
+        const reviewNumber = restaurant.ratings.length;
         let total = 0;
 
         restaurant.ratings.map(function(restaurantReview){
@@ -55,7 +59,7 @@ export default class Restaurant extends Component {
     render() {
         return (
             <li className={'restaurant col-10 col-xl-5 align-self-center'}>
-                <div className="row justify-content-around">
+                <div className='row justify-content-around'>
                     <StreetPicture
                         address={this.props.restaurant.address}
                     />

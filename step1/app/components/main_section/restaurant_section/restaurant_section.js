@@ -27,7 +27,7 @@ export default class RestaurantSection extends Component {
 
     render() {
         return (
-            <div className="restaurant-section col-12">
+            <div className='restaurant-section col-12'>
                 <ReviewList
                     currentRestaurant={this.state.currentRestaurant}
                 />

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 export default class Script extends Component {
     static propTypes = {
@@ -12,7 +12,7 @@ export default class Script extends Component {
 
     //script is created here to avoid a new script creation on each render
     componentDidMount() {
-        const script = document.createElement("script");
+        const script = document.createElement('script');
 
         script.src = this.props.src;
         script.async = this.props.async;

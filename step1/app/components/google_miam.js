@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Navigation from './navigation/navigation';
 import MainSection from './main_section/main_section';
 
-class Index extends Component {
+class GoogleMiam extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,12 +15,15 @@ class Index extends Component {
 
     //handle the form's submit for custom restaurant options
     handleSubmit = (grade, order) => {
-        this.setState({grade: grade, order: order });
+        this.setState({
+            grade: grade,
+            order: order
+        });
     }
 
     render() {
         return (
-            <div className="row">
+            <div className='row'>
                 <Navigation
                     handleSubmit={this.handleSubmit}
                 />
@@ -34,6 +37,6 @@ class Index extends Component {
 }
 
 ReactDOM.render(
-    <Index />,
+    <GoogleMiam />,
     document.getElementById('page-wrapper')
 );
