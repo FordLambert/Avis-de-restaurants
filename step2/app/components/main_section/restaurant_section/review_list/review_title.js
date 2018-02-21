@@ -15,17 +15,20 @@ export default class ReviewTitle extends Component {
     defineStarColor(grade) {
         if (grade >= 1 && grade <= 2) {
             return 'red-star';
+
         } else if (grade > 2 && grade < 4) {
             return 'orange-star';
+
         } else if (grade >= 4 && grade <= 5) {
             return 'green-star';
+
         } else {
             return 'unknow-star';
         }
     }
 
     getAverageGrade(restaurant) {
-        let reviewNumber = restaurant.ratings.length;
+        const reviewNumber = restaurant.ratings.length;
         if (reviewNumber > 0) {
             let total = 0;
 
@@ -34,6 +37,7 @@ export default class ReviewTitle extends Component {
             });
 
             return Math.round((total / reviewNumber) * 100) / 100;
+
         } else {
             return 0;
         }

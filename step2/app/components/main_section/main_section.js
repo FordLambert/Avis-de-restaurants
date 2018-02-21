@@ -24,6 +24,7 @@ export default class MainSection extends Component {
         order: PropTypes.string
     }
 
+    /*need to be commented*/
     getDistance(lat1, lon1, lat2, lon2) {
         const radlat1 = Math.PI * lat1/180;
         const radlat2 = Math.PI * lat2/180;
@@ -36,6 +37,7 @@ export default class MainSection extends Component {
         dist = dist * 1.609344;
         return dist;
     }
+    /*------*/
 
     getAverageGrade(restaurant) {
         const reviewNumber = restaurant.ratings.length;
@@ -130,8 +132,8 @@ export default class MainSection extends Component {
 
     render() {
         return (
-            <section className="col-12 col-md-9 col-xl-10 main-section" id="main-section">
-                <div className="row">
+            <section className='col-12 col-md-9 col-xl-10 main-section' id='main-section'>
+                <div className='row'>
                     <GoogleMap
                         restaurantList={this.state.listCustom}
                         handleMapLoad={this.handleMapLoad}

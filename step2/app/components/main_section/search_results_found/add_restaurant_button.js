@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import BannerGuide from './banner_guide';
+
 export default class AddRestaurantButton extends Component {
     constructor(props) {
         super(props);
@@ -24,6 +26,7 @@ export default class AddRestaurantButton extends Component {
                 bannerClassName:  ' d-block'
             });
             this.props.toggleAddRestaurant(true);
+
         } else {
             this.setState({
                 addRestaurantMode: false,
@@ -54,9 +57,9 @@ export default class AddRestaurantButton extends Component {
                 <button className={'btn btn-info'} onClick={this.handleClick}>
                     {this.state.content}
                 </button>
-                <div className={'alert alert-info' + this.state.bannerClassName} role="alert">
-                    Cliquez sur un point de la carte pour ajouter un restaurant à cet endroit
-                </div>
+                <BannerGuide
+                    className={this.state.bannerClassName}
+                />
             </div>
         );
     }

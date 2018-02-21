@@ -16,9 +16,9 @@ export default class RestaurantSection extends Component {
         restaurantRequested: PropTypes.object
     }
 
-    handleReviewSubmit(grade, review) {
-        let tempRestaurant = this.state.currentRestaurant;
-        let newRating = {
+    handleReviewSubmit = (grade, review) => {
+        const tempRestaurant = this.state.currentRestaurant;
+        const newRating = {
             "stars":grade,
             "comment":review
         }
@@ -45,7 +45,7 @@ export default class RestaurantSection extends Component {
         return (
             <div className="restaurant-section col-12">
                 <ModalWindow
-                    handleReviewSubmit={this.handleReviewSubmit.bind(this)}
+                    handleReviewSubmit={this.handleReviewSubmit}
                     restaurantReviewed={this.state.currentRestaurant}
                 />
                 <ReviewList

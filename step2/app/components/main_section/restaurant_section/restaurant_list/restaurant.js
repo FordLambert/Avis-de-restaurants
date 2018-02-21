@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import StreetPicture from './street_picture';
 import RestaurantDetails from './restaurant_details';
 import GlobalReview from './global_review';
+import AddReviewButton from './add_review_button';
 import ReviewListButton from './review_list_button';
 
 export default class Restaurant extends Component {
@@ -24,17 +25,20 @@ export default class Restaurant extends Component {
     defineStarColor(grade) {
         if (grade >= 1 && grade <= 2) {
             return 'red-star';
+
         } else if (grade > 2 && grade < 4) {
             return 'orange-star';
+
         } else if (grade >= 4 && grade <= 5) {
             return 'green-star';
+
         } else {
            return 'unknow-star';
         }
     }
 
     getAverageGrade(restaurant) {
-        let reviewNumber = restaurant.ratings.length;
+        const reviewNumber = restaurant.ratings.length;
         if (reviewNumber > 0) {
             let total = 0;
 
@@ -43,6 +47,7 @@ export default class Restaurant extends Component {
             });
 
             return Math.round((total / reviewNumber) * 100) / 100;
+
         } else {
             return 0;
         }
@@ -63,7 +68,7 @@ export default class Restaurant extends Component {
     render() {
         return (
             <li className={'restaurant col-10 col-xl-5 align-self-center'}>
-                <div className="row justify-content-around">
+                <div className='row justify-content-around'>
                     <StreetPicture
                         lat={this.state.latitude}
                         long={this.state.longitude}
@@ -83,9 +88,9 @@ export default class Restaurant extends Component {
                     </div>
                 </div>
                 <div className={'row justify-content-center justify-content-md-end'}>
-                    <a href={'#add-review-popup'} id={'open-review-popup'} className={'col-sm-5 col-md-3 col-lg-5 col-xl-3 btn btn-info'} onClick={this.handleAddReview.bind(this)}>
-                        Votre avis
-                    </a>
+                    <AddReviewButton
+                        handleAddReview={this.handleAddReview}
+                    />
                     <ReviewListButton
                         handleOpenReview={this.handleOpenReview}
                     />

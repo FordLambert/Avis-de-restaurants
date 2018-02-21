@@ -16,7 +16,7 @@ export default class ReviewRating extends Component {
         handleChange: PropTypes.func
     }
 
-    onStarClick(nextGrade) {
+    onStarClick = (nextGrade) => {
         this.props.handleChange(nextGrade);
     }
 
@@ -33,7 +33,7 @@ export default class ReviewRating extends Component {
                     name="review-rating"
                     starCount={5}
                     value={rating}
-                    onStarClick={this.onStarClick.bind(this)}
+                    onStarClick={this.onStarClick}
                 />
             </div>
         );

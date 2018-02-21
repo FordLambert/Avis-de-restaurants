@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Paragraph = ({className, content}) => (
-    <p className={className}>{content}</p>
+    <p className={className}>
+        {content}
+    </p>
 );
 
 Paragraph.propTypes = {

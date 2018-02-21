@@ -11,7 +11,7 @@ const TextArea = ({handleChange}) => (
 );
 
 TextArea.proptypes = {
-    onchange: PropTypes.func
+    handleChange: PropTypes.func
 }
 
 export default TextArea;

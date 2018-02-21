@@ -29,7 +29,6 @@ export default class ModalWindow extends Component {
             <div id={'add-review-popup'} className={'popup'}>
                 <div className="modal-dialog">
                     <div className="modal-content">
-
                         <div className="popUpContainer">
                             <ModalHeader
                                 restaurantReviewed={this.state.restaurantReviewed}
@@ -38,10 +37,8 @@ export default class ModalWindow extends Component {
                                 handleReviewSubmit={this.handleReviewSubmit}
                             />
                         </div>
-
                     </div>
                 </div>
-
                 <CloseLink
                     className={'closePopUpOutSide'}
                 />
