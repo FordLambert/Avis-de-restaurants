@@ -23,14 +23,26 @@ export default class MainSection extends Component {
     }
 
     getDistance(lat1, lon1, lat2, lon2) {
+        //convert lat 1 and 2 from degree to radians
         const radlat1 = Math.PI * lat1/180;
         const radlat2 = Math.PI * lat2/180;
+
+        //theta determine an angle between long 1 and 2
         const theta = lon1-lon2;
+        //then convert it to radians
         const radtheta = Math.PI * theta/180;
+
+        //multiply the sinus of (radians) lats, add the product of the long's (radians) cosine multiply by radtheta
         let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+
+        //dist equal the cosine arc between our points
         dist = Math.acos(dist);
+
+        //convert it back from radians to degree
         dist = dist * 180/Math.PI;
         dist = dist * 60 * 1.1515;
+
+        //finally convert it to kilometers
         dist = dist * 1.609344;
         return dist;
     }
