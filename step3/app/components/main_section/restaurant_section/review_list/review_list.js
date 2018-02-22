@@ -12,8 +12,8 @@ export default class ReviewList extends Component {
     }
 
     chooseRenderComponent(restaurant) {
-        if (restaurant.ratings != undefined) {
-            return restaurant.ratings.map(function(review, index){
+        if (restaurant.reviews != undefined) {
+            return restaurant.reviews.map(function(review, index){
                 return <Review
                     key={index}
                     review={review}
@@ -23,7 +23,7 @@ export default class ReviewList extends Component {
     }
 
     chooseRenderTitle(restaurant) {
-        if (restaurant.ratings != undefined) {
+        if (restaurant.reviews != undefined) {
         return  <ReviewTitle
             restaurant={this.props.currentRestaurant}
         />

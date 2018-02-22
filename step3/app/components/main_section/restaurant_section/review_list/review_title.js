@@ -27,38 +27,26 @@ export default class ReviewTitle extends Component {
         }
     }
 
-    getAverageGrade(restaurant) {
-        const reviewNumber = restaurant.ratings.length;
-        if (reviewNumber > 0) {
-            let total = 0;
-
-            restaurant.ratings.map(function (restaurantReview) {
-                total += restaurantReview.stars;
-            });
-
-            return Math.round((total / reviewNumber) * 100) / 100;
-
-        } else {
-            return 0;
-        }
-    }
-
     getSplitedAddress(spliter) {
-        return this.props.restaurant.address.split(spliter);
+        return this.props.restaurant.vicinity.split(spliter);
     }
 
     render() {
+        console.log(this.props.restaurant);
+        const lat = this.props.restaurant.geometry.location.lat();
+        const long = this.props.restaurant.geometry.location.lng();
+
         return (
             <div className={'col-12'}>
                 <div className={'row justify-content-xl-center'}>
                     <div className={'col-10 col-xl-6 review-title'}>
                         <div className="row justify-content-around">
                             <StreetPicture
-                                lat={this.props.restaurant.lat.toString()}
-                                long={this.props.restaurant.long.toString()}
+                                lat={lat.toString()}
+                                long={long.toString()}
                             />
                             <div className={'col-12 col-sm-4'}>
-                                <h2>{this.props.restaurant.restaurantName}</h2>
+                                <h2>{this.props.restaurant.name}</h2>
                                 <Address
                                     street={this.getSplitedAddress(',')[0]}
                                     city={this.getSplitedAddress(',')[1]}
@@ -67,8 +55,8 @@ export default class ReviewTitle extends Component {
                             <div className={'col-12 col-sm-2'}>
                                 <div className={'row justify-content-center'}>
                                     <GlobalReview
-                                        averageGrade={this.getAverageGrade(this.props.restaurant)}
-                                        pictureName={this.defineStarColor(this.getAverageGrade(this.props.restaurant))}
+                                        averageGrade={this.props.restaurant.rating}
+                                        pictureName={this.defineStarColor(this.props.restaurant.rating)}
                                     />
                                 </div>
                             </div>

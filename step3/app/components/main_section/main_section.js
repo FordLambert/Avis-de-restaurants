@@ -13,7 +13,8 @@ export default class MainSection extends Component {
             'listComplete': [],
             'listCustom': [],
             'restaurantRequested': {},
-            'canAddRestaurant': false
+            'canAddRestaurant': false,
+            'map': {}
         };
 
         this.geolocCoordinates = {};
@@ -76,8 +77,20 @@ export default class MainSection extends Component {
             //only available if the user have geolocation
             if (this.geolocCoordinates != undefined) {
                 newList.sort(function (a, b) {
-                    const distA = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, a.lat, a.long);
-                    const distB = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, b.lat, b.long);
+                    const distA = this.getDistance(
+                        this.geolocCoordinates.lat,
+                        this.geolocCoordinates.lng,
+                        a.geometry.location.lat(),
+                        a.geometry.location.lng()
+                    );
+
+                    const distB = this.getDistance(
+                        this.geolocCoordinates.lat,
+                        this.geolocCoordinates.lng,
+                        b.geometry.location.lat(),
+                        b.geometry.location.lng()
+                    );
+
                     return distA - distB;
                 }.bind(this));
 
@@ -99,23 +112,14 @@ export default class MainSection extends Component {
         this.setState({listCustom: newList});
     }
 
-    handleMapLoad = (geolocCoordinates, restaurantList) => {
-        /*
-        fetch('./app/data/restaurant_list.json')
-            //.then(result => {
-                return result.json()
-            //})
-            .then(data => {
-            */
-            console.log(restaurantList[0].geometry.location.lat.value);
-
-                console.log(restaurantList);
-                this.geolocCoordinates = geolocCoordinates;
-                this.setState({
-                    listComplete: restaurantList,
-                    listCustom: restaurantList
-                });
-           // });
+    handleMapLoad = (geolocCoordinates, restaurantList, map) => {
+        console.log(restaurantList);
+        this.geolocCoordinates = geolocCoordinates;
+        this.setState({
+            listComplete: restaurantList,
+            listCustom: restaurantList,
+            map: map
+        });
     }
 
     handleOpenReview = (restaurant) => {
@@ -164,6 +168,7 @@ export default class MainSection extends Component {
                     <RestaurantSection
                         restaurantList={this.state.listCustom}
                         restaurantRequested={this.state.restaurantRequested}
+                        map={this.state.map}
                     />
                 </div>
             </section>

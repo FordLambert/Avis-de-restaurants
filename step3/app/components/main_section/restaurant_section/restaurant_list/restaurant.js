@@ -6,20 +6,24 @@ import RestaurantDetails from './restaurant_details';
 import GlobalReview from './global_review';
 import AddReviewButton from './add_review_button';
 import ReviewListButton from './review_list_button';
+import GooglePlaceDetails from './google_place_details';
 
 export default class Restaurant extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            latitude: this.props.restaurant.geometry.location.lat,
-            longitude: this.props.restaurant.geometry.location.lng
+            latitude: this.props.restaurant.geometry.location.lat(),
+            longitude: this.props.restaurant.geometry.location.lng(),
+            restaurantPictureUrl: this.props.restaurant.photos[0].getUrl({'maxWidth': 250, 'maxHeight': 250}),
+            reviewNumber: 0
         };
     }
 
     static propTypes = {
         restaurant: PropTypes.object,
         openReview: PropTypes.func,
-        id: PropTypes.number
+        id: PropTypes.number,
+        map: PropTypes.object
     }
 
     defineStarColor(grade) {
@@ -38,8 +42,7 @@ export default class Restaurant extends Component {
     }
 
     getSplitedAddress(spliter) {
-        const test = this.props.restaurant.vicinity.split(spliter);
-        return test;
+        return this.props.restaurant.vicinity.split(spliter);
     }
 
     handleOpenReview = () => {
@@ -50,17 +53,28 @@ export default class Restaurant extends Component {
         this.props.handleAddReview(this.props.restaurant);
     }
 
+    handleDetails = (restaurant) => {
+        this.setState({
+            reviewNumber: restaurant.reviews.length,
+        });
+    }
+
     render() {
         return (
             <li className={'restaurant col-10 col-xl-5 align-self-center'}>
+                <GooglePlaceDetails
+                    map={this.props.map}
+                    placeId={this.props.restaurant.place_id}
+                    handleDetails={this.handleDetails}
+                />
                 <div className='row justify-content-around'>
                     <StreetPicture
-                        address={this.props.restaurant.vicinity}
+                        src={this.state.restaurantPictureUrl}
                     />
                     <RestaurantDetails
                         restaurantName={this.props.restaurant.name}
                         address={this.getSplitedAddress(',')}
-                        reviewNumber={0}
+                        reviewNumber={this.state.reviewNumber}
                     />
                     <div className={'col-12 col-sm-3 col-xl-2'}>
                         <div className={'row justify-content-center'}>

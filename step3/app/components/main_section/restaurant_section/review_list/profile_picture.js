@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Picture from './picture';
+import UserPicture from './user_picture';
 
-const ProfilePicture = ({pictureName, userName}) => (
+const ProfilePicture = ({src, userName}) => (
     <div className={'offset-1 col-10'}>
         <div className={'row justify-content-center justify-content-md-start text-center'}>
             <div className={'col-5 col-sm-3'}>
-                <Picture
-                    pictureName={pictureName}
+                <UserPicture
+                    src={src}
                     className={'user-thumbnail rounded-circle img-fluid'}
                     alt={'user-picture'}
                 />
@@ -19,7 +19,7 @@ const ProfilePicture = ({pictureName, userName}) => (
 );
 
 ProfilePicture.propTypes = {
-    pictureName: PropTypes.string,
+    src: PropTypes.string,
     username: PropTypes.string
 }
 

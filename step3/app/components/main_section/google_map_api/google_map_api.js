@@ -54,28 +54,25 @@ export default class GoogleMapApi extends Component {
                 this.state.researchedLong
             );
 
+            /*-----Request for restaurant List-----*/
             const request = {
                 location: searchedPosition,
-                radius: '500',
-                types: ['restaurant']
+                radius: '1000',
+                types: ['restaurant'],
+                minPriceLevel: 0
             };
 
             const service = new google.maps.places.PlacesService(this.map);
 
             service.nearbySearch(request, function(results, status) {
 
-                //to delete (down)
-                console.log('----1 Status-----');;
-                console.log(status);
-                console.log('-----------------');
-                //to delete (up)
-
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
-                    this.props.handleMapLoad(pos, results);
+                    this.props.handleMapLoad(pos, results, this.map);
                 }
             }.bind(this));
-		}.bind(this));
+            /*-----Request for restaurant List-----*/
 
+		}.bind(this));
 
 		//style of cursor in "add restaurant" mode
         this.map.addListener('mouseover', function() {
@@ -97,8 +94,8 @@ export default class GoogleMapApi extends Component {
 	}
 
     handleSubmit = (restaurantName) => {
-        const lat = this.state.clickedPosition.lat();
-        const long = this.state.clickedPosition.lng();
+        //const lat = this.state.clickedPosition.lat();
+        //const long = this.state.clickedPosition.lng();
         let address = '';
 
         const geocoder = new google.maps.Geocoder;
@@ -117,11 +114,11 @@ export default class GoogleMapApi extends Component {
             }
 
             const newRestaurant = {};
-            newRestaurant.restaurantName = restaurantName;
-            newRestaurant.address = address;
-            newRestaurant.lat = lat;
-            newRestaurant.long = long;
-            newRestaurant.ratings = [];
+            newRestaurant.name = restaurantName;
+            newRestaurant.vicinity = address;
+            newRestaurant.lat = this.state.clickedPosition.lat();;
+            newRestaurant.long = this.state.clickedPosition.lng();
+            newRestaurant.reviews = [];
 
             this.addMarker(this.state.clickedPosition, newRestaurant);
             this.props.handleRestaurantAdded(newRestaurant);
@@ -182,7 +179,6 @@ export default class GoogleMapApi extends Component {
 
             nextProps.list.map(function (restaurant) {
                 const position = restaurant.geometry.location;
-                console.log(location);
                 this.addMarker(position, restaurant);
             }.bind(this));
         }

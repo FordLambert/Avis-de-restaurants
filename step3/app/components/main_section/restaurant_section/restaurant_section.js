@@ -13,14 +13,15 @@ export default class RestaurantSection extends Component {
 
     static propTypes = {
         restaurantList: PropTypes.array,
-        restaurantRequested: PropTypes.object
+        restaurantRequested: PropTypes.object,
+        map: PropTypes.object
     }
 
     handleReviewSubmit = (grade, review) => {
         const tempRestaurant = this.state.currentRestaurant;
         const newRating = {
-            "stars":grade,
-            "comment":review
+            "rating":grade,
+            "text":review
         }
         tempRestaurant.ratings.push(newRating);
 
@@ -48,7 +49,11 @@ export default class RestaurantSection extends Component {
                     handleReviewSubmit={this.handleReviewSubmit}
                     restaurantReviewed={this.state.currentRestaurant}
                 />
+                <ReviewList
+                    currentRestaurant={this.state.currentRestaurant}
+                />
                 <RestaurantList
+                    map={this.props.map}
                     restaurantList={this.props.restaurantList}
                     handleOpenReview={this.handleOpenReview}
                     handleAddReview={this.handleAddReview}

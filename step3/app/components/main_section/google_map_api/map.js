@@ -10,7 +10,7 @@ export default class Map extends Component {
 
         this.mapOptions = {
             src: 'https://maps.googleapis.com/maps/api/js',
-            apiKey: '?key=' + 'AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
+            apiKey: '?key=' + 'AIzaSyDNUGo0UwN5UI3gEYYLRlzdS-Rm53HMr_g',
             request: '&' + 'libraries=places',
             async: true,
             defer: true,
@@ -27,8 +27,8 @@ export default class Map extends Component {
         canAddRestaurant: PropTypes.bool
     }
 
-    handleMapLoad = (geolocCoordinates, restaurantList) => {
-        this.props.handleMapLoad(geolocCoordinates, restaurantList);
+    handleMapLoad = (geolocCoordinates, restaurantList, map) => {
+        this.props.handleMapLoad(geolocCoordinates, restaurantList, map);
     }
 
     handleOpenReview = (restaurant) => {
