@@ -47,8 +47,8 @@ export default class SearchForm extends Component {
                         content={'Trier par:'}
                     />
                     <select className={'form-control'} id='order-option' ref={'order'} onChange={event => this.setState({ order: event.target.value })}>
-                        <option value='distance'>Distance</option>
                         <option value='grade'>Note</option>
+                        <option value='distance'>Distance</option>
                     </select>
                 </div>
                 <input type="submit" className="btn btn-secondary" value="C'est parti !" />

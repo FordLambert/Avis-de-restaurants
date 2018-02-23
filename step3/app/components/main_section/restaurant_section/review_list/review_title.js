@@ -41,8 +41,7 @@ export default class ReviewTitle extends Component {
                     <div className={'col-10 col-xl-6 review-title'}>
                         <div className="row justify-content-around">
                             <StreetPicture
-                                lat={lat.toString()}
-                                long={long.toString()}
+                                restaurant={this.props.restaurant}
                             />
                             <div className={'col-12 col-sm-4'}>
                                 <h2>{this.props.restaurant.name}</h2>

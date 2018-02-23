@@ -52,12 +52,8 @@ export default class SearchForm extends Component {
                         ref={'order'}
                         onChange={event => this.setState({ order: event.target.value })}
                     >
-                        <option value='distance'>
-                            Distance
-                        </option>
-                        <option value='grade'>
-                            Note
-                        </option>
+                        <option value='grade'>Note</option>
+                        <option value='distance'>Distance</option>
                     </select>
                 </div>
                 <input
