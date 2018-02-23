@@ -16,18 +16,18 @@ export default class UserPicture extends Component {
         alt: PropTypes.string
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.src == undefined) {
-            this.setState({
-                src: 'resources/pictures/user.png'
-            });
+    defineSrc() {
+        if (this.props.src == undefined) {
+           return 'resources/pictures/user.png';
+        } else {
+            return this.props.src;
         }
     }
 
     render() {
         return (
             <img
-                src={this.state.src}
+                src={this.defineSrc()}
                 className={this.props.className}
                 alt={this.props.alt}
             />

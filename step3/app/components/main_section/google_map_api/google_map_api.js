@@ -94,8 +94,6 @@ export default class GoogleMapApi extends Component {
 	}
 
     handleSubmit = (restaurantName) => {
-        //const lat = this.state.clickedPosition.lat();
-        //const long = this.state.clickedPosition.lng();
         let address = '';
 
         const geocoder = new google.maps.Geocoder;
@@ -116,9 +114,10 @@ export default class GoogleMapApi extends Component {
             const newRestaurant = {};
             newRestaurant.name = restaurantName;
             newRestaurant.vicinity = address;
-            newRestaurant.lat = this.state.clickedPosition.lat();;
-            newRestaurant.long = this.state.clickedPosition.lng();
-            newRestaurant.reviews = [];
+            newRestaurant.geometry = {};
+            newRestaurant.geometry.location = this.state.clickedPosition;
+            newRestaurant.rating = 0;
+            newRestaurant.reviewList = [];
 
             this.addMarker(this.state.clickedPosition, newRestaurant);
             this.props.handleRestaurantAdded(newRestaurant);

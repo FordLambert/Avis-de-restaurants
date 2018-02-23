@@ -25,7 +25,8 @@
 
 	.search-result-founds {
 		border-bottom: 1px solid $light-grey;
-		height: 10vh;
+		min-height: 10vh;
+		max-height: 20vh;
 
 		p {
 			margin: 4px;
@@ -40,7 +41,8 @@
 		overflow-x: hidden;
 	
 		@include media-breakpoint-up(md) {
-			height: 50vh;
+			min-height: 40vh;
+			max-height: 50vh;
 			overflow-y: auto;
 		}
 
@@ -67,6 +69,9 @@
 			padding: 0px;
 
 			.restaurant {
+
+				height: 30vh;
+
 				list-style-type: none;
 				padding: 20px;
 				padding-bottom: 10px;
@@ -89,6 +94,15 @@
 				h2 {
 					font-size: $title-md-font-size;
 					color: $light-green;
+				}
+
+				.street-picture-container {
+
+					height: 100%;
+
+					@include media-breakpoint-up(lg) {
+						height: 17vh;
+					}
 				}
 
 				.trigger-button {

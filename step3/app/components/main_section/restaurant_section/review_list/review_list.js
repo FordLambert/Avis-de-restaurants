@@ -18,25 +18,25 @@ export default class ReviewList extends Component {
         map: PropTypes.object
     }
 
+    chooseRenderTitle(restaurant) {
+        if (restaurant != null) {
+            return  <ReviewTitle
+                restaurant={restaurant}
+            />
+
+        } else {
+            return <Placeholder />
+        }
+    }
+
     chooseRenderComponent(restaurant) {
         if (restaurant != null) {
-            return restaurant.reviewList.map(function(review, index){
+            return restaurant.reviewList.map(function (review, index) {
                 return <Review
                     key={index}
                     review={review}
                 />
             }.bind(this))
-        }
-    }
-
-    chooseRenderTitle(restaurant) {
-        if (restaurant != null) {
-        return  <ReviewTitle
-            restaurant={restaurant}
-        />
-
-        } else {
-            return <Placeholder />
         }
     }
 

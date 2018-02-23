@@ -6251,7 +6251,8 @@ nav {
       top: 0px; }
   .main-section .search-result-founds {
     border-bottom: 1px solid #dee4ed;
-    height: 10vh; }
+    min-height: 10vh;
+    max-height: 20vh; }
     .main-section .search-result-founds p {
       margin: 4px; }
     .main-section .search-result-founds button {
@@ -6262,7 +6263,8 @@ nav {
     /*End of rules to hide the x scrollbar*/ }
     @media (min-width: 768px) {
       .main-section .restaurant-section {
-        height: 50vh;
+        min-height: 40vh;
+        max-height: 50vh;
         overflow-y: auto; } }
     .main-section .restaurant-section .restaurant-section {
       height: 100%;
@@ -6276,6 +6278,7 @@ nav {
     .main-section .restaurant-section ul {
       padding: 0px; }
       .main-section .restaurant-section ul .restaurant {
+        height: 30vh;
         list-style-type: none;
         padding: 20px;
         padding-bottom: 10px;
@@ -6292,6 +6295,11 @@ nav {
         .main-section .restaurant-section ul .restaurant h2 {
           font-size: 1.1em;
           color: #20cd74; }
+        .main-section .restaurant-section ul .restaurant .street-picture-container {
+          height: 100%; }
+          @media (min-width: 992px) {
+            .main-section .restaurant-section ul .restaurant .street-picture-container {
+              height: 17vh; } }
         .main-section .restaurant-section ul .restaurant .trigger-button {
           margin-top: 3vh; }
           @media (min-width: 768px) {

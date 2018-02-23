@@ -13,7 +13,6 @@ export default class Restaurant extends Component {
         this.state = {
             latitude: this.props.restaurant.geometry.location.lat(),
             longitude: this.props.restaurant.geometry.location.lng(),
-            restaurantPictureUrl: this.props.restaurant.photos[0].getUrl({'maxWidth': 250, 'maxHeight': 250})
         };
     }
 
@@ -55,7 +54,7 @@ export default class Restaurant extends Component {
             <li className={'restaurant col-10 col-xl-5 align-self-center'}>
                 <div className='row justify-content-around'>
                     <StreetPicture
-                        src={this.state.restaurantPictureUrl}
+                        restaurant={this.props.restaurant}
                     />
                     <RestaurantDetails
                         restaurantName={this.props.restaurant.name}
