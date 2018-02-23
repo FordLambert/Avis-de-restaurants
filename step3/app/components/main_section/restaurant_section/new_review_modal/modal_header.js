@@ -11,7 +11,7 @@ const ModalHeader = ({restaurantReviewed}) => (
             content={'x'}
         />
         <ModalTitle
-            restaurantName={restaurantReviewed.restaurantName}
+            restaurantName={restaurantReviewed.name}
         />
     </div>
 );

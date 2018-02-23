@@ -1,5 +1,5 @@
 .main-section {
-	min-height: 100vh;
+	height: 100vh;
 
 	.themed-colored {
 		color: $light-green;
@@ -25,6 +25,8 @@
 
 	.search-result-founds {
 		border-bottom: 1px solid $light-grey;
+		height: 10vh;
+
 		p {
 			margin: 4px;
 		}
@@ -38,12 +40,12 @@
 		overflow-x: hidden;
 	
 		@include media-breakpoint-up(md) {
-			height: 60vh;
+			height: 50vh;
 			overflow-y: auto;
 		}
 
 		/*The following is here to hide the x scrollbar*/
-		.restaurant-section{
+		.restaurant-section {
 			//@include media-breakpoint-up(lg) {
 				height: 100%;
 				width: 100%;
@@ -51,7 +53,7 @@
 			//}
 		}
 		
-		.restaurant-list{
+		.restaurant-list {
 			//@include media-breakpoint-up(lg) {
 				width: 106%;
 				height: 100%;

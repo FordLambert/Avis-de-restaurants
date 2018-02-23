@@ -6,14 +6,21 @@ import ReviewTitle from './review_title';
 import Placeholder from './placeholder';
 
 export default class ReviewList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            'restaurantReviewed': null
+        };
+    }
 
     static propTypes = {
-        currentRestaurant: PropTypes.object
+        restaurant: PropTypes.object,
+        map: PropTypes.object
     }
 
     chooseRenderComponent(restaurant) {
-        if (restaurant.reviews != undefined) {
-            return restaurant.reviews.map(function(review, index){
+        if (restaurant != null) {
+            return restaurant.reviewList.map(function(review, index){
                 return <Review
                     key={index}
                     review={review}
@@ -23,13 +30,44 @@ export default class ReviewList extends Component {
     }
 
     chooseRenderTitle(restaurant) {
-        if (restaurant.reviews != undefined) {
+        if (restaurant != null) {
         return  <ReviewTitle
-            restaurant={this.props.currentRestaurant}
+            restaurant={restaurant}
         />
 
         } else {
             return <Placeholder />
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.restaurant != null) {
+
+            if (nextProps.restaurant.reviewList != undefined) {
+                this.setState({restaurantReviewed: nextProps.restaurant});
+
+            } else {
+                const request = {
+                    placeId: nextProps.restaurant.place_id
+                };
+                const service = new google.maps.places.PlacesService(nextProps.map);
+                service.getDetails(request, function (place, status) {
+                    if (status == google.maps.places.PlacesServiceStatus.OK) {
+                        nextProps.restaurant.reviewList = place.reviews;
+                        this.setState({
+                            restaurantReviewed: nextProps.restaurant
+                        });
+                    }
+                }.bind(this));
+            }
+
+            if ((nextProps.userReview != null) && (nextProps.userReview != this.props.userReview)) {
+                const tempRestaurant = this.state.restaurantReviewed;
+                tempRestaurant.reviewList.push(nextProps.userReview);
+                this.setState({
+                    restaurantReviewed: tempRestaurant
+                });
+            }
         }
     }
   
@@ -38,8 +76,8 @@ export default class ReviewList extends Component {
             <div id={'review-list'}>
                 <aside className={'col-12'}>
                     <div className="row">
-                        {this.chooseRenderTitle((this.props.currentRestaurant))}
-                        {this.chooseRenderComponent(this.props.currentRestaurant)}
+                        {this.chooseRenderTitle((this.state.restaurantReviewed))}
+                        {this.chooseRenderComponent(this.state.restaurantReviewed)}
                     </div>
                 </aside>
             </div>

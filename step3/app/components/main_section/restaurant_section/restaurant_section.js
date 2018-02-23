@@ -8,7 +8,10 @@ import RestaurantList from './restaurant_list/restaurant_list';
 export default class RestaurantSection extends Component {
     constructor(props) {
         super(props);
-        this.state = {'currentRestaurant': {}};
+        this.state = {
+            'currentRestaurant': null,
+            'userReview': null
+        };
     }
 
     static propTypes = {
@@ -17,15 +20,13 @@ export default class RestaurantSection extends Component {
         map: PropTypes.object
     }
 
-    handleReviewSubmit = (grade, review) => {
-        const tempRestaurant = this.state.currentRestaurant;
-        const newRating = {
-            "rating":grade,
-            "text":review
+    handleReviewSubmit = (grade, text) => {
+        const newReview = {
+            "rating": grade,
+            "text": text
         }
-        tempRestaurant.ratings.push(newRating);
 
-        this.setState({currentRestaurant: tempRestaurant});
+        this.setState({userReview: newReview});
     }
 
     handleOpenReview = (restaurant) => {
@@ -36,12 +37,6 @@ export default class RestaurantSection extends Component {
         this.setState({currentRestaurant: restaurant});
     }
 
-    componentWillUpdate(nextProps) {
-        if (this.props.restaurantRequested != nextProps.restaurantRequested) {
-            this.setState({currentRestaurant: nextProps.restaurantRequested});
-        }
-    }
-
     render() {
         return (
             <div className="restaurant-section col-12">
@@ -50,10 +45,11 @@ export default class RestaurantSection extends Component {
                     restaurantReviewed={this.state.currentRestaurant}
                 />
                 <ReviewList
-                    currentRestaurant={this.state.currentRestaurant}
+                    restaurant={this.state.currentRestaurant}
+                    userReview={this.state.userReview}
+                    map={this.props.map}
                 />
                 <RestaurantList
-                    map={this.props.map}
                     restaurantList={this.props.restaurantList}
                     handleOpenReview={this.handleOpenReview}
                     handleAddReview={this.handleAddReview}

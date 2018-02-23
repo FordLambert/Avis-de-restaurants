@@ -25,6 +25,8 @@
 
 	.search-result-founds {
 		border-bottom: 1px solid $light-grey;
+		height: 10vh;
+
 		p {
 			margin: 4px;
 		}
@@ -38,7 +40,7 @@
 		overflow-x: hidden;
 	
 		@include media-breakpoint-up(md) {
-			height: 60vh;
+			height: 50vh;
 			overflow-y: auto;
 		}
 

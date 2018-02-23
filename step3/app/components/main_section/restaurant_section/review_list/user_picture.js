@@ -8,18 +8,20 @@ export default class UserPicture extends Component {
         this.state = {
             'src': this.props.src
         }
-
-        if (this.props.src == undefined) {
-            this.setState({
-                src: 'resources/pictures/user.png'
-            });
-        }
     }
 
     static propTypes = {
         src: PropTypes.string,
         className: PropTypes.string,
         alt: PropTypes.string
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.src == undefined) {
+            this.setState({
+                src: 'resources/pictures/user.png'
+            });
+        }
     }
 
     render() {

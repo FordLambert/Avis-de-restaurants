@@ -6233,7 +6233,7 @@ nav {
   border-color: white; }
 
 .main-section {
-  min-height: 100vh; }
+  height: 100vh; }
   .main-section .themed-colored {
     color: #20cd74; }
   .main-section #map-container {
@@ -6250,7 +6250,8 @@ nav {
       position: absolute;
       top: 0px; }
   .main-section .search-result-founds {
-    border-bottom: 1px solid #dee4ed; }
+    border-bottom: 1px solid #dee4ed;
+    height: 10vh; }
     .main-section .search-result-founds p {
       margin: 4px; }
     .main-section .search-result-founds button {
@@ -6261,7 +6262,7 @@ nav {
     /*End of rules to hide the x scrollbar*/ }
     @media (min-width: 768px) {
       .main-section .restaurant-section {
-        height: 60vh;
+        height: 50vh;
         overflow-y: auto; } }
     .main-section .restaurant-section .restaurant-section {
       height: 100%;

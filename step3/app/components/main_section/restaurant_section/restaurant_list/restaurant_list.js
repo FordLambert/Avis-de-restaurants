@@ -8,8 +8,7 @@ export default class RestaurantList extends Component {
     static propTypes = {
         restaurantList: PropTypes.array,
         handleOpenReview: PropTypes.func,
-        handleAddReview: PropTypes.func,
-        map: PropTypes.object
+        handleAddReview: PropTypes.func
     }
 
     chooseRenderComponent(restaurantList) {
@@ -22,7 +21,6 @@ export default class RestaurantList extends Component {
                     handleOpenReview={this.handleOpenReview}
                     handleAddReview={this.handleAddReview}
                     restaurant={restaurant}
-                    map={this.props.map}
                 />;
             }.bind(this))
 
@@ -32,22 +30,7 @@ export default class RestaurantList extends Component {
     }
 
     handleOpenReview = (restaurant) => {
-        /*
-        const request = {
-            placeId: restaurant.place_id
-        };
-
-        const service = new google.maps.places.PlacesService(this.props.map);
-        service.getDetails(request, function(place, status) {
-
-            if (status == google.maps.places.PlacesServiceStatus.OK) {
-                this.props.handleOpenReview(place);
-            } else {
-                console.log('Error: failed to load restaurant details');
-            }
-        }.bind(this));
-        */
-        console.log('handleOpenReview est désactivé pour le moment');
+        this.props.handleOpenReview(restaurant);
     }
 
     handleAddReview = (restaurant) => {

@@ -113,7 +113,6 @@ export default class MainSection extends Component {
     }
 
     handleMapLoad = (geolocCoordinates, restaurantList, map) => {
-        console.log(restaurantList);
         this.geolocCoordinates = geolocCoordinates;
         this.setState({
             listComplete: restaurantList,
@@ -167,7 +166,6 @@ export default class MainSection extends Component {
                     />
                     <RestaurantSection
                         restaurantList={this.state.listCustom}
-                        restaurantRequested={this.state.restaurantRequested}
                         map={this.state.map}
                     />
                 </div>

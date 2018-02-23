@@ -32,7 +32,6 @@ export default class ReviewTitle extends Component {
     }
 
     render() {
-        console.log(this.props.restaurant);
         const lat = this.props.restaurant.geometry.location.lat();
         const long = this.props.restaurant.geometry.location.lng();
 

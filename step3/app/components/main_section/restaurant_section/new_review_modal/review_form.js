@@ -9,7 +9,7 @@ export default class ReviewForm extends Component {
         super(props);
         this.state = {
             'grade': 0,
-            'review': ''
+            'text': ''
         };
     }
 
@@ -21,8 +21,8 @@ export default class ReviewForm extends Component {
         this.setState({grade: newGrade});
     }
 
-    handleReviewChange = (event) => {
-        this.setState({review: event.target.value});
+    handleTextChange = (event) => {
+        this.setState({text: event.target.value});
     }
 
     handleSubmit = (event) => {
@@ -32,7 +32,7 @@ export default class ReviewForm extends Component {
 
         this.props.handleReviewSubmit(
           this.state.grade,
-          this.state.review
+          this.state.text
         );
 
         this.setState({grade: 0});
@@ -50,7 +50,7 @@ export default class ReviewForm extends Component {
                 </div>
                 <div className="form-group">
                     <TextArea
-                        handleChange={this.handleReviewChange}
+                        handleChange={this.handleTextChange}
                     />
                 </div>
                 <div className="text-center">

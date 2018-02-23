@@ -16,12 +16,14 @@ export default class ModalWindow extends Component {
         restaurantReviewed: PropTypes.object
     }
 
-    handleReviewSubmit = (grade, review) => {
-        this.props.handleReviewSubmit(grade, review);
+    handleReviewSubmit = (grade, text) => {
+        this.props.handleReviewSubmit(grade, text);
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({restaurantReviewed: nextProps.restaurantReviewed});
+        if (nextProps.restaurantReviewed != null) {
+            this.setState({restaurantReviewed: nextProps.restaurantReviewed});
+        }
     }
 
     render() {
