@@ -9,7 +9,7 @@ export default class RestaurantSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            'currentRestaurant': null,
+            //'currentRestaurant': null,
             'userReview': null
         };
     }
@@ -17,6 +17,7 @@ export default class RestaurantSection extends Component {
     static propTypes = {
         restaurantList: PropTypes.array,
         restaurantRequested: PropTypes.object,
+        handleOpenReview: PropTypes.func,
         map: PropTypes.object
     }
 
@@ -30,7 +31,7 @@ export default class RestaurantSection extends Component {
     }
 
     handleOpenReview = (restaurant) => {
-        this.setState({currentRestaurant: restaurant});
+        this.props.handleOpenReview(restaurant);
     }
 
     handleAddReview = (restaurant) => {
@@ -42,10 +43,10 @@ export default class RestaurantSection extends Component {
             <div className="restaurant-section col-12">
                 <ModalWindow
                     handleReviewSubmit={this.handleReviewSubmit}
-                    restaurantReviewed={this.state.currentRestaurant}
+                    restaurantReviewed={this.props.restaurantRequested}
                 />
                 <ReviewList
-                    restaurant={this.state.currentRestaurant}
+                    restaurant={this.props.restaurantRequested}
                     userReview={this.state.userReview}
                     map={this.props.map}
                 />

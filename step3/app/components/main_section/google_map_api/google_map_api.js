@@ -144,7 +144,7 @@ export default class GoogleMapApi extends Component {
         });
 
         const infoWindow = new google.maps.InfoWindow({
-            content: restaurant.restaurantName
+            content: restaurant.name
         });
 
         marker.addListener('click', function() {

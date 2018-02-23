@@ -12,7 +12,7 @@ export default class MainSection extends Component {
         this.state = {
             'listComplete': [],
             'listCustom': [],
-            'restaurantRequested': {},
+            'restaurantRequested': null,
             'canAddRestaurant': false,
             'map': {}
         };
@@ -166,6 +166,8 @@ export default class MainSection extends Component {
                     />
                     <RestaurantSection
                         restaurantList={this.state.listCustom}
+                        restaurantRequested={this.state.restaurantRequested}
+                        handleOpenReview={this.handleOpenReview}
                         map={this.state.map}
                     />
                 </div>
