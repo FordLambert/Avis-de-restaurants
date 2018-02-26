@@ -13,7 +13,7 @@ export default class GoogleMap extends Component {
             apiKey: '?key=' + 'AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
             async: true,
             defer: true,
-            startPosition: {lat: 45.5088400, lng: -73.5878100},
+            startPosition: {lat: 48.853, lng: 2.35},
             zoom: 12
         }
     }
