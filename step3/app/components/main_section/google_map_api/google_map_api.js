@@ -14,7 +14,7 @@ export default class GoogleMapApi extends Component {
 
         this.markers = []; //markers displayed on map
         this.infoWindows = []; //infoWindows displayed on map
-        this.position = this.props.mapOptions.startPosition;
+        this.position = this.props.position;
         this.defaultMarkerIcon = './resources/pictures/marker-red.png';
         this.geolocalisationMarkerIcon = './resources/pictures/marker-blue.png';
         this.clickedMarkerIcon = './resources/pictures/marker-green.png';
@@ -23,7 +23,7 @@ export default class GoogleMapApi extends Component {
     static propTypes = {
         mapOptions: PropTypes.object,
         list: PropTypes.array,
-        handleMapLoad: PropTypes.func,
+        handleMapUpdate: PropTypes.func,
         canAddRestaurant: PropTypes.bool,
         handleRestaurantAdded: PropTypes.func,
         handleOpenReview: PropTypes.func
@@ -34,6 +34,8 @@ export default class GoogleMapApi extends Component {
         	center: this.props.mapOptions.startPosition,
        		zoom: this.props.mapOptions.zoom
 		});
+
+        this.props.handleMapUpdate(this.position, this.map);
 
 		navigator.geolocation.getCurrentPosition(function(position) {
 			const pos = {
@@ -46,11 +48,9 @@ export default class GoogleMapApi extends Component {
                 map: this.map
             });
 
-            this.position = pos;
 			this.map.setCenter(pos);
+			this.props.handleMapUpdate(pos, this.map);
 		}.bind(this));
-
-        this.props.handleMapLoad(this.position, this.map);
 
 		//style of cursor in "add restaurant" mode
         this.map.addListener('mouseover', function() {
@@ -152,6 +152,7 @@ export default class GoogleMapApi extends Component {
 
 	componentWillUpdate(nextProps) {
         if (nextProps.list != this.props.list) {
+            this.map.setCenter(nextProps.position);
             this.deleteOldMarkers();
 
             nextProps.list.map(function (restaurant) {

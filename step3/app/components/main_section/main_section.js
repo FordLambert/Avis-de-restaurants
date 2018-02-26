@@ -12,12 +12,11 @@ export default class MainSection extends Component {
         this.state = {
             'listComplete': [],
             'listCustom': [],
+            'position': {lat: 48.853, lng: 2.35}, //Paris by default
             'restaurantRequested': null,
             'canAddRestaurant': false,
             'map': {}
         };
-
-        this.geolocCoordinates = {};
     }
 
     static propTypes = {
@@ -112,12 +111,10 @@ export default class MainSection extends Component {
         this.setState({listCustom: newList});
     }
 
-    handleMapLoad = (geolocCoordinates, map) => {
-        this.geolocCoordinates = geolocCoordinates;
-
+    handleMapUpdate = (geolocCoordinates, map) => {
         const request = {
-            location: this.geolocCoordinates,
-            radius: '1000',
+            location: geolocCoordinates,
+            radius: '10000',
             types: ['restaurant'],
             minPriceLevel: 0
         };
@@ -125,12 +122,12 @@ export default class MainSection extends Component {
         const service = new google.maps.places.PlacesService(map);
 
         service.nearbySearch(request, function(results, status) {
-
             if (status == google.maps.places.PlacesServiceStatus.OK) {
                 this.setState({
                     listComplete: results,
                     listCustom: results,
-                    map: map
+                    map: map,
+                    position: geolocCoordinates
                 });
             }
         }.bind(this));
@@ -168,7 +165,8 @@ export default class MainSection extends Component {
                 <div className='row'>
                     <Map
                         restaurantList={this.state.listCustom}
-                        handleMapLoad={this.handleMapLoad}
+                        position={this.state.position}
+                        handleMapUpdate={this.handleMapUpdate}
                         handleOpenReview={this.handleOpenReview}
                         canAddRestaurant={this.state.canAddRestaurant}
                         handleRestaurantAdded={this.addRestaurant}

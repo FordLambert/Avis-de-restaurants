@@ -14,7 +14,6 @@ export default class Map extends Component {
             request: '&' + 'libraries=places',
             async: true,
             defer: true,
-            startPosition: {lat: 48.853, lng: 2.35},
             zoom: 12
         }
     }
@@ -24,11 +23,12 @@ export default class Map extends Component {
         handleMapLoad: PropTypes.func,
         handleOpenReview: PropTypes.func,
         handleRestaurantAdded: PropTypes.func,
-        canAddRestaurant: PropTypes.bool
+        canAddRestaurant: PropTypes.bool,
+        position: PropTypes.object
     }
 
-    handleMapLoad = (geolocCoordinates, restaurantList, map) => {
-        this.props.handleMapLoad(geolocCoordinates, restaurantList, map);
+    handleMapUpdate = (geolocCoordinates, restaurantList, map) => {
+        this.props.handleMapUpdate(geolocCoordinates, restaurantList, map);
     }
 
     handleOpenReview = (restaurant) => {
@@ -46,8 +46,9 @@ export default class Map extends Component {
                 <Pulser />
                 <GoogleMapApi
                     mapOptions={this.mapOptions}
+                    position={this.props.position}
                     list={this.props.restaurantList}
-                    handleMapLoad={this.handleMapLoad}
+                    handleMapUpdate={this.handleMapUpdate}
                     handleOpenReview={this.handleOpenReview}
                     canAddRestaurant={this.props.canAddRestaurant}
                     handleRestaurantAdded={this.handleRestaurantAdded}
