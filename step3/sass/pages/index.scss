@@ -25,17 +25,25 @@
 
 	.search-result-founds {
 		border-bottom: 1px solid $light-grey;
-		height: 10vh;
+		height: 20vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		@include media-breakpoint-up(xl) {
+			height: 15vh;
+		}
 
 		p {
 			margin: 4px;
 		}
 
 		button {
-			margin-bottom: 2vh;
+			margin-bottom: 1vh;
 		}
 
-		.alert {
+		.banner-guide {
 			z-index: 5;
 			opacity: 1;
 		}
@@ -43,9 +51,10 @@
 
 	.restaurant-section {
 		overflow-x: hidden;
+		height: 45vh;
 	
-		@include media-breakpoint-up(md) {
-			height: 55vh;
+		@include media-breakpoint-up(xl) {
+			height: 50vh;
 			overflow-y: auto;
 		}
 
@@ -73,7 +82,22 @@
 
 			.restaurant {
 
-				height: 30vh;
+				.street-picture {
+					max-height: 100%;
+				}
+
+				.restaurant-details {
+
+					@include media-breakpoint-up(lg) {
+						min-height: 22vh;
+					}
+				}
+
+				.restaurant-buttons {
+					@include media-breakpoint-down(lg) {
+						margin-top: 3vh;
+					}
+				}
 
 				list-style-type: none;
 				padding: 20px;
@@ -100,12 +124,7 @@
 				}
 
 				.street-picture-container {
-
 					height: 100%;
-
-					@include media-breakpoint-up(lg) {
-						height: 17vh;
-					}
 				}
 
 				.trigger-button {

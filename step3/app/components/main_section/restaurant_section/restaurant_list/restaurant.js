@@ -53,9 +53,13 @@ export default class Restaurant extends Component {
         return (
             <li className={'restaurant col-10 col-xl-5 align-self-center'}>
                 <div className='row justify-content-around'>
-                    <StreetPicture
-                        restaurant={this.props.restaurant}
-                    />
+                    <div className={'d-none d-sm-block col-4'}>
+                        <div className={'row justify-content-center'}>
+                            <StreetPicture
+                                restaurant={this.props.restaurant}
+                            />
+                        </div>
+                    </div>
                     <RestaurantDetails
                         restaurantName={this.props.restaurant.name}
                         address={this.getSplitedAddress(',')}
@@ -69,7 +73,7 @@ export default class Restaurant extends Component {
                         </div>
                     </div>
                 </div>
-                <div className={'row justify-content-center justify-content-md-end'}>
+                <div className={'row justify-content-around justify-content-xl-end restaurant-buttons'}>
                     <AddReviewButton
                         handleAddReview={this.handleAddReview}
                     />
