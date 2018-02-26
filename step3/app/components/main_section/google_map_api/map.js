@@ -27,8 +27,8 @@ export default class Map extends Component {
         position: PropTypes.object
     }
 
-    handleMapUpdate = (geolocCoordinates, restaurantList, map) => {
-        this.props.handleMapUpdate(geolocCoordinates, restaurantList, map);
+    handleMapUpdate = (geolocCoordinates, map) => {
+        this.props.handleMapUpdate(geolocCoordinates, map);
     }
 
     handleOpenReview = (restaurant) => {

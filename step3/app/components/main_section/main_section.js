@@ -20,6 +20,7 @@ export default class MainSection extends Component {
     }
 
     static propTypes = {
+        city: PropTypes.string,
         grade: PropTypes.object,
         order: PropTypes.string
     }
@@ -61,54 +62,87 @@ export default class MainSection extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        //create a new custom list based on user choices (grade)
-        const newList = [];
+        //If we want another position, start by updating the latLng
+        if ((nextProps.city != null) && (nextProps.city != this.props.city)) {
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode( { 'address': nextProps.city}, function(results, status) {
+                if (status == 'OK') {
+                    const lat = results[0].geometry.location.lat();
+                    const lng = results[0].geometry.location.lng();
+                    const newPosition = {lat, lng};
+
+                    this.setState({
+                        position: newPosition
+                    });
+
+                    const request = {
+                        location: this.state.position,
+                        radius: '10000',
+                        types: ['restaurant'],
+                        minPriceLevel: 0
+                    };
+
+                    const service = new google.maps.places.PlacesService(this.state.map);
+                    service.nearbySearch(request, function(results, status) {
+
+                        if (status == google.maps.places.PlacesServiceStatus.OK) {
+                            this.setState({
+                                listComplete: results
+                            });
+                            this.sortCustomList(nextProps);
+                        }
+                    }.bind(this));
+                }
+            }.bind(this));
+
+        } else {
+            this.sortCustomList(nextProps);
+        }
+    }
+
+    sortCustomList(nextProps) {
+        const newListCustom = [];
+        //Update the new custom list based on user choices (grade)
         this.state.listComplete.map(function (restaurant) {
             if ((restaurant.rating >= nextProps.grade.min) && (restaurant.rating <= nextProps.grade.max)) {
-                newList.push(restaurant);
+                newListCustom.push(restaurant);
             }
         }.bind(this));
 
         //sort the newly created custom array
         //sort array by distance
         if (nextProps.order == 'distance') {
+            newListCustom.sort(function (a, b) {
+                const distA = this.getDistance(
+                    this.geolocCoordinates.lat,
+                    this.geolocCoordinates.lng,
+                    a.geometry.location.lat(),
+                    a.geometry.location.lng()
+                );
 
-            //only available if the user have geolocation
-            if (this.geolocCoordinates != undefined) {
-                newList.sort(function (a, b) {
-                    const distA = this.getDistance(
-                        this.geolocCoordinates.lat,
-                        this.geolocCoordinates.lng,
-                        a.geometry.location.lat(),
-                        a.geometry.location.lng()
-                    );
+                const distB = this.getDistance(
+                    this.geolocCoordinates.lat,
+                    this.geolocCoordinates.lng,
+                    b.geometry.location.lat(),
+                    b.geometry.location.lng()
+                );
 
-                    const distB = this.getDistance(
-                        this.geolocCoordinates.lat,
-                        this.geolocCoordinates.lng,
-                        b.geometry.location.lat(),
-                        b.geometry.location.lng()
-                    );
+                return distA - distB;
+            }.bind(this));
 
-                    return distA - distB;
-                }.bind(this));
 
-            } else {
-                console.log('Error: Géolocation must be active to use this sorting option');
-            }
-
-        //sort array by averageGrade
+            //sort array by averageGrade
         } else if (nextProps.order == 'grade') {
-            newList.sort(function (a, b) {
+            newListCustom.sort(function (a, b) {
                 return b.rating - a.rating;
             }.bind(this));
 
-        //handle wrong parameter
+            //handle wrong parameter
         } else {
             console.log('Error: list order must be "distance" or "grade"')
         }
 
-        this.setState({listCustom: newList});
+        this.setState({listCustom: newListCustom});
     }
 
     handleMapUpdate = (geolocCoordinates, map) => {
@@ -120,7 +154,6 @@ export default class MainSection extends Component {
         };
 
         const service = new google.maps.places.PlacesService(map);
-
         service.nearbySearch(request, function(results, status) {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
                 this.setState({
@@ -173,7 +206,7 @@ export default class MainSection extends Component {
                     />
                     <ConfirmAdditionPopUp />
                     <RestaurantInfoMenu
-                        restaurantNumber={this.state.listCustom.length}
+                        restaurantList={this.state.listCustom}
                         toggleAddRestaurant={this.toggleAddRestaurant}
                         canAddRestaurant={this.state.canAddRestaurant}
                     />

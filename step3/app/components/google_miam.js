@@ -8,14 +8,19 @@ class GoogleMiam extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            city: null,
             grade: {},
             order: ''
         };
     }
 
     //handle the form's submit for custom restaurant options
-    handleSubmit = (grade, order) => {
-        this.setState({grade: grade, order: order });
+    handleSubmit = (city, grade, order) => {
+        this.setState({
+            city: city,
+            grade: grade,
+            order: order
+        });
     }
 
     render() {
@@ -25,6 +30,7 @@ class GoogleMiam extends Component {
                     handleSubmit={this.handleSubmit}
                 />
                 <MainSection
+                    city={this.state.city}
                     grade={this.state.grade}
                     order={this.state.order}
                 />

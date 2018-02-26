@@ -7,7 +7,6 @@ import AddRestaurantPopUp from './add_restaurant_popup/add_restaurant_popup';
 export default class GoogleMapApi extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             'clickedPosition': {}
         };
@@ -37,11 +36,12 @@ export default class GoogleMapApi extends Component {
 
         this.props.handleMapUpdate(this.position, this.map);
 
-		navigator.geolocation.getCurrentPosition(function(position) {
+		navigator.geolocation.getCurrentPosition((position) => {
 			const pos = {
 				lat: position.coords.latitude,
 				lng: position.coords.longitude
 			};
+
             const marker = new google.maps.Marker({
                 position: pos,
                 icon: this.geolocalisationMarkerIcon,
@@ -50,7 +50,7 @@ export default class GoogleMapApi extends Component {
 
 			this.map.setCenter(pos);
 			this.props.handleMapUpdate(pos, this.map);
-		}.bind(this));
+		});
 
 		//style of cursor in "add restaurant" mode
         this.map.addListener('mouseover', function() {
@@ -151,6 +151,7 @@ export default class GoogleMapApi extends Component {
     }
 
 	componentWillUpdate(nextProps) {
+
         if (nextProps.list != this.props.list) {
             this.map.setCenter(nextProps.position);
             this.deleteOldMarkers();

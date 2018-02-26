@@ -10,8 +10,8 @@ export default class Navigation extends Component {
         handleSubmit: PropTypes.func
     }
 
-    handleSubmit = (grade, order) => {
-        this.props.handleSubmit(grade, order);
+    handleSubmit = (city, grade, order) => {
+        this.props.handleSubmit(city, grade, order);
     }
 
     render() {
