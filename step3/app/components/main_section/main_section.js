@@ -170,6 +170,10 @@ export default class MainSection extends Component {
         this.setState({restaurantRequested: restaurant});
     }
 
+    handleAddReview = (restaurant) => {
+        this.setState({restaurantRequested: restaurant});
+    }
+
     addRestaurant = (restaurant) => {
         const tempRestaurantList = this.state.listCustom;
         tempRestaurantList.push(restaurant);
@@ -214,6 +218,7 @@ export default class MainSection extends Component {
                         restaurantList={this.state.listCustom}
                         restaurantRequested={this.state.restaurantRequested}
                         handleOpenReview={this.handleOpenReview}
+                        handleAddReview={this.handleAddReview}
                         map={this.state.map}
                     />
                 </div>

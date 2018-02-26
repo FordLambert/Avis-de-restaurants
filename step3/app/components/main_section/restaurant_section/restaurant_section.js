@@ -18,6 +18,7 @@ export default class RestaurantSection extends Component {
         restaurantList: PropTypes.array,
         restaurantRequested: PropTypes.object,
         handleOpenReview: PropTypes.func,
+        handleAddReview: PropTypes.func,
         map: PropTypes.object
     }
 
@@ -35,7 +36,7 @@ export default class RestaurantSection extends Component {
     }
 
     handleAddReview = (restaurant) => {
-        this.setState({currentRestaurant: restaurant});
+        this.props.handleAddReview(restaurant);
     }
 
     render() {
