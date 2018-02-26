@@ -25,41 +25,55 @@
 
 	.search-result-founds {
 		border-bottom: 1px solid $light-grey;
-		height: 10vh;
+		height: 20vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		@include media-breakpoint-up(xl) {
+			height: 15vh;
+		}
 
 		p {
 			margin: 4px;
 		}
 
 		button {
-			margin-bottom: 2vh;
+			margin-bottom: 1vh;
+		}
+
+		.banner-guide {
+			z-index: 5;
+			opacity: 1;
 		}
 	}
 
 	.restaurant-section {
 		overflow-x: hidden;
-	
-		@include media-breakpoint-up(md) {
+		height: 45vh;
+
+		@include media-breakpoint-up(xl) {
 			height: 50vh;
 			overflow-y: auto;
 		}
 
 		/*The following is here to hide the x scrollbar*/
-		.restaurant-section{
-			//@include media-breakpoint-up(lg) {
+		.restaurant-section {
+			@include media-breakpoint-up(lg) {
 				height: 100%;
 				width: 100%;
 				overflow: hidden;
-			//}
+			}
 		}
-		
-		.restaurant-list{
-			//@include media-breakpoint-up(lg) {
+
+		.restaurant-list {
+			@include media-breakpoint-up(lg) {
 				width: 106%;
 				height: 100%;
 				overflow-y: scroll;
 				padding-right: 17px;
-			//}
+			}
 		}
 		/*End of rules to hide the x scrollbar*/
 

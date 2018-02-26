@@ -9,13 +9,12 @@ export default class GoogleMapApi extends Component {
         super(props);
 
         this.state = {
-            'clickedPosition': {},
-            'researchedLat': 48.856995,
-            'researchedLong': 2.341517
+            'clickedPosition': {}
         };
 
         this.markers = []; //markers displayed on map
         this.infoWindows = []; //infoWindows displayed on map
+        this.position = this.props.mapOptions.startPosition;
         this.defaultMarkerIcon = './resources/pictures/marker-red.png';
         this.geolocalisationMarkerIcon = './resources/pictures/marker-blue.png';
         this.clickedMarkerIcon = './resources/pictures/marker-green.png';
@@ -47,32 +46,11 @@ export default class GoogleMapApi extends Component {
                 map: this.map
             });
 
+            this.position = pos;
 			this.map.setCenter(pos);
-
-            const searchedPosition = new google.maps.LatLng(
-                this.state.researchedLat,
-                this.state.researchedLong
-            );
-
-            /*-----Request for restaurant List-----*/
-            const request = {
-                location: searchedPosition,
-                radius: '1000',
-                types: ['restaurant'],
-                minPriceLevel: 0
-            };
-
-            const service = new google.maps.places.PlacesService(this.map);
-
-            service.nearbySearch(request, function(results, status) {
-
-                if (status == google.maps.places.PlacesServiceStatus.OK) {
-                    this.props.handleMapLoad(pos, results, this.map);
-                }
-            }.bind(this));
-            /*-----Request for restaurant List-----*/
-
 		}.bind(this));
+
+        this.props.handleMapLoad(this.position, this.map);
 
 		//style of cursor in "add restaurant" mode
         this.map.addListener('mouseover', function() {

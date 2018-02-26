@@ -14,7 +14,7 @@ export default class Map extends Component {
 
         this.markers = []; //markers displayed on map
         this.infoWindows = []; //infoWindows displayed on map
-        this.position = this.props.startPosition;
+        this.position = this.props.mapOptions.startPosition;
         this.defaultMarkerIcon = './resources/pictures/marker-red.png';
         this.geolocalisationMarkerIcon = './resources/pictures/marker-blue.png';
         this.clickedMarkerIcon = './resources/pictures/marker-green.png';

@@ -112,13 +112,28 @@ export default class MainSection extends Component {
         this.setState({listCustom: newList});
     }
 
-    handleMapLoad = (geolocCoordinates, restaurantList, map) => {
+    handleMapLoad = (geolocCoordinates, map) => {
         this.geolocCoordinates = geolocCoordinates;
-        this.setState({
-            listComplete: restaurantList,
-            listCustom: restaurantList,
-            map: map
-        });
+
+        const request = {
+            location: this.geolocCoordinates,
+            radius: '1000',
+            types: ['restaurant'],
+            minPriceLevel: 0
+        };
+
+        const service = new google.maps.places.PlacesService(map);
+
+        service.nearbySearch(request, function(results, status) {
+
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                this.setState({
+                    listComplete: results,
+                    listCustom: results,
+                    map: map
+                });
+            }
+        }.bind(this));
     }
 
     handleOpenReview = (restaurant) => {
