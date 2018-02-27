@@ -32,9 +32,6 @@ export default class ReviewTitle extends Component {
     }
 
     render() {
-        const lat = this.props.restaurant.geometry.location.lat();
-        const long = this.props.restaurant.geometry.location.lng();
-
         return (
             <div className={'col-12'}>
                 <div className={'row justify-content-xl-center'}>

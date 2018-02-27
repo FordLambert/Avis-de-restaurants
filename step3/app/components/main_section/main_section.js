@@ -50,6 +50,7 @@ export default class MainSection extends Component {
         return dist;
     }
 
+    /*
     getAverageGrade(restaurant) {
         const reviewNumber = restaurant.ratings.length;
         let total = 0;
@@ -60,6 +61,7 @@ export default class MainSection extends Component {
 
         return Math.round((total/reviewNumber) * 100) / 100;
     }
+    */
 
     componentWillReceiveProps(nextProps) {
         //If we want another position, start by updating the latLng
@@ -77,7 +79,7 @@ export default class MainSection extends Component {
 
                     const request = {
                         location: this.state.position,
-                        radius: '10000',
+                        radius: '5000', //meters
                         types: ['restaurant'],
                         minPriceLevel: 0
                     };
@@ -86,6 +88,9 @@ export default class MainSection extends Component {
                     service.nearbySearch(request, function(results, status) {
 
                         if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                                console.log(results);
+
                             this.setState({
                                 listComplete: results
                             });
@@ -148,14 +153,15 @@ export default class MainSection extends Component {
     handleMapUpdate = (geolocCoordinates, map) => {
         const request = {
             location: geolocCoordinates,
-            radius: '10000',
+            radius: '5000', //meters
             types: ['restaurant'],
             minPriceLevel: 0
         };
 
         const service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, function(results, status) {
+        service.nearbySearch(request, function(results, status, pagination) {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
+
                 this.setState({
                     listComplete: results,
                     listCustom: results,

@@ -9,7 +9,6 @@ export default class RestaurantSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //'currentRestaurant': null,
             'userReview': null
         };
     }
