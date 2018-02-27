@@ -111,6 +111,10 @@ export default class MainSection extends Component {
         this.state.listComplete.map(function (restaurant) {
             if ((restaurant.rating >= nextProps.grade.min) && (restaurant.rating <= nextProps.grade.max)) {
                 newListCustom.push(restaurant);
+
+            //we want the newly created restaurant with no review to appear
+            } else if ((nextProps.grade.min == 0) && (restaurant.rating == 0)) {
+                newListCustom.push(restaurant);
             }
         }.bind(this));
 
@@ -119,15 +123,15 @@ export default class MainSection extends Component {
         if (nextProps.order == 'distance') {
             newListCustom.sort(function (a, b) {
                 const distA = this.getDistance(
-                    this.geolocCoordinates.lat,
-                    this.geolocCoordinates.lng,
+                    this.state.position.lat,
+                    this.state.position.lng,
                     a.geometry.location.lat(),
                     a.geometry.location.lng()
                 );
 
                 const distB = this.getDistance(
-                    this.geolocCoordinates.lat,
-                    this.geolocCoordinates.lng,
+                    this.state.position.lat,
+                    this.state.position.lng,
                     b.geometry.location.lat(),
                     b.geometry.location.lng()
                 );
@@ -185,7 +189,7 @@ export default class MainSection extends Component {
         tempRestaurantList.push(restaurant);
         this.confirmRestaurantAdded();
         this.setState({
-            listCustom: tempRestaurantList,
+            listComplete: tempRestaurantList,
             canAddRestaurant: false
         });
     }

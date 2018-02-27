@@ -67,7 +67,6 @@ export default class MainSection extends Component {
             if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
                 newList.push(restaurant);
             }
-
         }.bind(this));
 
         //sort the newly created custom array

@@ -10,7 +10,7 @@ export default class SearchForm extends Component {
 
         this.state = {
             grade: {min: 0, max: 5},
-            order: 'distance'
+            order: 'grade'
         }
     }
 
