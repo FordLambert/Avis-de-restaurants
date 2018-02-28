@@ -26,7 +26,7 @@ export default class RestaurantInfoMenu extends Component {
 
     render() {
         return (
-            <div className={'search-result-founds col-12 text-center'}>
+            <div className={'restaurant-infos-menu col-12 text-center'}>
                 <SearchResultFound
                     restaurantNumber={this.props.restaurantNumber}
                     className={this.getResultsClassName()}

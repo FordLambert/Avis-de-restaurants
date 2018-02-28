@@ -1,10 +1,6 @@
 .main-section {
 	min-height: 100vh;
 
-	@include media-breakpoint-up(md) {
-		height: 100vh;
-	}
-
 	.themed-colored {
 		color: $light-green;
 	}
@@ -24,6 +20,10 @@
 		height: 10vh;
 
 		@include media-breakpoint-up(md) {
+			height: 10vh;
+		}
+
+		@include media-breakpoint-up(lg) {
 			height: 5vh;
 		}
 
@@ -37,8 +37,12 @@
 		height: 100vh;
 	
 		@include media-breakpoint-up(md) {
-			height: 60vh;
+			height: 55vh;
 			overflow-y: auto;
+		}
+
+		@include media-breakpoint-up(lg) {
+			height: 60vh;
 		}
 
 		/*The following is here to hide the x scrollbar*/

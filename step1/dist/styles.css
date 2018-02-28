@@ -6037,6 +6037,9 @@ nav {
       #review-list aside {
         margin: 0 -75vw 0 0;
         width: 75vw;
+        max-height: 55vh; } }
+    @media (min-width: 768px) {
+      #review-list aside {
         max-height: 60vh; } }
     @media (min-width: 1200px) {
       #review-list aside {
@@ -6182,9 +6185,6 @@ nav {
 
 .main-section {
   min-height: 100vh; }
-  @media (min-width: 768px) {
-    .main-section {
-      height: 100vh; } }
   .main-section .themed-colored {
     color: #20cd74; }
   .main-section #map {
@@ -6199,6 +6199,9 @@ nav {
     height: 10vh; }
     @media (min-width: 768px) {
       .main-section .search-results-founds {
+        height: 10vh; } }
+    @media (min-width: 992px) {
+      .main-section .search-results-founds {
         height: 5vh; } }
     .main-section .search-results-founds p {
       margin: 4px; }
@@ -6209,8 +6212,11 @@ nav {
     /*End of rules to hide the x scrollbar*/ }
     @media (min-width: 768px) {
       .main-section .restaurant-section {
-        height: 60vh;
+        height: 55vh;
         overflow-y: auto; } }
+    @media (min-width: 992px) {
+      .main-section .restaurant-section {
+        height: 60vh; } }
     @media (min-width: 992px) {
       .main-section .restaurant-section .restaurant-section {
         height: 100%;

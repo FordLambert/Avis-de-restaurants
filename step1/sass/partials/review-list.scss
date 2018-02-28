@@ -18,6 +18,10 @@
         @include media-breakpoint-up(md) {
             margin: 0 -75vw 0 0;
             width: 75vw;
+            max-height: 55vh;
+        }
+
+        @include media-breakpoint-up(md) {
             max-height: 60vh;
         }
 
