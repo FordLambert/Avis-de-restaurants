@@ -7,7 +7,7 @@ import SearchResultFound from './search_result_found';
 export default class RestaurantInfoMenu extends Component {
 
     static propTypes = {
-        restaurantNumber: PropTypes.number,
+        restaurantList: PropTypes.array,
         toggleAddRestaurant: PropTypes.func,
         canAddRestaurant: PropTypes.bool
     }
@@ -16,11 +16,20 @@ export default class RestaurantInfoMenu extends Component {
         this.props.toggleAddRestaurant(status);
     }
 
+    getResultsClassName() {
+        if (this.props.canAddRestaurant) {
+            return 'd-none';
+        } else {
+            return 'd-block';
+        }
+    }
+
     render() {
         return (
             <div className={'search-result-founds col-12 text-center'}>
                 <SearchResultFound
                     restaurantNumber={this.props.restaurantNumber}
+                    className={this.getResultsClassName()}
                 />
                 <AddRestaurantButton
                     toggleAddRestaurant={this.toggleAddRestaurant}

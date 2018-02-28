@@ -18,27 +18,23 @@ export default class AddRestaurantButton extends Component {
         canAddRestaurant: PropTypes.bool
     }
 
-    toggleButton() {
+    toggleButton = () => {
         if (!this.state.addRestaurantMode) {
+            this.props.toggleAddRestaurant(true);
             this.setState({
                 addRestaurantMode: true,
                 content: 'Sortir de l\'ajout de restaurant',
                 bannerClassName:  ' d-block'
             });
-            this.props.toggleAddRestaurant(true);
 
         } else {
+            this.props.toggleAddRestaurant(false);
             this.setState({
                 addRestaurantMode: false,
                 content: 'Ajouter un restaurant',
                 bannerClassName: ' d-none'
             });
-            this.props.toggleAddRestaurant(false);
         }
-    }
-
-    handleClick = () => {
-        this.toggleButton();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -54,7 +50,7 @@ export default class AddRestaurantButton extends Component {
     render() {
         return (
             <div>
-                <button className={'btn btn-info'} onClick={this.handleClick}>
+                <button className={'btn btn-info'} onClick={this.toggleButton}>
                     {this.state.content}
                 </button>
                 <BannerGuide

@@ -5,12 +5,6 @@ import AddRestaurantButton from './add_restaurant_button';
 import SearchResultFound from './search_result_found';
 
 export default class RestaurantInfoMenu extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            'resultsClassName': 'd-block'
-        };
-    }
 
     static propTypes = {
         restaurantList: PropTypes.array,
@@ -19,31 +13,23 @@ export default class RestaurantInfoMenu extends Component {
     }
 
     toggleAddRestaurant = (status) => {
-        if (status) {
-            this.setState({
-                resultsClassName: 'd-none'
-            });
-        } else {
-            this.setState({
-                resultsClassName: 'd-block'
-            });
-        }
         this.props.toggleAddRestaurant(status);
     }
 
-    /*
-    getRestaurantNumber = () => {
-        const list = this.props.restaurantList;
-        return (list != undefined ? list.length : 0);
+    getResultsClassName() {
+        if (this.props.canAddRestaurant) {
+            return 'd-none';
+        } else {
+            return 'd-block';
+        }
     }
-    */
 
     render() {
         return (
             <div className={'search-result-founds col-12 text-center'}>
                 <SearchResultFound
                     restaurantNumber={this.props.restaurantList.length}
-                    className={this.state.resultsClassName}
+                    className={this.getResultsClassName()}
                 />
                 <AddRestaurantButton
                     toggleAddRestaurant={this.toggleAddRestaurant}
