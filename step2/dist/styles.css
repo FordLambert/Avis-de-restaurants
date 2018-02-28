@@ -6049,13 +6049,16 @@ nav {
       border: 1px solid #dee4ed;
       padding: 20px;
       padding-bottom: 10px;
-      margin-top: 7.55vw;
+      margin-top: 20vw;
       margin-bottom: 3.75vw;
       margin-left: 7.55vw; }
+      @media (min-width: 576px) {
+        #review-list aside .review-title {
+          margin-top: 15vw; } }
       @media (min-width: 768px) {
         #review-list aside .review-title {
           margin-left: 5.7vw;
-          margin-top: 3.8vw;
+          margin-top: 7vw;
           margin-bottom: 1.9vw; } }
       @media (min-width: 1200px) {
         #review-list aside .review-title {
@@ -6100,8 +6103,17 @@ nav {
       #review-list aside .review h2 {
         color: #20cd74; }
     #review-list aside .closing-button {
-      margin-right: 1vh;
-      margin-bottom: 1vh; }
+      position: absolute;
+      right: 32.6vw;
+      top: 2vh;
+      z-index: 5; }
+      @media (min-width: 768px) {
+        #review-list aside .closing-button {
+          top: 6.5vh; } }
+      @media (min-width: 768px) {
+        #review-list aside .closing-button {
+          top: 2vh;
+          right: 6.16vw; } }
 
 #review-list:target aside {
   margin: 0; }
