@@ -5989,15 +5989,17 @@ nav {
         height: 150px;
         width: 150px; } }
   nav form {
-    margin-top: 5vh;
+    margin-top: 1vh;
     align-items: center; }
-    nav form label, nav form p {
-      font-size: 0.8em; }
-      @media (min-width: 1200px) {
-        nav form label, nav form p {
-          font-size: 1.2em; } }
+    @media (min-width: 992px) {
+      nav form label, nav form p {
+        margin-top: 2vh;
+        font-size: 0.8em; } }
+    @media (min-width: 992px) {
+      nav form label, nav form p {
+        font-size: 1.2em; } }
     nav form .form-group {
-      margin-top: 5vh;
+      margin-top: 3vh;
       margin-bottom: 0px; }
     nav form .gradeLabel {
       margin-bottom: 8vh; }
@@ -6036,11 +6038,12 @@ nav {
       #review-list aside {
         margin: 0 -75vw 0 0;
         width: 75vw;
-        height: 50vh; } }
+        max-height: 35vh; } }
     @media (min-width: 1200px) {
       #review-list aside {
         margin: 0 -83.2vw 0 0;
-        width: 83.2vw; } }
+        width: 83.2vw;
+        max-height: 45vh; } }
     #review-list aside h2 {
       font-size: 1.1em; }
     #review-list aside p {
@@ -6049,13 +6052,16 @@ nav {
       border: 1px solid #dee4ed;
       padding: 20px;
       padding-bottom: 10px;
-      margin-top: 7.55vw;
+      margin-top: 20vw;
       margin-bottom: 3.75vw;
       margin-left: 7.55vw; }
+      @media (min-width: 576px) {
+        #review-list aside .review-title {
+          margin-top: 15vw; } }
       @media (min-width: 768px) {
         #review-list aside .review-title {
           margin-left: 5.7vw;
-          margin-top: 3.8vw;
+          margin-top: 7vw;
           margin-bottom: 1.9vw; } }
       @media (min-width: 1200px) {
         #review-list aside .review-title {
@@ -6065,8 +6071,14 @@ nav {
     #review-list aside .placeholder {
       padding: 20px;
       padding-bottom: 10px;
-      margin-top: 4.7vw;
+      margin-top: 20vw;
       border: 1px solid #dee4ed; }
+      @media (min-width: 576px) {
+        #review-list aside .placeholder {
+          margin-top: 15vw; } }
+      @media (min-width: 768px) {
+        #review-list aside .placeholder {
+          margin-top: 7vw; } }
     #review-list aside .review {
       border: 1px solid #dee4ed;
       padding: 20px;
@@ -6100,8 +6112,17 @@ nav {
       #review-list aside .review h2 {
         color: #20cd74; }
     #review-list aside .closing-button {
-      margin-right: 1vh;
-      margin-bottom: 1vh; }
+      position: absolute;
+      right: 32.6vw;
+      top: 2vh;
+      z-index: 5; }
+      @media (min-width: 768px) {
+        #review-list aside .closing-button {
+          top: 6.5vh; } }
+      @media (min-width: 768px) {
+        #review-list aside .closing-button {
+          top: 2vh;
+          right: 6.16vw; } }
 
 #review-list:target aside {
   margin: 0; }
@@ -6233,7 +6254,7 @@ nav {
   border-color: white; }
 
 .main-section {
-  height: 100vh; }
+  min-height: 100vh; }
   .main-section .themed-colored {
     color: #20cd74; }
   .main-section #map-container {
@@ -6249,43 +6270,52 @@ nav {
       width: 100%;
       position: absolute;
       top: 0px; }
-  .main-section .search-result-founds {
+  .main-section .restaurant-infos-menu {
     border-bottom: 1px solid #dee4ed;
-    height: 20vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; }
+    @media (min-width: 576px) {
+      .main-section .restaurant-infos-menu {
+        height: 50vh; } }
+    @media (min-width: 768px) {
+      .main-section .restaurant-infos-menu {
+        height: 30vh;
+        font-size: 0.8em; } }
     @media (min-width: 1200px) {
-      .main-section .search-result-founds {
-        height: 15vh; } }
-    .main-section .search-result-founds p {
+      .main-section .restaurant-infos-menu {
+        height: 20vh; } }
+    .main-section .restaurant-infos-menu p {
       margin: 4px; }
-    .main-section .search-result-founds button {
+    .main-section .restaurant-infos-menu button {
       margin-bottom: 1vh; }
-    .main-section .search-result-founds .banner-guide {
+    .main-section .restaurant-infos-menu .banner-guide {
       z-index: 5;
       opacity: 1; }
   .main-section .restaurant-section {
     overflow-x: hidden;
-    height: 45vh;
+    height: 100vh;
     /*The following is here to hide the x scrollbar*/
     /*End of rules to hide the x scrollbar*/ }
+    @media (min-width: 768px) {
+      .main-section .restaurant-section {
+        height: 35vh;
+        overflow-y: auto; } }
     @media (min-width: 1200px) {
       .main-section .restaurant-section {
-        height: 50vh;
-        overflow-y: auto; } }
+        height: 45vh; } }
     @media (min-width: 992px) {
       .main-section .restaurant-section .restaurant-section {
         height: 100%;
         width: 100%;
         overflow: hidden; } }
-    @media (min-width: 992px) {
-      .main-section .restaurant-section .restaurant-list {
-        width: 106%;
-        height: 100%;
-        overflow-y: scroll;
-        padding-right: 17px; } }
+    .main-section .restaurant-section .restaurant-list {
+      width: 106%;
+      height: 100%;
+      overflow-y: scroll;
+      padding-right: 17px; }
     .main-section .restaurant-section ul {
       padding: 0px; }
       .main-section .restaurant-section ul .restaurant {
@@ -6294,14 +6324,6 @@ nav {
         padding-bottom: 10px;
         margin-top: 8.3vw;
         border: 1px solid #dee4ed; }
-        .main-section .restaurant-section ul .restaurant .street-picture {
-          max-height: 100%; }
-        @media (min-width: 992px) {
-          .main-section .restaurant-section ul .restaurant .restaurant-details {
-            min-height: 22vh; } }
-        @media (max-width: 1199px) {
-          .main-section .restaurant-section ul .restaurant .restaurant-buttons {
-            margin-top: 3vh; } }
         @media (min-width: 992px) {
           .main-section .restaurant-section ul .restaurant {
             margin-left: 3.45vw;
@@ -6313,8 +6335,6 @@ nav {
         .main-section .restaurant-section ul .restaurant h2 {
           font-size: 1.1em;
           color: #20cd74; }
-        .main-section .restaurant-section ul .restaurant .street-picture-container {
-          height: 100%; }
         .main-section .restaurant-section ul .restaurant .trigger-button {
           margin-top: 3vh; }
           @media (min-width: 768px) {

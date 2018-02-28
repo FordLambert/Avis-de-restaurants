@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import ReviewList from './review_list/review_list';
-import RestaurantList from './restaurant_list/restaurant_list';
+import ReviewList from './review-list/review-list';
+import RestaurantList from './restaurant-list/restaurant-list';
 
 export default class RestaurantSection extends Component {
     constructor(props) {

@@ -1,5 +1,5 @@
 .main-section {
-	height: 100vh;
+	min-height: 100vh;
 
 	.themed-colored {
 		color: $light-green;
@@ -23,16 +23,25 @@
 		}
 	}
 
-	.search-result-founds {
+	.restaurant-infos-menu {
 		border-bottom: 1px solid $light-grey;
-		height: 20vh;
+		height: 70vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 
+		@include media-breakpoint-up(sm) {
+			height: 50vh;
+		}
+
+		@include media-breakpoint-up(md) {
+			height: 30vh;
+			font-size: $text-md-font-size;
+		}
+
 		@include media-breakpoint-up(xl) {
-			height: 15vh;
+			height: 20vh;
 		}
 
 		p {
@@ -51,11 +60,15 @@
 
 	.restaurant-section {
 		overflow-x: hidden;
-		height: 45vh;
-	
-		@include media-breakpoint-up(xl) {
-			height: 50vh;
+		height: 100vh;
+
+		@include media-breakpoint-up(md) {
+			height: 35vh;
 			overflow-y: auto;
+		}
+
+		@include media-breakpoint-up(xl) {
+			height: 45vh;
 		}
 
 		/*The following is here to hide the x scrollbar*/
@@ -68,12 +81,10 @@
 		}
 		
 		.restaurant-list {
-			@include media-breakpoint-up(lg) {
-				width: 106%;
-				height: 100%;
-				overflow-y: scroll;
-				padding-right: 17px;
-			}
+			width: 106%;
+			height: 100%;
+			overflow-y: scroll;
+			padding-right: 17px;
 		}
 		/*End of rules to hide the x scrollbar*/
 
@@ -81,24 +92,6 @@
 			padding: 0px;
 
 			.restaurant {
-
-				.street-picture {
-					max-height: 100%;
-				}
-
-				.restaurant-details {
-
-					@include media-breakpoint-up(lg) {
-						min-height: 22vh;
-					}
-				}
-
-				.restaurant-buttons {
-					@include media-breakpoint-down(lg) {
-						margin-top: 3vh;
-					}
-				}
-
 				list-style-type: none;
 				padding: 20px;
 				padding-bottom: 10px;
@@ -123,10 +116,6 @@
 					color: $light-green;
 				}
 
-				.street-picture-container {
-					height: 100%;
-				}
-
 				.trigger-button {
 					margin-top: 3vh;
 
@@ -138,4 +127,3 @@
 		}
 	}
 }
-

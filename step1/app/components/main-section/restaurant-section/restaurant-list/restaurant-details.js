@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import RestaurantTitle from './restaurant_title';
+import RestaurantTitle from './restaurant-title';
 import Address from './address';
 import Paragraph from './paragraph';
 

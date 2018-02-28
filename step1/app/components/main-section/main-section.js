@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import GoogleMap from './google_map/google_map';
-import SearchResultFound from './search_results_found/search_resutl_found';
-import RestaurantSection from './restaurant_section/restaurant_section';
+import GoogleMap from './google-map/google-map';
+import SearchResultFound from './search-results-found/search-results-found';
+import RestaurantSection from './restaurant-section/restaurant-section';
 
 export default class MainSection extends Component {
     constructor(props) {

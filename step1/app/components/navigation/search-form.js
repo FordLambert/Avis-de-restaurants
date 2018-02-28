@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import InputRange from 'react-input-range';
-import SearchLabel from './search_label';
+import SearchLabel from './search-label';
 
 export default class SearchForm extends Component {
     constructor(props) {

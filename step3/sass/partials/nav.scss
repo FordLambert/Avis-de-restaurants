@@ -40,19 +40,24 @@ nav {
 	}
 
 	form {
-		margin-top: 5vh;
+		margin-top: 1vh;
 		align-items: center;
 
 		label, p {
-			font-size: $text-md-font-size;
+			//font-size: $text-md-font-size;
 	
-			@include media-breakpoint-up(xl) {
+			@include media-breakpoint-up(lg) {
+				margin-top: 2vh;
+				font-size: $text-md-font-size;
+			}
+
+			@include media-breakpoint-up(lg) {
 				font-size: $text-lg-font-size;
 			}
 		}
 	
 		.form-group {
-			margin-top: 5vh;
+			margin-top: 3vh;
 			margin-bottom: 0px;
 		}
 

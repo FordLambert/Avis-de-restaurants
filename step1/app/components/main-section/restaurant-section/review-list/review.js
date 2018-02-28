@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import ProfilePicture from './profile_picture';
-import ReviewRating from './review_rating';
+import ProfilePicture from './profile-picture';
+import ReviewRating from './review-rating';
 import Paragraph from './paragraph';
 
 export default class Review extends Component {
