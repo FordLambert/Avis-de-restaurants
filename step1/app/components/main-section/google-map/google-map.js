@@ -10,7 +10,7 @@ export default class GoogleMap extends Component {
 
         this.mapOptions = {
             src: 'https://maps.googleapis.com/maps/api/js',
-            apiKey: '?key=AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
+            apiKey: '?key=' + 'AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
             async: true,
             defer: true,
             startPosition: {lat: 48.853, lng: 2.35},

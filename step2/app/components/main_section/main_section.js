@@ -55,14 +55,13 @@ export default class MainSection extends Component {
 
         if (reviewNumber > 0) {
             
-            restaurant.ratings.map(function(restaurantReview){
+            restaurant.ratings.map(function(restaurantReview) {
                 total += restaurantReview.stars;
             });
 
             finalGrade = Math.round((total/reviewNumber) * 100) / 100;
 
         }
-        console.log(finalGrade);
         return finalGrade;
     }
 

@@ -10,7 +10,7 @@ export default class SearchForm extends Component {
 
         this.state = {
             grade: {min: 0, max: 5},
-            order: 'distance'
+            order: 'grade'
         }
     }
 
@@ -27,7 +27,7 @@ export default class SearchForm extends Component {
 
     render() {
         return (
-            <form className='col-11 col-lg-10' onSubmit={this.handleSubmit} >
+            <form className='col-11 col-lg-10' onSubmit={this.handleSubmit}>
                 <div className='form-group'>
                     <SearchLabel
                         content={'Note moyenne entre:'}
@@ -60,7 +60,7 @@ export default class SearchForm extends Component {
                     type='submit'
                     className='btn btn-secondary'
                     value="C'est parti !"
-            />
+                />
             </form>
         );
     }

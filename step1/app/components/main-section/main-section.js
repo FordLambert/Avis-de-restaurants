@@ -11,10 +11,9 @@ export default class MainSection extends Component {
         this.state = {
             'listComplete': [],
             'listCustom': [],
+            'position': {},
             'restaurantRequested': {}
         };
-
-        this.geolocCoordinates = {};
     }
 
     static propTypes = {
@@ -50,21 +49,31 @@ export default class MainSection extends Component {
     getAverageGrade(restaurant) {
         const reviewNumber = restaurant.ratings.length;
         let total = 0;
+        let finalGrade = 0;
 
-        restaurant.ratings.map(function(restaurantReview){
-            total += restaurantReview.stars;
-        });
+        if (reviewNumber > 0) {
+            
+            restaurant.ratings.map(function(restaurantReview) {
+                total += restaurantReview.stars;
+            });
 
-        return Math.round((total/reviewNumber) * 100) / 100;
+            finalGrade = Math.round((total/reviewNumber) * 100) / 100;
+
+        }
+        return finalGrade;
     }
 
     componentWillReceiveProps(nextProps) {
         //create a new custom list based on user choices (grade)
-        let newList = [];
-
+        const newList = [];
         this.state.listComplete.map(function (restaurant) {
             const overallGrade = this.getAverageGrade(restaurant);
+
             if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
+                newList.push(restaurant);
+            
+            //we want the newly created restaurant with no review to appear
+            } else if ((nextProps.grade.min == 0) && (overallGrade == 0)) {
                 newList.push(restaurant);
             }
         }.bind(this));
@@ -72,21 +81,15 @@ export default class MainSection extends Component {
         //sort the newly created custom array
         //sort array by distance
         if (nextProps.order == 'distance') {
-
-            //only available if the user have geolocation
-            if (this.geolocCoordinates != undefined) {
-                newList.sort(function (a, b) {
-                    const distA = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, a.lat, a.long);
-                    const distB = this.getDistance(this.geolocCoordinates.lat, this.geolocCoordinates.lng, b.lat, b.long);
-                    return distA - distB;
-                }.bind(this));
-
-            } else {
-                console.log('Error: Géolocation must be active to use this sorting option');
-            }
+            newList.sort(function (a, b) {
+                const distA = this.getDistance(this.state.position.lat, this.state.position.lng, a.lat, a.long);
+                const distB = this.getDistance(this.state.position.lat, this.state.position.lng, b.lat, b.long);
+                return distA - distB;
+            }.bind(this));
 
         //sort array by averageGrade
         } else if (nextProps.order == 'grade') {
+
             newList.sort(function (a, b) {
                 return this.getAverageGrade(b) - this.getAverageGrade(a);
             }.bind(this));
@@ -95,6 +98,7 @@ export default class MainSection extends Component {
         } else {
             console.log('Error: list order must be "distance" or "grade"')
         }
+
         this.setState({listCustom: newList});
     }
 
@@ -104,12 +108,12 @@ export default class MainSection extends Component {
                 return result.json();
             })
             .then(data => {
-            this.geolocCoordinates = geolocCoordinates;
-            this.setState({
-                listComplete: data,
-                listCustom: data
+                this.setState({
+                    listComplete: data,
+                    listCustom: data,
+                    position: geolocCoordinates
+                });
             });
-        });
     }
 
     handleOpenReview = (restaurant) => {

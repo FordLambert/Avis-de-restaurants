@@ -25,7 +25,9 @@ export default class Map extends Component {
       	this.map = new google.maps.Map(document.getElementById('map'), {
         	center: this.props.mapOptions.startPosition,
        		zoom: this.props.mapOptions.zoom
-		});
+        });
+        
+        this.props.handleMapLoad(this.position);
 
         navigator.geolocation.getCurrentPosition(function (position) {
             const pos = {
@@ -40,10 +42,8 @@ export default class Map extends Component {
             });
 
             this.map.setCenter(pos);
-            this.position = pos;
+            this.props.handleMapLoad(pos);
         }.bind(this));
-
-        this.props.handleMapLoad(this.position);
 	}
 
 	closeInfoWindows() {
