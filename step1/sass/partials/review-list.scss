@@ -44,13 +44,17 @@
             border: 1px solid $light-grey;
             padding: 20px;
             padding-bottom: 10px;
-            margin-top: 7.55vw;
+            margin-top: 20vw;
             margin-bottom: 3.75vw;
             margin-left: 7.55vw;
 
+            @include media-breakpoint-up(sm) {
+                margin-top: 15vw;
+            }
+
             @include media-breakpoint-up(md) {
                 margin-left: 5.7vw;
-                margin-top: 3.8vw;
+                margin-top: 7vw;
                 margin-bottom: 1.9vw;
             }
 
@@ -66,8 +70,16 @@
         .placeholder {
             padding: 20px;
             padding-bottom: 10px;
-            margin-top: 4.7vw;
+            margin-top: 20vw;
             border: 1px solid $light-grey;
+
+            @include media-breakpoint-up(sm) {
+                margin-top: 15vw;
+            }
+
+            @include media-breakpoint-up(md) {
+                margin-top: 7vw;
+            }
         }
 
         .review {
@@ -117,8 +129,14 @@
         }
 
         .closing-button {
-            margin-right: 1vh;
-            margin-bottom: 1vh;
+            position: absolute;
+            right: 32.6vw;
+            top: 2vh;
+            z-index: 5;
+
+            @include media-breakpoint-up(sm) {
+                right: 6.16vw;
+            }
         }
     }
 }

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import StreetPicture from './street_picture';
 import GlobalReview from './global_review';
-import ClosingButton from './closing_button';
 import Address from './address';
 
 export default class ReviewTitle extends Component {
@@ -68,9 +67,6 @@ export default class ReviewTitle extends Component {
                                     />
                                 </div>
                             </div>
-                        </div>
-                        <div className={'row justify-content-center justify-content-md-end'}>
-                            <ClosingButton />
                         </div>
                     </div>
                 </div>
