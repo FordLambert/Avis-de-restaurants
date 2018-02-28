@@ -21,16 +21,16 @@ export default class GoogleMap extends Component {
     static propTypes = {
         restaurantList: PropTypes.array,
         handleMapLoad: PropTypes.func,
-        handleOpenReview: PropTypes.func
+        OnMarkerClick: PropTypes.func
     }
 
     handleMapLoad = (geolocCoordinates) => {
         this.props.handleMapLoad(geolocCoordinates);
     }
 
-    handleOpenReview = (restaurant) => {
+    OnMarkerClick = (restaurant) => {
         window.location = '#review-list';
-        this.props.handleOpenReview(restaurant);
+        this.props.OnMarkerClick(restaurant);
     }
 
     render() {
@@ -41,7 +41,7 @@ export default class GoogleMap extends Component {
                     mapOptions={this.mapOptions}
                     list={this.props.restaurantList}
                     handleMapLoad={this.handleMapLoad}
-                    handleOpenReview={this.handleOpenReview}
+                    OnMarkerClick={this.OnMarkerClick}
                 />
             </div>
         );

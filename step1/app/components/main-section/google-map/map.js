@@ -18,6 +18,7 @@ export default class Map extends Component {
     static propTypes = {
         mapOptions: PropTypes.object,
         list: PropTypes.array,
+        OnMarkerClick: PropTypes.func,
         handleMapLoad: PropTypes.func
     }
 
@@ -54,7 +55,7 @@ export default class Map extends Component {
 
 
 	handleMarkerClick = (marker, restaurant, infoWindow) => {
-        this.props.handleOpenReview(restaurant);
+        this.props.OnMarkerClick(restaurant);
 
         this.markers.map((marker) => {
             marker.setIcon(this.defaultMarkerIcon);

@@ -11,8 +11,8 @@ export default class MainSection extends Component {
         this.state = {
             'listComplete': [],
             'listCustom': [],
-            'position': {}//,
-            //'restaurantRequested': {}
+            'restaurantRequested': {},
+            'position': {}
         };
     }
 
@@ -42,8 +42,7 @@ export default class MainSection extends Component {
         dist = dist * 60 * 1.1515;
 
         //finally convert it to kilometers
-        dist = dist * 1.609344;
-        return dist;
+        return dist * 1.609344;
     }
 
     getAverageGrade(restaurant) {
@@ -97,6 +96,10 @@ export default class MainSection extends Component {
         this.setState({listCustom: newList});
     }
 
+    OnMarkerClick = (restaurant) => {
+        this.setState({restaurantRequested: restaurant});
+    }
+
     handleMapLoad = (geolocCoordinates) => {
         fetch('./app/data/restaurant_list.json')
             .then(result => {
@@ -111,12 +114,6 @@ export default class MainSection extends Component {
             });
     }
 
-    /*
-    handleOpenReview = (restaurant) => {
-        this.setState({restaurantRequested: restaurant});
-    }
-    */
-
     render() {
         return (
             <section className='col-12 col-md-9 col-xl-10 main-section' id='main-section'>
@@ -124,7 +121,7 @@ export default class MainSection extends Component {
                     <GoogleMap
                         restaurantList={this.state.listCustom}
                         handleMapLoad={this.handleMapLoad}
-                        handleOpenReview={this.handleOpenReview}
+                        OnMarkerClick={this.OnMarkerClick}
                     />
                     <SearchResultFound
                         restaurantNumber={this.state.listCustom.length}

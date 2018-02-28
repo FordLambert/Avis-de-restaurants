@@ -7,11 +7,11 @@ import Placeholder from './placeholder';
 export default class RestaurantList extends Component {
     static propTypes = {
         restaurantList: PropTypes.array,
-        handleOpenReview: PropTypes.func
+        handleOpenReviewRequest: PropTypes.func
     }
 
     chooseComponentToRender(restaurantList) {
-        if (restaurantList != undefined) {
+        if (restaurantList.length != undefined) {
 
             return restaurantList.map((restaurant, index) => {
                 return <Restaurant
