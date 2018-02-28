@@ -8,13 +8,6 @@ import AddReviewButton from './add_review_button';
 import ReviewListButton from './review_list_button';
 
 export default class Restaurant extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            latitude: this.props.restaurant.lat.toString(),
-            longitude: this.props.restaurant.long.toString()
-        };
-    }
 
     static propTypes = {
         restaurant: PropTypes.object,
@@ -54,10 +47,7 @@ export default class Restaurant extends Component {
     }
 
     getSplitedAddress(spliter) {
-
-        const test = this.props.restaurant.address.split(spliter);
-        //console.log(test);
-        return test;
+        return this.props.restaurant.address.split(spliter);
     }
 
     handleOpenReview = () => {
@@ -73,8 +63,7 @@ export default class Restaurant extends Component {
             <li className={'restaurant col-10 col-xl-5 align-self-center'}>
                 <div className='row justify-content-around'>
                     <StreetPicture
-                        lat={this.state.latitude}
-                        long={this.state.longitude}
+                        address={this.props.restaurant.address}
                     />
                     <RestaurantDetails
                         restaurantName={this.props.restaurant.restaurantName}
