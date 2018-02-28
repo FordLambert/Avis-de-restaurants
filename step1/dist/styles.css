@@ -5989,12 +5989,13 @@ nav {
         height: 150px;
         width: 150px; } }
   nav form {
-    margin-top: 5vh;
+    margin-top: 1vh;
     align-items: center; }
     nav form label, nav form p {
       font-size: 0.8em; }
-      @media (min-width: 1200px) {
+      @media (min-width: 992px) {
         nav form label, nav form p {
+          margin-top: 2vh;
           font-size: 1.2em; } }
     nav form .form-group {
       margin-top: 5vh;
@@ -6031,13 +6032,7 @@ nav {
     right: 0;
     margin: 0 -100vw 0 0;
     transition: all 200ms ease-in;
-    min-height: 100%;
-    /*
-        @include media-breakpoint-up(lg) {
-            margin:0 -37.5vw 0 0;
-            width:37.5vw;
-        }
-        */ }
+    min-height: 100%; }
     @media (min-width: 768px) {
       #review-list aside {
         margin: 0 -75vw 0 0;
@@ -6166,7 +6161,6 @@ nav {
 
 .input-range .input-range__label--min,
 .input-range .input-range__label--max {
-  /*top: 120%;*/
   display: none; }
 
 .input-range .input-range__label--value {
@@ -6188,6 +6182,9 @@ nav {
 
 .main-section {
   min-height: 100vh; }
+  @media (min-width: 768px) {
+    .main-section {
+      height: 100vh; } }
   .main-section .themed-colored {
     color: #20cd74; }
   .main-section #map {
@@ -6197,22 +6194,28 @@ nav {
       .main-section #map {
         height: 35vh;
         width: 100%; } }
-  .main-section .section-breaker {
-    border-bottom: 1px solid #dee4ed; }
-    .main-section .section-breaker p {
+  .main-section .search-results-founds {
+    border-bottom: 1px solid #dee4ed;
+    height: 10vh; }
+    @media (min-width: 768px) {
+      .main-section .search-results-founds {
+        height: 5vh; } }
+    .main-section .search-results-founds p {
       margin: 4px; }
   .main-section .restaurant-section {
     overflow-x: hidden;
+    height: 100vh;
     /*The following is here to hide the x scrollbar*/
     /*End of rules to hide the x scrollbar*/ }
     @media (min-width: 768px) {
       .main-section .restaurant-section {
         height: 60vh;
         overflow-y: auto; } }
-    .main-section .restaurant-section .restaurant-section {
-      height: 100%;
-      width: 100%;
-      overflow: hidden; }
+    @media (min-width: 992px) {
+      .main-section .restaurant-section .restaurant-section {
+        height: 100%;
+        width: 100%;
+        overflow: hidden; } }
     .main-section .restaurant-section .restaurant-list {
       width: 106%;
       height: 100%;

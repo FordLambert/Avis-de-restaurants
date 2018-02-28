@@ -2,34 +2,28 @@
     overflow: hidden;
 
     aside {
-        width:100vw;
+        width: 100vw;
         max-height: 100vh;
         overflow-y: auto;
         overflow-x: hidden;
         z-index: 1;
         position: absolute;
         background-color: $white;
-        top:0;
-        right:0;
-        margin:0 -100vw 0 0;
-        transition:all 200ms ease-in;
+        top: 0;
+        right: 0;
+        margin: 0 -100vw 0 0;
+        transition: all 200ms ease-in;
         min-height: 100%;
        
         @include media-breakpoint-up(md) {
-            margin:0 -75vw 0 0;
+            margin: 0 -75vw 0 0;
             width: 75vw;
             max-height: 60vh;
         }
-        /*
-        @include media-breakpoint-up(lg) {
-            margin:0 -37.5vw 0 0;
-            width:37.5vw;
-        }
-        */
 
         @include media-breakpoint-up(xl) {
-            margin:0 -83.2vw 0 0;
-            width:83.2vw;
+            margin: 0 -83.2vw 0 0;
+            width: 83.2vw;
         }
 
         h2 {
@@ -153,6 +147,6 @@
 }
 
 .open-review {
-    transition:all 200ms ease-in;
-    z-index:0;
+    transition: all 200ms ease-in;
+    z-index: 0;
 }
