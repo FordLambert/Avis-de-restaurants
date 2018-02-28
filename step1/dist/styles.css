@@ -6119,8 +6119,12 @@ nav {
       right: 32.6vw;
       top: 2vh;
       z-index: 5; }
-      @media (min-width: 576px) {
+      @media (min-width: 768px) {
         #review-list aside .closing-button {
+          top: 6.5vh; } }
+      @media (min-width: 768px) {
+        #review-list aside .closing-button {
+          top: 2vh;
           right: 6.16vw; } }
 
 #review-list:target aside {

@@ -134,7 +134,12 @@
             top: 2vh;
             z-index: 5;
 
-            @include media-breakpoint-up(sm) {
+            @include media-breakpoint-up(md) {
+                top: 6.5vh;
+            }
+
+            @include media-breakpoint-up(md) {
+                top: 2vh;
                 right: 6.16vw;
             }
         }
