@@ -12,10 +12,10 @@ export default class ReviewList extends Component {
         currentRestaurant: PropTypes.object
     }
 
-    chooseRenderComponent(restaurant) {
+    chooseReviewsToRender(restaurant) {
         if (restaurant.ratings != undefined) {
-
             return restaurant.ratings.map((review, index) => {
+
                 return <Review
                     key={index}
                     review={review}
@@ -25,7 +25,7 @@ export default class ReviewList extends Component {
         }
     }
 
-    chooseRenderTitle(restaurant) {
+    chooseTitleToRender(restaurant) {
         if (restaurant.ratings != undefined) {
         return  <ReviewTitle
                     restaurant={this.props.currentRestaurant}
@@ -43,8 +43,8 @@ export default class ReviewList extends Component {
                         <div className={'col-12'}>
                             <ClosingButton />
                         </div>
-                        {this.chooseRenderTitle((this.props.currentRestaurant))}
-                        {this.chooseRenderComponent(this.props.currentRestaurant)}
+                        {this.chooseTitleToRender((this.props.currentRestaurant))}
+                        {this.chooseReviewsToRender(this.props.currentRestaurant)}
                     </div>
                 </aside>
             </div>

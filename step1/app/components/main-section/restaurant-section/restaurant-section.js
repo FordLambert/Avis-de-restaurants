@@ -15,7 +15,7 @@ export default class RestaurantSection extends Component {
         restaurantRequested: PropTypes.object
     }
 
-    handleOpenReview = (restaurant) => {
+    handleOpenReviewRequest = (restaurant) => {
         this.setState({currentRestaurant: restaurant});
     }
 
@@ -33,7 +33,7 @@ export default class RestaurantSection extends Component {
                 />
                 <RestaurantList
                     restaurantList={this.props.restaurantList}
-                    handleOpenReview={this.handleOpenReview}
+                    handleOpenReviewRequest={this.handleOpenReviewRequest}
                 />
             </div>
         );

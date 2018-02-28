@@ -22,7 +22,7 @@ export default class ReviewTitle extends Component {
             return 'green-star';
 
         } else {
-            console.log('Error: rating must be  between 1 and 5');
+            return 'unknow-star';
         }
     }
 

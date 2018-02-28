@@ -11,8 +11,8 @@ export default class MainSection extends Component {
         this.state = {
             'listComplete': [],
             'listCustom': [],
-            'position': {},
-            'restaurantRequested': {}
+            'position': {}//,
+            //'restaurantRequested': {}
         };
     }
 
@@ -58,22 +58,17 @@ export default class MainSection extends Component {
             });
 
             finalGrade = Math.round((total/reviewNumber) * 100) / 100;
-
         }
         return finalGrade;
     }
 
     componentWillReceiveProps(nextProps) {
-        //create a new custom list based on user choices (grade)
+        //create a new custom list based on user choices
         const newList = [];
         this.state.listComplete.map((restaurant) => {
             const overallGrade = this.getAverageGrade(restaurant);
 
             if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
-                newList.push(restaurant);
-            
-            //we want the newly created restaurant with no review to appear
-            } else if ((nextProps.grade.min == 0) && (overallGrade == 0)) {
                 newList.push(restaurant);
             }
         });
@@ -116,9 +111,11 @@ export default class MainSection extends Component {
             });
     }
 
+    /*
     handleOpenReview = (restaurant) => {
         this.setState({restaurantRequested: restaurant});
     }
+    */
 
     render() {
         return (

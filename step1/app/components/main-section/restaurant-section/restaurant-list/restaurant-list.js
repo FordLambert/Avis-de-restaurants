@@ -10,14 +10,14 @@ export default class RestaurantList extends Component {
         handleOpenReview: PropTypes.func
     }
 
-    chooseRenderComponent(restaurantList) {
+    chooseComponentToRender(restaurantList) {
         if (restaurantList != undefined) {
 
             return restaurantList.map((restaurant, index) => {
                 return <Restaurant
                     key={index}
                     id={index}
-                    handleOpenReview={this.handleOpenReview}
+                    handleOpenReviewRequest={this.handleOpenReviewRequest}
                     restaurant={restaurant}
                 />;
             })
@@ -27,15 +27,15 @@ export default class RestaurantList extends Component {
         }
     }
 
-    handleOpenReview = (restaurant) => {
-        this.props.handleOpenReview(restaurant);
+    handleOpenReviewRequest = (restaurant) => {
+        this.props.handleOpenReviewRequest(restaurant);
     }
 
     render() {
         return (
             <div className={'restaurant-list'}>
                 <ul className={'row justify-content-center justify-content-lg-start'}>
-                    {this.chooseRenderComponent(this.props.restaurantList)}
+                    {this.chooseComponentToRender(this.props.restaurantList)}
                 </ul>
             </div>
         )

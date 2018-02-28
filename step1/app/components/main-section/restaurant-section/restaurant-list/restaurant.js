@@ -7,19 +7,12 @@ import GlobalReview from './global-review';
 import ReviewListButton from './review-list-button';
 
 export default class Restaurant extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            latitude: this.props.restaurant.lat.toString(),
-            longitude: this.props.restaurant.long.toString()
-        };
-    }
 
     static propTypes = {
         restaurant: PropTypes.object,
         openReview: PropTypes.func,
         id: PropTypes.number,
-        handleOpenReview: PropTypes.func
+        handleOpenReviewRequest: PropTypes.func
     }
 
     defineStarColor(grade) {
@@ -33,7 +26,7 @@ export default class Restaurant extends Component {
             return 'green-star';
 
         } else {
-            console.log('Error: rating must be  between 1 and 5');
+            return 'unknow-star';
         }
     }
 
@@ -52,8 +45,8 @@ export default class Restaurant extends Component {
         return this.props.restaurant.address.split(spliter);
     }
 
-    handleOpenReview = () => {
-        this.props.handleOpenReview(this.props.restaurant);
+    handleOpenReviewRequest = () => {
+        this.props.handleOpenReviewRequest(this.props.restaurant);
     }
 
     render() {
@@ -79,7 +72,7 @@ export default class Restaurant extends Component {
                 </div>
                 <div className={'row justify-content-center justify-content-md-end'}>
                     <ReviewListButton
-                        handleOpenReview={this.handleOpenReview}
+                        onClick={this.handleOpenReviewRequest}
                     />
                 </div>
             </li>

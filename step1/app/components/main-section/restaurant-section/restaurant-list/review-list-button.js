@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ReviewListButton = ({handleOpenReview}) => (
+const ReviewListButton = ({onClick}) => (
     <a
         href={'#review-list'}
         id={'openReviewList'}
         className={'col-sm-5 col-xl-3 btn btn-success open-review'}
-        onClick={handleOpenReview}>
+        onClick={onClick}>
         Lire les avis
     </a>
 );
 
 ReviewListButton.propTypes = {
-    handleOpenReview: PropTypes.func
+    onClick: PropTypes.func
 }
 
 export default ReviewListButton;
