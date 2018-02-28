@@ -29,7 +29,7 @@ export default class Map extends Component {
         
         this.props.handleMapLoad(this.position);
 
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition((position) => {
             const pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
@@ -43,23 +43,23 @@ export default class Map extends Component {
 
             this.map.setCenter(pos);
             this.props.handleMapLoad(pos);
-        }.bind(this));
+        });
 	}
 
 	closeInfoWindows() {
-        this.infoWindows.map(function (infoWindow) {
+        this.infoWindows.map((infoWindow) => {
             infoWindow.close();
-        }.bind(this));
+        });
     }
 
 
 	handleMarkerClick = (marker, restaurant, infoWindow) => {
         this.props.handleOpenReview(restaurant);
 
-        this.markers.map(function (marker) {
+        this.markers.map((marker) => {
             marker.setIcon(this.defaultMarkerIcon);
             this.closeInfoWindows();
-        }.bind(this));
+        });
 
         marker.setIcon(this.clickedMarkerIcon);
         infoWindow.open(this.map, marker);
@@ -76,9 +76,9 @@ export default class Map extends Component {
             content: restaurant.restaurantName
         });
 
-        marker.addListener('click', function() {
+        marker.addListener('click', () => {
             this.handleMarkerClick(marker, restaurant, infoWindow);
-        }.bind(this));
+        });
 
         this.markers.push(marker);
         this.infoWindows.push(infoWindow);
@@ -98,10 +98,10 @@ export default class Map extends Component {
 	componentWillUpdate(nextProps) {
         if (nextProps.list != this.props.list) {
             this.deleteOldMarkers();
-            nextProps.list.map(function (restaurant) {
+            nextProps.list.map((restaurant) => {
                 const position = {lat: restaurant.lat, lng: restaurant.long};
                 this.addMarker(position, restaurant);
-            }.bind(this));
+            });
         }
 	}
 

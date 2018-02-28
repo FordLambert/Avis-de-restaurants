@@ -15,12 +15,12 @@ export default class ReviewList extends Component {
     chooseRenderComponent(restaurant) {
         if (restaurant.ratings != undefined) {
 
-            return restaurant.ratings.map(function(review, index){
+            return restaurant.ratings.map((review, index) => {
                 return <Review
                     key={index}
                     review={review}
                 />
-            }.bind(this))
+            })
 
         }
     }
