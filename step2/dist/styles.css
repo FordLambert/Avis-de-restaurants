@@ -6162,7 +6162,7 @@ nav {
   opacity: 1;
   top: 0; }
   .popup:target .popUpContainer {
-    top: 200px;
+    top: 30vh;
     transition: top 0.50s ease; }
     @media (max-width: 1199px) {
       .popup:target .popUpContainer {

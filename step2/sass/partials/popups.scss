@@ -66,7 +66,7 @@
     top: 0;
 
     .popUpContainer {
-        top: 200px;
+        top: 30vh;
         transition: top 0.50s ease;
 
         @include media-breakpoint-down(lg) {
