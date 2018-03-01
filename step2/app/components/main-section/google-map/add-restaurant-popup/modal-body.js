@@ -25,6 +25,8 @@ export default class ModalBody extends Component {
         event.preventDefault();
         //exit modal window
         window.location = '#!';
+        //reset input value
+        this.reviewForm.reset();
         //give the name to parent component
         this.props.handleSubmit(this.state.restaurantName);
     }
@@ -33,7 +35,7 @@ export default class ModalBody extends Component {
         return (
             <div className={'modal-body'}>
                 <div className="row justify-content-center">
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit} ref={(el) => this.reviewForm = el}>
                         <div className="form-group text-center">
                             <Input
                                 className={'form-control'}

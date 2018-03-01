@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
-import Script from './script';
 import AddRestaurantPopUp from './add-restaurant-popup/add-restaurant-popup';
 
 export default class Map extends Component {
@@ -15,9 +14,12 @@ export default class Map extends Component {
         this.markers = []; //markers displayed on map
         this.infoWindows = []; //infoWindows displayed on map
         this.position = this.props.mapOptions.startPosition;
-        this.defaultMarkerIcon = './resources/pictures/marker-red.png';
-        this.geolocalisationMarkerIcon = './resources/pictures/marker-blue.png';
-        this.clickedMarkerIcon = './resources/pictures/marker-green.png';
+
+        this.markerIconsPath = {
+            defaultMarkerIcon: './resources/pictures/marker-red.png',
+            geolocalisationMarkerIcon: './resources/pictures/marker-blue.png',
+            clickedMarkerIcon: './resources/pictures/marker-green.png'
+        }
     }
 
     static propTypes = {
@@ -28,48 +30,6 @@ export default class Map extends Component {
         handleRestaurantAdded: PropTypes.func,
         handleOpenReview: PropTypes.func
     }
-
-    initMap = () => {
-      	this.map = new google.maps.Map(document.getElementById('map'), {
-        	center: this.props.mapOptions.startPosition,
-       		zoom: this.props.mapOptions.zoom
-        });
-        
-        this.props.handleMapLoad(this.position);
-
-		navigator.geolocation.getCurrentPosition((position) => {
-			const pos = {
-				lat: position.coords.latitude,
-				lng: position.coords.longitude
-			};
-            const marker = new google.maps.Marker({
-                position: pos,
-                icon: this.geolocalisationMarkerIcon,
-                map: this.map
-            });
-
-			this.map.setCenter(pos);
-            this.props.handleMapLoad(pos);
-		});
-
-		//style of cursor in "add restaurant" mode
-        this.map.addListener('mouseover', () => {
-            if (this.props.canAddRestaurant) {
-                this.map.setOptions({draggableCursor: 'url(resources/pictures/marker-red.png), auto'});
-
-            } else {
-                this.map.setOptions({draggableCursor: 'pointer'});
-            }
-        });
-
-        //if in "add restaurant" mode, start adding process on click
-        this.map.addListener('click', (event) => {
-            if (this.props.canAddRestaurant) {
-                this.setState({clickedPosition: event.latLng});
-                window.location = '#add-restaurant-popup';
-            }
-        });
-	}
 
     handleSubmit = (restaurantName) => {
         const lat = this.state.clickedPosition.lat();
@@ -107,18 +67,18 @@ export default class Map extends Component {
         this.props.handleOpenReview(restaurant);
 
         this.markers.map((marker) => {
-            marker.setIcon(this.defaultMarkerIcon);
+            marker.setIcon(this.markerIconsPath.defaultMarkerIcon);
             this.closeInfoWindows();
         });
 
-        marker.setIcon(this.clickedMarkerIcon);
+        marker.setIcon(this.markerIconsPath.clickedMarkerIcon);
         infoWindow.open(this.map, marker);
     }
 
 	addMarker(position, restaurant) {
         const marker = new google.maps.Marker({
             position: position,
-            icon: this.defaultMarkerIcon,
+            icon: this.markerIconsPath.defaultMarkerIcon,
             map: this.map
         });
 
@@ -160,21 +120,55 @@ export default class Map extends Component {
                 this.addMarker(position, restaurant);
             });
         }
-	}
+    }
+    
+    componentDidMount() {
+        this.map = new google.maps.Map(document.getElementById('map'), {
+        	center: this.props.mapOptions.startPosition,
+       		zoom: this.props.mapOptions.zoom
+        });
+        
+        this.props.handleMapLoad(this.position);
+
+		navigator.geolocation.getCurrentPosition((position) => {
+			const pos = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
+            const marker = new google.maps.Marker({
+                position: pos,
+                icon: this.markerIconsPath.geolocalisationMarkerIcon,
+                map: this.map
+            });
+
+			this.map.setCenter(pos);
+            this.props.handleMapLoad(pos);
+		});
+
+		//style of cursor in "add restaurant" mode
+        this.map.addListener('mouseover', () => {
+            if (this.props.canAddRestaurant) {
+                this.map.setOptions({draggableCursor: 'url(resources/pictures/marker-red.png), auto'});
+
+            } else {
+                this.map.setOptions({draggableCursor: 'pointer'});
+            }
+        });
+
+        //if in "add restaurant" mode, start adding process on click
+        this.map.addListener('click', (event) => {
+            if (this.props.canAddRestaurant) {
+                this.setState({clickedPosition: event.latLng});
+                window.location = '#add-restaurant-popup';
+            }
+        });
+    }
 
     render() {
         return (
-        	<div>
-                <AddRestaurantPopUp
-                    handleSubmit={this.handleSubmit}
-                />
-				<Script
-					src={this.props.mapOptions.src + this.props.mapOptions.apiKey}
-					async={this.props.mapOptions.async}
-					defer={this.props.mapOptions.defer}
-					callback={this.initMap}
-				/>
-			</div>
+            <AddRestaurantPopUp
+                handleSubmit={this.handleSubmit}
+            />
         );
     }
 }

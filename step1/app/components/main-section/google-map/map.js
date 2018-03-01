@@ -86,8 +86,6 @@ export default class Map extends Component {
         	center: this.props.mapOptions.startPosition,
        		zoom: this.props.mapOptions.zoom
         });
-        
-        this.props.handleMapLoad(this.position);
 
         navigator.geolocation.getCurrentPosition((position) => {
             const pos = {
