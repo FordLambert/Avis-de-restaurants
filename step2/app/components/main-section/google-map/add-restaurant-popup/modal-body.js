@@ -33,7 +33,7 @@ export default class ModalBody extends Component {
         return (
             <div className={'modal-body'}>
                 <div className="row justify-content-center">
-                    <form onSubmit={this.handleSubmit.bind(this)}>
+                    <form onSubmit={this.handleSubmit}>
                         <div className="form-group text-center">
                             <Input
                                 className={'form-control'}

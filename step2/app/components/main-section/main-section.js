@@ -68,7 +68,7 @@ export default class MainSection extends Component {
     componentWillReceiveProps(nextProps) {
         //create a new custom list based on user choices (grade)
         const newList = [];
-        this.state.listComplete.map(function (restaurant) {
+        this.state.listComplete.map((restaurant) => {
             const overallGrade = this.getAverageGrade(restaurant);
 
             if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
@@ -78,23 +78,23 @@ export default class MainSection extends Component {
             } else if ((nextProps.grade.min == 0) && (overallGrade == 0)) {
                 newList.push(restaurant);
             }
-        }.bind(this));
+        });
 
         //sort the newly created custom array
         //sort array by distance
         if (nextProps.order == 'distance') {
-            newList.sort(function (a, b) {
+            newList.sort((a, b) => {
                 const distA = this.getDistance(this.state.position.lat, this.state.position.lng, a.lat, a.long);
                 const distB = this.getDistance(this.state.position.lat, this.state.position.lng, b.lat, b.long);
                 return distA - distB;
-            }.bind(this));
+            });
 
         //sort array by averageGrade
         } else if (nextProps.order == 'grade') {
 
-            newList.sort(function (a, b) {
+            newList.sort((a, b) => {
                 return this.getAverageGrade(b) - this.getAverageGrade(a);
-            }.bind(this));
+            });
 
         //handle wrong parameter
         } else {
