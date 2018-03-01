@@ -8,6 +8,7 @@ export default class GoogleMap extends Component {
     constructor(props) {
         super(props);
 
+        /*
         this.mapOptions = {
             src: 'https://maps.googleapis.com/maps/api/js',
             apiKey: '?key=' + 'AIzaSyAcJwz6_PgkDi-gLx0hoTsqoeowiwWoovc',
@@ -16,6 +17,7 @@ export default class GoogleMap extends Component {
             startPosition: {lat: 48.853, lng: 2.35},
             zoom: 12
         }
+        */
     }
 
     static propTypes = {
