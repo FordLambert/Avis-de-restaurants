@@ -28,11 +28,15 @@ export default class RestaurantSection extends Component {
     }
 
     handleOpenReviewRequest = (restaurant) => {
-        this.setState({currentRestaurant: restaurant});
+        this.setState({
+            currentRestaurant: restaurant
+        });
     }
 
     handleAddReviewRequest = (restaurant) => {
-        this.setState({currentRestaurant: restaurant});
+        this.setState({
+            currentRestaurant: restaurant
+        });
     }
 
     componentWillUpdate(nextProps) {

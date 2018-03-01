@@ -118,8 +118,10 @@ export default class MainSection extends Component {
             });
     }
 
-    handleOpenReview = (restaurant) => {
-        this.setState({restaurantRequested: restaurant});
+    handleOpenReviewRequest = (restaurant) => {
+        this.setState({
+            restaurantRequested: restaurant
+        });
     }
 
     addRestaurant = (restaurant) => {
@@ -151,7 +153,7 @@ export default class MainSection extends Component {
                     <GoogleMap
                         restaurantList={this.state.listCustom}
                         handleMapUpdate={this.handleMapUpdate}
-                        handleOpenReview={this.handleOpenReview}
+                        handleOpenReviewRequest={this.handleOpenReviewRequest}
                         canAddRestaurant={this.state.canAddRestaurant}
                         handleRestaurantAdded={this.addRestaurant}
                     />
