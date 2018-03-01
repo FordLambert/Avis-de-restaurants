@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ModalBody from './modal_body';
+import ModalBody from './modal-body';
 
 const AddRestaurantPopUp = () => (
     <div id={'confirm-addition-popup'} className={'popup'}>

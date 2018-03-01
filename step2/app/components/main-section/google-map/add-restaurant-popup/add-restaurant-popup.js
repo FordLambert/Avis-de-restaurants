@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import ModalHeader from './modal_header';
-import ModalBody from './modal_body';
-import CloseLink from './modal_close_link';
+import ModalHeader from './modal-header';
+import ModalBody from './modal-body';
+import CloseLink from './modal-close-link';
 
 export default class AddRestaurantPopUp extends Component {
 

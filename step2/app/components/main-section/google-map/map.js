@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
 import Script from './script';
-import AddRestaurantPopUp from './add_restaurant_popup/add_restaurant_popup';
+import AddRestaurantPopUp from './add-restaurant-popup/add-restaurant-popup';
 
 export default class Map extends Component {
     constructor(props) {

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CloseLink from './modal_close_link';
-import ModalTitle from './modal_title';
+import CloseLink from './modal-close-link';
+import ModalTitle from './modal-title';
 
 const ModalHeader = ({restaurantReviewed}) => (
     <div className={'modal-header'}>

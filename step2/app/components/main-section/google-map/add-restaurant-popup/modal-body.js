@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import Input from './input';
-import InfoParagraph from './info_paragraph';
+import InfoParagraph from './info-paragraph';
 
 export default class ModalBody extends Component {
     constructor(props) {

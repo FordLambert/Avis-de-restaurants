@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
-import GoogleMap from './google_map/google_map';
-import RestaurantInfoMenu from './restaurant_info_menu/restaurant_info_menu';
-import RestaurantSection from './restaurant_section/restaurant_section';
-import ConfirmAdditionPopUp from './confirm-addition-popup/confirm_addition_popup';
+import GoogleMap from './google-map/google-map';
+import RestaurantInfoMenu from './restaurant-info-menu/restaurant-info-menu';
+import RestaurantSection from './restaurant-section/restaurant-section';
+import ConfirmAdditionPopUp from './confirm-addition-popup/confirm-addition-popup'; 
 
 export default class MainSection extends Component {
     constructor(props) {
@@ -105,7 +105,7 @@ export default class MainSection extends Component {
     }
 
     handleMapLoad = (geolocCoordinates) => {
-        fetch('./app/data/restaurant_list.json')
+        fetch('./app/data/restaurant-list.json')
             .then(result => {
                 return result.json();
             })

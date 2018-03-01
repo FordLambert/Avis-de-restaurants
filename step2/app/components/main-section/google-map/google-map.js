@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
 import Map from './map';
-import Pulser from './loading_pulser';
+import Pulser from './loading-pulser';
 
 export default class GoogleMap extends Component {
     constructor(props) {

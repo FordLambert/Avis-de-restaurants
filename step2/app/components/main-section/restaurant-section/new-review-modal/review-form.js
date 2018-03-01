@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import ReviewRating from './review_rating';
-import TextArea from './text_area';
+import ReviewRating from './review-rating';
+import TextArea from './text-area';
 
 export default class ReviewForm extends Component {
     constructor(props) {

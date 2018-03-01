@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import AddRestaurantButton from './add_restaurant_button';
-import SearchResultFound from './search_result_found';
+import AddRestaurantButton from './add-restaurant-button';
+import SearchResultsFound from './search-results-found';
 
 export default class RestaurantInfoMenu extends Component {
 
@@ -27,7 +27,7 @@ export default class RestaurantInfoMenu extends Component {
     render() {
         return (
             <div className={'restaurant-infos-menu col-12 text-center'}>
-                <SearchResultFound
+                <SearchResultsFound
                     restaurantNumber={this.props.restaurantNumber}
                     className={this.getResultsClassName()}
                 />

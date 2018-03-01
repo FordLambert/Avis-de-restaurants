@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import ReviewForm from './review_form';
+import ReviewForm from './review-form';
 
 export default class ModalBody extends Component {
 

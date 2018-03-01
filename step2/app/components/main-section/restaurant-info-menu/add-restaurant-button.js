@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import BannerGuide from './banner_guide';
+import BannerGuide from './banner-guide';
 
 export default class AddRestaurantButton extends Component {
     constructor(props) {

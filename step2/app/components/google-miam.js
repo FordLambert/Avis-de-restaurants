@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import Navigation from './navigation/navigation';
-import MainSection from './main_section/main_section';
+import MainSection from './main-section/main-section';
 
 class GoogleMiam extends Component {
     constructor(props) {

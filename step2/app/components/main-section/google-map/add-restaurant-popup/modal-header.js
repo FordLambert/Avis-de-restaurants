@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CloseLink from './modal_close_link';
-import ModalTitle from './modal_title';
+import CloseLink from './modal-close-link';
+import ModalTitle from './modal-title';
 
 const ModalHeader = () => (
     <div className={'modal-header'}>
