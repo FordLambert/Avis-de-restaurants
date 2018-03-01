@@ -96,7 +96,7 @@ export default class MainSection extends Component {
         this.setState({listCustom: newList});
     }
 
-    OnMarkerClick = (restaurant) => {
+    handleMarkerClick = (restaurant) => {
         this.setState({restaurantRequested: restaurant});
     }
 
@@ -121,7 +121,7 @@ export default class MainSection extends Component {
                     <GoogleMap
                         restaurantList={this.state.listCustom}
                         handleMapLoad={this.handleMapLoad}
-                        OnMarkerClick={this.OnMarkerClick}
+                        handleMarkerClick={this.handleMarkerClick}
                     />
                     <SearchResultFound
                         restaurantNumber={this.state.listCustom.length}

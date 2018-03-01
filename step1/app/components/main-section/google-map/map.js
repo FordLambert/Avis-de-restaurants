@@ -1,16 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-//import Script from './script';
-
 export default class Map extends Component {
     constructor(props) {
         super(props);
-
-        this.mapOptions = {
-            startPosition: {lat: 48.853, lng: 2.35},
-            zoom: 12
-        }
 
         this.markerIconsPath = {
             defaultMarkerIcon: './resources/pictures/marker-red.png',
@@ -24,29 +17,12 @@ export default class Map extends Component {
 
     static propTypes = {
         list: PropTypes.array,
-        OnMarkerClick: PropTypes.func,
+        mapOptions: PropTypes.object,
+        handleMarkerClick: PropTypes.func,
         handleMapLoad: PropTypes.func
     }
 
-	closeInfoWindows() {
-        this.infoWindows.map((infoWindow) => {
-            infoWindow.close();
-        });
-    }
-
-	handleMarkerClick = (marker, restaurant, infoWindow) => {
-        this.props.OnMarkerClick(restaurant);
-
-        this.markers.map((marker) => {
-            marker.setIcon(this.markerIconsPath.defaultMarkerIcon);
-            this.closeInfoWindows();
-        });
-
-        marker.setIcon(this.markerIconsPath.clickedMarkerIcon);
-        infoWindow.open(this.map, marker);
-    }
-
-	addMarker(position, restaurant) {
+    addMarker(position, restaurant) {
         const marker = new google.maps.Marker({
             position: position,
             icon: this.markerIconsPath.defaultMarkerIcon,
@@ -58,22 +34,41 @@ export default class Map extends Component {
         });
 
         marker.addListener('click', () => {
-            this.handleMarkerClick(marker, restaurant, infoWindow);
+            this.onMarkerClick(marker, restaurant, infoWindow);
         });
 
         this.markers.push(marker);
         this.infoWindows.push(infoWindow);
 	}
 
+	closeInfoWindows() {
+        this.infoWindows.map((infoWindow) => {
+            infoWindow.close();
+        });
+    }
+
     deleteOldMarkers() {
         this.setMapOnAll(null);
         this.markers.splice(1);
     }
 
+    //choose a map to display the markers, hidden if map == null
     setMapOnAll(map) {
         for (let i = 0; i < this.markers.length; i++) {
             this.markers[i].setMap(map);
         }
+    }
+
+    onMarkerClick = (marker, restaurant, infoWindow) => {
+        this.props.handleMarkerClick(restaurant);
+
+        this.markers.map((marker) => {
+            marker.setIcon(this.markerIconsPath.defaultMarkerIcon);
+            this.closeInfoWindows();
+        });
+
+        marker.setIcon(this.markerIconsPath.clickedMarkerIcon);
+        infoWindow.open(this.map, marker);
     }
 
 	componentWillUpdate(nextProps) {
@@ -88,8 +83,8 @@ export default class Map extends Component {
     
     componentDidMount() {
         this.map = new google.maps.Map(document.getElementById('map'), {
-        	center: this.position,
-       		zoom: 12
+        	center: this.props.mapOptions.startPosition,
+       		zoom: this.props.mapOptions.zoom
         });
         
         this.props.handleMapLoad(this.position);
