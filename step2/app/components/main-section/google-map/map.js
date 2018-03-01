@@ -14,16 +14,11 @@ export default class Map extends Component {
         this.markers = []; //markers displayed on map
         this.infoWindows = []; //infoWindows displayed on map
         this.position = this.props.mapOptions.startPosition;
-
-        this.markerIconsPath = {
-            defaultMarkerIcon: './resources/pictures/marker-red.png',
-            geolocalisationMarkerIcon: './resources/pictures/marker-blue.png',
-            clickedMarkerIcon: './resources/pictures/marker-green.png'
-        }
     }
 
     static propTypes = {
         mapOptions: PropTypes.object,
+        markerIconsPath: PropTypes.object,
         list: PropTypes.array,
         handleMapLoad: PropTypes.func,
         canAddRestaurant: PropTypes.bool,
@@ -67,18 +62,18 @@ export default class Map extends Component {
         this.props.handleOpenReview(restaurant);
 
         this.markers.map((marker) => {
-            marker.setIcon(this.markerIconsPath.defaultMarkerIcon);
+            marker.setIcon(this.props.markerIconsPath.defaultMarkerIcon);
             this.closeInfoWindows();
         });
 
-        marker.setIcon(this.markerIconsPath.clickedMarkerIcon);
+        marker.setIcon(this.props.markerIconsPath.clickedMarkerIcon);
         infoWindow.open(this.map, marker);
     }
 
 	addMarker(position, restaurant) {
         const marker = new google.maps.Marker({
             position: position,
-            icon: this.markerIconsPath.defaultMarkerIcon,
+            icon: this.props.markerIconsPath.defaultMarkerIcon,
             map: this.map
         });
 
@@ -128,7 +123,7 @@ export default class Map extends Component {
        		zoom: this.props.mapOptions.zoom
         });
         
-        this.props.handleMapLoad(this.position);
+        this.props.handleMapLoad(this.position, this.map);
 
 		navigator.geolocation.getCurrentPosition((position) => {
 			const pos = {
@@ -137,23 +132,13 @@ export default class Map extends Component {
 			};
             const marker = new google.maps.Marker({
                 position: pos,
-                icon: this.markerIconsPath.geolocalisationMarkerIcon,
+                icon: this.props.markerIconsPath.geolocalisationMarkerIcon,
                 map: this.map
             });
 
 			this.map.setCenter(pos);
-            this.props.handleMapLoad(pos);
+            this.props.handleMapLoad(pos, this.map);
 		});
-
-		//style of cursor in "add restaurant" mode
-        this.map.addListener('mouseover', () => {
-            if (this.props.canAddRestaurant) {
-                this.map.setOptions({draggableCursor: 'url(resources/pictures/marker-red.png), auto'});
-
-            } else {
-                this.map.setOptions({draggableCursor: 'pointer'});
-            }
-        });
 
         //if in "add restaurant" mode, start adding process on click
         this.map.addListener('click', (event) => {
