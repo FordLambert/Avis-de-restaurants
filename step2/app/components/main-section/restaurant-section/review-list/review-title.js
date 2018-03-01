@@ -51,12 +51,14 @@ export default class ReviewTitle extends Component {
             <div className={'col-12'}>
                 <div className={'row justify-content-xl-center'}>
                     <div className={'col-10 col-xl-6 review-title'}>
-                        <div className="row justify-content-around">
+                        <div className='row justify-content-around'>
                             <StreetPicture
                                 address={this.props.restaurant.address}
                             />
                             <div className={'col-12 col-sm-4'}>
-                                <h2>{this.props.restaurant.restaurantName}</h2>
+                                <h2>
+                                    {this.props.restaurant.restaurantName}
+                                </h2>
                                 <Address
                                     street={this.getSplitedAddress(',')[0]}
                                     city={this.getSplitedAddress(',')[1]}

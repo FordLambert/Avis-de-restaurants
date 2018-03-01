@@ -24,15 +24,15 @@ export default class GoogleMap extends Component {
 
     static propTypes = {
         restaurantList: PropTypes.array,
-        handleMapLoad: PropTypes.func,
+        handleMapUpdate: PropTypes.func,
         handleOpenReview: PropTypes.func,
         handleRestaurantAdded: PropTypes.func,
         canAddRestaurant: PropTypes.bool
     }
 
-    handleMapLoad = (geolocCoordinates, map) => {
+    handleMapUpdate = (geolocCoordinates, map) => {
         this.map = map;
-        this.props.handleMapLoad(geolocCoordinates);
+        this.props.handleMapUpdate(geolocCoordinates);
     }
 
     handleOpenReview = (restaurant) => {
@@ -44,7 +44,7 @@ export default class GoogleMap extends Component {
         this.props.handleRestaurantAdded(restaurant);
     }
 
-    onMouseMove = () => {
+    onMouseHover = () => {
         if (this.props.canAddRestaurant) {
             this.map.setOptions({draggableCursor: 'url(' + this.markerIconsPath.defaultMarkerIcon + '), auto'});
 
@@ -55,13 +55,13 @@ export default class GoogleMap extends Component {
 
     render() {
         return (
-            <div id={'map-container'} onMouseMove={this.onMouseMove}>
+            <div id={'map-container'} onMouseMove={this.onMouseHover}>
                 <Pulser />
                 <Map
                     mapOptions={this.mapOptions}
                     markerIconsPath={this.markerIconsPath}
-                    list={this.props.restaurantList}
-                    handleMapLoad={this.handleMapLoad}
+                    placesList={this.props.restaurantList}
+                    handleMapUpdate={this.handleMapUpdate}
                     handleOpenReview={this.handleOpenReview}
                     canAddRestaurant={this.props.canAddRestaurant}
                     handleRestaurantAdded={this.handleRestaurantAdded}

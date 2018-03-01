@@ -13,16 +13,18 @@ class GoogleMiam extends Component {
         };
     }
 
-    //handle the form's submit for custom restaurant options
-    handleSubmit = (grade, order) => {
-        this.setState({grade: grade, order: order });
+    handleUserChoicesSubmit = (grade, order) => {
+        this.setState({
+            grade: grade, 
+            order: order 
+        });
     }
 
     render() {
         return (
-            <div className="row">
+            <div className='row'>
                 <Navigation
-                    handleSubmit={this.handleSubmit}
+                    handleUserChoicesSubmit={this.handleUserChoicesSubmit}
                 />
                 <MainSection
                     grade={this.state.grade}

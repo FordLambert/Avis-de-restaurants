@@ -104,7 +104,7 @@ export default class MainSection extends Component {
         this.setState({listCustom: newList});
     }
 
-    handleMapLoad = (geolocCoordinates) => {
+    handleMapUpdate = (geolocCoordinates) => {
         fetch('./app/data/restaurant-list.json')
             .then(result => {
                 return result.json();
@@ -150,7 +150,7 @@ export default class MainSection extends Component {
                 <div className='row'>
                     <GoogleMap
                         restaurantList={this.state.listCustom}
-                        handleMapLoad={this.handleMapLoad}
+                        handleMapUpdate={this.handleMapUpdate}
                         handleOpenReview={this.handleOpenReview}
                         canAddRestaurant={this.state.canAddRestaurant}
                         handleRestaurantAdded={this.addRestaurant}

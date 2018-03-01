@@ -7,11 +7,11 @@ import SearchForm from './search-form';
 
 export default class Navigation extends Component {
     static propTypes = {
-        handleSubmit: PropTypes.func
+        handleUserChoicesSubmit: PropTypes.func
     }
 
-    handleSubmit = (grade, order) => {
-        this.props.handleSubmit(grade, order);
+    handleUserChoicesSubmit = (grade, order) => {
+        this.props.handleUserChoicesSubmit(grade, order);
     }
 
     render() {
@@ -21,7 +21,7 @@ export default class Navigation extends Component {
                     <Logo />
                     <MainTitle />
                     <SearchForm
-                        handleSubmit={this.handleSubmit}
+                        handleSubmit={this.handleUserChoicesSubmit}
                     />
                 </div>
             </nav>

@@ -11,7 +11,8 @@ const RestaurantDetails = ({restaurantName, address, reviewNumber}) => (
             content={restaurantName}
         />
         <Address
-            street={address[0]} city={address[1]}
+            street={address[0]} 
+            city={address[1]}
         />
         <Paragraph
             spanClass={'themed-colored'}

@@ -20,9 +20,7 @@ export default class SearchForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const grade = this.state.grade;
-        const order = this.state.order;
-        this.props.handleSubmit(grade, order);
+        this.props.handleSubmit(this.state.grade, this.state.order);
     }
 
     render() {

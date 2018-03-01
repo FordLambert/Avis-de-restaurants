@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import AddRestaurantPopUp from './add-restaurant-popup/add-restaurant-popup';
 
@@ -13,20 +13,19 @@ export default class Map extends Component {
 
         this.markers = []; //markers displayed on map
         this.infoWindows = []; //infoWindows displayed on map
-        this.position = this.props.mapOptions.startPosition;
     }
 
     static propTypes = {
         mapOptions: PropTypes.object,
         markerIconsPath: PropTypes.object,
-        list: PropTypes.array,
-        handleMapLoad: PropTypes.func,
+        placesList: PropTypes.array,
+        handleMapUpdate: PropTypes.func,
         canAddRestaurant: PropTypes.bool,
         handleRestaurantAdded: PropTypes.func,
         handleOpenReview: PropTypes.func
     }
 
-    handleSubmit = (restaurantName) => {
+    handleNewNameSubmit = (restaurantName) => {
         const lat = this.state.clickedPosition.lat();
         const long = this.state.clickedPosition.lng();
         let address = '';
@@ -61,6 +60,7 @@ export default class Map extends Component {
 	handleMarkerClick = (marker, restaurant, infoWindow) => {
         this.props.handleOpenReview(restaurant);
 
+        //reset the others markers before changing the clicked one
         this.markers.map((marker) => {
             marker.setIcon(this.props.markerIconsPath.defaultMarkerIcon);
             this.closeInfoWindows();
@@ -93,7 +93,7 @@ export default class Map extends Component {
         this.markers.splice(1);
     }
 
-    //set the map to display the markers (hide them if null)
+    //set the map to display the markers (hide them if map == null)
     setMapOnAll(map) {
         for (let i = 0; i < this.markers.length; i++) {
             this.markers[i].setMap(map);
@@ -107,10 +107,10 @@ export default class Map extends Component {
     }
 
 	componentWillUpdate(nextProps) {
-        if (nextProps.list != this.props.list) {
+        if (nextProps.placesList != this.props.placesList) {
             this.deleteOldMarkers();
 
-            nextProps.list.map((restaurant) => {
+            nextProps.placesList.map((restaurant) => {
                 const position = {lat: restaurant.lat, lng: restaurant.long};
                 this.addMarker(position, restaurant);
             });
@@ -123,7 +123,7 @@ export default class Map extends Component {
        		zoom: this.props.mapOptions.zoom
         });
         
-        this.props.handleMapLoad(this.position, this.map);
+        this.props.handleMapUpdate(this.props.mapOptions.startPosition, this.map);
 
 		navigator.geolocation.getCurrentPosition((position) => {
 			const pos = {
@@ -137,7 +137,7 @@ export default class Map extends Component {
             });
 
 			this.map.setCenter(pos);
-            this.props.handleMapLoad(pos, this.map);
+            this.props.handleMapUpdate(pos, this.map);
 		});
 
         //if in "add restaurant" mode, start adding process on click
@@ -152,7 +152,7 @@ export default class Map extends Component {
     render() {
         return (
             <AddRestaurantPopUp
-                handleSubmit={this.handleSubmit}
+                handleNewNameSubmit={this.handleNewNameSubmit}
             />
         );
     }

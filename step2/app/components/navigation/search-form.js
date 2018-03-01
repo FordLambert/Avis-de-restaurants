@@ -20,15 +20,13 @@ export default class SearchForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const grade = this.state.grade;
-        const order = this.state.order;
-        this.props.handleSubmit(grade, order);
+        this.props.handleSubmit(this.state.grade, this.state.order);
     }
 
     render() {
         return (
-            <form className="col-11 col-lg-10" onSubmit={this.handleSubmit}>
-                <div className="form-group">
+            <form className='col-11 col-lg-10' onSubmit={this.handleSubmit}>
+                <div className='form-group'>
                     <SearchLabel
                         content={'Note moyenne entre:'}
                         className={'gradeLabel'}
@@ -57,8 +55,8 @@ export default class SearchForm extends Component {
                     </select>
                 </div>
                 <input 
-                    type="submit" 
-                    className="btn btn-secondary" 
+                    type='submit' 
+                    className='btn btn-secondary' 
                     value="C'est parti !" 
                 />
             </form>

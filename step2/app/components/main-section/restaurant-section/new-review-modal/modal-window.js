@@ -21,7 +21,9 @@ export default class ModalWindow extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({restaurantReviewed: nextProps.restaurantReviewed});
+        this.setState({
+            restaurantReviewed: nextProps.restaurantReviewed
+        });
     }
 
     render() {

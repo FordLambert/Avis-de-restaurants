@@ -7,19 +7,19 @@ import Placeholder from './placeholder';
 export default class RestaurantList extends Component {
     static propTypes = {
         restaurantList: PropTypes.array,
-        handleOpenReview: PropTypes.func,
-        handleAddReview: PropTypes.func
+        handleOpenReviewRequest: PropTypes.func,
+        handleAddReviewRequest: PropTypes.func
     }
 
-    chooseRenderComponent(restaurantList) {
+    chooseComponentToRender(restaurantList) {
         if (restaurantList.length > 0) {
 
             return restaurantList.map((restaurant, index) => {
                 return <Restaurant
                     key={index}
                     id={index}
-                    handleOpenReview={this.handleOpenReview}
-                    handleAddReview={this.handleAddReview}
+                    handleOpenReviewRequest={this.handleOpenReviewRequest}
+                    handleAddReviewRequest={this.handleAddReviewRequest}
                     restaurant={restaurant}
                 />;
             })
@@ -29,19 +29,19 @@ export default class RestaurantList extends Component {
         }
     }
 
-    handleOpenReview = (restaurant) => {
-        this.props.handleOpenReview(restaurant);
+    handleOpenReviewRequest = (restaurant) => {
+        this.props.handleOpenReviewRequest(restaurant);
     }
 
-    handleAddReview = (restaurant) => {
-        this.props.handleAddReview(restaurant);
+    handleAddReviewRequest = (restaurant) => {
+        this.props.handleAddReviewRequest(restaurant);
     }
 
     render() {
         return (
             <div className={'restaurant-list'}>
                 <ul className={'row justify-content-center justify-content-lg-start'}>
-                    {this.chooseRenderComponent(this.props.restaurantList)}
+                    {this.chooseComponentToRender(this.props.restaurantList)}
                 </ul>
             </div>
         )

@@ -8,22 +8,22 @@ import CloseLink from './modal-close-link';
 export default class AddRestaurantPopUp extends Component {
 
     static propTypes = {
-        handleSubmit: PropTypes.func
+        handleNewNameSubmit: PropTypes.func
     }
 
-    handleSubmit = (restaurantName) => {
-        this.props.handleSubmit(restaurantName);
+    handleNewNameSubmit = (restaurantName) => {
+        this.props.handleNewNameSubmit(restaurantName);
     }
 
     render() {
         return (
             <div id={'add-restaurant-popup'} className={'popup'}>
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="popUpContainer">
+                <div className='modal-dialog'>
+                    <div className='modal-content'>
+                        <div className='popUpContainer'>
                             <ModalHeader />
                             <ModalBody
-                                handleSubmit={this.handleSubmit}
+                                handleSubmit={this.handleNewNameSubmit}
                             />
                         </div>
                     </div>

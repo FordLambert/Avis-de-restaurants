@@ -17,7 +17,7 @@ export default class ModalBody extends Component {
         handleSubmit: PropTypes.func
     }
 
-    handleChange = (userInput) => {
+    onChange = (userInput) => {
         this.setState({restaurantName: userInput.target.value});
     }
 
@@ -34,17 +34,17 @@ export default class ModalBody extends Component {
     render() {
         return (
             <div className={'modal-body'}>
-                <div className="row justify-content-center">
-                    <form onSubmit={this.handleSubmit} ref={(el) => this.reviewForm = el}>
-                        <div className="form-group text-center">
+                <div className='row justify-content-center'>
+                    <form onSubmit={this.handleSubmit} ref={(element) => this.reviewForm = element}>
+                        <div className='form-group text-center'>
                             <Input
                                 className={'form-control'}
                                 type={'text'}
                                 placeholder={'Nom du restaurant'}
-                                onChange={this.handleChange}
+                                onChange={this.onChange}
                             />
                         </div>
-                        <div className="form-group text-center">
+                        <div className='form-group text-center'>
                             <Input
                                 type={'submit'}
                                 value={'Ajouter'}

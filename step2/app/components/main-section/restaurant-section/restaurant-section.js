@@ -19,31 +19,33 @@ export default class RestaurantSection extends Component {
     handleReviewSubmit = (grade, review) => {
         const tempRestaurant = this.state.currentRestaurant;
         const newRating = {
-            "stars":grade,
-            "comment":review
+            'stars': grade,
+            'comment': review
         }
         tempRestaurant.ratings.push(newRating);
 
         this.setState({currentRestaurant: tempRestaurant});
     }
 
-    handleOpenReview = (restaurant) => {
+    handleOpenReviewRequest = (restaurant) => {
         this.setState({currentRestaurant: restaurant});
     }
 
-    handleAddReview = (restaurant) => {
+    handleAddReviewRequest = (restaurant) => {
         this.setState({currentRestaurant: restaurant});
     }
 
     componentWillUpdate(nextProps) {
         if (this.props.restaurantRequested != nextProps.restaurantRequested) {
-            this.setState({currentRestaurant: nextProps.restaurantRequested});
+            this.setState({
+                currentRestaurant: nextProps.restaurantRequested
+            });
         }
     }
 
     render() {
         return (
-            <div className="restaurant-section col-12">
+            <div className='restaurant-section col-12'>
                 <ModalWindow
                     handleReviewSubmit={this.handleReviewSubmit}
                     restaurantReviewed={this.state.currentRestaurant}
@@ -53,8 +55,8 @@ export default class RestaurantSection extends Component {
                 />
                 <RestaurantList
                     restaurantList={this.props.restaurantList}
-                    handleOpenReview={this.handleOpenReview}
-                    handleAddReview={this.handleAddReview}
+                    handleOpenReviewRequest={this.handleOpenReviewRequest}
+                    handleAddReviewRequest={this.handleAddReviewRequest}
                 />
             </div>
         );
