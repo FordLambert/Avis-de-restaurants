@@ -14,7 +14,7 @@ export default class RestaurantList extends Component {
     chooseRenderComponent(restaurantList) {
         if (restaurantList != undefined) {
 
-            return restaurantList.map(function(restaurant, index){
+            return restaurantList.map((restaurant, index) => {
                 return <Restaurant
                     key={index}
                     id={index}
@@ -22,7 +22,7 @@ export default class RestaurantList extends Component {
                     handleAddReview={this.handleAddReview}
                     restaurant={restaurant}
                 />;
-            }.bind(this))
+            })
 
         } else {
             return <Placeholder />

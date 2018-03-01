@@ -67,7 +67,7 @@ export default class MainSection extends Component {
         //If we want another position, start by updating the latLng
         if ((nextProps.city != null) && (nextProps.city != this.props.city)) {
             const geocoder = new google.maps.Geocoder();
-            geocoder.geocode( { 'address': nextProps.city}, function(results, status) {
+            geocoder.geocode( { 'address': nextProps.city}, (results, status) => {
                 if (status == 'OK') {
                     const lat = results[0].geometry.location.lat();
                     const lng = results[0].geometry.location.lng();
@@ -85,7 +85,7 @@ export default class MainSection extends Component {
                     };
 
                     const service = new google.maps.places.PlacesService(this.state.map);
-                    service.nearbySearch(request, function(results, status) {
+                    service.nearbySearch(request, (results, status) => {
 
                         if (status == google.maps.places.PlacesServiceStatus.OK) {
 
@@ -96,9 +96,9 @@ export default class MainSection extends Component {
                             });
                             this.sortCustomList(nextProps);
                         }
-                    }.bind(this));
+                    });
                 }
-            }.bind(this));
+            });
 
         } else {
             this.sortCustomList(nextProps);
@@ -108,7 +108,7 @@ export default class MainSection extends Component {
     sortCustomList(nextProps) {
         const newListCustom = [];
         //Update the new custom list based on user choices (grade)
-        this.state.listComplete.map(function (restaurant) {
+        this.state.listComplete.map((restaurant) => {
             if ((restaurant.rating >= nextProps.grade.min) && (restaurant.rating <= nextProps.grade.max)) {
                 newListCustom.push(restaurant);
 
@@ -116,12 +116,12 @@ export default class MainSection extends Component {
             } else if ((nextProps.grade.min == 0) && (restaurant.rating == 0)) {
                 newListCustom.push(restaurant);
             }
-        }.bind(this));
+        });
 
         //sort the newly created custom array
         //sort array by distance
         if (nextProps.order == 'distance') {
-            newListCustom.sort(function (a, b) {
+            newListCustom.sort((a, b) => {
                 const distA = this.getDistance(
                     this.state.position.lat,
                     this.state.position.lng,
@@ -137,14 +137,14 @@ export default class MainSection extends Component {
                 );
 
                 return distA - distB;
-            }.bind(this));
+            });
 
 
             //sort array by averageGrade
         } else if (nextProps.order == 'grade') {
-            newListCustom.sort(function (a, b) {
+            newListCustom.sort((a, b) => {
                 return b.rating - a.rating;
-            }.bind(this));
+            });
 
             //handle wrong parameter
         } else {
@@ -163,7 +163,7 @@ export default class MainSection extends Component {
         };
 
         const service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, function(results, status, pagination) {
+        service.nearbySearch(request, (results, status, pagination) => {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
 
                 this.setState({
@@ -173,7 +173,7 @@ export default class MainSection extends Component {
                     position: geolocCoordinates
                 });
             }
-        }.bind(this));
+        });
     }
 
     handleOpenReview = (restaurant) => {

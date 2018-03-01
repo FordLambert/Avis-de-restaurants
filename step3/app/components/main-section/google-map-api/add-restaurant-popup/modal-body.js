@@ -35,7 +35,7 @@ export default class ModalBody extends Component {
         return (
             <div className={'modal-body'}>
                 <div className="row justify-content-center">
-                    <form onSubmit={this.handleSubmit.bind(this)} ref={(element) => this.reviewForm = element}>
+                    <form onSubmit={this.handleSubmit} ref={(element) => this.reviewForm = element}>
                         <div className="form-group text-center">
                             <Input
                                 className={'form-control'}

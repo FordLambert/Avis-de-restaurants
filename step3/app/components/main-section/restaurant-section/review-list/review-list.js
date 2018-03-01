@@ -32,12 +32,12 @@ export default class ReviewList extends Component {
 
     chooseRenderComponent(restaurant) {
         if (restaurant != null) {
-            return restaurant.reviewList.map(function (review, index) {
+            return restaurant.reviewList.map((review, index) => {
                 return <Review
                     key={index}
                     review={review}
                 />
-            }.bind(this))
+            })
         }
     }
 
@@ -52,14 +52,14 @@ export default class ReviewList extends Component {
                     placeId: nextProps.restaurant.place_id
                 };
                 const service = new google.maps.places.PlacesService(nextProps.map);
-                service.getDetails(request, function (place, status) {
+                service.getDetails(request, (place, status) => {
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
                         nextProps.restaurant.reviewList = place.reviews;
                         this.setState({
                             restaurantReviewed: nextProps.restaurant
                         });
                     }
-                }.bind(this));
+                });
             }
 
             if ((nextProps.userReview != null) && (nextProps.userReview != this.props.userReview)) {

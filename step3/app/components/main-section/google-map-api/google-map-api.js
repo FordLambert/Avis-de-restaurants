@@ -53,29 +53,29 @@ export default class GoogleMapApi extends Component {
 		});
 
 		//style of cursor in "add restaurant" mode
-        this.map.addListener('mouseover', function() {
+        this.map.addListener('mouseover', () => {
             if (this.props.canAddRestaurant) {
                 this.map.setOptions({draggableCursor: 'url(resources/pictures/marker-red.png), auto'});
 
             } else {
                 this.map.setOptions({draggableCursor: 'pointer'});
             }
-        }.bind(this));
+        });
 
         //if in "add restaurant" mode, start adding process on click
-        this.map.addListener('click', function(event) {
+        this.map.addListener('click', (event) => {
             if (this.props.canAddRestaurant) {
                 this.setState({clickedPosition: event.latLng});
                 window.location = '#add-restaurant-popup';
             }
-        }.bind(this));
+        });
 	}
 
     handleSubmit = (restaurantName) => {
         let address = '';
 
         const geocoder = new google.maps.Geocoder;
-        geocoder.geocode({'location': this.state.clickedPosition}, function(results, status) {
+        geocoder.geocode({'location': this.state.clickedPosition}, (results, status) => {
             if (status === 'OK') {
 
                 if (results[1]) {
@@ -99,16 +99,16 @@ export default class GoogleMapApi extends Component {
 
             this.addMarker(this.state.clickedPosition, newRestaurant);
             this.props.handleRestaurantAdded(newRestaurant);
-        }.bind(this));
+        });
     }
 
 	handleMarkerClick = (marker, restaurant, infoWindow) => {
         this.props.handleOpenReview(restaurant);
 
-        this.markers.map(function (marker) {
+        this.markers.map((marker) => {
             marker.setIcon(this.defaultMarkerIcon);
             this.closeInfoWindows();
-        }.bind(this));
+        });
 
         marker.setIcon(this.clickedMarkerIcon);
         infoWindow.open(this.map, marker);
@@ -125,9 +125,9 @@ export default class GoogleMapApi extends Component {
             content: restaurant.name
         });
 
-        marker.addListener('click', function() {
+        marker.addListener('click', () => {
             this.handleMarkerClick(marker, restaurant, infoWindow);
-        }.bind(this));
+        });
         this.markers.push(marker);
         this.infoWindows.push(infoWindow);
 	}
@@ -145,9 +145,9 @@ export default class GoogleMapApi extends Component {
     }
 
     closeInfoWindows() {
-        this.infoWindows.map(function (infoWindow) {
+        this.infoWindows.map((infoWindow) => {
             infoWindow.close();
-        }.bind(this));
+        });
     }
 
 	componentWillUpdate(nextProps) {
@@ -156,10 +156,10 @@ export default class GoogleMapApi extends Component {
             this.map.setCenter(nextProps.position);
             this.deleteOldMarkers();
 
-            nextProps.list.map(function (restaurant) {
+            nextProps.list.map((restaurant) => {
                 const position = restaurant.geometry.location;
                 this.addMarker(position, restaurant);
-            }.bind(this));
+            });
         }
 	}
 
