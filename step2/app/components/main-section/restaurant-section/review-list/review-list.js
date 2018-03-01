@@ -24,7 +24,7 @@ export default class ReviewList extends Component {
     }
 
     chooseRenderTitle(restaurant) {
-        if (restaurant.ratings != undefined) {
+        if (restaurant.restaurantName != undefined) {
         return  <ReviewTitle
             restaurant={this.props.currentRestaurant}
         />

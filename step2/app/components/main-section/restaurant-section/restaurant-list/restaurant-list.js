@@ -12,7 +12,7 @@ export default class RestaurantList extends Component {
     }
 
     chooseRenderComponent(restaurantList) {
-        if (restaurantList != undefined) {
+        if (restaurantList.length > 0) {
 
             return restaurantList.map((restaurant, index) => {
                 return <Restaurant
