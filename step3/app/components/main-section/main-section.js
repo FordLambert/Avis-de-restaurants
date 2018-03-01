@@ -98,10 +98,6 @@ export default class MainSection extends Component {
         this.state.listComplete.map((restaurant) => {
             if ((restaurant.rating >= nextProps.grade.min) && (restaurant.rating <= nextProps.grade.max)) {
                 newListCustom.push(restaurant);
-
-            //we want the newly created restaurant with no review to appear
-            } else if ((nextProps.grade.min == 0) && (restaurant.rating == 0)) {
-                newListCustom.push(restaurant);
             }
         });
 

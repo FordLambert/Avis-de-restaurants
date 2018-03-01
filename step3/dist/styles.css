@@ -6019,6 +6019,15 @@ nav {
       color: #20cd74;
       border-color: #20cd74; }
 
+.placeholder {
+  border: 1px solid #dee4ed;
+  padding: 20px;
+  padding-bottom: 10px;
+  margin-top: 5vw;
+  text-align: center; }
+  .placeholder h2 {
+    font-size: 1.1em; }
+
 #review-list {
   overflow: hidden; }
   #review-list aside {
