@@ -122,9 +122,9 @@ export default class Map extends Component {
         	center: this.props.mapOptions.startPosition,
        		zoom: this.props.mapOptions.zoom
         });
-        
-        this.props.handleMapUpdate(this.props.mapOptions.startPosition, this.map);
 
+        this.props.handleMapUpdate(this.props.mapOptions.startPosition, this.map);
+        
 		navigator.geolocation.getCurrentPosition((position) => {
 			const pos = {
 				lat: position.coords.latitude,
@@ -136,14 +136,16 @@ export default class Map extends Component {
                 map: this.map
             });
 
-			this.map.setCenter(pos);
             this.props.handleMapUpdate(pos, this.map);
+            this.map.setCenter(pos);
 		});
 
         //if in "add restaurant" mode, start adding process on click
         this.map.addListener('click', (event) => {
             if (this.props.canAddRestaurant) {
-                this.setState({clickedPosition: event.latLng});
+                this.setState({
+                    clickedPosition: event.latLng
+                });
                 window.location = '#add-restaurant-popup';
             }
         });

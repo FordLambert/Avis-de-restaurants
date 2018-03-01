@@ -1,20 +1,23 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
-import GoogleMapApi from './google-map-api';
+import Map from './map';
 import LoadingPulser from './loading-pulser';
 
-export default class Map extends Component {
+export default class GoogleMap extends Component {
     constructor(props) {
         super(props);
 
+        this.map = {};
+
         this.mapOptions = {
-            src: 'https://maps.googleapis.com/maps/api/js',
-            apiKey: '?key=' + 'AIzaSyDNUGo0UwN5UI3gEYYLRlzdS-Rm53HMr_g',
-            request: '&' + 'libraries=places',
-            async: true,
-            defer: true,
             zoom: 12
+        }
+
+        this.markerIconsPath = {
+            defaultMarkerIcon: './resources/pictures/marker-red.png',
+            geolocalisationMarkerIcon: './resources/pictures/marker-blue.png',
+            clickedMarkerIcon: './resources/pictures/marker-green.png'
         }
     }
 
@@ -28,6 +31,7 @@ export default class Map extends Component {
     }
 
     handleMapUpdate = (geolocCoordinates, map) => {
+        this.map = map;
         this.props.handleMapUpdate(geolocCoordinates, map);
     }
 
@@ -40,12 +44,22 @@ export default class Map extends Component {
         this.props.handleRestaurantAdded(restaurant);
     }
 
+    onMouseHover = () => {
+        if (this.props.canAddRestaurant) {
+            this.map.setOptions({draggableCursor: 'url(' + this.markerIconsPath.defaultMarkerIcon + '), auto'});
+
+        } else {
+            this.map.setOptions({draggableCursor: 'pointer'});
+        }
+    }
+
     render() {
         return (
-            <div id={'map-container'}>
+            <div id={'map-container'} onMouseMove={this.onMouseHover}>
                 <LoadingPulser />
-                <GoogleMapApi
+                <Map
                     mapOptions={this.mapOptions}
+                    markerIconsPath={this.markerIconsPath}
                     position={this.props.position}
                     list={this.props.restaurantList}
                     handleMapUpdate={this.handleMapUpdate}

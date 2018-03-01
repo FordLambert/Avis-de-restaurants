@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
-import Map from './google-map-api/map';
+import GoogleMap from './google-map/google-map';
 import RestaurantInfoMenu from './restaurant-info-menu/restaurant-info-menu';
 import RestaurantSection from './restaurant-section/restaurant-section';
 import ConfirmAdditionPopUp from './confirm-addition-popup/confirm-addition-popup';
@@ -49,19 +49,6 @@ export default class MainSection extends Component {
         dist = dist * 1.609344;
         return dist;
     }
-
-    /*
-    getAverageGrade(restaurant) {
-        const reviewNumber = restaurant.ratings.length;
-        let total = 0;
-
-        restaurant.ratings.map(function(restaurantReview){
-            total += restaurantReview.stars;
-        });
-
-        return Math.round((total/reviewNumber) * 100) / 100;
-    }
-    */
 
     componentWillReceiveProps(nextProps) {
         //If we want another position, start by updating the latLng
@@ -210,7 +197,7 @@ export default class MainSection extends Component {
         return (
             <section className='col-12 col-md-9 col-xl-10 main-section' id='main-section'>
                 <div className='row'>
-                    <Map
+                    <GoogleMap
                         restaurantList={this.state.listCustom}
                         position={this.state.position}
                         handleMapUpdate={this.handleMapUpdate}

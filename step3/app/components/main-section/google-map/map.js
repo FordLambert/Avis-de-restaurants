@@ -1,26 +1,23 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
-import Script from './script';
 import AddRestaurantPopUp from './add-restaurant-popup/add-restaurant-popup';
 
-export default class GoogleMapApi extends Component {
+export default class Map extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             'clickedPosition': {}
         };
 
         this.markers = []; //markers displayed on map
         this.infoWindows = []; //infoWindows displayed on map
-        this.position = this.props.position;
-        this.defaultMarkerIcon = './resources/pictures/marker-red.png';
-        this.geolocalisationMarkerIcon = './resources/pictures/marker-blue.png';
-        this.clickedMarkerIcon = './resources/pictures/marker-green.png';
     }
 
     static propTypes = {
         mapOptions: PropTypes.object,
+        markerIconsPath: PropTypes.object,
         list: PropTypes.array,
         handleMapUpdate: PropTypes.func,
         canAddRestaurant: PropTypes.bool,
@@ -28,50 +25,7 @@ export default class GoogleMapApi extends Component {
         handleOpenReview: PropTypes.func
     }
 
-    initMap = () => {
-      	this.map = new google.maps.Map(document.getElementById('map'), {
-        	center: this.props.mapOptions.startPosition,
-       		zoom: this.props.mapOptions.zoom
-		});
-
-        this.props.handleMapUpdate(this.position, this.map);
-
-		navigator.geolocation.getCurrentPosition((position) => {
-			const pos = {
-				lat: position.coords.latitude,
-				lng: position.coords.longitude
-			};
-
-            const marker = new google.maps.Marker({
-                position: pos,
-                icon: this.geolocalisationMarkerIcon,
-                map: this.map
-            });
-
-			this.map.setCenter(pos);
-			this.props.handleMapUpdate(pos, this.map);
-		});
-
-		//style of cursor in "add restaurant" mode
-        this.map.addListener('mouseover', () => {
-            if (this.props.canAddRestaurant) {
-                this.map.setOptions({draggableCursor: 'url(resources/pictures/marker-red.png), auto'});
-
-            } else {
-                this.map.setOptions({draggableCursor: 'pointer'});
-            }
-        });
-
-        //if in "add restaurant" mode, start adding process on click
-        this.map.addListener('click', (event) => {
-            if (this.props.canAddRestaurant) {
-                this.setState({clickedPosition: event.latLng});
-                window.location = '#add-restaurant-popup';
-            }
-        });
-	}
-
-    handleSubmit = (restaurantName) => {
+    handleSubmit = (placeName) => {
         let address = '';
 
         const geocoder = new google.maps.Geocoder;
@@ -89,16 +43,16 @@ export default class GoogleMapApi extends Component {
                 console.log('Geocoder failed due to: ' + status);
             }
 
-            const newRestaurant = {};
-            newRestaurant.name = restaurantName;
-            newRestaurant.vicinity = address;
-            newRestaurant.geometry = {};
-            newRestaurant.geometry.location = this.state.clickedPosition;
-            newRestaurant.rating = 0;
-            newRestaurant.reviewList = [];
+            const newPlace = {};
+            newPlace.name = placeName;
+            newPlace.vicinity = address;
+            newPlace.geometry = {};
+            newPlace.geometry.location = this.state.clickedPosition;
+            newPlace.rating = 0;
+            newPlace.reviewList = [];
 
-            this.addMarker(this.state.clickedPosition, newRestaurant);
-            this.props.handleRestaurantAdded(newRestaurant);
+            this.addMarker(this.state.clickedPosition, newPlace);
+            this.props.handleRestaurantAdded(newPlace);
         });
     }
 
@@ -106,18 +60,18 @@ export default class GoogleMapApi extends Component {
         this.props.handleOpenReview(restaurant);
 
         this.markers.map((marker) => {
-            marker.setIcon(this.defaultMarkerIcon);
+            marker.setIcon(this.props.markerIconsPath.defaultMarkerIcon);
             this.closeInfoWindows();
         });
 
-        marker.setIcon(this.clickedMarkerIcon);
+        marker.setIcon(this.props.markerIconsPath.clickedMarkerIcon);
         infoWindow.open(this.map, marker);
     }
 
 	addMarker(position, restaurant) {
         const marker = new google.maps.Marker({
             position: position,
-            icon: this.defaultMarkerIcon,
+            icon: this.props.markerIconsPath.defaultMarkerIcon,
             map: this.map
         });
 
@@ -161,22 +115,48 @@ export default class GoogleMapApi extends Component {
                 this.addMarker(position, restaurant);
             });
         }
-	}
+    }
+    
+    componentDidMount() {
+        this.map = new google.maps.Map(document.getElementById('map'), {
+        	center: this.props.position,
+       		zoom: this.props.mapOptions.zoom
+		});
+
+        navigator.geolocation.getCurrentPosition((position) => {
+            const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            const marker = new google.maps.Marker({
+                position: pos,
+                icon: this.props.markerIconsPath.geolocalisationMarkerIcon,
+                map: this.map
+            });
+
+            this.props.handleMapUpdate(pos, this.map);
+            this.map.setCenter(pos);
+
+        }, () => {
+            this.props.handleMapUpdate(this.props.position, this.map);
+        });
+
+        //if in "add restaurant" mode, start adding process on click
+        this.map.addListener('click', (event) => {
+            if (this.props.canAddRestaurant) {
+                this.setState({clickedPosition: event.latLng});
+                window.location = '#add-restaurant-popup';
+            }
+        });
+    }
 
     render() {
-        const src = this.props.mapOptions.src + this.props.mapOptions.apiKey + this.props.mapOptions.request;
-
         return (
         	<div>
                 <AddRestaurantPopUp
                     handleSubmit={this.handleSubmit}
                 />
-				<Script
-					src={src}
-					async={this.props.mapOptions.async}
-					defer={this.props.mapOptions.defer}
-					callback={this.initMap}
-				/>
 			</div>
         );
     }
