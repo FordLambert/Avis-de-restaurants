@@ -4,9 +4,9 @@ import ModalBody from './modal-body';
 
 const AddRestaurantPopUp = () => (
     <div id={'confirm-addition-popup'} className={'popup'}>
-        <div className="modal-dialog">
-            <div className="modal-content">
-                <div className="popUpContainer">
+        <div className='modal-dialog'>
+            <div className='modal-content'>
+                <div className='popUpContainer'>
                     <ModalBody />
                 </div>
             </div>

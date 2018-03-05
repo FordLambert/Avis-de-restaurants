@@ -16,31 +16,33 @@ export default class RestaurantSection extends Component {
     static propTypes = {
         restaurantList: PropTypes.array,
         restaurantRequested: PropTypes.object,
-        handleOpenReview: PropTypes.func,
-        handleAddReview: PropTypes.func,
+        handleOpenReviewRequest: PropTypes.func,
+        handleAddReviewRequest: PropTypes.func,
         map: PropTypes.object
     }
 
     handleReviewSubmit = (grade, text) => {
         const newReview = {
-            "rating": grade,
-            "text": text
+            'rating': grade,
+            'text': text
         }
 
-        this.setState({userReview: newReview});
+        this.setState({
+            userReview: newReview
+        });
     }
 
-    handleOpenReview = (restaurant) => {
-        this.props.handleOpenReview(restaurant);
+    handleOpenReviewRequest = (restaurant) => {
+        this.props.handleOpenReviewRequest(restaurant);
     }
 
-    handleAddReview = (restaurant) => {
-        this.props.handleAddReview(restaurant);
+    handleAddReviewRequest = (restaurant) => {
+        this.props.handleAddReviewRequest(restaurant);
     }
 
     render() {
         return (
-            <div className="restaurant-section col-12">
+            <div className='restaurant-section col-12'>
                 <ModalWindow
                     handleReviewSubmit={this.handleReviewSubmit}
                     restaurantReviewed={this.props.restaurantRequested}
@@ -52,8 +54,8 @@ export default class RestaurantSection extends Component {
                 />
                 <RestaurantList
                     restaurantList={this.props.restaurantList}
-                    handleOpenReview={this.handleOpenReview}
-                    handleAddReview={this.handleAddReview}
+                    handleOpenReviewRequest={this.handleOpenReviewRequest}
+                    handleAddReviewRequest={this.handleAddReviewRequest}
                 />
             </div>
         );

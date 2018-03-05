@@ -8,7 +8,7 @@ export default class StreetPicture extends Component {
     }
 
     choosePictureSrc() {
-        if (this.props.restaurant.photos === undefined) {
+        if (this.props.restaurant.photos == undefined) {
             const streetViewSrc = 'https://maps.googleapis.com/maps/api/streetview?' +
                 'size=250x250' +
                 '&location=' + this.props.restaurant.vicinity + '&fov=90&heading=235&pitch=10' +

@@ -35,7 +35,7 @@ export default class ReviewTitle extends Component {
             <div className={'col-12'}>
                 <div className={'row justify-content-xl-center'}>
                     <div className={'col-10 col-xl-6 review-title'}>
-                        <div className="row justify-content-around">
+                        <div className='row justify-content-around'>
                             <StreetPicture
                                 restaurant={this.props.restaurant}
                             />

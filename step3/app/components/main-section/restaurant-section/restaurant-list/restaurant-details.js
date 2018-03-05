@@ -10,7 +10,8 @@ const RestaurantDetails = ({restaurantName, address}) => (
             content={restaurantName}
         />
         <Address
-            street={address[0]} city={address[1]}
+            street={address[0]} 
+            city={address[1]}
         />
     </div>
 );

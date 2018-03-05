@@ -18,7 +18,8 @@ export default class Restaurant extends Component {
 
     static propTypes = {
         restaurant: PropTypes.object,
-        openReview: PropTypes.func,
+        handleOpenReviewRequest: PropTypes.func,
+        handleAddReviewRequest: PropTypes.func,
         id: PropTypes.number
     }
 
@@ -41,12 +42,12 @@ export default class Restaurant extends Component {
         return this.props.restaurant.vicinity.split(spliter);
     }
 
-    handleOpenReview = () => {
-        this.props.handleOpenReview(this.props.restaurant);
+    handleOpenReviewRequest = () => {
+        this.props.handleOpenReviewRequest(this.props.restaurant);
     }
 
-    handleAddReview = () => {
-        this.props.handleAddReview(this.props.restaurant);
+    handleAddReviewRequest = () => {
+        this.props.handleAddReviewRequest(this.props.restaurant);
     }
 
     render() {
@@ -75,10 +76,10 @@ export default class Restaurant extends Component {
                 </div>
                 <div className={'row justify-content-around justify-content-xl-end restaurant-buttons'}>
                     <AddReviewButton
-                        handleAddReview={this.handleAddReview}
+                        handleClick={this.handleAddReviewRequest}
                     />
                     <ReviewListButton
-                        handleOpenReview={this.handleOpenReview}
+                        handleClick={this.handleOpenReviewRequest}
                     />
                 </div>
             </li>

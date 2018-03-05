@@ -21,15 +21,12 @@ export default class SearchForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let city = this.state.city;
-        let grade = this.state.grade;
-        let order = this.state.order;
-        this.props.handleSubmit(city, grade, order);
+        this.props.handleSubmit(this.state.city, this.state.grade, this.state.order);
     }
 
     render() {
         return (
-            <form className="col-11 col-lg-10" onSubmit={this.handleSubmit}>
+            <form className='col-11 col-lg-10' onSubmit={this.handleSubmit}>
                 <div className={'form-group'}>
                     <input
                         className={'form-control'}
@@ -37,7 +34,7 @@ export default class SearchForm extends Component {
                         onChange={event => this.setState({ city: event.target.value })}
                     />
                 </div>
-                <div className="form-group">
+                <div className='form-group'>
                     <SearchLabel
                         content={'Note moyenne entre:'}
                         className={'gradeLabel'}
@@ -51,7 +48,7 @@ export default class SearchForm extends Component {
                         onChange={value => this.setState({ grade: value })}
                     />
                 </div>
-                <div className="form-group">
+                <div className='form-group'>
                     <SearchLabel
                         content={'Trier par:'}
                     />
@@ -64,7 +61,7 @@ export default class SearchForm extends Component {
                         <option value='distance'>Distance</option>
                     </select>
                 </div>
-                <input type="submit" className="btn btn-secondary" value="C'est parti !" />
+                <input type='submit' className='btn btn-secondary' value="C'est parti !" />
             </form>
         );
     }

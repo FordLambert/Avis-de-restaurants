@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import GoogleMap from './google-map/google-map';
 import RestaurantInfoMenu from './restaurant-info-menu/restaurant-info-menu';
@@ -54,6 +54,8 @@ export default class MainSection extends Component {
         //If we want another position, start by updating the latLng
         if ((nextProps.city != null) && (nextProps.city != this.props.city)) {
             const geocoder = new google.maps.Geocoder();
+
+            //get  altLng with the user's address input
             geocoder.geocode( { 'address': nextProps.city}, (results, status) => {
                 if (status == 'OK') {
                     const lat = results[0].geometry.location.lat();
@@ -75,9 +77,6 @@ export default class MainSection extends Component {
                     service.nearbySearch(request, (results, status) => {
 
                         if (status == google.maps.places.PlacesServiceStatus.OK) {
-
-                                console.log(results);
-
                             this.setState({
                                 listComplete: results
                             });
@@ -123,18 +122,20 @@ export default class MainSection extends Component {
             });
 
 
-            //sort array by averageGrade
+        //sort array by averageGrade
         } else if (nextProps.order == 'grade') {
             newListCustom.sort((a, b) => {
                 return b.rating - a.rating;
             });
 
-            //handle wrong parameter
+        //handle wrong parameter
         } else {
-            console.log('Error: list order must be "distance" or "grade"')
+            console.log('Error: list order must be "distance" or "grade"');
         }
 
-        this.setState({listCustom: newListCustom});
+        this.setState({
+            listCustom: newListCustom
+        });
     }
 
     handleMapUpdate = (geolocCoordinates, map) => {
@@ -159,12 +160,16 @@ export default class MainSection extends Component {
         });
     }
 
-    handleOpenReview = (restaurant) => {
-        this.setState({restaurantRequested: restaurant});
+    handleOpenReviewRequest = (restaurant) => {
+        this.setState({
+            restaurantRequested: restaurant
+        });
     }
 
-    handleAddReview = (restaurant) => {
-        this.setState({restaurantRequested: restaurant});
+    handleAddReviewRequest = (restaurant) => {
+        this.setState({
+            restaurantRequested: restaurant
+        });
     }
 
     addRestaurant = (restaurant) => {
@@ -186,7 +191,9 @@ export default class MainSection extends Component {
     }
 
     toggleAddRestaurant = (status) => {
-        this.setState({canAddRestaurant: status});
+        this.setState({
+            canAddRestaurant: status
+        });
     }
 
     render() {
@@ -197,7 +204,7 @@ export default class MainSection extends Component {
                         restaurantList={this.state.listCustom}
                         position={this.state.position}
                         handleMapUpdate={this.handleMapUpdate}
-                        handleOpenReview={this.handleOpenReview}
+                        handleOpenReviewRequest={this.handleOpenReviewRequest}
                         canAddRestaurant={this.state.canAddRestaurant}
                         handleRestaurantAdded={this.addRestaurant}
                     />
@@ -210,8 +217,8 @@ export default class MainSection extends Component {
                     <RestaurantSection
                         restaurantList={this.state.listCustom}
                         restaurantRequested={this.state.restaurantRequested}
-                        handleOpenReview={this.handleOpenReview}
-                        handleAddReview={this.handleAddReview}
+                        handleOpenReviewRequest={this.handleOpenReviewRequest}
+                        handleAddReviewRequest={this.handleAddReviewRequest}
                         map={this.state.map}
                     />
                 </div>

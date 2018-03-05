@@ -19,7 +19,7 @@ export default class ReviewList extends Component {
         map: PropTypes.object
     }
 
-    chooseRenderTitle(restaurant) {
+    chooseTitleToRender(restaurant) {
         if (restaurant != null) {
             return  <ReviewTitle
                 restaurant={restaurant}
@@ -30,7 +30,7 @@ export default class ReviewList extends Component {
         }
     }
 
-    chooseRenderComponent(restaurant) {
+    chooseReviewsToRender(restaurant) {
         if (restaurant != null) {
             return restaurant.reviewList.map((review, index) => {
                 return <Review
@@ -45,7 +45,9 @@ export default class ReviewList extends Component {
         if (nextProps.restaurant != null) {
 
             if (nextProps.restaurant.reviewList != undefined) {
-                this.setState({restaurantReviewed: nextProps.restaurant});
+                this.setState({
+                    restaurantReviewed: nextProps.restaurant
+                });
 
             } else {
                 const request = {
@@ -76,12 +78,12 @@ export default class ReviewList extends Component {
         return (
             <div id={'review-list'}>
                 <aside className={'col-12'}>
-                    <div className="row">
+                    <div className='row'>
                         <div className={'col-12'}>
                             <ClosingButton />
                         </div>
-                        {this.chooseRenderTitle((this.state.restaurantReviewed))}
-                        {this.chooseRenderComponent(this.state.restaurantReviewed)}
+                        {this.chooseTitleToRender((this.state.restaurantReviewed))}
+                        {this.chooseReviewsToRender(this.state.restaurantReviewed)}
                     </div>
                 </aside>
             </div>

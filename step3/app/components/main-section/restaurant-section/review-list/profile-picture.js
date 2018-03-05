@@ -27,7 +27,9 @@ export default class ProfilePicture extends Component {
                             className={'user-thumbnail rounded-circle img-fluid'}
                             alt={'user-picture'}
                         />
-                        <figcaption>{this.defineUserName()}</figcaption>
+                        <figcaption>
+                            {this.defineUserName()}
+                        </figcaption>
                     </div>
                 </div>
             </div>

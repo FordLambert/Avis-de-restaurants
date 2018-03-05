@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import AddRestaurantPopUp from './add-restaurant-popup/add-restaurant-popup';
 
@@ -22,10 +22,10 @@ export default class Map extends Component {
         handleMapUpdate: PropTypes.func,
         canAddRestaurant: PropTypes.bool,
         handleRestaurantAdded: PropTypes.func,
-        handleOpenReview: PropTypes.func
+        handleOpenReviewRequest: PropTypes.func
     }
 
-    handleSubmit = (placeName) => {
+    handleNewNameSubmit = (placeName) => {
         let address = '';
 
         const geocoder = new google.maps.Geocoder;
@@ -56,8 +56,8 @@ export default class Map extends Component {
         });
     }
 
-	handleMarkerClick = (marker, restaurant, infoWindow) => {
-        this.props.handleOpenReview(restaurant);
+	OnMarkerClick = (marker, restaurant, infoWindow) => {
+        this.props.handleOpenReviewRequest(restaurant);
 
         this.markers.map((marker) => {
             marker.setIcon(this.props.markerIconsPath.defaultMarkerIcon);
@@ -80,7 +80,7 @@ export default class Map extends Component {
         });
 
         marker.addListener('click', () => {
-            this.handleMarkerClick(marker, restaurant, infoWindow);
+            this.OnMarkerClick(marker, restaurant, infoWindow);
         });
         this.markers.push(marker);
         this.infoWindows.push(infoWindow);
@@ -105,7 +105,6 @@ export default class Map extends Component {
     }
 
 	componentWillUpdate(nextProps) {
-
         if (nextProps.list != this.props.list) {
             this.map.setCenter(nextProps.position);
             this.deleteOldMarkers();
@@ -118,6 +117,7 @@ export default class Map extends Component {
     }
     
     componentDidMount() {
+        //act as an initMap callback
         this.map = new google.maps.Map(document.getElementById('map'), {
         	center: this.props.position,
        		zoom: this.props.mapOptions.zoom
@@ -138,11 +138,12 @@ export default class Map extends Component {
             this.props.handleMapUpdate(pos, this.map);
             this.map.setCenter(pos);
 
+        //in case geoloc failed/is refused
         }, () => {
             this.props.handleMapUpdate(this.props.position, this.map);
         });
 
-        //if in "add restaurant" mode, start adding process on click
+        //if in "add restaurant" mode, start the adding process on click
         this.map.addListener('click', (event) => {
             if (this.props.canAddRestaurant) {
                 this.setState({clickedPosition: event.latLng});
@@ -155,7 +156,7 @@ export default class Map extends Component {
         return (
         	<div>
                 <AddRestaurantPopUp
-                    handleSubmit={this.handleSubmit}
+                    handleSubmit={this.handleNewNameSubmit}
                 />
 			</div>
         );

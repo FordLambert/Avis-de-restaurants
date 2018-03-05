@@ -7,8 +7,8 @@ import Placeholder from './placeholder';
 export default class RestaurantList extends Component {
     static propTypes = {
         restaurantList: PropTypes.array,
-        handleOpenReview: PropTypes.func,
-        handleAddReview: PropTypes.func
+        handleOpenReviewRequest: PropTypes.func,
+        handleAddReviewRequest: PropTypes.func
     }
 
     chooseRenderComponent(restaurantList) {
@@ -18,8 +18,8 @@ export default class RestaurantList extends Component {
                 return <Restaurant
                     key={index}
                     id={index}
-                    handleOpenReview={this.handleOpenReview}
-                    handleAddReview={this.handleAddReview}
+                    handleOpenReviewRequest={this.handleOpenReviewRequest}
+                    handleAddReviewRequest={this.handleAddReviewRequest}
                     restaurant={restaurant}
                 />;
             })
@@ -29,12 +29,12 @@ export default class RestaurantList extends Component {
         }
     }
 
-    handleOpenReview = (restaurant) => {
-        this.props.handleOpenReview(restaurant);
+    handleOpenReviewRequest = (restaurant) => {
+        this.props.handleOpenReviewRequest(restaurant);
     }
 
-    handleAddReview = (restaurant) => {
-        this.props.handleAddReview(restaurant);
+    handleAddReviewRequest = (restaurant) => {
+        this.props.handleAddReviewRequest(restaurant);
     }
 
     render() {

@@ -10,8 +10,8 @@ export default class Navigation extends Component {
         handleSubmit: PropTypes.func
     }
 
-    handleSubmit = (city, grade, order) => {
-        this.props.handleSubmit(city, grade, order);
+    handleUserChoicesSubmit = (city, grade, order) => {
+        this.props.handleUserChoicesSubmi(city, grade, order);
     }
 
     render() {
@@ -21,7 +21,7 @@ export default class Navigation extends Component {
                     <Logo />
                     <MainTitle />
                     <SearchForm
-                        handleSubmit={this.handleSubmit}
+                        handleSubmit={this.handleUserChoicesSubmit}
                     />
                 </div>
             </nav>

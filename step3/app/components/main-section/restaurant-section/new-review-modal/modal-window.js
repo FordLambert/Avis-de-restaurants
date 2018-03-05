@@ -22,16 +22,18 @@ export default class ModalWindow extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.restaurantReviewed != null) {
-            this.setState({restaurantReviewed: nextProps.restaurantReviewed});
+            this.setState({
+                restaurantReviewed: nextProps.restaurantReviewed
+            });
         }
     }
 
     render() {
         return (
             <div id={'add-review-popup'} className={'popup'}>
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="popUpContainer">
+                <div className='modal-dialog'>
+                    <div className='modal-content'>
+                        <div className='popUpContainer'>
                             <ModalHeader
                                 restaurantReviewed={this.state.restaurantReviewed}
                             />

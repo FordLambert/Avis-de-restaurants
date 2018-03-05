@@ -21,18 +21,18 @@ export default class ReviewRating extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({rating: nextProps.rating});
+        this.setState({
+            rating: nextProps.rating
+        });
     }
 
     render() {
-        const { rating } = this.state;
-
         return (                
             <div className={'form-rating'}>
                 <StarRatingComponent 
-                    name="review-rating"
+                    name='review-rating'
                     starCount={5}
-                    value={rating}
+                    value={this.state.rating}
                     onStarClick={this.onStarClick}
                 />
             </div>

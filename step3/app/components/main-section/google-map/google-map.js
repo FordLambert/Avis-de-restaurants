@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import Map from './map';
 import LoadingPulser from './loading-pulser';
@@ -24,7 +24,7 @@ export default class GoogleMap extends Component {
     static propTypes = {
         restaurantList: PropTypes.array,
         handleMapLoad: PropTypes.func,
-        handleOpenReview: PropTypes.func,
+        handleOpenReviewRequest: PropTypes.func,
         handleRestaurantAdded: PropTypes.func,
         canAddRestaurant: PropTypes.bool,
         position: PropTypes.object
@@ -35,9 +35,9 @@ export default class GoogleMap extends Component {
         this.props.handleMapUpdate(geolocCoordinates, map);
     }
 
-    handleOpenReview = (restaurant) => {
+    handleOpenReviewRequest = (restaurant) => {
         window.location = '#review-list';
-        this.props.handleOpenReview(restaurant);
+        this.props.handleOpenReviewRequest(restaurant);
     }
 
     handleRestaurantAdded = (restaurant) => {
@@ -63,7 +63,7 @@ export default class GoogleMap extends Component {
                     position={this.props.position}
                     list={this.props.restaurantList}
                     handleMapUpdate={this.handleMapUpdate}
-                    handleOpenReview={this.handleOpenReview}
+                    handleOpenReviewRequest={this.handleOpenReviewRequest}
                     canAddRestaurant={this.props.canAddRestaurant}
                     handleRestaurantAdded={this.handleRestaurantAdded}
                 />
