@@ -30,7 +30,7 @@ export default class ModalWindow extends Component {
 
     render() {
         return (
-            <div id={'add-review-popup'} className={'popup'}>
+            <div id='add-review-popup' className='popup'>
                 <div className='modal-dialog'>
                     <div className='modal-content'>
                         <div className='popUpContainer'>
@@ -44,7 +44,7 @@ export default class ModalWindow extends Component {
                     </div>
                 </div>
                 <CloseLink
-                    className={'closePopUpOutSide'}
+                    className='closePopUpOutSide'
                 />
             </div>
         );

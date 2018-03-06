@@ -5,7 +5,7 @@ import RestaurantTitle from './RestaurantTitle';
 import Address from './Address';
 
 const RestaurantDetails = ({restaurantName, address}) => (
-    <div className={'col-12 col-sm-5 col-xl-6 align-self-center restaurant-details'}>
+    <div className='col-12 col-sm-5 col-xl-6 align-self-center restaurant-details'>
         <RestaurantTitle
             content={restaurantName}
         />

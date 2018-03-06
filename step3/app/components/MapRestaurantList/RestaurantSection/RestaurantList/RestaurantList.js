@@ -39,8 +39,8 @@ export default class RestaurantList extends Component {
 
     render() {
         return (
-            <div className={'restaurant-list'}>
-                <ul className={'row justify-content-center justify-content-lg-start'}>
+            <div className='restaurant-list'>
+                <ul className='row justify-content-center justify-content-lg-start'>
                     {this.chooseRenderComponent(this.props.restaurantList)}
                 </ul>
             </div>

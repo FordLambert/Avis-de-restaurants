@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const CloseLink = ({className, content}) => (
-    <a href={'#!'} className={className}>
+    <a href='#!' className={className}>
         {content}
     </a>
 );

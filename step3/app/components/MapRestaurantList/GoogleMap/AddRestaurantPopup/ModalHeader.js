@@ -4,10 +4,10 @@ import CloseLink from './ModalCloseLink';
 import ModalTitle from './ModalTitle';
 
 const ModalHeader = () => (
-    <div className={'modal-header'}>
+    <div className='modal-header'>
         <CloseLink
-            className={'close closePopUp'}
-            content={'x'}
+            className='close closePopUp'
+            content='x'
         />
         <ModalTitle />
     </div>

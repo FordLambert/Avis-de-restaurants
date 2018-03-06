@@ -23,11 +23,11 @@ export default class StreetPicture extends Component {
 
     render() {
         return (
-            <div className={'col-10 text-center align-self-center street-picture-container'}>
+            <div className='col-10 text-center align-self-center street-picture-container'>
                 <img
                     src={this.choosePictureSrc()}
-                    className={'img-fluid street-picture'}
-                    alt={'street-view-picture'}
+                    className='img-fluid street-picture'
+                    alt='street-view-picture'
                 />
             </div>
         );

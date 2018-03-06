@@ -32,22 +32,22 @@ export default class ReviewTitle extends Component {
 
     render() {
         return (
-            <div className={'col-12'}>
-                <div className={'row justify-content-xl-center'}>
-                    <div className={'col-10 col-xl-6 review-title'}>
+            <div className='col-12'>
+                <div className='row justify-content-xl-center'>
+                    <div className='col-10 col-xl-6 review-title'>
                         <div className='row justify-content-around'>
                             <StreetPicture
                                 restaurant={this.props.restaurant}
                             />
-                            <div className={'col-12 col-sm-4'}>
+                            <div className='col-12 col-sm-4'>
                                 <h2>{this.props.restaurant.name}</h2>
                                 <Address
                                     street={this.getSplitedAddress(',')[0]}
                                     city={this.getSplitedAddress(',')[1]}
                                 />
                             </div>
-                            <div className={'col-12 col-sm-2'}>
-                                <div className={'row justify-content-center'}>
+                            <div className='col-12 col-sm-2'>
+                                <div className='row justify-content-center'>
                                     <GlobalReview
                                         averageGrade={this.props.restaurant.rating}
                                         pictureName={this.defineStarColor(this.props.restaurant.rating)}

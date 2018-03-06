@@ -28,7 +28,7 @@ export default class ReviewRating extends Component {
 
     render() {
         return (                
-            <div className={'form-rating'}>
+            <div className='form-rating'>
                 <StarRatingComponent 
                     name='review-rating'
                     starCount={5}

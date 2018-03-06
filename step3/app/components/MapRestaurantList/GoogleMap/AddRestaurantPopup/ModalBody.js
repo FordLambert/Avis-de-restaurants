@@ -33,26 +33,26 @@ export default class ModalBody extends Component {
   
     render() {
         return (
-            <div className={'modal-body'}>
-                <div className="row justify-content-center">
+            <div className='modal-body'>
+                <div className='row justify-content-center'>
                     <form onSubmit={this.handleSubmit} ref={(element) => this.reviewForm = element}>
-                        <div className="form-group text-center">
+                        <div className='form-group text-center'>
                             <Input
-                                className={'form-control'}
-                                type={'text'}
-                                placeholder={'Nom du restaurant'}
+                                className='form-control'
+                                type='text'
+                                placeholder='Nom du restaurant'
                                 onChange={this.handleChange}
                             />
                         </div>
-                        <div className="form-group text-center">
+                        <div className='form-group text-center'>
                             <Input
-                                type={'submit'}
-                                value={'Ajouter'}
-                                className={'btn btn-info'}
+                                type='submit'
+                                value='Ajouter'
+                                className='btn btn-info'
                             />
                         </div>
                     </form>
-                    <div className={'col-10 cancel'}>
+                    <div className='col-10 cancel'>
                         <InfoParagraph />
                     </div>
                 </div>

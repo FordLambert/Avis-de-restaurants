@@ -41,7 +41,7 @@ export default class ReviewForm extends Component {
 
     render() {
         return (
-            <form ref={(el) => this.reviewForm = el} className={'col-md-10'} onSubmit={this.handleSubmit}>
+            <form ref={(el) => this.reviewForm = el} className='col-md-10' onSubmit={this.handleSubmit}>
                 <div className='form-group text-center'>
                     <ReviewRating
                         handleChange={this.handleGradeChange}
@@ -54,7 +54,7 @@ export default class ReviewForm extends Component {
                     />
                 </div>
                 <div className='text-center'>
-                    <input type={'submit'} className={'btn btn-info'} value={'Envoyer'} />
+                    <input type='submit' className='btn btn-info' value='Envoyer' />
                 </div>
             </form>
         );
