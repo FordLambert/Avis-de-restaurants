@@ -68,9 +68,15 @@ class GoogleMiam extends Component {
 
     sortCustomList(grade, order) {
         const newListCustom = [];
+        
         //Update the new custom list based on user choices (grade)
         this.state.listComplete.map((restaurant) => {
             if ((restaurant.rating >= grade.min) && (restaurant.rating <= grade.max)) {
+                newListCustom.push(restaurant);
+
+            //google places restaurant with no ratings needs a special rule
+            } else if ((grade.min == 0) && (restaurant.rating == undefined)) {
+                restaurant.rating = 0;
                 newListCustom.push(restaurant);
             }
         });
@@ -78,6 +84,7 @@ class GoogleMiam extends Component {
         //sort the newly created custom array
         //sort array by distance
         if (order == 'distance') {
+
             newListCustom.sort((a, b) => {
                 const distA = this.getDistance(
                     this.state.position.lat,
@@ -96,9 +103,9 @@ class GoogleMiam extends Component {
                 return distA - distB;
             });
 
-
         //sort array by averageGrade
         } else if (order == 'grade') {
+
             newListCustom.sort((a, b) => {
                 return b.rating - a.rating;
             });
