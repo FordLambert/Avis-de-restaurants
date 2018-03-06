@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Picture from './picture';
-import Paragraph from './paragraph';
+import Picture from './Picture';
+import Paragraph from './Paragraph';
 
 const GlobalReview = ({pictureName, averageGrade}) => (
     <div className='col-5 col-sm-12 text-center'>
@@ -12,7 +12,8 @@ const GlobalReview = ({pictureName, averageGrade}) => (
             alt='star-picture'
         />
         <Paragraph
-            content={averageGrade + '/5'}
+            dynamicContent={averageGrade}
+            staticContent='/5'
         />
     </div>
 );

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import ClosingButton from './closing-button';
-import Review from './review';
-import ReviewTitle from './review-title';
-import Placeholder from './placeholder';
+import ClosingButton from './ClosingButton';
+import Review from './Review';
+import ReviewTitle from './ReviewTitle';
+import Placeholder from './Placeholder';
 
 export default class ReviewList extends Component {
 

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import Restaurant from './restaurant';
-import Placeholder from './placeholder';
+import Restaurant from './Restaurant';
+import Placeholder from './Placeholder';
 
 export default class RestaurantList extends Component {
     static propTypes = {

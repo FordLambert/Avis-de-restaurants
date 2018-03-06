@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import GoogleMap from './google-map/google-map';
-import SearchResultFound from './search-results-found/search-results-found';
-import RestaurantSection from './restaurant-section/restaurant-section';
+import GoogleMap from './GoogleMap/GoogleMap';
+import SearchResultFound from './SearchResultsFound/SearchResultsFound';
+import RestaurantSection from './RestaurantSection/RestaurantSection';
 
 export default class MapRestaurantList extends Component {
     constructor(props) {

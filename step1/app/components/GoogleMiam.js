@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import Navigation from './navigation/navigation';
+import Navigation from './Navigation/Navigation';
 import MapRestaurantList from './MapRestaurantList/MapRestaurantList';
 
 class GoogleMiam extends Component {

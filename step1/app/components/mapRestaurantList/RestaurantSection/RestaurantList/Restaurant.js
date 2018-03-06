@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import StreetPicture from './street-picture';
-import RestaurantDetails from './restaurant-details';
-import GlobalReview from './global-review';
-import ReviewListButton from './review-list-button';
+import StreetPicture from './StreetPicture';
+import RestaurantDetails from './RestaurantDetails';
+import GlobalReview from './GlobalReview';
+import ReviewListButton from './ReviewListButton';
 
 export default class Restaurant extends Component {
 

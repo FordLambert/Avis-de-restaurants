@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Picture from './picture';
+import Picture from './Picture';
 
 const ProfilePicture = ({pictureName, userName}) => (
     <div className='offset-1 col-10'>

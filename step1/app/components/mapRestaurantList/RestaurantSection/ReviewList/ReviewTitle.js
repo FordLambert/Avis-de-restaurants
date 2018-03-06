@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import StreetPicture from './street-picture';
-import GlobalReview from './global-review';
-import Address from './address';
+import StreetPicture from './StreetPicture';
+import GlobalReview from './GlobalReview';
+import Address from './Address';
 
 export default class ReviewTitle extends Component {
 

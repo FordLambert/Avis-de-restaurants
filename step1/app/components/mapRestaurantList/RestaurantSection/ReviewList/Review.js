@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import ProfilePicture from './profile-picture';
-import ReviewRating from './review-rating';
-import Paragraph from './paragraph';
+import ProfilePicture from './ProfilePicture';
+import ReviewRating from './ReviewRating';
+import Paragraph from './Paragraph';
 
 export default class Review extends Component {
 
