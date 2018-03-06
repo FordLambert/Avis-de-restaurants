@@ -44,8 +44,7 @@ nav {
 		align-items: center;
 
 		label, p {
-			//font-size: $text-md-font-size;
-	
+
 			@include media-breakpoint-up(lg) {
 				margin-top: 2vh;
 				font-size: $text-md-font-size;

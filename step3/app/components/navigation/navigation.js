@@ -11,7 +11,7 @@ export default class Navigation extends Component {
     }
 
     handleUserChoicesSubmit = (city, grade, order) => {
-        this.props.handleUserChoicesSubmi(city, grade, order);
+        this.props.handleUserChoicesSubmit(city, grade, order);
     }
 
     render() {

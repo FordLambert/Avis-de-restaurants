@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import Navigation from './navigation/navigation';
-import MainSection from './main-section/main-section';
+import MapRestaurantList from './MapRestaurantList/MapRestaurantList';
 
 class GoogleMiam extends Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class GoogleMiam extends Component {
                 <Navigation
                     handleUserChoicesSubmit={this.handleUserChoicesSubmit}
                 />
-                <MainSection
+                <MapRestaurantList
                     grade={this.state.grade}
                     order={this.state.order}
                 />

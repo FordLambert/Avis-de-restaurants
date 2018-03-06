@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import GoogleMap from './google-map/google-map';
-import SearchResultFound from './search-results-found/search-results-found';
+import RestaurantInfoMenu from './restaurant-info-menu/restaurant-info-menu';
 import RestaurantSection from './restaurant-section/restaurant-section';
+import ConfirmAdditionPopUp from './confirm-addition-popup/confirm-addition-popup'; 
 
-export default class MainSection extends Component {
+export default class MapRestaurantList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             'listComplete': [],
             'listCustom': [],
+            'position': {},
             'restaurantRequested': {},
-            'position': {}
+            'canAddRestaurant': false
         };
     }
 
@@ -42,7 +44,8 @@ export default class MainSection extends Component {
         dist = dist * 60 * 1.1515;
 
         //finally convert it to kilometers
-        return dist * 1.609344;
+        dist = dist * 1.609344;
+        return dist;
     }
 
     getAverageGrade(restaurant) {
@@ -57,17 +60,22 @@ export default class MainSection extends Component {
             });
 
             finalGrade = Math.round((total/reviewNumber) * 100) / 100;
+
         }
         return finalGrade;
     }
 
     componentWillReceiveProps(nextProps) {
-        //create a new custom list based on user choices
+        //create a new custom list based on user choices (grade)
         const newList = [];
         this.state.listComplete.map((restaurant) => {
             const overallGrade = this.getAverageGrade(restaurant);
 
             if ((overallGrade >= nextProps.grade.min) && (overallGrade <= nextProps.grade.max)) {
+                newList.push(restaurant);
+            
+            //we want the newly created restaurant with no review to appear
+            } else if ((nextProps.grade.min == 0) && (overallGrade == 0)) {
                 newList.push(restaurant);
             }
         });
@@ -96,12 +104,8 @@ export default class MainSection extends Component {
         this.setState({listCustom: newList});
     }
 
-    handleMarkerClick = (restaurant) => {
-        this.setState({restaurantRequested: restaurant});
-    }
-
-    handleMapLoad = (geolocCoordinates) => {
-        fetch('./app/data/restaurant_list.json')
+    handleMapUpdate = (geolocCoordinates) => {
+        fetch('./app/data/restaurant-list.json')
             .then(result => {
                 return result.json();
             })
@@ -114,17 +118,50 @@ export default class MainSection extends Component {
             });
     }
 
+    handleOpenReviewRequest = (restaurant) => {
+        this.setState({
+            restaurantRequested: restaurant
+        });
+    }
+
+    addRestaurant = (restaurant) => {
+        const tempRestaurantList = this.state.listCustom;
+        tempRestaurantList.push(restaurant);
+        this.confirmRestaurantAdded();
+        this.setState({
+            listComplete: tempRestaurantList,
+            canAddRestaurant: false
+        });
+    }
+
+    confirmRestaurantAdded() {
+        //open the confirmation modal for a short time
+        window.location = '#confirm-addition-popup';
+        setTimeout(function () {
+            window.location = '#!';
+        }, 1500);
+    }
+
+    toggleAddRestaurant = (status) => {
+        this.setState({canAddRestaurant: status});
+    }
+
     render() {
         return (
             <section className='col-12 col-md-9 col-xl-10 main-section' id='main-section'>
                 <div className='row'>
                     <GoogleMap
                         restaurantList={this.state.listCustom}
-                        handleMapLoad={this.handleMapLoad}
-                        handleMarkerClick={this.handleMarkerClick}
+                        handleMapUpdate={this.handleMapUpdate}
+                        handleOpenReviewRequest={this.handleOpenReviewRequest}
+                        canAddRestaurant={this.state.canAddRestaurant}
+                        handleRestaurantAdded={this.addRestaurant}
                     />
-                    <SearchResultFound
+                    <ConfirmAdditionPopUp />
+                    <RestaurantInfoMenu
                         restaurantNumber={this.state.listCustom.length}
+                        toggleAddRestaurant={this.toggleAddRestaurant}
+                        canAddRestaurant={this.state.canAddRestaurant}
                     />
                     <RestaurantSection
                         restaurantList={this.state.listCustom}

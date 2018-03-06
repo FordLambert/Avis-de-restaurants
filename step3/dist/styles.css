@@ -6242,7 +6242,6 @@ nav {
 
 .input-range .input-range__label--min,
 .input-range .input-range__label--max {
-  /*top: 120%;*/
   display: none; }
 
 .input-range .input-range__label--value {

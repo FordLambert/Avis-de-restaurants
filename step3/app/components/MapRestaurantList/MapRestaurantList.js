@@ -6,7 +6,7 @@ import RestaurantInfoMenu from './restaurant-info-menu/restaurant-info-menu';
 import RestaurantSection from './restaurant-section/restaurant-section';
 import ConfirmAdditionPopUp from './confirm-addition-popup/confirm-addition-popup';
 
-export default class MainSection extends Component {
+export default class MapRestaurantList extends Component {
     constructor(props) {
         super(props);
         this.state = {

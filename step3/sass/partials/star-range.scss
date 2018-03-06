@@ -6,7 +6,6 @@
 
     .input-range__label--min,
     .input-range__label--max {
-        /*top: 120%;*/
         display: none;
     }
 
@@ -20,7 +19,7 @@
     }
 
     .input-range__track {
-        background-color: #44e592;
+        background-color: $very-clear-green;
     }
 
     .input-range__track--active {
