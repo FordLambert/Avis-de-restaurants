@@ -11,6 +11,7 @@ export default class MapRestaurantList extends Component {
     static propTypes = {
         handleMapUpdate: PropTypes.func,
         handleMarkerClick: PropTypes.func,
+        handleMapClick: PropTypes.func,
         addRestaurant: PropTypes.func,
         restaurantList: PropTypes.array,
         restaurantRequested: PropTypes.object,
@@ -34,6 +35,10 @@ export default class MapRestaurantList extends Component {
         this.props.handleMarkerClick(restaurant);
     }
 
+    handleMapClick = (latitude, longitude) => {
+        this.props.handleMapClick(latitude, longitude);
+    }
+
     render() {
         return (
             <section className='col-12 col-md-9 col-xl-10 main-section' id='main-section'>
@@ -42,6 +47,7 @@ export default class MapRestaurantList extends Component {
                         restaurantList={this.props.restaurantList}
                         handleMapUpdate={this.handleMapUpdate}
                         handleMarkerClick={this.handleMarkerClick}
+                        handleMapClick={this.handleMapClick}
                         canAddRestaurant={this.props.canAddRestaurant}
                         handleRestaurantAdded={this.addRestaurant}
                     />

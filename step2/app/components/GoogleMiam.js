@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
+import AddRestaurantPopUp from './AddRestaurantPopup/AddRestaurantPopup';
 import Navigation from './Navigation/Navigation';
 import MapRestaurantList from './MapRestaurantList/MapRestaurantList';
 
@@ -14,6 +15,10 @@ class GoogleMiam extends Component {
             'restaurantRequested': {},
             'canAddRestaurant': false
         };
+
+        this.clickedPosition = {};
+        this.grade = 0;
+        this.order = '';
     }
 
     getDistance(lat1, lon1, lat2, lon2) {
@@ -58,14 +63,15 @@ class GoogleMiam extends Component {
         return finalGrade;
     }
 
-    addRestaurant = (restaurant) => {
-        const tempRestaurantList = this.state.listCustom;
+    addRestaurantToList = (restaurant) => {
+        const tempRestaurantList = this.state.listComplete;
         tempRestaurantList.push(restaurant);
         this.confirmRestaurantAdded();
         this.setState({
             listComplete: tempRestaurantList,
             canAddRestaurant: false
         });
+        this.generateNewCustomList();
     }
 
     confirmRestaurantAdded() {
@@ -82,45 +88,85 @@ class GoogleMiam extends Component {
         });
     }
 
-    handleUserChoicesSubmit = (grade, order) => {
-        //create a new custom list based on user choices (grade)
-        const newList = [];
-        this.state.listComplete.map((restaurant) => {
-            const overallGrade = this.getAverageGrade(restaurant);
+    generateNewCustomList = () => {
+         //create a new custom list based on user choices (grade)
+         const newList = [];
+         this.state.listComplete.map((restaurant) => {
+             const overallGrade = this.getAverageGrade(restaurant);
+ 
+             if ((overallGrade >= this.grade.min) && (overallGrade <= this.grade.max)) {
+                 newList.push(restaurant);
+             
+             //we want the newly created restaurant with no review to appear
+             } else if ((this.grade.min == 0) && (overallGrade == 0)) {
+                 newList.push(restaurant);
+             }
+         });
+ 
+         //sort the newly created custom array
+         //sort array by distance
+         if (this.order == 'distance') {
+             newList.sort((a, b) => {
+                 const distA = this.getDistance(this.state.position.lat, this.state.position.lng, a.lat, a.long);
+                 const distB = this.getDistance(this.state.position.lat, this.state.position.lng, b.lat, b.long);
+                 return distA - distB;
+             });
+ 
+         //sort array by averageGrade
+         } else if (this.order == 'grade') {
+ 
+             newList.sort((a, b) => {
+                 return this.getAverageGrade(b) - this.getAverageGrade(a);
+             });
+ 
+         //handle wrong parameter
+         } else {
+             console.log('Error: list order must be "distance" or "grade"')
+         }
+ 
+         this.setState({
+             listCustom: newList
+         });
+    }
 
-            if ((overallGrade >= grade.min) && (overallGrade <= grade.max)) {
-                newList.push(restaurant);
-            
-            //we want the newly created restaurant with no review to appear
-            } else if ((grade.min == 0) && (overallGrade == 0)) {
-                newList.push(restaurant);
+    handleUserChoicesSubmit = (newGrade, newOrder) => {
+        this.grade = newGrade;
+        this.order = newOrder;
+        this.generateNewCustomList();
+    }
+
+    onNewRestaurantNameSubmit = (restaurantName) => {
+        let address = '';
+
+        const geocoder = new google.maps.Geocoder;
+        geocoder.geocode({'location': this.clickedPosition}, (results, status) => {
+            if (status === 'OK') {
+ 
+                if (results[1]) {
+                    address = results[0].formatted_address;
+ 
+                } else {
+                    console.log('No results found');
+                }
+ 
+            } else {
+                console.log('Geocoder failed due to: ' + status);
             }
+ 
+            const newRestaurant = {};
+            newRestaurant.restaurantName = restaurantName;
+            newRestaurant.address = address;
+            newRestaurant.lat = this.clickedPosition.lat;
+            newRestaurant.long = this.clickedPosition.lng;
+            newRestaurant.ratings = [];
+ 
+            this.addRestaurantToList(newRestaurant);
         });
+    }
 
-        //sort the newly created custom array
-        //sort array by distance
-        if (order == 'distance') {
-            newList.sort((a, b) => {
-                const distA = this.getDistance(this.state.position.lat, this.state.position.lng, a.lat, a.long);
-                const distB = this.getDistance(this.state.position.lat, this.state.position.lng, b.lat, b.long);
-                return distA - distB;
-            });
-
-        //sort array by averageGrade
-        } else if (order == 'grade') {
-
-            newList.sort((a, b) => {
-                return this.getAverageGrade(b) - this.getAverageGrade(a);
-            });
-
-        //handle wrong parameter
-        } else {
-            console.log('Error: list order must be "distance" or "grade"')
-        }
-
-        this.setState({
-            listCustom: newList
-        });
+    handleMapClick = (latitude, longitude) => {
+        this.clickedPosition = {lat: latitude, lng: longitude};
+        window.location = '#add-restaurant-popup';
     }
 
     handleMapUpdate = (geolocCoordinates) => {
@@ -146,12 +192,16 @@ class GoogleMiam extends Component {
     render() {
         return (
             <div className='row'>
+                <AddRestaurantPopUp
+                    onNewRestaurantNameSubmit={this.onNewRestaurantNameSubmit}
+                />  
                 <Navigation
                     handleUserChoicesSubmit={this.handleUserChoicesSubmit}
                 />
                 <MapRestaurantList
                     handleMapUpdate={this.handleMapUpdate}
                     handleMarkerClick={this.handleMarkerClick}
+                    handleMapClick={this.handleMapClick}
                     addRestaurant={this.addRestaurant}
                     restaurantRequested={this.state.restaurantRequested}
                     restaurantList={this.state.listCustom}

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
-import AddRestaurantPopUp from './AddRestaurantPopup/AddRestaurantPopup';
 import Pulser from './LoadingPulser';
 
 export default class GoogleMap extends Component {
@@ -19,10 +18,6 @@ export default class GoogleMap extends Component {
             clickedMarkerIcon: './resources/pictures/marker-green.png'
         }
 
-        this.state = {
-            'clickedPosition': {}
-        };
-
         this.markers = []; //markers displayed on map
         this.infoWindows = []; //infoWindows displayed on map
     }
@@ -31,6 +26,7 @@ export default class GoogleMap extends Component {
         restaurantList: PropTypes.array,
         handleMapUpdate: PropTypes.func,
         handleMarkerClick: PropTypes.func,
+        handleMapClick: PropTypes.func,
         handleRestaurantAdded: PropTypes.func,
         canAddRestaurant: PropTypes.bool
     }
@@ -72,36 +68,8 @@ export default class GoogleMap extends Component {
     }
 
     /*----- to be trnasformed/moved -----*/
-    handleNewNameSubmit = (restaurantName) => {
-        const lat = this.state.clickedPosition.lat();
-        const long = this.state.clickedPosition.lng();
-        let address = '';
-
-        const geocoder = new google.maps.Geocoder;
-        geocoder.geocode({'location': this.state.clickedPosition}, (results, status) => {
-            if (status === 'OK') {
-
-                if (results[1]) {
-                    address = results[0].formatted_address;
-
-                } else {
-                    console.log('No results found');
-                }
-
-            } else {
-                console.log('Geocoder failed due to: ' + status);
-            }
-
-            const newRestaurant = {};
-            newRestaurant.restaurantName = restaurantName;
-            newRestaurant.address = address;
-            newRestaurant.lat = lat;
-            newRestaurant.long = long;
-            newRestaurant.ratings = [];
-
-            this.addMarker(this.state.clickedPosition, newRestaurant);
-            this.props.handleRestaurantAdded(newRestaurant);
-        });
+    onMapClick = (latitude, longitude) => {
+        this.props.handleMapClick(latitude, longitude);        
     }
     /*----- -----*/
 
@@ -129,14 +97,14 @@ export default class GoogleMap extends Component {
     }
 
     componentWillUpdate(nextProps) {
-        if (nextProps.restaurantList != this.props.restaurantList) {
+        //if (nextProps.restaurantList != this.props.restaurantList) {
             this.deleteOldMarkers();
 
             nextProps.restaurantList.map((restaurant) => {
                 const position = {lat: restaurant.lat, lng: restaurant.long};
                 this.addMarker(position, restaurant);
             });
-        }
+        //}
     }
     
     componentDidMount() {
@@ -164,11 +132,11 @@ export default class GoogleMap extends Component {
 
         //if in "add restaurant" mode, start adding process on click
         this.map.addListener('click', (event) => {
+            const clickedPosition = event.latLng;
+            const latitude = clickedPosition.lat();
+            const longitude = clickedPosition.lng();
             if (this.props.canAddRestaurant) {
-                this.setState({
-                    clickedPosition: event.latLng
-                });
-                window.location = '#add-restaurant-popup';
+               this.onMapClick(latitude, longitude)
             }
         });
     }
@@ -177,9 +145,6 @@ export default class GoogleMap extends Component {
         return (
             <div id='map-container' onMouseMove={this.onMouseHover}>
                 <Pulser />
-                <AddRestaurantPopUp
-                    handleNewNameSubmit={this.handleNewNameSubmit}
-                />
                 <div
                     id='map'
                 />
