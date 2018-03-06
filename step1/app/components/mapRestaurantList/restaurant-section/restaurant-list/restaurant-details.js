@@ -6,7 +6,7 @@ import Address from './address';
 import Paragraph from './paragraph';
 
 const RestaurantDetails = ({restaurantName, address, reviewNumber}) => (
-    <div className={'col-12 col-sm-5 col-xl-6 align-self-center'}>
+    <div className='col-12 col-sm-5 col-xl-6 align-self-center'>
         <RestaurantTitle
             content={restaurantName}
         />
@@ -15,9 +15,9 @@ const RestaurantDetails = ({restaurantName, address, reviewNumber}) => (
             city={address[1]}
         />
         <Paragraph
-            spanClass={'themed-colored'}
+            spanClass='themed-colored'
             dynamicContent={reviewNumber}
-            staticContent={' avis'}
+            staticContent=' avis'
         />
     </div>
 );

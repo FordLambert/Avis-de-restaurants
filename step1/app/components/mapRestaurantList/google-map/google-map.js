@@ -31,7 +31,7 @@ export default class GoogleMap extends Component {
 
     render() {
         return (
-            <div id={'map'}>
+            <div id='map'>
                 <Pulser />
                 <Map
                     mapOptions={this.mapOptions}

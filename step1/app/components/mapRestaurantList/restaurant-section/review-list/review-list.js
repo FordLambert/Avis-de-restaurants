@@ -37,10 +37,10 @@ export default class ReviewList extends Component {
   
     render() {
         return (
-            <div id={'review-list'}>
-                <aside className={'col-12'}>
+            <div id='review-list'>
+                <aside className='col-12'>
                     <div className='row'>
-                        <div className={'col-12'}>
+                        <div className='col-12'>
                             <ClosingButton />
                         </div>
                         {this.chooseTitleToRender((this.props.currentRestaurant))}

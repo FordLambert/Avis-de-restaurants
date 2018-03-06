@@ -28,8 +28,8 @@ export default class SearchForm extends Component {
             <form className='col-11 col-lg-10' onSubmit={this.handleSubmit}>
                 <div className='form-group'>
                     <SearchLabel
-                        content={'Note moyenne entre:'}
-                        className={'gradeLabel'}
+                        content='Note moyenne entre:'
+                        className='gradeLabel'
                     />
                     <InputRange
                         maxValue={5}
@@ -42,12 +42,12 @@ export default class SearchForm extends Component {
                 </div>
                 <div className='form-group'>
                     <SearchLabel
-                        content={'Trier par:'}
+                        content='Trier par:'
                     />
                     <select
-                        className={'form-control'}
+                        className='form-control'
                         id='order-option'
-                        ref={'order'}
+                        ref='order'
                         onChange={event => this.setState({ order: event.target.value })}
                     >
                         <option value='grade'>Note</option>
