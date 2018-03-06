@@ -204,7 +204,7 @@ export default class MapRestaurantList extends Component {
                         restaurantList={this.state.listCustom}
                         position={this.state.position}
                         handleMapUpdate={this.handleMapUpdate}
-                        handleOpenReviewRequest={this.handleOpenReviewRequest}
+                        handleMarkerClick={this.handleOpenReviewRequest}
                         canAddRestaurant={this.state.canAddRestaurant}
                         handleRestaurantAdded={this.addRestaurant}
                     />

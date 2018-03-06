@@ -24,7 +24,7 @@ export default class GoogleMap extends Component {
     static propTypes = {
         restaurantList: PropTypes.array,
         handleMapLoad: PropTypes.func,
-        handleOpenReviewRequest: PropTypes.func,
+        handleMarkerClick: PropTypes.func,
         handleRestaurantAdded: PropTypes.func,
         canAddRestaurant: PropTypes.bool,
         position: PropTypes.object
@@ -35,9 +35,9 @@ export default class GoogleMap extends Component {
         this.props.handleMapUpdate(geolocCoordinates, map);
     }
 
-    handleOpenReviewRequest = (restaurant) => {
+    handleMarkerClick = (restaurant) => {
         window.location = '#review-list';
-        this.props.handleOpenReviewRequest(restaurant);
+        this.props.handleMarkerClick(restaurant);
     }
 
     handleRestaurantAdded = (restaurant) => {
@@ -63,7 +63,7 @@ export default class GoogleMap extends Component {
                     position={this.props.position}
                     list={this.props.restaurantList}
                     handleMapUpdate={this.handleMapUpdate}
-                    handleOpenReviewRequest={this.handleOpenReviewRequest}
+                    handleMarkerClick={this.handleMarkerClick}
                     canAddRestaurant={this.props.canAddRestaurant}
                     handleRestaurantAdded={this.handleRestaurantAdded}
                 />

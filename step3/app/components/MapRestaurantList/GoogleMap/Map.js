@@ -22,7 +22,7 @@ export default class Map extends Component {
         handleMapUpdate: PropTypes.func,
         canAddRestaurant: PropTypes.bool,
         handleRestaurantAdded: PropTypes.func,
-        handleOpenReviewRequest: PropTypes.func
+        handleMarkerClick: PropTypes.func
     }
 
     handleNewNameSubmit = (placeName) => {
@@ -57,7 +57,7 @@ export default class Map extends Component {
     }
 
 	OnMarkerClick = (marker, restaurant, infoWindow) => {
-        this.props.handleOpenReviewRequest(restaurant);
+        this.props.handleMarkerClick(restaurant);
 
         this.markers.map((marker) => {
             marker.setIcon(this.props.markerIconsPath.defaultMarkerIcon);
