@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import Logo from './logo';
-import MainTitle from './main-title';
-import SearchForm from './search-form';
+import Logo from './Logo';
+import MainTitle from './MainTitle';
+import SearchForm from './SearchForm';
 
 export default class Navigation extends Component {
     static propTypes = {
