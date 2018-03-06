@@ -77,10 +77,6 @@ export default class GoogleMap extends Component {
         infoWindow.open(this.map, marker);
     }
 
-    handleMapLoad = (geolocCoordinates) => {
-        this.props.handleMapLoad(geolocCoordinates);
-    }
-
     componentWillUpdate(nextProps) {
         if (nextProps.restaurantList != this.props.restaurantList) {
             this.deleteOldMarkers();
@@ -110,7 +106,7 @@ export default class GoogleMap extends Component {
             });
 
             this.map.setCenter(pos);
-            this.handleMapLoad(pos);
+            this.props.handleMapLoad(pos);
         });
     }
 
