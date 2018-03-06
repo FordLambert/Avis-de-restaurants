@@ -118,7 +118,7 @@ export default class MapRestaurantList extends Component {
             });
     }
 
-    handleOpenReviewRequest = (restaurant) => {
+    handleMarkerClick = (restaurant) => {
         this.setState({
             restaurantRequested: restaurant
         });
@@ -153,7 +153,7 @@ export default class MapRestaurantList extends Component {
                     <GoogleMap
                         restaurantList={this.state.listCustom}
                         handleMapUpdate={this.handleMapUpdate}
-                        handleOpenReviewRequest={this.handleOpenReviewRequest}
+                        handleMarkerClick={this.handleMarkerClick}
                         canAddRestaurant={this.state.canAddRestaurant}
                         handleRestaurantAdded={this.addRestaurant}
                     />
