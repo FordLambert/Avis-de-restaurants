@@ -17,7 +17,7 @@ export default class AddRestaurantPopUp extends Component {
 
     render() {
         return (
-            <div id={'add-restaurant-popup'} className={'popup'}>
+            <div id='add-restaurant-popup' className='popup'>
                 <div className='modal-dialog'>
                     <div className='modal-content'>
                         <div className='popUpContainer'>
@@ -29,7 +29,7 @@ export default class AddRestaurantPopUp extends Component {
                     </div>
                 </div>
                 <CloseLink
-                    className={'closePopUpOutSide'}
+                    className='closePopUpOutSide'
                 />
             </div>
         );

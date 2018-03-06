@@ -41,20 +41,20 @@ export default class ReviewForm extends Component {
 
     render() {
         return (
-            <form ref={(element) => this.reviewForm = element} className={'col-md-10'} onSubmit={this.handleSubmit}>
-                <div className="form-group text-center">
+            <form ref={(element) => this.reviewForm = element} className='col-md-10' onSubmit={this.handleSubmit}>
+                <div className='form-group text-center'>
                     <ReviewRating
                         handleChange={this.handleGradeChange}
                         rating={this.state.grade}
                     />
                 </div>
-                <div className="form-group">
+                <div className='form-group'>
                     <TextArea
                         handleChange={this.handleReviewChange}
                     />
                 </div>
-                <div className="text-center">
-                    <input type={'submit'} className={'btn btn-info'} value={'Envoyer'} />
+                <div className='text-center'>
+                    <input type='submit' className='btn btn-info' value='Envoyer' />
                 </div>
             </form>
         );

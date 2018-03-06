@@ -61,7 +61,7 @@ export default class Restaurant extends Component {
 
     render() {
         return (
-            <li className={'restaurant col-10 col-xl-5 align-self-center'}>
+            <li className='restaurant col-10 col-xl-5 align-self-center'>
                 <div className='row justify-content-around'>
                     <StreetPicture
                         address={this.props.restaurant.address}
@@ -71,8 +71,8 @@ export default class Restaurant extends Component {
                         address={this.getSplitedAddress(',')}
                         reviewNumber={this.props.restaurant.ratings.length}
                     />
-                    <div className={'col-12 col-sm-3 col-xl-2'}>
-                        <div className={'row justify-content-center'}>
+                    <div className='col-12 col-sm-3 col-xl-2'>
+                        <div className='row justify-content-center'>
                             <GlobalReview
                                 averageGrade={this.getAverageGrade(this.props.restaurant)}
                                 pictureName={this.defineStarColor(this.getAverageGrade(this.props.restaurant))}
@@ -80,7 +80,7 @@ export default class Restaurant extends Component {
                         </div>
                     </div>
                 </div>
-                <div className={'row justify-content-center justify-content-md-end'}>
+                <div className='row justify-content-center justify-content-md-end'>
                     <AddReviewButton
                         handleAddReviewRequest={this.handleAddReviewRequest}
                     />

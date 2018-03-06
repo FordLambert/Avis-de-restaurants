@@ -28,9 +28,9 @@ export default class ReviewRating extends Component {
         const { rating } = this.state;
 
         return (                
-            <div className={'form-rating'}>
+            <div className='form-rating'>
                 <StarRatingComponent 
-                    name="review-rating"
+                    name='review-rating'
                     starCount={5}
                     value={rating}
                     onStarClick={this.onStarClick}

@@ -15,8 +15,8 @@ export default class ModalBody extends Component {
   
     render() {
         return (
-            <div className={'modal-body'}>
-                <div className="row justify-content-center">
+            <div className='modal-body'>
+                <div className='row justify-content-center'>
                     <ReviewForm
                         handleReviewSubmit={this.handleReviewSubmit}
                     />

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CloseLink = ({className, content}) => (
-    <a href={'#!'} className={className}>
+    <a href='#!' className={className}>
         {content}
     </a>
 );

@@ -55,7 +55,7 @@ export default class GoogleMap extends Component {
 
     render() {
         return (
-            <div id={'map-container'} onMouseMove={this.onMouseHover}>
+            <div id='map-container' onMouseMove={this.onMouseHover}>
                 <Pulser />
                 <Map
                     mapOptions={this.mapOptions}
@@ -67,7 +67,7 @@ export default class GoogleMap extends Component {
                     handleRestaurantAdded={this.handleRestaurantAdded}
                 />
                 <div
-                    id={'map'}
+                    id='map'
                 />
             </div>
         );

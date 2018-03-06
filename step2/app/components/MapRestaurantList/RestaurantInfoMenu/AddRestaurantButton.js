@@ -50,7 +50,7 @@ export default class AddRestaurantButton extends Component {
     render() {
         return (
             <div>
-                <button className={'btn btn-info'} onClick={this.toggleButton}>
+                <button className='btn btn-info' onClick={this.toggleButton}>
                     {this.state.content}
                 </button>
                 <BannerGuide
