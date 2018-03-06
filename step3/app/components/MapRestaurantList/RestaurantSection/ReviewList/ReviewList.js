@@ -45,13 +45,14 @@ export default class ReviewList extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.restaurant != null) {
-
+    
             if (nextProps.restaurant.reviewList != undefined) {
                 this.setState({
                     restaurantReviewed: nextProps.restaurant
                 });
 
             } else {
+        
                 const request = {
                     placeId: nextProps.restaurant.place_id
                 };
