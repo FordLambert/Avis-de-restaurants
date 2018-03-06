@@ -12,7 +12,6 @@ const Paragraph = ({spanClass, dynamicContent, staticContent}) => (
 
 Paragraph.propTypes = {
     spanClass: PropTypes.string,
-    dynamicContent: PropTypes.number,
     staticContent: PropTypes.string
 }
 

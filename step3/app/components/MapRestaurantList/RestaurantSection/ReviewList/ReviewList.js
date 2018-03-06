@@ -32,12 +32,14 @@ export default class ReviewList extends Component {
 
     chooseReviewsToRender(restaurant) {
         if (restaurant != null) {
-            return restaurant.reviewList.map((review, index) => {
-                return <Review
-                    key={index}
-                    review={review}
-                />
-            })
+            if (restaurant.reviewList != undefined) {
+                return restaurant.reviewList.map((review, index) => {
+                    return <Review
+                        key={index}
+                        review={review}
+                    />
+                })
+            }
         }
     }
 

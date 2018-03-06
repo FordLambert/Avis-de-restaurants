@@ -12,7 +12,7 @@ const GlobalReview = ({pictureName, averageGrade}) => (
             alt={'star-picture'}
         />
         <Paragraph
-            content={averageGrade + '/5'}
+            content={averageGrade == undefined ? '0/5' : averageGrade + '/5'}
         />
     </div>
 );

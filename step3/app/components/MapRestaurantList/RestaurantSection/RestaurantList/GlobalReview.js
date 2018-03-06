@@ -12,7 +12,7 @@ const GlobalReview = ({pictureName, averageGrade}) => (
             alt={'star-picture'}
         />
         <Paragraph
-            dynamicContent={averageGrade}
+            dynamicContent={averageGrade == undefined ? '0' : averageGrade}
             staticContent={'/5'}
         />
     </div>
