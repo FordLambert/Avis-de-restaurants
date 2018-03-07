@@ -17,7 +17,8 @@ export default class MapRestaurantList extends Component {
         position: PropTypes.object,
         map: PropTypes.object,
         canAddRestaurant: PropTypes.bool,
-        restaurantRequested: PropTypes.object
+        restaurantRequested: PropTypes.object,
+        onMapClick: PropTypes.func
     }
 
     handleMapUpdate = (geolocCoordinates, map) => {
@@ -36,6 +37,10 @@ export default class MapRestaurantList extends Component {
         this.props.toggleAddRestaurant(status);
     }
 
+    onMapClick = (latLng) => {
+        this.props.onMapClick(latLng);
+    }
+
     render() {
         return (
             <section className='col-12 col-md-9 col-xl-10 main-section' id='main-section'>
@@ -47,6 +52,7 @@ export default class MapRestaurantList extends Component {
                         handleMarkerClick={this.handleOpenReviewRequest}
                         canAddRestaurant={this.props.canAddRestaurant}
                         handleRestaurantAdded={this.addRestaurant}
+                        onMapClick={this.onMapClick}
                     />
                     <ConfirmAdditionPopUp />
                     <RestaurantInfoMenu

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
+import AddRestaurantPopUp from './AddRestaurantPopup/AddRestaurantPopup';
 import Navigation from './Navigation/Navigation';
 import MapRestaurantList from './MapRestaurantList/MapRestaurantList';
 
@@ -15,16 +16,22 @@ class GoogleMiam extends Component {
             'canAddRestaurant': false,
             'map': {}
         };
+
+        this.clickedPosition = {};
+        this.city = {};
+        this.grade = {};
+        this.order = '';
     }
 
-    addRestaurant = (restaurant) => {
-        const tempRestaurantList = this.state.listCustom;
+    addRestaurantToList = (restaurant) => {
+        const tempRestaurantList = this.state.listComplete;
         tempRestaurantList.push(restaurant);
         this.confirmRestaurantAdded();
         this.setState({
             listComplete: tempRestaurantList,
             canAddRestaurant: false
         });
+        this.generateNewCustomList();
     }
 
     toggleAddRestaurant = (status) => {
@@ -66,16 +73,16 @@ class GoogleMiam extends Component {
         return dist;
     }
 
-    sortCustomList(grade, order) {
+    generateNewCustomList = () => {
         const newListCustom = [];
         
         //Update the new custom list based on user choices (grade)
         this.state.listComplete.map((restaurant) => {
-            if ((restaurant.rating >= grade.min) && (restaurant.rating <= grade.max)) {
+            if ((restaurant.rating >= this.grade.min) && (restaurant.rating <= this.grade.max)) {
                 newListCustom.push(restaurant);
 
             //google places restaurant with no ratings needs a special rule
-            } else if ((grade.min == 0) && (restaurant.rating == undefined)) {
+            } else if ((this.grade.min == 0) && (restaurant.rating == undefined)) {
                 restaurant.rating = 0;
                 newListCustom.push(restaurant);
             }
@@ -83,7 +90,7 @@ class GoogleMiam extends Component {
 
         //sort the newly created custom array
         //sort array by distance
-        if (order == 'distance') {
+        if (this.order == 'distance') {
 
             newListCustom.sort((a, b) => {
                 const distA = this.getDistance(
@@ -104,7 +111,7 @@ class GoogleMiam extends Component {
             });
 
         //sort array by averageGrade
-        } else if (order == 'grade') {
+        } else if (this.order == 'grade') {
 
             newListCustom.sort((a, b) => {
                 return b.rating - a.rating;
@@ -117,6 +124,36 @@ class GoogleMiam extends Component {
 
         this.setState({
             listCustom: newListCustom
+        });
+    }
+
+    onNewRestaurantNameSubmit = (restaurantName) => {
+        let address = '';
+
+        const geocoder = new google.maps.Geocoder;
+        geocoder.geocode({'location': this.clickedPosition}, (results, status) => {
+            if (status === 'OK') {
+
+                if (results[1]) {
+                    address = results[0].formatted_address;
+
+                } else {
+                    console.log('No results found');
+                }
+
+            } else {
+                console.log('Geocoder failed due to: ' + status);
+            }
+
+            const newRestaurant = {};
+            newRestaurant.name = restaurantName;
+            newRestaurant.vicinity = address;
+            newRestaurant.geometry = {};
+            newRestaurant.geometry.location = this.clickedPosition;
+            newRestaurant.rating = 0;
+            newRestaurant.reviewList = [];
+
+            this.addRestaurantToList(newRestaurant);
         });
     }
 
@@ -154,14 +191,25 @@ class GoogleMiam extends Component {
         });
     }
 
+    onMapClick = (latLng) => {
+        this.clickedPosition = latLng;
+        window.location = '#add-restaurant-popup';
+    }
+
+    
+
     //handle the form's submit for custom restaurant options
     handleUserChoicesSubmit = (city, grade, order) => {
+        this.grade = grade;
+        this.order = order;
+
         //If we want another position, start by updating the latLng
-        if (city != undefined) {
+        if ((city != undefined) && (city != this.city)) {
+            this.city = city;
             const geocoder = new google.maps.Geocoder();
 
             //get  altLng with the user's address input
-            geocoder.geocode( { 'address': city}, (results, status) => {
+            geocoder.geocode( { 'address': this.city}, (results, status) => {
                 if (status == 'OK') {
                     const lat = results[0].geometry.location.lat();
                     const lng = results[0].geometry.location.lng();
@@ -185,20 +233,23 @@ class GoogleMiam extends Component {
                             this.setState({
                                 listComplete: results
                             });
-                            this.sortCustomList(grade, order);
+                            this.generateNewCustomList();
                         }
                     });
                 }
             });
 
         } else {
-            this.sortCustomList(grade, order);
+            this.generateNewCustomList();
         }
     }
 
     render() {
         return (
             <div className='row'>
+                <AddRestaurantPopUp
+                    handleSubmit={this.onNewRestaurantNameSubmit}
+                />
                 <Navigation
                     handleUserChoicesSubmit={this.handleUserChoicesSubmit}
                 />
@@ -212,6 +263,7 @@ class GoogleMiam extends Component {
                     map={this.state.map}
                     canAddRestaurant={this.state.canAddRestaurant}
                     restaurantRequested={this.state.restaurantRequested}
+                    onMapClick={this.onMapClick}
                 />
             </div>
         );

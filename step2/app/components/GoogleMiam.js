@@ -17,7 +17,7 @@ class GoogleMiam extends Component {
         };
 
         this.clickedPosition = {};
-        this.grade = 0;
+        this.grade = {};
         this.order = '';
     }
 
