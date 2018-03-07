@@ -1,0 +1,11 @@
+.placeholder {
+    border: 1px solid $light-grey;
+    padding: 20px;
+    padding-bottom: 10px;
+    margin-top: 5vw;
+    text-align: center;
+
+    h2 {
+        font-size: $title-md-font-size;
+    }
+}

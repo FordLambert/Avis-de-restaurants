@@ -6183,6 +6183,15 @@ nav {
   background-color: white;
   border-color: white; }
 
+.placeholder {
+  border: 1px solid #dee4ed;
+  padding: 20px;
+  padding-bottom: 10px;
+  margin-top: 5vw;
+  text-align: center; }
+  .placeholder h2 {
+    font-size: 1.1em; }
+
 .main-section {
   min-height: 100vh; }
   .main-section .themed-colored {
