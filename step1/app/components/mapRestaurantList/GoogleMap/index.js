@@ -108,10 +108,17 @@ export default class GoogleMap extends Component {
 
             this.map.setCenter(pos);
             this.props.handleMapLoad(pos, this.map);
+
+        }, () => {
+            this.props.handleMapLoad(this.mapOptions.startPosition, this.map);
         });
 
         this.map.addListener('dragend', (event) => {
             this.props.onDragEnd(this.map);
+        });
+
+        this.map.addListener('zoom_changed', (event) => {
+            this.props.onDragEnd();
         });
     }
 

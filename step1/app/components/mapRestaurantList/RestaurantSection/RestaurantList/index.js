@@ -11,7 +11,7 @@ export default class RestaurantList extends Component {
     }
 
     chooseComponentToRender(restaurantList) {
-        if (restaurantList.length != undefined) {
+        if (restaurantList.length > 0) {
 
             return restaurantList.map((restaurant, index) => {
                 return <Restaurant

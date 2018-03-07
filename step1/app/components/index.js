@@ -59,27 +59,24 @@ class GoogleMiam extends Component {
     }
 
     getVisiblesRestaurantsOnly = () => {
-        const tempList = [];
+        const visibleRestaurantsList = [];
 
-        this.generateNewCustomList();
-
-        this.state.listCustom.map((restaurant) => {
+        this.state.listComplete.map((restaurant) => {
             const restaurantPosition = {lat: restaurant.lat, lng: restaurant.long};
 
             if (this.map.getBounds().contains(restaurantPosition)) {
-                tempList.push(restaurant)
+                visibleRestaurantsList.push(restaurant)
             }
         });
 
-        this.setState({
-            listCustom: tempList
-        });
+        this.generateNewCustomList(visibleRestaurantsList);
     }
 
     //handle the form's submit for custom restaurant options
-    generateNewCustomList = () => {
+    generateNewCustomList = (restaurantList) => {
+
         const newList = [];
-        this.state.listComplete.map((restaurant) => {
+        restaurantList.map((restaurant) => {
             const overallGrade = this.getAverageGrade(restaurant);
 
             if ((overallGrade >= this.grade.min) && (overallGrade <= this.grade.max)) {
@@ -98,7 +95,6 @@ class GoogleMiam extends Component {
 
         //sort array by averageGrade
         } else if (this.order == 'grade') {
-
             newList.sort((a, b) => {
                 return this.getAverageGrade(b) - this.getAverageGrade(a);
             });
@@ -108,7 +104,9 @@ class GoogleMiam extends Component {
             console.log('Error: list order must be "distance" or "grade"')
         }
 
-        this.setState({listCustom: newList});
+        this.setState({
+            listCustom: newList
+        });
     }
 
     handleMarkerClick = (restaurant) => {
@@ -137,7 +135,7 @@ class GoogleMiam extends Component {
     handleUserChoicesSubmit = (grade, order) => {
         this.grade = grade;
         this.order = order;
-        this.generateNewCustomList();
+        this.getVisiblesRestaurantsOnly();
     }
 
     onDragEnd = () => {
