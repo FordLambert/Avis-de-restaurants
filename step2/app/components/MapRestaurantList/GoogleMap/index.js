@@ -28,7 +28,8 @@ export default class GoogleMap extends Component {
         handleMarkerClick: PropTypes.func,
         handleMapClick: PropTypes.func,
         handleRestaurantAdded: PropTypes.func,
-        canAddRestaurant: PropTypes.bool
+        canAddRestaurant: PropTypes.bool,
+        onDragEnd: PropTypes.func
     }
 
     addMarker(position, restaurant) {
@@ -67,11 +68,9 @@ export default class GoogleMap extends Component {
         });
     }
 
-    /*----- to be trnasformed/moved -----*/
     onMapClick = (latitude, longitude) => {
         this.props.handleMapClick(latitude, longitude);        
     }
-    /*----- -----*/
 
     handleMarkerClick = (marker, restaurant, infoWindow) => {
         this.props.handleMarkerClick(restaurant);
@@ -112,8 +111,6 @@ export default class GoogleMap extends Component {
         	center: this.mapOptions.startPosition,
        		zoom: this.mapOptions.zoom
         });
-
-        this.props.handleMapUpdate(this.mapOptions.startPosition, this.map);
         
 		navigator.geolocation.getCurrentPosition((position) => {
 			const pos = {
@@ -128,7 +125,19 @@ export default class GoogleMap extends Component {
 
             this.props.handleMapUpdate(pos, this.map);
             this.map.setCenter(pos);
-		});
+
+        //in case geoloc failed/is refused
+        }, () => {
+            this.props.handleMapUpdate(this.mapOptions.startPosition, this.map);
+        });
+        
+        this.map.addListener('dragend', (event) => {
+            this.props.onDragEnd();
+        });
+
+        this.map.addListener('zoom_changed', (event) => {
+            this.props.onDragEnd();
+        });
 
         //if in "add restaurant" mode, start adding process on click
         this.map.addListener('click', (event) => {
