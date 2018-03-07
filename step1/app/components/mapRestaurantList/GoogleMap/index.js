@@ -25,7 +25,8 @@ export default class GoogleMap extends Component {
     static propTypes = {
         restaurantList: PropTypes.array,
         handleMapLoad: PropTypes.func,
-        handleMarkerClick: PropTypes.func
+        handleMarkerClick: PropTypes.func,
+        onDrageEnd: PropTypes.func
     }
 
     addMarker(position, restaurant) {
@@ -106,7 +107,11 @@ export default class GoogleMap extends Component {
             });
 
             this.map.setCenter(pos);
-            this.props.handleMapLoad(pos);
+            this.props.handleMapLoad(pos, this.map);
+        });
+
+        this.map.addListener('dragend', (event) => {
+            this.props.onDragEnd(this.map);
         });
     }
 

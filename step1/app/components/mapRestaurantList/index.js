@@ -12,14 +12,19 @@ export default class extends Component {
         handleMapLoad: PropTypes.func,
         restaurantList: PropTypes.array,
         restaurantRequested: PropTypes.object,
+        onDragEnd: PropTypes.func
     }
 
     handleMarkerClick = (restaurant) => {
         this.props.handleMarkerClick(restaurant);
     }
 
-    handleMapLoad = (geolocCoordinates) => {
-        this.props.handleMapLoad(geolocCoordinates);
+    handleMapLoad = (geolocCoordinates, map) => {
+        this.props.handleMapLoad(geolocCoordinates, map);
+    }
+
+    onDragEnd = (map) => {
+        this.props.onDragEnd(map);
     }
 
     render() {
@@ -30,6 +35,7 @@ export default class extends Component {
                         restaurantList={this.props.restaurantList}
                         handleMapLoad={this.handleMapLoad}
                         handleMarkerClick={this.handleMarkerClick}
+                        onDragEnd={this.onDragEnd}
                     />
                     <SearchResultFound
                         restaurantNumber={this.props.restaurantList.length}

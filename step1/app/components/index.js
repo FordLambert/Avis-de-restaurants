@@ -13,6 +13,9 @@ class GoogleMiam extends Component {
             'restaurantRequested': {},
             'position': {}
         };
+
+        this.grade = {min: 0, max: 5};
+        this.order = 'grade';
     }
 
     getDistance(lat1, lon1, lat2, lon2) {
@@ -55,20 +58,38 @@ class GoogleMiam extends Component {
         return finalGrade;
     }
 
+    getVisiblesRestaurantsOnly = () => {
+        const tempList = [];
+
+        this.generateNewCustomList();
+
+        this.state.listCustom.map((restaurant) => {
+            const restaurantPosition = {lat: restaurant.lat, lng: restaurant.long};
+
+            if (this.map.getBounds().contains(restaurantPosition)) {
+                tempList.push(restaurant)
+            }
+        });
+
+        this.setState({
+            listCustom: tempList
+        });
+    }
+
     //handle the form's submit for custom restaurant options
-    handleUserChoicesSubmit = (grade, order) => {
+    generateNewCustomList = () => {
         const newList = [];
         this.state.listComplete.map((restaurant) => {
             const overallGrade = this.getAverageGrade(restaurant);
 
-            if ((overallGrade >= grade.min) && (overallGrade <= grade.max)) {
+            if ((overallGrade >= this.grade.min) && (overallGrade <= this.grade.max)) {
                 newList.push(restaurant);
             }
         });
 
         //sort the newly created custom array
         //sort array by distance
-        if (order == 'distance') {
+        if (this.order == 'distance') {
             newList.sort((a, b) => {
                 const distA = this.getDistance(this.state.position.lat, this.state.position.lng, a.lat, a.long);
                 const distB = this.getDistance(this.state.position.lat, this.state.position.lng, b.lat, b.long);
@@ -76,7 +97,7 @@ class GoogleMiam extends Component {
             });
 
         //sort array by averageGrade
-        } else if (order == 'grade') {
+        } else if (this.order == 'grade') {
 
             newList.sort((a, b) => {
                 return this.getAverageGrade(b) - this.getAverageGrade(a);
@@ -96,7 +117,9 @@ class GoogleMiam extends Component {
         });
     }
 
-    handleMapLoad = (geolocCoordinates) => {
+    handleMapLoad = (geolocCoordinates, map) => {
+        this.map = map;
+
         fetch('./app/data/restaurant_list.json')
             .then(result => {
                 return result.json();
@@ -107,7 +130,18 @@ class GoogleMiam extends Component {
                     listCustom: data,
                     position: geolocCoordinates
                 });
+                this.getVisiblesRestaurantsOnly();
             });
+    }
+
+    handleUserChoicesSubmit = (grade, order) => {
+        this.grade = grade;
+        this.order = order;
+        this.generateNewCustomList();
+    }
+
+    onDragEnd = () => {
+        this.getVisiblesRestaurantsOnly();
     }
 
     render() {
@@ -121,6 +155,7 @@ class GoogleMiam extends Component {
                     handleMapLoad={this.handleMapLoad}
                     restaurantList={this.state.listCustom}
                     restaurantRequested={this.state.restaurantRequested}
+                    onDragEnd={this.onDragEnd}
                 />
             </div>
         );
