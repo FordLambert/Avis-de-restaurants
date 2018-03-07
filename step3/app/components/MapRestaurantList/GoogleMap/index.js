@@ -15,7 +15,7 @@ export default class GoogleMap extends Component {
         this.infoWindows = []; //infoWindows displayed on map
 
         this.mapOptions = {
-            zoom: 12
+            zoom: 13
         }
 
         this.markerIconsPath = {
@@ -32,7 +32,8 @@ export default class GoogleMap extends Component {
         handleRestaurantAdded: PropTypes.func,
         canAddRestaurant: PropTypes.bool,
         position: PropTypes.object,
-        onMapClick: PropTypes.func
+        onMapClick: PropTypes.func,
+        onDragEnd: PropTypes.func
     }
 
     onMapClick = (latLng) => {
@@ -99,7 +100,6 @@ export default class GoogleMap extends Component {
 
     componentWillUpdate(nextProps) {
         if (nextProps.restaurantList != this.props.restaurantList) {
-            this.map.setCenter(nextProps.position);
             this.deleteOldMarkers();
 
             nextProps.restaurantList.map((restaurant) => {
@@ -134,6 +134,14 @@ export default class GoogleMap extends Component {
         //in case geoloc failed/is refused
         }, () => {
             this.props.handleMapUpdate(this.props.position, this.map);
+        });
+
+        this.map.addListener('dragend', (event) => {
+            this.props.onDragEnd();
+        });
+
+        this.map.addListener('zoom_changed', (event) => {
+            this.props.onDragEnd();
         });
 
         //if in "add restaurant" mode, start the adding process on click

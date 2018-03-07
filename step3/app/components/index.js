@@ -13,14 +13,14 @@ class GoogleMiam extends Component {
             'listCustom': [],
             'position': {lat: 48.853, lng: 2.35}, //Paris by default
             'restaurantRequested': null,
-            'canAddRestaurant': false,
-            'map': {}
+            'canAddRestaurant': false
         };
 
+        this.map;
         this.clickedPosition = {};
         this.city = {};
-        this.grade = {};
-        this.order = '';
+        this.grade = {min: 0, max: 5};
+        this.order = 'grade';
     }
 
     addRestaurantToList = (restaurant) => {
@@ -31,7 +31,7 @@ class GoogleMiam extends Component {
             listComplete: tempRestaurantList,
             canAddRestaurant: false
         });
-        this.generateNewCustomList();
+        this.getVisiblesRestaurantsOnly();;
     }
 
     toggleAddRestaurant = (status) => {
@@ -73,11 +73,24 @@ class GoogleMiam extends Component {
         return dist;
     }
 
-    generateNewCustomList = () => {
+    getVisiblesRestaurantsOnly = () => {
+        const visibleRestaurantsList = [];
+        
+        this.state.listComplete.map((restaurant) => {
+
+            if (this.map.getBounds().contains(restaurant.geometry.location)) {
+                visibleRestaurantsList.push(restaurant)
+            }
+        });
+
+        this.generateNewCustomList(visibleRestaurantsList);
+    }
+
+    generateNewCustomList = (restaurantList) => {
         const newListCustom = [];
         
         //Update the new custom list based on user choices (grade)
-        this.state.listComplete.map((restaurant) => {
+        restaurantList.map((restaurant) => {
             if ((restaurant.rating >= this.grade.min) && (restaurant.rating <= this.grade.max)) {
                 newListCustom.push(restaurant);
 
@@ -175,10 +188,10 @@ class GoogleMiam extends Component {
         service.nearbySearch(request, (results, status, pagination) => {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
 
+                this.map = map;
                 this.setState({
                     listComplete: results,
                     listCustom: results,
-                    map: map,
                     position: geolocCoordinates
                 });
             }
@@ -196,12 +209,14 @@ class GoogleMiam extends Component {
         window.location = '#add-restaurant-popup';
     }
 
+    onDragEnd = () => {
+        this.getVisiblesRestaurantsOnly();
+    }
     
-
     //handle the form's submit for custom restaurant options
-    handleUserChoicesSubmit = (city, grade, order) => {
-        this.grade = grade;
-        this.order = order;
+    handleUserChoicesSubmit = (city, newGrade, newOrder) => {
+        this.grade = newGrade;
+        this.order = newOrder;
 
         //If we want another position, start by updating the latLng
         if ((city != undefined) && (city != this.city)) {
@@ -215,6 +230,7 @@ class GoogleMiam extends Component {
                     const lng = results[0].geometry.location.lng();
                     const newPosition = {lat, lng};
 
+                    this.map.setCenter(newPosition);
                     this.setState({
                         position: newPosition
                     });
@@ -226,21 +242,21 @@ class GoogleMiam extends Component {
                         minPriceLevel: 0
                     };
 
-                    const service = new google.maps.places.PlacesService(this.state.map);
+                    const service = new google.maps.places.PlacesService(this.map);
                     service.nearbySearch(request, (results, status) => {
 
                         if (status == google.maps.places.PlacesServiceStatus.OK) {
                             this.setState({
                                 listComplete: results
                             });
-                            this.generateNewCustomList();
+                            this.getVisiblesRestaurantsOnly();
                         }
                     });
                 }
             });
 
         } else {
-            this.generateNewCustomList();
+            this.getVisiblesRestaurantsOnly();
         }
     }
 
@@ -260,10 +276,11 @@ class GoogleMiam extends Component {
                     toggleAddRestaurant={this.toggleAddRestaurant}
                     restaurantList={this.state.listCustom}
                     position={this.state.position}
-                    map={this.state.map}
+                    map={this.map}
                     canAddRestaurant={this.state.canAddRestaurant}
                     restaurantRequested={this.state.restaurantRequested}
                     onMapClick={this.onMapClick}
+                    onDragEnd={this.onDragEnd}
                 />
             </div>
         );

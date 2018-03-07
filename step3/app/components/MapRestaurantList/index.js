@@ -18,7 +18,8 @@ export default class MapRestaurantList extends Component {
         map: PropTypes.object,
         canAddRestaurant: PropTypes.bool,
         restaurantRequested: PropTypes.object,
-        onMapClick: PropTypes.func
+        onMapClick: PropTypes.func,
+        onDragEnd: PropTypes.func
     }
 
     handleMapUpdate = (geolocCoordinates, map) => {
@@ -53,6 +54,7 @@ export default class MapRestaurantList extends Component {
                         canAddRestaurant={this.props.canAddRestaurant}
                         handleRestaurantAdded={this.addRestaurant}
                         onMapClick={this.onMapClick}
+                        onDragEnd={this.props.onDragEnd}
                     />
                     <ConfirmAdditionPopUp />
                     <RestaurantInfoMenu
