@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import GoogleMap from './GoogleMap/GoogleMap';
-import RestaurantInfoMenu from './RestaurantInfoMenu/RestaurantInfoMenu';
-import RestaurantSection from './RestaurantSection/RestaurantSection';
-import ConfirmAdditionPopUp from './ConfirmAdditionPopup/ConfirmAdditionPopup';
+import GoogleMap from './GoogleMap';
+import RestaurantInfoMenu from './RestaurantInfoMenu';
+import RestaurantSection from './RestaurantSection';
+import ConfirmAdditionPopUp from './ConfirmAdditionPopup';
 
 export default class MapRestaurantList extends Component {
 

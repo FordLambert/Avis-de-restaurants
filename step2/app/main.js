@@ -1,2 +1,2 @@
 
-import './components/GoogleMiam';
+import './components/index';

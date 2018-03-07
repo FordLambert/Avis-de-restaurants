@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import ModalWindow from './NewReviewModal/ModalWindow';
-import ReviewList from './ReviewList/ReviewList';
-import RestaurantList from './RestaurantList/RestaurantList';
+import ModalWindow from './NewReviewModal';
+import ReviewList from './ReviewList';
+import RestaurantList from './RestaurantList';
 
 export default class RestaurantSection extends Component {
     constructor(props) {
