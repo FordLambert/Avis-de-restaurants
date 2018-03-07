@@ -5,7 +5,7 @@ import Logo from './Logo';
 import MainTitle from './MainTitle';
 import SearchForm from './SearchForm';
 
-export default class Navigation extends Component {
+export default class extends Component {
     static propTypes = {
         handleUserChoicesSubmit: PropTypes.func
     }

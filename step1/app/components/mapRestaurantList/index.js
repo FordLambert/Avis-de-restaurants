@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import GoogleMap from './GoogleMap/GoogleMap';
-import SearchResultFound from './SearchResultsFound/SearchResultsFound';
-import RestaurantSection from './RestaurantSection/RestaurantSection';
+import GoogleMap from './GoogleMap';
+import SearchResultFound from './SearchResultsFound';
+import RestaurantSection from './RestaurantSection';
 
-export default class MapRestaurantList extends Component {
+export default class extends Component {
 
     static propTypes = {
         handleMarkerClick: PropTypes.func,

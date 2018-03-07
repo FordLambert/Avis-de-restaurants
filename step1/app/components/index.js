@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import Navigation from './Navigation/Navigation';
-import MapRestaurantList from './MapRestaurantList/MapRestaurantList';
+import Navigation from './Navigation';
+import MapRestaurantList from './MapRestaurantList';
 
 class GoogleMiam extends Component {
     constructor(props) {
