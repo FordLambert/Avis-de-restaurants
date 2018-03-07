@@ -140,6 +140,26 @@ class GoogleMiam extends Component {
         });
     }
 
+    generateListFromPosition = () => {
+        const request = {
+            location: this.state.position,
+            radius: '5000', //meters
+            types: ['restaurant'],
+            minPriceLevel: 0
+        };
+
+        const service = new google.maps.places.PlacesService(this.map);
+        service.nearbySearch(request, (results, status) => {
+
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                this.setState({
+                    listComplete: results
+                });
+                this.getVisiblesRestaurantsOnly();
+            }
+        });
+    }
+
     onNewRestaurantNameSubmit = (restaurantName) => {
         let address = '';
 
@@ -210,7 +230,10 @@ class GoogleMiam extends Component {
     }
 
     onDragEnd = () => {
-        this.getVisiblesRestaurantsOnly();
+        this.setState({
+            position: this.map.center
+        });
+        this.generateListFromPosition();
     }
     
     //handle the form's submit for custom restaurant options
@@ -223,35 +246,18 @@ class GoogleMiam extends Component {
             this.city = city;
             const geocoder = new google.maps.Geocoder();
 
-            //get  altLng with the user's address input
             geocoder.geocode( { 'address': this.city}, (results, status) => {
                 if (status == 'OK') {
                     const lat = results[0].geometry.location.lat();
                     const lng = results[0].geometry.location.lng();
                     const newPosition = {lat, lng};
-
+    
                     this.map.setCenter(newPosition);
                     this.setState({
                         position: newPosition
                     });
-
-                    const request = {
-                        location: this.state.position,
-                        radius: '5000', //meters
-                        types: ['restaurant'],
-                        minPriceLevel: 0
-                    };
-
-                    const service = new google.maps.places.PlacesService(this.map);
-                    service.nearbySearch(request, (results, status) => {
-
-                        if (status == google.maps.places.PlacesServiceStatus.OK) {
-                            this.setState({
-                                listComplete: results
-                            });
-                            this.getVisiblesRestaurantsOnly();
-                        }
-                    });
+    
+                    this.generateListFromPosition();
                 }
             });
 
