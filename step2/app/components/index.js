@@ -15,10 +15,77 @@ export default class extends Component {
             'canAddRestaurant': false
         };
 
+        this.map = {}; //updated by handleMapUpdate
         this.clickedPosition = {};
-        //this.map = {};
         this.grade = {min: 0, max: 5};
         this.order = 'grade';
+    }
+
+    handleMapUpdate = (geolocCoordinates, map) => {
+        this.map = map;
+
+        fetch('./app/data/restaurant-list.json')
+            .then(result => {
+                return result.json();
+            })
+            .then(data => {
+                this.setState({
+                    listComplete: data,
+                    listCustom: data,
+                    position: geolocCoordinates
+                });
+                this.getVisiblesRestaurantsOnly();
+            });
+    }
+
+    handleMapClick = (latitude, longitude) => {
+        this.clickedPosition = {lat: latitude, lng: longitude};
+        window.location = '#add-restaurant-popup';
+    }
+
+    handleMarkerClick = (restaurant) => {
+        this.setState({
+            restaurantRequested: restaurant
+        });
+    }
+
+    handleUserChoicesSubmit = (newGrade, newOrder) => {
+        this.grade = newGrade;
+        this.order = newOrder;
+        this.getVisiblesRestaurantsOnly();
+    }
+
+    onDragEnd = () => {
+        this.getVisiblesRestaurantsOnly();
+    }
+
+    onNewRestaurantNameSubmit = (restaurantName) => {
+        let address = '';
+
+        const geocoder = new google.maps.Geocoder;
+        geocoder.geocode({'location': this.clickedPosition}, (results, status) => {
+            if (status === 'OK') {
+ 
+                if (results[1]) {
+                    address = results[0].formatted_address;
+ 
+                } else {
+                    console.log('No results found');
+                }
+ 
+            } else {
+                console.log('Geocoder failed due to: ' + status);
+            }
+ 
+            const newRestaurant = {};
+            newRestaurant.restaurantName = restaurantName;
+            newRestaurant.address = address;
+            newRestaurant.lat = this.clickedPosition.lat;
+            newRestaurant.long = this.clickedPosition.lng;
+            newRestaurant.ratings = [];
+ 
+            this.addRestaurantToList(newRestaurant);
+        });
     }
 
     getDistance(lat1, lon1, lat2, lon2) {
@@ -63,17 +130,6 @@ export default class extends Component {
         return finalGrade;
     }
 
-    addRestaurantToList = (restaurant) => {
-        const tempRestaurantList = this.state.listComplete;
-        tempRestaurantList.push(restaurant);
-        this.confirmRestaurantAdded();
-        this.setState({
-            listComplete: tempRestaurantList,
-            canAddRestaurant: false
-        });
-        this.getVisiblesRestaurantsOnly();
-    }
-
     getVisiblesRestaurantsOnly = () => {
         const visibleRestaurantsList = [];
 
@@ -86,6 +142,17 @@ export default class extends Component {
         });
 
         this.generateNewCustomList(visibleRestaurantsList);
+    }
+
+    addRestaurantToList = (restaurant) => {
+        const tempRestaurantList = this.state.listComplete;
+        tempRestaurantList.push(restaurant);
+        this.confirmRestaurantAdded();
+        this.setState({
+            listComplete: tempRestaurantList,
+            canAddRestaurant: false
+        });
+        this.getVisiblesRestaurantsOnly();
     }
 
     confirmRestaurantAdded() {
@@ -141,73 +208,6 @@ export default class extends Component {
          this.setState({
             listCustom: newList
          });
-    }
-
-    handleUserChoicesSubmit = (newGrade, newOrder) => {
-        this.grade = newGrade;
-        this.order = newOrder;
-        this.getVisiblesRestaurantsOnly();
-    }
-
-    onNewRestaurantNameSubmit = (restaurantName) => {
-        let address = '';
-
-        const geocoder = new google.maps.Geocoder;
-        geocoder.geocode({'location': this.clickedPosition}, (results, status) => {
-            if (status === 'OK') {
- 
-                if (results[1]) {
-                    address = results[0].formatted_address;
- 
-                } else {
-                    console.log('No results found');
-                }
- 
-            } else {
-                console.log('Geocoder failed due to: ' + status);
-            }
- 
-            const newRestaurant = {};
-            newRestaurant.restaurantName = restaurantName;
-            newRestaurant.address = address;
-            newRestaurant.lat = this.clickedPosition.lat;
-            newRestaurant.long = this.clickedPosition.lng;
-            newRestaurant.ratings = [];
- 
-            this.addRestaurantToList(newRestaurant);
-        });
-    }
-
-    handleMapClick = (latitude, longitude) => {
-        this.clickedPosition = {lat: latitude, lng: longitude};
-        window.location = '#add-restaurant-popup';
-    }
-
-    handleMapUpdate = (geolocCoordinates, map) => {
-        this.map = map;
-
-        fetch('./app/data/restaurant-list.json')
-            .then(result => {
-                return result.json();
-            })
-            .then(data => {
-                this.setState({
-                    listComplete: data,
-                    listCustom: data,
-                    position: geolocCoordinates
-                });
-                this.getVisiblesRestaurantsOnly();
-            });
-    }
-
-    handleMarkerClick = (restaurant) => {
-        this.setState({
-            restaurantRequested: restaurant
-        });
-    }
-
-    onDragEnd = () => {
-        this.getVisiblesRestaurantsOnly();
     }
 
     render() {

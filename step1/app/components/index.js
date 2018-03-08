@@ -13,8 +13,42 @@ export default class extends Component {
             'position': {}
         };
 
+        this.map = {}; //updated by handleMapLoad
         this.grade = {min: 0, max: 5};
         this.order = 'grade';
+    }
+
+    handleMapLoad = (geolocCoordinates, map) => {
+        this.map = map;
+
+        fetch('./app/data/restaurant_list.json')
+            .then(result => {
+                return result.json();
+            })
+            .then(data => {
+                this.setState({
+                    listComplete: data,
+                    listCustom: data,
+                    position: geolocCoordinates
+                });
+                this.getVisiblesRestaurantsOnly();
+            });
+    }
+
+    handleMarkerClick = (restaurant) => {
+        this.setState({
+            restaurantRequested: restaurant
+        });
+    }
+
+    handleUserChoicesSubmit = (grade, order) => {
+        this.grade = grade;
+        this.order = order;
+        this.getVisiblesRestaurantsOnly();
+    }
+
+    onDragEnd = () => {
+        this.getVisiblesRestaurantsOnly();
     }
 
     getDistance(lat1, lon1, lat2, lon2) {
@@ -106,39 +140,6 @@ export default class extends Component {
         this.setState({
             listCustom: newList
         });
-    }
-
-    handleMarkerClick = (restaurant) => {
-        this.setState({
-            restaurantRequested: restaurant
-        });
-    }
-
-    handleMapLoad = (geolocCoordinates, map) => {
-        this.map = map;
-
-        fetch('./app/data/restaurant_list.json')
-            .then(result => {
-                return result.json();
-            })
-            .then(data => {
-                this.setState({
-                    listComplete: data,
-                    listCustom: data,
-                    position: geolocCoordinates
-                });
-                this.getVisiblesRestaurantsOnly();
-            });
-    }
-
-    handleUserChoicesSubmit = (grade, order) => {
-        this.grade = grade;
-        this.order = order;
-        this.getVisiblesRestaurantsOnly();
-    }
-
-    onDragEnd = () => {
-        this.getVisiblesRestaurantsOnly();
     }
 
     render() {

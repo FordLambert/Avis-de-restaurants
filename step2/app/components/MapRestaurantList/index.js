@@ -20,24 +20,24 @@ export default class MapRestaurantList extends Component {
         onDragEnd: PropTypes.func
     }
 
+    handleMapUpdate = (geolocCoordinates, map) => {
+        this.props.handleMapUpdate(geolocCoordinates, map);
+     }
+ 
+     handleMarkerClick = (restaurant) => {
+         this.props.handleMarkerClick(restaurant);
+     }
+ 
+     handleMapClick = (latitude, longitude) => {
+         this.props.handleMapClick(latitude, longitude);
+     }
+
     toggleAddRestaurant = (status) => {
         this.props.toggleAddRestaurant(status);
     }
 
     addRestaurant = (restaurant) => {
         this.props.addRestaurant(restaurant);
-    }
-
-    handleMapUpdate = (geolocCoordinates, map) => {
-       this.props.handleMapUpdate(geolocCoordinates, map);
-    }
-
-    handleMarkerClick = (restaurant) => {
-        this.props.handleMarkerClick(restaurant);
-    }
-
-    handleMapClick = (latitude, longitude) => {
-        this.props.handleMapClick(latitude, longitude);
     }
 
     render() {

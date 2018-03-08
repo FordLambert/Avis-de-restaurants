@@ -29,55 +29,6 @@ export default class GoogleMap extends Component {
         onDrageEnd: PropTypes.func
     }
 
-    addMarker(position, restaurant) {
-        const marker = new google.maps.Marker({
-            position: position,
-            icon: this.markerIconsPath.defaultMarkerIcon,
-            map: this.map
-        });
-
-        const infoWindow = new google.maps.InfoWindow({
-            content: restaurant.restaurantName
-        });
-
-        marker.addListener('click', () => {
-            this.onMarkerClick(marker, restaurant, infoWindow);
-        });
-
-        this.markers.push(marker);
-        this.infoWindows.push(infoWindow);
-	}
-
-	closeInfoWindows() {
-        this.infoWindows.map((infoWindow) => {
-            infoWindow.close();
-        });
-    }
-
-    deleteOldMarkers() {
-        this.setMapOnAll(null);
-        this.markers.splice(1);
-    }
-
-    setMapOnAll(map) {
-        for (let i = 0; i < this.markers.length; i++) {
-            this.markers[i].setMap(map);
-        }
-    }
-
-    onMarkerClick = (marker, restaurant, infoWindow) => {
-        this.props.handleMarkerClick(restaurant);
-        window.location = '#review-list';
-
-        this.markers.map((marker) => {
-            marker.setIcon(this.markerIconsPath.defaultMarkerIcon);
-            this.closeInfoWindows();
-        });
-
-        marker.setIcon(this.markerIconsPath.clickedMarkerIcon);
-        infoWindow.open(this.map, marker);
-    }
-
     componentWillUpdate(nextProps) {
         if (nextProps.restaurantList != this.props.restaurantList) {
             this.deleteOldMarkers();
@@ -120,6 +71,55 @@ export default class GoogleMap extends Component {
         this.map.addListener('zoom_changed', (event) => {
             this.props.onDragEnd();
         });
+    }
+
+    onMarkerClick = (marker, restaurant, infoWindow) => {
+        this.props.handleMarkerClick(restaurant);
+        window.location = '#review-list';
+
+        this.markers.map((marker) => {
+            marker.setIcon(this.markerIconsPath.defaultMarkerIcon);
+            this.closeInfoWindows();
+        });
+
+        marker.setIcon(this.markerIconsPath.clickedMarkerIcon);
+        infoWindow.open(this.map, marker);
+    }
+
+    addMarker(position, restaurant) {
+        const marker = new google.maps.Marker({
+            position: position,
+            icon: this.markerIconsPath.defaultMarkerIcon,
+            map: this.map
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: restaurant.restaurantName
+        });
+
+        marker.addListener('click', () => {
+            this.onMarkerClick(marker, restaurant, infoWindow);
+        });
+
+        this.markers.push(marker);
+        this.infoWindows.push(infoWindow);
+	}
+
+	closeInfoWindows() {
+        this.infoWindows.map((infoWindow) => {
+            infoWindow.close();
+        });
+    }
+
+    deleteOldMarkers() {
+        this.setMapOnAll(null);
+        this.markers.splice(1);
+    }
+
+    setMapOnAll(map) {
+        for (let i = 0; i < this.markers.length; i++) {
+            this.markers[i].setMap(map);
+        }
     }
 
     render() {
