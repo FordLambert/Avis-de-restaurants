@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 
 import AddRestaurantPopUp from './AddRestaurantPopup';
 import Navigation from './Navigation';
 import MapRestaurantList from './MapRestaurantList';
 
-class GoogleMiam extends Component {
+export default class extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -235,8 +234,3 @@ class GoogleMiam extends Component {
         );
     }
 }
-
-ReactDOM.render(
-    <GoogleMiam />,
-    document.getElementById('page-wrapper')
-);

@@ -25,7 +25,7 @@ gulp.task('sass', function(){
 
 //Modules Es6 to regular minified Es5 file ->
 gulp.task('compile-js', function() {
-  return gulp.src('app/main.js')
+  return gulp.src('app/index.js')
     .pipe(webpackStream(require('./webpack.config.js')), webpack)
     .pipe(babel())
     .pipe(uglify())
