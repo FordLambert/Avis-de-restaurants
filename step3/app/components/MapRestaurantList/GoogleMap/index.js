@@ -36,68 +36,6 @@ export default class GoogleMap extends Component {
         onDragEnd: PropTypes.func
     }
 
-    onMapClick = (latLng) => {
-        this.props.onMapClick(latLng);
-    }
-
-    addMarker(position, restaurant) {
-        const marker = new google.maps.Marker({
-            position: position,
-            icon: this.markerIconsPath.defaultMarkerIcon,
-            map: this.map
-        });
-
-        const infoWindow = new google.maps.InfoWindow({
-            content: restaurant.name
-        });
-
-        marker.addListener('click', () => {
-            this.OnMarkerClick(marker, restaurant, infoWindow);
-        });
-        this.markers.push(marker);
-        this.infoWindows.push(infoWindow);
-	}
-
-    deleteOldMarkers() {
-        this.setMapOnAll(null);
-        this.markers.splice(1);
-    }
-
-    //set the map to display the markers (hide them if null)
-    setMapOnAll(map) {
-        for (let i = 0; i < this.markers.length; i++) {
-            this.markers[i].setMap(map);
-        }
-    }
-
-    closeInfoWindows() {
-        this.infoWindows.map((infoWindow) => {
-            infoWindow.close();
-        });
-    }
-
-    OnMarkerClick = (marker, restaurant, infoWindow) => {
-        this.props.handleMarkerClick(restaurant);
-        window.location = '#review-list';
-
-        this.markers.map((marker) => {
-            marker.setIcon(this.markerIconsPath.defaultMarkerIcon);
-            this.closeInfoWindows();
-        });
-
-        marker.setIcon(this.markerIconsPath.clickedMarkerIcon);
-        infoWindow.open(this.map, marker);
-    }
-
-    onMouseHover = () => {
-        if (this.props.canAddRestaurant) {
-            this.map.setOptions({draggableCursor: 'url(' + this.markerIconsPath.defaultMarkerIcon + '), auto'});
-
-        } else {
-            this.map.setOptions({draggableCursor: 'pointer'});
-        }
-    }
-
     componentWillUpdate(nextProps) {
         if (nextProps.restaurantList != this.props.restaurantList) {
             this.deleteOldMarkers();
@@ -149,6 +87,68 @@ export default class GoogleMap extends Component {
             if (this.props.canAddRestaurant) {
                 this.onMapClick(event.latLng);
             }
+        });
+    }
+
+    onMapClick = (latLng) => {
+        this.props.onMapClick(latLng);
+    }
+
+    OnMarkerClick = (marker, restaurant, infoWindow) => {
+        this.props.handleMarkerClick(restaurant);
+        window.location = '#review-list';
+
+        this.markers.map((marker) => {
+            marker.setIcon(this.markerIconsPath.defaultMarkerIcon);
+            this.closeInfoWindows();
+        });
+
+        marker.setIcon(this.markerIconsPath.clickedMarkerIcon);
+        infoWindow.open(this.map, marker);
+    }
+
+    onMouseHover = () => {
+        if (this.props.canAddRestaurant) {
+            this.map.setOptions({draggableCursor: 'url(' + this.markerIconsPath.defaultMarkerIcon + '), auto'});
+
+        } else {
+            this.map.setOptions({draggableCursor: 'pointer'});
+        }
+    }
+
+    addMarker(position, restaurant) {
+        const marker = new google.maps.Marker({
+            position: position,
+            icon: this.markerIconsPath.defaultMarkerIcon,
+            map: this.map
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: restaurant.name
+        });
+
+        marker.addListener('click', () => {
+            this.OnMarkerClick(marker, restaurant, infoWindow);
+        });
+        this.markers.push(marker);
+        this.infoWindows.push(infoWindow);
+	}
+
+    deleteOldMarkers() {
+        this.setMapOnAll(null);
+        this.markers.splice(1);
+    }
+
+    //set the map to display the markers (hide them if null)
+    setMapOnAll(map) {
+        for (let i = 0; i < this.markers.length; i++) {
+            this.markers[i].setMap(map);
+        }
+    }
+
+    closeInfoWindows() {
+        this.infoWindows.map((infoWindow) => {
+            infoWindow.close();
         });
     }
 

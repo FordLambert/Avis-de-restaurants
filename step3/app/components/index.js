@@ -15,36 +15,130 @@ export default class extends Component {
             'canAddRestaurant': false
         };
 
-        this.map;
+        this.map = {}; //updated by handleMapUpdate
         this.clickedPosition = {};
         this.city = {};
         this.grade = {min: 0, max: 5};
         this.order = 'grade';
     }
 
-    addRestaurantToList = (restaurant) => {
-        const tempRestaurantList = this.state.listComplete;
-        tempRestaurantList.push(restaurant);
-        this.confirmRestaurantAdded();
-        this.setState({
-            listComplete: tempRestaurantList,
-            canAddRestaurant: false
+    handleMapUpdate = (geolocCoordinates, map) => {
+        const request = {
+            location: geolocCoordinates,
+            radius: '5000', //meters
+            types: ['restaurant'],
+            minPriceLevel: 0
+        };
+
+        const service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, (results, status, pagination) => {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                this.map = map;
+                this.setState({
+                    listComplete: results,
+                    listCustom: results,
+                    position: geolocCoordinates
+                });
+            }
         });
-        this.getVisiblesRestaurantsOnly();;
     }
 
-    toggleAddRestaurant = (status) => {
+    handleAddReviewRequest = (restaurant) => {
         this.setState({
-            canAddRestaurant: status
+            restaurantRequested: restaurant
         });
     }
 
-    confirmRestaurantAdded() {
-        //open the confirmation modal for a short time
-        window.location = '#confirm-addition-popup';
-        setTimeout(function () {
-            window.location = '#!';
-        }, 1500);
+    handleOpenReviewRequest = (restaurant) => {
+        this.setState({
+            restaurantRequested: restaurant
+        });
+    }
+
+    //handle the form's submit for custom restaurant options
+    handleUserChoicesSubmit = (city, newGrade, newOrder) => {
+        this.grade = newGrade;
+        this.order = newOrder;
+
+        //If we want another position, start by updating the latLng
+        if ((city != undefined) && (city != this.city)) {
+            this.city = city;
+            const geocoder = new google.maps.Geocoder();
+
+            geocoder.geocode( { 'address': this.city}, (results, status) => {
+                if (status == 'OK') {
+                    const lat = results[0].geometry.location.lat();
+                    const lng = results[0].geometry.location.lng();
+                    const newPosition = {lat, lng};
+    
+                    this.map.setCenter(newPosition);
+                    this.setState({
+                        position: newPosition
+                    });
+    
+                    this.generateListFromPosition();
+                }
+            });
+
+        } else {
+            this.getVisiblesRestaurantsOnly();
+        }
+    }
+
+    onNewRestaurantNameSubmit = (restaurantName) => {
+        let address = '';
+
+        const geocoder = new google.maps.Geocoder;
+        geocoder.geocode({'location': this.clickedPosition}, (results, status) => {
+            if (status === 'OK') {
+
+                if (results[1]) {
+                    address = results[0].formatted_address;
+
+                } else {
+                    console.log('No results found');
+                }
+
+            } else {
+                console.log('Geocoder failed due to: ' + status);
+            }
+
+            const newRestaurant = {};
+            newRestaurant.name = restaurantName;
+            newRestaurant.vicinity = address;
+            newRestaurant.geometry = {};
+            newRestaurant.geometry.location = this.clickedPosition;
+            newRestaurant.rating = 0;
+            newRestaurant.reviewList = [];
+
+            this.addRestaurantToList(newRestaurant);
+        });
+    }
+
+    onMapClick = (latLng) => {
+        this.clickedPosition = latLng;
+        window.location = '#add-restaurant-popup';
+    }
+
+    onDragEnd = () => {
+        this.setState({
+            position: this.map.center
+        });
+        this.generateListFromPosition();
+    }
+
+    getVisiblesRestaurantsOnly = () => {
+        const visibleRestaurantsList = [];
+        
+        this.state.listComplete.map((restaurant) => {
+
+            if (this.map.getBounds().contains(restaurant.geometry.location)) {
+                visibleRestaurantsList.push(restaurant)
+            }
+        });
+
+        this.generateNewCustomList(visibleRestaurantsList);
     }
 
     getDistance(lat1, lon1, lat2, lon2) {
@@ -72,17 +166,29 @@ export default class extends Component {
         return dist;
     }
 
-    getVisiblesRestaurantsOnly = () => {
-        const visibleRestaurantsList = [];
-        
-        this.state.listComplete.map((restaurant) => {
-
-            if (this.map.getBounds().contains(restaurant.geometry.location)) {
-                visibleRestaurantsList.push(restaurant)
-            }
+    addRestaurantToList = (restaurant) => {
+        const tempRestaurantList = this.state.listComplete;
+        tempRestaurantList.push(restaurant);
+        this.confirmRestaurantAdded();
+        this.setState({
+            listComplete: tempRestaurantList,
+            canAddRestaurant: false
         });
+        this.getVisiblesRestaurantsOnly();;
+    }
 
-        this.generateNewCustomList(visibleRestaurantsList);
+    toggleAddRestaurant = (status) => {
+        this.setState({
+            canAddRestaurant: status
+        });
+    }
+
+    confirmRestaurantAdded() {
+        //open the confirmation modal for a short time
+        window.location = '#confirm-addition-popup';
+        setTimeout(function () {
+            window.location = '#!';
+        }, 1500);
     }
 
     generateNewCustomList = (restaurantList) => {
@@ -157,112 +263,6 @@ export default class extends Component {
                 this.getVisiblesRestaurantsOnly();
             }
         });
-    }
-
-    onNewRestaurantNameSubmit = (restaurantName) => {
-        let address = '';
-
-        const geocoder = new google.maps.Geocoder;
-        geocoder.geocode({'location': this.clickedPosition}, (results, status) => {
-            if (status === 'OK') {
-
-                if (results[1]) {
-                    address = results[0].formatted_address;
-
-                } else {
-                    console.log('No results found');
-                }
-
-            } else {
-                console.log('Geocoder failed due to: ' + status);
-            }
-
-            const newRestaurant = {};
-            newRestaurant.name = restaurantName;
-            newRestaurant.vicinity = address;
-            newRestaurant.geometry = {};
-            newRestaurant.geometry.location = this.clickedPosition;
-            newRestaurant.rating = 0;
-            newRestaurant.reviewList = [];
-
-            this.addRestaurantToList(newRestaurant);
-        });
-    }
-
-    handleOpenReviewRequest = (restaurant) => {
-        this.setState({
-            restaurantRequested: restaurant
-        });
-    }
-
-    handleMapUpdate = (geolocCoordinates, map) => {
-        const request = {
-            location: geolocCoordinates,
-            radius: '5000', //meters
-            types: ['restaurant'],
-            minPriceLevel: 0
-        };
-
-        const service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, (results, status, pagination) => {
-            if (status == google.maps.places.PlacesServiceStatus.OK) {
-
-                this.map = map;
-                this.setState({
-                    listComplete: results,
-                    listCustom: results,
-                    position: geolocCoordinates
-                });
-            }
-        });
-    }
-
-    handleAddReviewRequest = (restaurant) => {
-        this.setState({
-            restaurantRequested: restaurant
-        });
-    }
-
-    onMapClick = (latLng) => {
-        this.clickedPosition = latLng;
-        window.location = '#add-restaurant-popup';
-    }
-
-    onDragEnd = () => {
-        this.setState({
-            position: this.map.center
-        });
-        this.generateListFromPosition();
-    }
-    
-    //handle the form's submit for custom restaurant options
-    handleUserChoicesSubmit = (city, newGrade, newOrder) => {
-        this.grade = newGrade;
-        this.order = newOrder;
-
-        //If we want another position, start by updating the latLng
-        if ((city != undefined) && (city != this.city)) {
-            this.city = city;
-            const geocoder = new google.maps.Geocoder();
-
-            geocoder.geocode( { 'address': this.city}, (results, status) => {
-                if (status == 'OK') {
-                    const lat = results[0].geometry.location.lat();
-                    const lng = results[0].geometry.location.lng();
-                    const newPosition = {lat, lng};
-    
-                    this.map.setCenter(newPosition);
-                    this.setState({
-                        position: newPosition
-                    });
-    
-                    this.generateListFromPosition();
-                }
-            });
-
-        } else {
-            this.getVisiblesRestaurantsOnly();
-        }
     }
 
     render() {

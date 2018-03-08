@@ -34,12 +34,12 @@ export default class MapRestaurantList extends Component {
         this.props.handleAddReviewRequest(restaurant);
     }
 
-    toggleAddRestaurant = (status) => {
-        this.props.toggleAddRestaurant(status);
-    }
-
     onMapClick = (latLng) => {
         this.props.onMapClick(latLng);
+    }
+
+    toggleAddRestaurant = (status) => {
+        this.props.toggleAddRestaurant(status);
     }
 
     render() {
@@ -47,6 +47,7 @@ export default class MapRestaurantList extends Component {
             <section className='col-12 col-md-9 col-xl-10 main-section' id='main-section'>
                 <div className='row'>
                     <GoogleMap
+                        map={this.props.map}
                         restaurantList={this.props.restaurantList}
                         position={this.props.position}
                         handleMapUpdate={this.handleMapUpdate}
