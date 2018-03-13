@@ -1,5 +1,3 @@
--> This is a work in progress and not at all completed yet ;)
-
 This is the seventh project of my path with OpenClassroom.
 
 The point here, is to learn about API by practicing on a restaurants recommendations application.
